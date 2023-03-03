@@ -64,7 +64,7 @@ const index = () => {
                           </Form.Group>
                         </Col>
                       </Row>
-                      <Row>
+                      <Row className='pt-3'>
                         <Col>
                           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Name</Form.Label>
@@ -78,7 +78,9 @@ const index = () => {
                           </Form.Group>
                         </Col>
                       </Row>
-                      <Col></Col>
+                      <Col className='pt-3'>
+                        <Button>Post Comment</Button>
+                      </Col>
                   </Col>
                 </Row>
               </Col>
