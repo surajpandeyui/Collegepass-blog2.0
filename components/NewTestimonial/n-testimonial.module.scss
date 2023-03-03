@@ -1,0 +1,272 @@
+.AidenSection {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-right: 5px;
+    padding-left: 0px;
+    .ugtestiVideoThumb {
+        text-align: center;
+        .ugVideoIcon {
+            margin-top: -29%;
+            cursor: pointer;
+        }
+        .ugVideoThumb {
+            img {
+                border: 5px solid #ffffff!important;
+            }
+        }
+    }
+    h2 {
+        font-size: 3.3vw !important;
+        line-height: 4vw !important;
+        white-space: pre-line;
+        letter-spacing: 0.03rem;
+        opacity: 0.9;
+    }
+    h3 {
+        font-size: 1.8vw;
+        letter-spacing: 0.03rem;
+        line-height: 2.4vw;
+        white-space: pre-line;
+        max-width: 630px;
+        margin-top: 16px;
+        margin-bottom: 25px;
+    }
+    p {
+        font-size: 18px;
+        font-family: gilroy-semibold;
+        letter-spacing: 0px;
+        line-height: 28px;
+        white-space: pre-line;
+        max-width: 630px;
+        margin-bottom: 40px;
+    }
+    Button {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        /*margin-bottom: 100px;*/
+    }
+    Button:active {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        /*margin-bottom: 100px;*/
+    }
+    Button:focus {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        /*margin-bottom: 100px;*/
+    }
+    Button:hover {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .AidenSection {
+        padding-top: 70px;
+        padding-bottom: 70px;
+        padding-right: 15px;
+        padding-left: 15px;
+        .ugtestiVideoThumb {
+            padding-top: 10%;
+            .ugVideoIcon {
+                margin-top: -38%;
+            }
+            h2 {
+                font-size: 45px!important;
+                line-height: 60px!important;
+            }
+            h3 {
+                font-size: 25px;
+            }
+        }
+        h2 {
+            font-size: 32px!important;
+            line-height: 45px!important;
+        }
+        h3 {
+            font-size: 5vw;
+            letter-spacing: 0.03rem;
+            line-height: 7.5vw;
+            white-space: pre-line;
+            max-width: 630px;
+            margin-top: 16px;
+            margin-bottom: 25px;
+        }
+        Button {
+            font-size: 18px;
+            padding: 13px 25px;
+        }
+        Button:hover {
+            font-size: 18px;
+            padding: 13px 25px;
+        }
+    }
+}
+
+
+
+
+.testimonial {
+    img {
+        height: auto!important;
+    }
+    .testimonialImageSection {
+        image {
+            transform: scale(.8);
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
+        text-align: center;
+    }
+    .testimonialImageSection {
+        i {
+            padding: 20px 22px;
+            top: 42%;
+            color: #ffffff;
+            position: absolute;
+            left: 68%;
+            background: #00000069;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}
+.testimonialForDesktop {
+    display: block;
+}
+.testimonialForMobile {
+    display: none;
+}
+
+/* mobile */
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .testimonialForMobile {
+        display: block;
+        .testimonialImageSection {
+            i {
+                top: 15%;
+                left: 45%;
+            }
+        }
+    }
+    .testimonialForDesktop {
+        display: none;
+    }
+}
+
+
+.testimonialContainer {
+	& .testimonialModal {
+		position: fixed;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		top: 50%;
+		width: 100%;
+		z-index: 999999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& .testimonialModalcontainer {
+			position: relative;
+
+			& .closeIcon {
+				// background-color: #fff;
+				color: #fff;
+				position: absolute;
+				right: 80px!important;
+				top: -20px!important;
+				cursor: pointer;
+			}
+
+			& iframe {
+				&:empty {
+					// background-color: #3d3d3d;
+				}
+			}
+		}
+	}
+	& .testimonialModalbg {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 99999;
+		height: 100vh;
+		width: 100vw;
+		background-color: rgba($color: #000000, $alpha: 0.8);
+	}
+}
+
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-timing-function: ease-in;
+	animation-timing-function: ease-in;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.closeIcon {
+		// background-color: #fff;
+		display: none !important;
+		
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px){
+	.testimonial {
+		.testimonialImageSection {
+			i {
+				padding: 20px 22px;
+				top: 42%;
+				color: #ffffff;
+				position: absolute;
+				left: 78%;
+				background: #00000069;
+				border-radius: 100%;
+				cursor: pointer;
+			}
+		}
+	}
+}

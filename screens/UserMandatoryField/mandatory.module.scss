@@ -1,0 +1,193 @@
+
+.requiredCss {
+    border: 2px solid #FF3031 !important;
+    background: #FFF1F4 !important;
+    border-radius: 15px!important;
+    }
+.userMandatoryForm {
+    background-color: #ffffff21;
+}
+.userMendSec {
+    .verifyOtp {
+        border: 1px solid rgb(227 204 128);
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+        padding: 15px 15px !important;
+        border-radius: 50px!important;
+        margin: 17px 10px 0px 0px!important;
+        width: 100%;
+        background: rgb(227 204 128);
+        color: #000000!important;
+    }
+    .verifyOtp:active {
+        border: 1px solid rgb(227 204 128)!important;
+        background: rgb(227 204 128);
+        color: #000000!important;
+    }
+    .verifyOtp:focus {
+        border: 1px solid rgb(227 204 128)!important;
+        background: rgb(227 204 128);
+        color: #000000!important;
+    }
+    .verifyOtp:hover {
+        border: 1px solid rgb(227 204 128)!important;
+        background: rgb(227 204 128);
+        color: #000000!important;
+    }
+}
+.regProceedButton {
+    letter-spacing: 0.03rem;
+    font-size: 22px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    color: #000000;
+    font-weight: 600;
+    margin: 15px 10px 30px 0px;
+    width: 45%;
+}
+.regProceedButton:hover {
+    background: #ffffff;
+    border: 1px solid #ffffff!important;
+    color: #000000;
+}
+.regProceedButton:active {
+    background: #ffffff;
+    border: 1px solid #ffffff!important;
+    color: #000000;
+}
+.regProceedButton:focus {
+    background: #ffffff;
+    border: 1px solid #ffffff!important;
+    color: #000000;
+}
+
+.mendForm {
+    .studentParent {
+        p {
+            letter-spacing: 0.05rem;
+            font-size: 25px;
+            opacity: 0.8;
+            color: #ffffff;
+        }
+        padding-bottom: 5%;
+        .student {
+            background: rgb(227 204 128);
+            color: #000000;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            border: 1px solid rgb(227 204 128);
+            padding: 15px 50px;
+            border-radius: 10px;
+            margin: 0px 10px 0px 0px;
+            width: 35%;
+        }
+        .parent {
+            background: #1b1b38;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            border: 1px solid #1b1b38;
+            padding: 15px 50px;
+            border-radius: 10px;
+            margin: 0px 10px 0px 0px;
+            width: 35%;
+        }
+        .student:hover {
+            background: rgb(227 204 128);
+            color: #000000;
+            border: 1px solid rgb(227 204 128)!important;
+        }
+        .parent:hover {
+            background: #1b1b38;
+            color: #ffffff;
+            border: 1px solid #1b1b38!important;
+        }
+    }
+} 
+
+.verifyOtp {
+    border: 1px solid rgb(227 204 128);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    padding: 15px 15px !important;
+    border-radius: 50px;
+    margin: 16px 10px 0px 0px;
+    width: 100%;
+    background: rgb(227 204 128);
+    color: #000000;
+    border: 1px solid #323644;
+a {
+    color:rgb(227 204 128);
+}
+}
+.verifyOtp:hover {
+border: 1px solid rgb(227 204 128)!important;
+font-size: 20px;
+font-weight: 600;
+letter-spacing: 0.05rem;
+padding: 15px 15px !important;
+border-radius: 50px;
+margin: 16px 10px 0px 0px;
+width: 100%;
+background: rgb(227 204 128)!important;
+color: #000000!important;
+border: 1px solid #323644;
+}
+
+
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .mendForm {
+        .studentParent {
+            p {
+                letter-spacing: 0.05rem;
+                font-size: 25px;
+                opacity: 0.8;
+                color: #ffffff;
+            }
+            padding-bottom: 5%;
+            .student {
+                background: rgb(227 204 128);
+                color: #000000;
+                font-size: 20px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid rgb(227 204 128);
+                padding: 15px 15px;
+                border-radius: 10px;
+                margin: 0px 10px 0px 0px;
+                width: 45%;
+            }
+            .parent {
+                background: #323644;
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid #323644;
+                padding: 15px 15px;
+                border-radius: 10px;
+                margin: 0px 10px 0px 0px;
+                width: 45%;
+            }
+        }
+    }
+    .userMendSec {
+        .verifyOtp {
+            margin-bottom: 5%;
+            color: rgb(227 204 128);
+            margin-top: 0%;
+            background-color: #261e35;
+            border: #261e35;
+        }
+    }
+    .regProceedButton {
+        width: 100%;
+    }
+}

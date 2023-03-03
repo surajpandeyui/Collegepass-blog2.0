@@ -1,0 +1,141 @@
+.slider {
+    padding: 0;
+}
+.eventVideoSlider {
+    padding-bottom: 2%;
+    video {
+        width: 100%;
+        /*opacity: 0.6;*/
+
+    }
+    img {
+        width: 100%;
+    }
+    .videoText {
+        position: absolute!important;
+        top: 67%;
+        left: 6.5%;
+        h1 {
+            height: auto;
+        max-width: none;
+        font-weight: 900;
+        line-height: 70px;
+        font-size: 3.5rem;
+        color: #fff;
+        margin-bottom: 0.4rem;
+        }
+        h5 {
+            opacity: .8!important;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            letter-spacing: .01em;
+        }
+        Button {
+            //border: 1px solid #ffffff!important;
+            margin-bottom: 40px;
+            margin-top: 10%;
+            cursor: pointer;
+            text-transform: uppercase;
+            vertical-align: middle;
+            letter-spacing: 0.03rem;
+            font-size: 20px;
+            padding: 13px 35px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+        Button:hover {
+            color: #000000;
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+        }
+        Button:disabled {
+            background: #ffffff8f;
+            color: #000000ad;
+        }
+    }
+}
+.videoSliderForDesktop {
+    display: block;
+}
+.videoSliderForMobile {
+    display: none;
+}
+
+/* mobile  */
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .videoSliderForDesktop {
+        display: none;
+    }
+    .videoSliderForMobile {
+        display: block;
+    }
+.eventVideoSlider {
+    padding-bottom: 9%;
+    // img {
+    //     width: 115px!important;
+    // }
+    .videoText {
+        position: absolute!important;
+        top: 59%;
+        left: 6.5%;
+        h1 {
+            height: auto;
+            max-width: none;
+            font-weight: 900;
+            line-height: 25px;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+        h5 {
+            font-size: 1.2rem;
+        }
+        Button {
+            margin-top: 55px;
+            font-size: 5vw;
+            padding: 7px 25px;
+        }
+    }
+}
+}
+
+/* Tab  */
+@media (min-width: 768px) and (max-width: 1024px){
+.eventVideoSlider {
+    video {
+        width: 100%;
+        opacity: 0.6;
+    }
+    img {
+        width: 100%;
+        opacity: 0.6;
+    }
+    .videoText {
+        position: absolute!important;
+        top: 15%;
+        left: 4%;
+        h1 {
+            height: auto;
+        max-width: none;
+        font-weight: 900;
+        line-height: 70px;
+        font-size: 3.5rem;
+        color: #fff;
+        margin-bottom: 0.4rem;
+        }
+        h5 {
+            opacity: .8!important;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            letter-spacing: .01em;
+        }
+    }
+}
+}

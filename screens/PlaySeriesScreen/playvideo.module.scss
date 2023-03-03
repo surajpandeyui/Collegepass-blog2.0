@@ -1,0 +1,30 @@
+.relatedVideo {
+    p {
+        font-size: 12px;
+        letter-spacing: 0.03rem;
+        line-height: 1.2rem;
+        font-weight: 500;
+        color: #ffffff;
+        opacity: 0.6;
+        text-align: left;
+    }
+}
+.seriesNextBurron {
+    
+    text-align: center;
+    button {
+        background: rgb(234, 214, 55);
+        border: 1px solid rgb(234, 214, 55);
+        color: #000000;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.03rem;
+        padding: 1% 3%;
+        margin-top: -3%;
+    }
+    button:hover {
+        background: #8f0606;
+        border: 1px solid #8f0606;
+        color: #ffffff;
+    }
+}

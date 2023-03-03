@@ -1,0 +1,170 @@
+.ugTopFooter {
+    padding: 100px 0px;
+    .ugFooterBrand {
+        border-radius: 7px;
+    }
+    .ugFooterHolo {
+        padding-right: 5%;
+    }
+    .ugFooterMenu {
+        .footerSocialMedia {
+            padding-right: 30%;
+        }
+        .footerAboutList {
+            padding-right: 30%;
+        }
+        margin-bottom: 5%;
+        margin-left: 10%;
+        p {
+            font-size: 1.2vw;
+            letter-spacing: 0.03rem;
+            font-weight: 600;
+            line-height: 1vw;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        ul {
+            padding-left: 0px!important;
+        }
+        li {
+            color: inherit;
+            font-size: 1.2vw;
+            letter-spacing: 0.75px;
+            line-height: 1.8vw;
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.7;
+            list-style-type: none;
+            a {
+                color: #ffffff;
+            }
+        }
+    }
+    .ugFooterLogoHolo {
+        margin-bottom: 10px;
+        margin-left: -15px;
+        img {
+            padding-left: 10%!important;
+        }
+    }
+    .ugLogosSectionTextTop {
+        h6 {
+            letter-spacing: 0.03rem;
+            line-height: 1vw;
+            margin-bottom: 24px;
+            opacity: 0.9;
+            font-size: 1.5vw;
+            font-weight: 600;
+            margin-top: 7%;
+        }
+    }
+    .ugLogosSectionTextBottom {
+        max-width: 500px;
+        p {
+            font-size: 1.2vw;
+            letter-spacing: 0.03rem;
+            line-height: 1.8vw;
+            margin-bottom: 75px;
+            opacity: 0.7;
+        }
+    }
+}
+.ugBottomFooter {
+    padding: 0px 0px 100px 0px;
+    .ugCopyRight {
+        align-self: baseline;
+        p {
+            color: #ffffff;
+            opacity: 0.5;
+            letter-spacing: 0.03rem;
+            font-size: 1.2vw;
+
+        }
+    }
+    .ugCopyRightR {
+        text-align: right;
+        padding-right: 5%;
+        a {
+            font-size: 1.2vw;
+            letter-spacing: 0.03rem;
+            line-height: 1vw;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+            margin-bottom: 20px;
+            padding: 0px 15px;
+            border-right: 1px solid rgb(246, 246, 246);
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .ugFooterLogoHolo {
+        margin-left: 0px;
+    }
+    .ugTopFooter {
+        padding: 70px 15px 35px 15px;
+        .ugFooterMenu {
+            margin-bottom: 10%;
+            margin-left: 0%;
+            .footerSocialMedia {
+                padding-right: 0%;
+                padding-left: 0;
+            }
+            .footerAboutList {
+                padding-right: 0%;
+                padding-left: 0;
+            }
+            p {
+                font-size: 4vw;
+            }
+            li {
+                font-size: 3.5vw;
+                letter-spacing: 0.75px;
+                line-height: 5.8vw;
+            }
+        }
+        .ugLogosSectionTextTop {
+            h6 {
+                line-height: 22px;
+                font-size: 4.5vw;
+            }
+        }
+        .ugLogosSectionTextBottom {
+            p {
+                font-size: 3.5vw;
+                letter-spacing: 0.03rem;
+                line-height: 5.5vw;
+                margin-bottom: 75px;
+            }
+        }
+    }
+    .ugBottomFooter {
+        padding: 70px 0px 70px 0px;
+        .ugCopyRight {
+            align-self: baseline;
+            p {
+                color: #ffffff;
+                opacity: 0.5;
+                letter-spacing: 0.03rem;
+                font-size: 16px;
+                text-align: center;
+            }
+        }
+        .ugCopyRightR {
+            text-align: center;
+            padding-right: 8%;
+            a {
+                font-size: 18px;
+                letter-spacing: 0.03rem;
+                line-height: 34px;
+                color: rgb(255, 255, 255);
+                opacity: 0.7;
+                margin-bottom: 20px;
+                padding: 0px 15px;
+                border-right: 1px solid rgb(246, 246, 246);
+            }
+        }
+    }
+    
+}
+/* new footer section ended */

@@ -1,0 +1,120 @@
+.eventBannerDetails {
+    margin-top: -250px;
+}
+.eventBannerText {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 23%;
+}
+.eventDesc {
+    padding: 45px 0px;
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.eventForm {
+    padding: 0px 0px;
+    width: 900px;
+    max-width: 100%;
+    margin: auto;
+}
+.eventBanner {
+    img {
+        opacity: .4;
+    }
+}
+.eventBannerText {
+    h1 {
+        font-size: 35px;
+        line-height: 35px;
+        font-weight: 600;
+        color: #fff;
+        padding: 5px 0 25px;
+        text-transform: uppercase;
+    }
+    h5 {
+        font-size: 30px;
+        color: #e6a851;
+        line-height: 35px;
+        font-weight: 600;
+    }
+    h6 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        opacity: .8;
+        line-height: 45px;
+    }
+    Button {
+        background: #a02828;
+        color: #ffffff;
+        letter-spacing: 0.03rem;
+        padding: 10px 25px;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        border: none;
+        text-transform: uppercase;
+    }
+}
+.eventDesc {
+    p {
+        font-size: 17px;
+        color: #fff;
+        opacity: 1;
+        line-height: 25px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+}
+.eventForm {
+    label {
+        opacity: .8;
+        color: #fff;
+    }
+    p {
+        opacity: .8;
+        color: #fff;
+    }
+    Button {
+        color: #fff;
+        background: #c83232;
+        border: 1px solid #c83232;
+        padding: 8px 20px;
+        border-radius: 4px;
+        margin-top: 30px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        border: none;
+        text-transform: uppercase;
+    }
+}
+.eventSuccess {
+    h2 {
+        font-weight: 600;
+        line-height: 45px;
+        color: #fff;
+        opacity: .9;
+        text-align: center;
+        width: 100%;
+        font-size: 35px;
+        margin-bottom: 5px;
+    }
+    Button {
+        border-radius: 4px;
+        background: #c83232;
+        color: #fff;
+        padding: 8px 20px;
+        border: none;
+    }
+    p {
+        font-size: 20px;
+        color: #fff;
+        opacity: .7;
+        line-height: 25px;
+        margin-top: 10px;
+    }
+}

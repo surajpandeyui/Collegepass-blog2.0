@@ -1,0 +1,112 @@
+.paymentMain {
+    i {
+        margin-top: 5px;
+        margin-right: 10px;
+        font-size: 10px!important;
+    }
+    .title {
+        h2 {
+            font-size: 25px!important;
+            line-height: 20px!important;
+            height: auto;
+            max-height: 2.5em;
+            max-width: 600px;
+            font-weight: 500!important;
+            margin-bottom: 1.4rem;
+        }
+    }
+    .description {
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            width: 100%;
+            color: #fff;
+            line-height: 24px;
+            letter-spacing: 0.03rem;
+        }
+    }
+    .paymentPoint {
+        h5 {
+            font-size: 18px;
+            color: #ddb776;
+        }
+        p {
+            font-weight: 600;
+            display: flex;
+            color: #afadad;
+            font-size: 15px;
+        }
+    }
+    .paymentButton {
+        Button {
+            width: 40%;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            vertical-align: middle;
+            background: #c83232;
+            border: 1px solid #c83232;
+            padding: 10px 0px;
+            border-radius: 4px;
+            color: #fff;
+            border: none;
+            outline: 0;
+        }
+    }
+} 
+.completedMain {
+    margin-top: 7%;
+    margin-bottom: 3%;
+    i {
+        width: 50px;
+        margin: 10px 0 20px;
+        color: #fff;
+        font-size: 25px;
+    }
+    h2 {
+        color: #ffffff;
+        font-size: 30px!important;
+        font-weight: 600!important;
+        opacity: 0.8!important;
+        text-transform: capitalize!important;
+    }
+    p {
+        color: rgb(255, 255, 255);
+        opacity: 0.8;
+        padding: 20px 0px;
+        line-height: 1.5rem;
+        letter-spacing: 1.1px;
+    }
+    Button {
+        color: #fff;
+        background-color: #c83232;
+        border: 1px solid #c83232;
+        padding: 0.75rem 25.33333333px;
+        min-width: 110px;
+        width: 10%;
+        max-width: 100%;
+        line-height: 19px;
+        min-height: 48px;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1.2px;
+        border-radius: 2px;
+    }
+}
+
+/* mobile  */
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .paymentMain {
+        .title {
+            h2 {
+                line-height: 35px!important;
+            }
+        }
+        .paymentButton {
+            Button {
+                width: 100%;
+            }
+        }
+    } 
+}

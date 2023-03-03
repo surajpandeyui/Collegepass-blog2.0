@@ -1,0 +1,38 @@
+.cardImage {
+    width: 100%;
+    opacity: 0.4;
+    border-radius: 1rem;
+}
+.cardCenter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+.live {
+    text-align: left;
+}
+.premiumButton {
+    text-align: right;
+}
+.cardCenterText {
+    padding-top: 15%;
+}
+.cardSliderForDesktop {
+    display: block;
+}
+.cardSliderForMobile {
+    display: none;
+}
+
+/* mobile */
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .cardSliderForDesktop {
+        display: none;
+    }
+    .cardSliderForMobile {
+        display: block;
+    }
+}

@@ -1,0 +1,198 @@
+.BannerNewLanding {
+    padding-top: 5px;
+    .bannerThank {
+        padding: 110px 140px 10px 35px;
+        h1 {
+            color: #ffffff;
+            font-size: 55px;
+            font-weight: 600;
+            letter-spacing: 0.03rem;
+        }
+        p {
+            strong {
+                letter-spacing: 0.03rem;
+                padding-left: 5px;
+                color: #205dcc;
+            }
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.03rem;
+            line-height: 2.2rem;
+            padding: 20px 0px;
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+        h2 {
+            .sep {
+                padding-left: 20px;
+                height: 60px;
+                line-height: 60px;
+                vertical-align: middle;
+            }
+            span {
+                font-size: 12px;
+                color: #ffffff;
+                opacity: 0.8;
+                letter-spacing: 0.05rem;
+            }
+            font-size: 50px!important;
+            color: #4385f5;
+            padding: 0px 15px 35px 0px;
+            letter-spacing: 0.05rem;
+            line-height: 5px!important;
+        }
+        a {
+            border-radius: 4px;
+            padding: 12px 30px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.03rem;
+            background: #1f5dca;
+            border: 1px solid #1f5dca;
+        }
+        a:hover {
+            background: #c83232;
+            border: 1px solid #c83232;
+        }
+        button {
+            
+            letter-spacing: .03rem;
+            font-size: 1.5vw;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background: #fff;
+            border: 1px solid #fff;
+            color: #000;
+            font-weight: 600;
+            margin-bottom: 100px;
+            margin-top: 2%;
+        }
+        button:hover {
+            background: #fff!important;
+            border: 1px solid #fff!important;
+            color: #000!important;
+        }
+        button:active {
+            background: #fff!important;
+            border: 1px solid #fff!important;
+            color: #000!important;
+        }
+    }
+}
+.whiteSection {
+    h2 {
+        font-size: 40px!important;
+        color: #000000!important;
+        padding: 150px 0px;
+        text-transform: capitalize!important;
+        text-align: center;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+}
+.yelloSection {
+    flex-direction: row-reverse;
+    h2 {
+        font-size: 40px!important;
+        color: #000000!important;
+        padding: 150px 30px 0px 30px;
+        text-transform: capitalize!important;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+    p {
+        font-size: 18px!important;
+        color: #000000!important;
+        padding: 0px 30px 0px 30px;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+}
+.greenSection {
+    h2 {
+        font-size: 40px!important;
+        color: #000000!important;
+        padding: 150px 30px 0px 30px;
+        text-transform: capitalize!important;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+    p {
+        font-size: 18px!important;
+        color: #000000!important;
+        padding: 0px 30px 0px 30px;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+}
+.skyBlueSection {
+    flex-direction: row-reverse;
+    h2 {
+        font-size: 40px!important;
+        color: #000000!important;
+        padding: 150px 30px 0px 30px;
+        text-transform: capitalize!important;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+    p {
+        font-size: 18px!important;
+        color: #000000!important;
+        padding: 0px 30px 0px 30px;
+        opacity: 0.8;
+        letter-spacing: 0.03rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .BannerNewLanding {
+        flex-direction: column-reverse;
+        .bannerThank {
+            padding: 15px 15px 25px 15px;
+            p {
+                strong {
+                    letter-spacing: 0.04rem;
+                    padding-left: 10px;
+                    color: #205dcc;
+                }
+                font-size: 18px;
+                color: #ffffff;
+                letter-spacing: 0.03rem;
+                line-height: 1.9rem;
+                padding: 20px 0px;
+                margin-bottom: 0;
+                opacity: 0.9;
+            }
+        }
+    }
+    .whiteSection {
+        h2 {
+            padding: 50px 0px;
+        }
+    }
+    .yelloSection {
+        h2 {
+            padding: 25px 15px 0px 30px;
+        }
+        p {
+            padding: 0px 30px 30px 30px;
+        }
+    }
+    .greenSection {
+        h2 {
+            padding: 25px 15px 0px 30px;
+        }
+        p {
+            padding: 0px 30px 30px 30px;
+        }
+    }
+    .skyBlueSection {
+        h2 {
+            padding: 25px 15px 0px 30px;
+        }
+        p {
+            padding: 0px 30px 30px 30px;
+        }
+    }
+  }

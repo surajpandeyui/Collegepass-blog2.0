@@ -1,0 +1,413 @@
+/* New Release Modal */
+.btnInInput {
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    right: 27%;
+    padding: 0;
+    background: none;
+    border: none;
+    i {
+        color: #000000;
+        font-size: 35px;
+        opacity: 0.6;
+    }
+}
+.btnInInput:hover {
+    background: none;
+    border: none;
+}
+.btnInInput:active {
+    background: none;
+    border: none;
+}
+.btnInInput:focus {
+    background: none;
+    border: none;
+}
+.loadingInInput {
+    position: absolute;
+    top: 20%;
+    right: 27%;
+}
+.requiredCss {
+    border: 2px solid #FF3031 !important;
+    background: #FFF1F4 !important;
+    border-radius: 15px!important;
+    padding: 0;
+    }
+.loginModal {
+    background: #000000c2;
+    input {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 0.05rem;
+        padding: 13px 15px;
+        border-radius: 10px;
+        margin: 0px 10px 0px 0px;
+        width: 100%!important;
+        background: #ffffff!important;
+        color: #4b4b4b!important;
+        border: 1px solid #a1abb8 !important;
+    }
+    .loginHolo {
+        margin-top: 7%;
+    }
+} 
+.wrapModalContent {
+    form {
+        max-width: 100%;
+        width: 60%;
+        margin: auto;
+    }
+}
+.verifyOtp {
+    border: 1px solid #ffe55c;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    padding: 15px 15px !important;
+    border-radius: 50px;
+    margin: 16px 10px 0px 0px;
+    width: 100%;
+    background: #ffe55c;
+    color: #000000;
+    border: 1px solid #323644;
+a {
+    color:#FFE55C;
+}
+}
+.verifyOtp:hover {
+border: 1px solid #ffe55c!important;
+font-size: 20px;
+font-weight: 600;
+letter-spacing: 0.05rem;
+padding: 15px 15px !important;
+border-radius: 50px;
+margin: 16px 10px 0px 0px;
+width: 100%;
+background: #ffe55c!important;
+color: #000000!important;
+border: 1px solid #323644;
+}
+    .proceedRegistration {
+        padding: 15px 25px!important;
+    }
+    .regModalFormNew {
+        .studentParent {
+            p {
+                color: #ffffff;
+                letter-spacing: 0.05rem;
+                font-size: 25px;
+                opacity: 0.8;
+            }
+            .student {
+                background: rgb(227 204 128);
+                color: #000000;
+                font-size: 20px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid rgb(227 204 128);
+                padding: 15px 50px;
+                border-radius: 10px;
+                margin: 0px 10px 0px 0px;
+                width: 35%;
+            }
+            .parent {
+                background: #141935;
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid #141935;
+                padding: 15px 50px;
+                border-radius: 10px;
+                margin: 0px 15px 0px 0px;
+                width: 35%;
+            }
+            .student:hover {
+                background: rgb(227 204 128);
+                color: #000000;
+            }
+            .parent:hover {
+                background: #141935;
+                color: #ffffff;
+            }
+        }
+    }
+
+.loginModal {
+    .titleModal {
+        font-weight: 600;
+        line-height: .25;
+        font-size: 1.5rem;
+        color: #ffffff;
+    }
+    p {
+        color: #6d7c90;
+        font-size: 18px;
+        letter-spacing: 0.04rem;
+    }
+    .modalPrivacy {
+        padding: 20px 0px 10px 0px;
+        text-align: center;
+        opacity: 0.8;
+        font-size: 14px !important;
+        letter-spacing: 0.03em;
+        text-decoration: underline;
+    }
+    .loginButton {
+        font-size: 18px;
+        padding: 12px 30px !important;
+        border-radius: 12px;
+        background: #0071e3;
+        border: 1px solid #0071e3;
+        color: #ffffff;
+        font-weight: 600;
+        margin: 15px 0px 5px 0px;
+        width: 100%;
+        letter-spacing: 0.04rem;
+    }
+    .loginButton:hover {
+        background: #2371ff!important;
+        border: 1px solid #2371ff!important;
+        color: #ffffff!important;
+    }
+    .loginFacebook {
+        div {
+            background: none!important;
+        }
+        span {
+            font-weight: 600!important;
+        }
+        margin: 5px auto;
+        width: 92%;
+        letter-spacing: 1.2px;
+        font-weight: 600!important;
+        -webkit-font-smoothing: antialiased;
+        color: #ffffff!important;
+        cursor: pointer;
+        display: inline-block!important;
+        font-size: 14px!important;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: #4c69ba!important;
+        border: none;
+        text-align: center;
+        padding: 5px 30px!important;
+        border-radius: 3px!important;
+        transition: background-color .3s,border-color .3s;
+        display: flex!important;
+    }
+    Label {
+        font-size: 12px;
+        letter-spacing: 0.03rem;
+        color: #ffffff;
+    }  
+}
+
+
+//Alert css--------------------------------------------
+
+/* Alert Modal Css */
+.alertModalSuccess {
+    .alertIcon {
+        text-align: center;
+        padding-top: 20%;
+    }
+    .alertCloseBtn {
+        text-align: center;
+        padding-top: 23%;
+        p {
+            font-size: 24px;
+            letter-spacing: 0.05rem;
+            color: #abb6bb;
+        }
+    }
+    .alertText {
+        h3 {
+            font-weight: 600;
+            font-size: 32px;
+            letter-spacing: 0.05rem;
+            color: #495155;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 24px;
+            letter-spacing: 0.05rem;
+            color: #abb6bb;
+            font-weight: 600;
+        }
+    }
+}
+
+.alertModalError {
+    .alertIcon {
+        text-align: center;
+        padding-top: 15%;
+    }
+    .alertCloseBtn {
+        text-align: center;
+        padding-top: 20%;
+        p {
+            font-size: 24px;
+            letter-spacing: 0.05rem;
+            color: #abb6bb;
+        }
+    }
+    .alertText {
+        h3 {
+            font-weight: 600;
+            font-size: 25px;
+            letter-spacing: 0.05rem;
+            color: #495155;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 20px;
+            letter-spacing: 0.05rem;
+            color: #abb6bb;
+            font-weight: 600;
+        }
+    }
+}
+//Alert css Ends---------------------------------------
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .alertModalError {
+        .alertCloseBtn {
+            text-align: center;
+            padding-top: 5%;
+            padding-left: 25%;
+            p {
+                font-size: 24px;
+                letter-spacing: 0.05rem;
+                color: #abb6bb;
+            }
+        }
+    }
+    .btnInInput {
+        right: 6%;
+    }
+    .loadingInInput {
+        right: 6%;
+    }
+    .wrapModalContent {
+        form {
+            width: 100%;
+        }
+    }
+    .loginModal {
+        .titleModal {
+            font-weight: 600;
+            line-height: .25;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        p {
+            color: #6d7c90;
+            font-size: 16px;
+            letter-spacing: 0.03rem;
+        }
+        .modalPrivacy {
+            padding: 10px 0px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 14px !important;
+            letter-spacing: 0.03em;
+            text-decoration: underline;
+        }
+        .loginButton {
+            font-size: 18px;
+            padding: 12px 30px !important;
+            border-radius: 50px;
+            background: #127fd1;
+            border: 1px solid #127fd1;
+            color: #ffffff;
+            font-weight: 600;
+            margin: 15px 0px 5px 0px;
+            width: 100%;
+            letter-spacing: 0.04rem;
+        }
+        .loginFacebook {
+            div {
+                background: none!important;
+            }
+            span {
+                font-weight: 600!important;
+            }
+            margin: 5px auto;
+            width: 92%;
+            letter-spacing: 1.2px;
+            font-weight: 600!important;
+            -webkit-font-smoothing: antialiased;
+            color: #ffffff!important;
+            cursor: pointer;
+            display: inline-block!important;
+            font-size: 14px!important;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: #4c69ba!important;
+            border: none;
+            text-align: center;
+            padding: 5px 30px!important;
+            border-radius: 3px!important;
+            transition: background-color .3s,border-color .3s;
+            display: flex!important;
+        }
+        Label {
+            font-size: 12px;
+            letter-spacing: 0.03rem;
+            color: #000000;
+        }  
+    }
+    .verifyOtp {
+        border-radius: 5px !important;
+        border: 1px solid #261e35 !important;
+        margin-top: 5% !important;
+        background: #261e35!important;
+        color: rgb(227 204 128) !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.03rem !important;
+        font-size: 18px !important;
+        width: 100% !important;
+        padding: 5px 10px !important;
+        a {
+            color: rgb(227 204 128);
+        }
+    }
+    .regModalFormNew {
+        .studentParent {
+            p {
+                color: #ffffff;
+                letter-spacing: 0.05rem;
+                font-size: 25px;
+                opacity: 0.8;
+            }
+            .student {
+                background: rgb(227 204 128);
+                color: #000000;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid rgb(227 204 128);
+                padding: 13px 15px!important;
+                border-radius: 10px;
+                margin: 0px 10px 0px 0px;
+                width: 45%;
+            }
+            .parent {
+                background: #323644;
+                color: #ffffff;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: 0.05rem;
+                border: 1px solid #323644;
+                padding: 13px 15px!important;
+                border-radius: 10px;
+                margin: 0px 10px;
+                width: 45%;
+            }
+        }
+    }
+}
+

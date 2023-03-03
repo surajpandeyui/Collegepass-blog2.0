@@ -1,0 +1,32 @@
+.plusHeading {
+    color: #ffffff;
+    opacity: 0.89;
+    font-size: 30px;
+    font-weight: 500;
+    span {
+        font-weight: 800;
+    }
+}
+.cpPoints {
+    li {
+        text-align: left;
+        padding-bottom: 20px;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        opacity: 0.6;
+    }
+}
+.cpButton {
+    h3 {
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        color: #ffffff;
+        padding-bottom: 5px;
+        padding-top: 15px;
+    }
+    button {
+        background: #a02928;
+        border-color: #a02928;
+        margin-bottom: 20px;
+    }
+}

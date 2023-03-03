@@ -1,0 +1,71 @@
+.AboutBanner {
+    background: #191c21;
+    border-top: 1px solid #3f3f40;
+    border-bottom: 1px solid #3f3f40;
+    padding-top: 40px!important;
+    padding-bottom: 40px!important;
+    img {
+        width: 600px;
+        max-width: 100%;
+    }
+    h2 {
+        font-weight: 700!important;
+        line-height: 1.25!important;
+        font-size: 2.1rem!important;
+        color: #fff;
+    }
+    p {
+        color: #ffffff;
+        opacity: 0.9;
+        letter-spacing: 0.04em;
+        line-height: 1.4em;
+        font-size: 16px;
+    }
+    a {
+        color: #ffffff;
+    }
+    .footerAboutContact {
+        background: #c93432;
+        border: 1px solid #c93432;
+        padding: 10px 10px;
+        line-height: 1.25;
+        letter-spacing: 0.03rem;
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        text-transform: uppercase !important;
+        margin-right: 25px;
+        border-radius: 4px;
+    }
+    .footerAboutLearnMore {
+        padding-top: 10px;
+    }
+    .textSetion {
+        margin-top: 45px;
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+
+    .AboutBanner {
+        background: #191c21;
+        border-top: 1px solid #3f3f40;
+        border-bottom: 1px solid #3f3f40;
+        padding-top: 0px!important;
+        padding-bottom: 45px!important;
+        img {
+            margin-top: 30px;
+        }
+        h2 {
+            font-size: 1.5rem !important;
+        }
+    }
+}    
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .AboutBanner {
+        .textSection {
+            margin-top: 0px!important;
+        }
+    }
+}

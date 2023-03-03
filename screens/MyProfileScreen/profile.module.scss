@@ -1,0 +1,34 @@
+.myProfile {
+    .profilePersonal {
+        Button {
+            background: #000;
+            color: #fff;
+            border: none;
+            float: right;
+        }
+    }
+    .profileEducation {
+        Button {
+            background: #000;
+            color: #fff;
+            border: none;
+            float: right;
+        }
+    }
+    .saveProfile {
+        Button {
+            background: #000000!important;
+            color: #ffffff!important;
+            border: none;
+            float: right;
+        }
+    }
+    .plusButton {
+        Button {
+            background: none;
+            margin: 15px 0px;
+            border: none;
+            color: #000000;
+        }
+    }
+}

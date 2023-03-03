@@ -1,0 +1,104 @@
+.landingForm {
+  .form-label {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    opacity: 0.6;
+  }
+    width: 60%;
+    margin: auto;
+    color: #ffffff;
+    p {
+      color: #ffffff;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+      line-height: 1.7rem;
+      font-size: 16px;
+      margin-bottom: 2rem;
+    }
+    .selectStudent {
+      margin-left: 35px;
+      .selected {
+        background: #c93432!important;
+        color: #ffffff;
+        cursor: pointer;
+        outline: none!important;
+        border: 1px  solid #c93432;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .03rem;
+        margin: 0px 10px;
+      }
+      Button {
+        background: none;
+        border: 1px solid #31333b;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .03rem;
+      }
+    }
+    .interestedCollege {
+      margin-left: 35px;
+      p {
+        font-weight: 500;
+        opacity: 0.9;
+        color: #fff;
+        letter-spacing: .03em;
+        line-height: 1.7;
+      }
+      Button {
+        background: none;
+        border: 1px solid #31333b;
+        padding: 40px 60px;
+        margin: 5px;
+        display: grid;
+        width: 100%;
+      }
+      .selectedButton {
+        background: #c93432!important;
+      }
+    }
+    .contactInfo {
+      margin-left: 35px;
+    }
+    .submitButton {
+      Button {
+        margin-top: 6%;
+        font-size: 12px;
+        letter-spacing: .1em;
+        font-weight: 800;
+        background: #c93432;
+        border: 1px solid #c93432;
+        padding: 7px 30px;
+        border-radius: 20px;
+      }
+      margin-left: 35px;
+    }
+    .circle {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 100px;
+      position: relative;
+      margin: 0 0 0 -.9%;
+    }
+}
+
+/* mobile  */
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+  .landingForm {
+    .selectStudent {
+      .selected {
+        padding: 10px 25px;
+        margin: 10px 0px;
+      }
+    }
+    .circle {
+      margin: 0 0 0 -2.2%;
+    }
+    width: 100%;
+  }
+}

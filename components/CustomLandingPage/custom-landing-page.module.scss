@@ -1,0 +1,133 @@
+.IvyCustomSectionPer {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    .LpIcons {
+        .lpIconsRow {
+            padding-bottom: 5%;
+        }
+        color: #ffffff;
+        padding-top: 2%;
+        padding-left: 10%;
+    }
+    .heading {
+        /*padding-top: 10%*/
+        h2{
+            font-size: 3.3vw !important;
+            line-height: 4vw !important;
+            white-space: pre-line;
+            letter-spacing: 0.03rem;
+            opacity: 0.9;
+        }
+    }
+    .DetailText {
+        ul {
+            padding-left: 1rem;
+        }
+        li {
+            letter-spacing: 0.03rem;
+            color: #fff;
+            font-size: 18px;
+            margin: 10px 0px;
+        }
+        p {
+            font-size: 1.4vw;
+            color: #ffffff;
+            letter-spacing: 0.03rem;
+            line-height: 2vw;
+            white-space: pre-line;
+            max-width: 630px;
+            margin-top: 16px;
+            margin-bottom: 25px;
+        }
+    }
+    .Btn {
+        Button {
+            letter-spacing: 0.03rem;
+            font-size: 1.5vw;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 100px;
+            margin-top: 15px;
+        }
+        Button:hover {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+    }
+    .forDesktop {
+        display: block;
+    }
+    .forMobile {
+        display: none;
+    }
+}
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .IvyCustomSectionPer {
+        padding-right: 15px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        padding-left: 15px;
+        .LpIcons {
+            .lpIconsRow {
+                padding-bottom: 5%;
+            }
+            color: #ffffff;
+            padding-top: 0%;
+            padding-left: 5%;
+        }
+        .heading {
+            h2{
+                font-size: 32px !important;
+                line-height: 45px !important;
+            }
+        }
+        .Btn {
+            Button {
+                letter-spacing: 0.03rem;
+                font-size: 18px;
+                padding: 13px 25px;
+                border-radius: 50px;
+                background: #ffffff;
+                border: 1px solid #ffffff;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 10px;
+                margin-top: 15px;
+            }
+            Button:hover {
+                font-size: 18px;
+                padding: 15px 25px;
+                border-radius: 50px;
+                background: #ffffff;
+                border: 1px solid #ffffff;
+                color: #000000;
+            }
+        }
+        .DetailText {
+            ul {
+                padding-left: 1rem;
+            }
+            li {
+                letter-spacing: 0.03rem;
+                color: #fff;
+                font-size: 18px;
+                margin: 10px 0px;
+            }
+            p {
+                font-size: 5vw;
+                line-height: 6.5vw;
+            }
+        }
+        .forDesktop {
+            display: none;
+        }
+        .forMobile {
+            display: block;
+        }
+    }
+}

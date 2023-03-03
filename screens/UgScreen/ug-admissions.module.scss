@@ -1,0 +1,615 @@
+.ugHeader {
+    padding: 0px 45px;
+    .ugHolo {
+        margin-bottom: 0;
+        padding-left: 30%;
+    }
+    .ugLogo {
+        margin-bottom: 0;
+    }
+}
+.ugTestimonialSilderScrollSection {
+    .ugSliderTestiPlayImg {
+        border: 5px solid #fff!important;
+    }
+    .ugSliderTestiPlayIcon {
+        left: 42%;
+        position: absolute;
+        top: 42%;
+        cursor: pointer;
+    }
+}
+
+.AidenSection {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    padding-right: 5px;
+    padding-left: 15px;
+    .ugtestiVideoThumb {
+        text-align: center;
+        .ugVideoIcon {
+            margin-top: -29%;
+            cursor: pointer;
+        }
+        .ugVideoThumb {
+            img {
+                border: 5px solid #ffffff!important;
+            }
+        }
+    }
+    h2 {
+        font-size: 50px!important;
+        line-height: 70px!important;
+        white-space: pre-line;
+        letter-spacing: 0.03rem;
+        opacity: 0.9;
+    }
+    h3 {
+        font-size: 23px;
+        letter-spacing: 0.03rem;
+        line-height: 35px;
+        white-space: pre-line;
+        max-width: 630px;
+        margin-top: 16px;
+        margin-bottom: 25px;
+    }
+    p {
+        font-size: 18px;
+        font-family: gilroy-semibold;
+        letter-spacing: 0px;
+        line-height: 28px;
+        white-space: pre-line;
+        max-width: 630px;
+        margin-bottom: 40px;
+    }
+    Button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        /*margin-bottom: 100px;*/
+    }
+    Button:hover {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        /*margin-bottom: 100px;*/
+    }
+}
+.ugStrip {
+    background-color: rgb(39, 39, 39);
+    p {
+        letter-spacing: 0.03rem;
+        color: #ffffff;
+        text-align: center;
+        margin-top: 1.1%;
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: capitalize!important;
+        a {
+            font-size: 22px;
+            line-height: 25px;
+            color: #f1e296;
+            opacity: 0.9;
+            margin-left: 15px;
+            i {
+                margin-left: 5px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+.ugTextBanner {
+    text-align: center;
+}
+.ugBigText {
+    h1 {
+        font-size: 7vw;
+        line-height: 7vw;
+        letter-spacing: -3px;
+        text-align: center;
+        white-space: pre-line;
+        margin-top: 5px;
+        margin-top: 40px;
+        color: #ffffff;
+        opacity: 0.9;
+        margin-bottom: 50px;
+        font-variant-ligatures: none;
+        font-weight: bolder;
+    }
+}
+.ugSmallText {
+    h3 {
+        color: #ffffff;
+        font-size: 1.8vw;
+        letter-spacing: -0.2px;
+        line-height: 1vw;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+}
+.ugButtonText {
+    Button {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+    }
+    Button:active {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+    }
+    button:focus {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+    }
+    Button:hover {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+}
+
+/*.ugBrands {
+    padding-bottom: 40px;
+    padding-top: 5px;
+    h2 {
+        text-align: left!important;
+        color: #ffffff;
+        font-size: 22px!important;
+        letter-spacing: 0.03rem;
+        line-height: 38px;
+        white-space: pre-line;
+        padding: 70px 0px 0px 0px;
+    }
+}*/
+
+.profileBuilderImg {
+    margin-top: -4%;
+}
+.BeginsSection {
+    padding-top: 190px;
+    padding-bottom: 140px;
+    h2 {
+        font-size: 50px !important;
+        line-height: 70px !important;
+        white-space: pre-line;
+        letter-spacing: 0.03rem;
+        opacity: 0.9;
+    }
+    p {
+        font-size: 18px;
+        letter-spacing: 0px;
+        line-height: 28px;
+        white-space: pre-line;
+        max-width: 630px;
+        margin-bottom: 40px;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+    }
+}
+.ugAppSection {
+    padding-top: 95px;
+    padding-bottom: 140px;
+    text-align: center;
+    h2 {
+        font-size: 125px!important;
+        margin-right: -45%;
+        opacity: 0.9;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: 45px !important;
+        color: #ffffff;
+        padding-top: 15%;
+        opacity: 0.9;
+    }
+    span {
+        font-size: 25px!important;
+    }
+    a {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+        margin-top: 10%;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+        margin-top: 10%;
+    }
+}
+.ugBgBanner {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.ugTextTestimonial {
+    p {
+        text-align: center;
+        margin: auto;
+        color: #ffffff;
+        font-size: 21px;
+        letter-spacing: 0.03rem;
+        width: 70%;
+    }
+}
+.ugAboutCp {
+    color: rgb(255, 255, 255);
+    padding: 100px 100px;
+    h6 {
+        font-size: 18px;
+        letter-spacing: 0.75px;
+        line-height: 22px;
+        margin-bottom: 24px;
+        color: rgb(255, 255, 255);
+        opacity: 0.9;
+    }
+    p {
+        font-size: 18px;
+        letter-spacing: 0.75px;
+        line-height: 33px;
+        color: rgb(255, 255, 255);
+        opacity: 0.7;
+        margin-bottom: 0px !important;
+    }
+}
+.ugTopFooter {
+    padding: 100px 100px;
+    .ugFooterBrand {
+        border-radius: 7px;
+    }
+    .ugFooterHolo {
+        padding-right: 5%;
+    }
+    .ugFooterMenu {
+        margin-bottom: 5%;
+        margin-left: 10%;
+        p {
+            font-size: 18px;
+            letter-spacing: 0.03rem;
+            font-weight: 600;
+            line-height: 22px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        ul {
+            padding-left: 0px!important;
+        }
+        li {
+            color: inherit;
+            font-size: 18px;
+            letter-spacing: 0.75px;
+            line-height: 33px;
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.7;
+            list-style-type: none;
+            a {
+                color: #ffffff;
+            }
+        }
+    }
+    .ugFooterLogoHolo {
+        margin-bottom: 10px;
+        img {
+            padding-left: 10%!important;
+        }
+    }
+    .ugLogosSectionTextTop {
+        h6 {
+            letter-spacing: 0.03rem;
+            line-height: 22px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 7%;
+        }
+    }
+    .ugLogosSectionTextBottom {
+        max-width: 500px;
+        p {
+            font-size: 18px;
+            letter-spacing: 0.03rem;
+            line-height: 33px;
+            margin-bottom: 75px;
+            opacity: 0.7;
+            text-transform: lowercase;
+        }
+    }
+}
+.ugBottomFooter {
+    padding: 0px 0px 100px 100px;
+    .ugCopyRight {
+        align-self: baseline;
+        p {
+            color: #ffffff;
+            opacity: 0.5;
+            letter-spacing: 0.03rem;
+            font-size: 16px;
+
+        }
+    }
+    .ugCopyRightR {
+        text-align: right;
+        padding-right: 18%;
+        a {
+            font-size: 18px;
+            letter-spacing: 0.03rem;
+            line-height: 34px;
+            color: rgb(255, 255, 255);
+            opacity: 0.7;
+            margin-bottom: 20px;
+            padding: 0px 15px;
+            border-right: 1px solid rgb(246, 246, 246);
+        }
+    }
+}
+.ugMobileApp {
+    min-height: 70%!important;
+    span {
+        position: initial!important;
+        img {
+            position: absolute!important;
+            bottom: 0px!important;
+            left: 50%!important;
+            width: auto!important;
+            height: auto!important;
+            min-width: auto!important;
+            max-width: fit-content!important;
+            min-height: auto!important;
+            max-height: fit-content!important;
+        }
+    }
+    .ugMobO {
+        opacity: 1;
+        transform: translate(-209%, 25%);
+        z-index: 98;
+    }
+    .ugMobT {
+        opacity: 1;
+        transform: translate(-155%, 15%);
+        z-index: 99;
+    }
+    .ugMobTh {
+        opacity: 1;
+        transform: translate(-95%, 5%);
+        z-index: 100;
+    }
+    .ugMobF {
+        opacity: 1;
+        transform: translate(-30%, 15%);
+        z-index: 99;
+    }
+    .ugMobFF {
+        opacity: 1;
+        transform: translate(15%, 25%);
+        z-index: 98;
+    }
+}
+
+.dreamCollegeBanner {
+    background-color: rgb(15, 15, 15);
+    color: rgb(248, 248, 248);
+    position: relative;
+    padding: 20px 0px 5px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: right bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.IvyCustomSectionPer {
+    padding-top: 130px;
+    padding-bottom: 90px;
+    .LpIcons {
+        .lpIconsRow {
+            padding-bottom: 5%;
+        }
+        color: #ffffff;
+        padding-top: 2%;
+        padding-left: 10%;
+    }
+    .heading {
+        /*padding-top: 10%*/
+        h2{
+            font-size: 50px !important;
+            line-height: 70px !important;
+            white-space: pre-line;
+            letter-spacing: 0.03rem;
+            opacity: 0.9;
+        }
+    }
+    .DetailText {
+        ul {
+            padding-left: 1rem;
+        }
+        li {
+            letter-spacing: 0.03rem;
+            color: #fff;
+            font-size: 18px;
+            margin: 10px 0px;
+        }
+        p {
+            font-size: 23px;
+            color: #ffffff;
+            letter-spacing: 0.03rem;
+            line-height: 35px;
+            white-space: pre-line;
+            max-width: 630px;
+            margin-top: 16px;
+            margin-bottom: 25px;
+        }
+    }
+    .Btn {
+        Button {
+            letter-spacing: 0.03rem;
+            font-size: 22px;
+            padding: 15px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 100px;
+            margin-top: 15px;
+        }
+        Button:hover {
+            padding: 15px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .IvyCustomSectionPer {
+        padding-right: 15px;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        padding-left: 15px;
+        .LpIcons {
+            .lpIconsRow {
+                padding-bottom: 5%;
+            }
+            color: #ffffff;
+            padding-top: 0%;
+            padding-left: 5%;
+        }
+        .heading {
+            h2{
+                font-size: 35px !important;
+                line-height: 45px !important;
+            }
+        }
+        .Btn {
+            Button {
+                letter-spacing: 0.03rem;
+                font-size: 18px;
+                padding: 13px 25px;
+                border-radius: 50px;
+                background: #ffffff;
+                border: 1px solid #ffffff;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 100px;
+                margin-top: 15px;
+            }
+            Button:hover {
+                font-size: 18px;
+                padding: 15px 25px;
+                border-radius: 50px;
+                background: #ffffff;
+                border: 1px solid #ffffff;
+                color: #000000;
+            }
+        }
+    }
+
+    .ugButtonText {
+        Button {
+            font-size: 18px;
+            padding: 13px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 80px;
+        }
+        Button:hover {
+            font-size: 18px;
+            padding: 13px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 80px;
+        }
+    }
+    .dreamCollegeBanner {
+        background-color: rgb(15, 15, 15);
+        color: rgb(248, 248, 248);
+        position: relative;
+        padding: 20px 0px 5px;
+        overflow: hidden;
+        background-size: cover;
+        background-position: right bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .ugBigText {
+        h1 {
+            font-size: 82px;
+            line-height: 90px;
+            letter-spacing: .03rem;
+        }
+    }
+    .ugSmallText {
+        h3 {
+            color: #ffffff;
+            font-size: 23px;
+            letter-spacing: 0.03rem;
+            line-height: 35px;
+        }
+    }
+}

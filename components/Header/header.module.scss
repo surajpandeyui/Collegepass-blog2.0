@@ -1,0 +1,173 @@
+.headerStripNew {
+  background-color: rgb(15, 15, 15);
+}
+a#ug-menu-adm-adv .welcomeDropdown {
+  background: none!important;
+  color: rgb(227 204 128)!important;
+  font-weight: 600!important;
+}
+.welcomeNameIcon {
+  img {
+    padding-right: 5px!important;
+  }
+}
+.ugHeader {
+  padding-right: 0;
+  padding-left: 0;
+  padding-top: 20px;
+  .afterLoginDropIcon {
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+  .ugHolo {
+      margin-bottom: 0;
+      padding-left: 30%;
+  }
+  .ugLogo {
+      margin-bottom: 0;
+  }
+}
+.ugStrip {
+  background-color: rgb(39, 39, 39);
+  p {
+      letter-spacing: 0.03rem;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 1.1%;
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: capitalize!important;
+      a {
+          font-size: 22px;
+          line-height: 25px;
+          color: rgb(227 204 128);
+          opacity: 0.9;
+          margin-left: 15px;
+          i {
+              margin-left: 5px;
+              font-size: 16px;
+          }
+      }
+  }
+}
+.Login {
+    background: rgb(227 204 128);
+    color: #000000;
+    padding: 7px 15px;
+    border-radius: 50px;
+    margin-top: -5px;
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+  .ugHeader {
+    padding-right: 3%;
+    padding-left: 3%;
+    padding-top: 0px;
+  }
+  .ugStrip {
+    background-color: rgb(39, 39, 39);
+    p {
+        margin-top: 0%;
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 0px;
+        a {
+          font-size: 16px;
+          line-height: 25px;
+          color: rgb(227 204 128);
+          opacity: 0.9;
+          margin-left: 5px;
+        }
+    }
+  }
+  .Login {
+    text-align: center;
+    background: rgb(227 204 128);
+    color: #000000;
+    padding: 7px 15px;
+    border-radius: 50px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    width: 50%;
+  }
+}
+
+
+
+/* new menu section ended */
+
+.afterLoginHeader {
+  background: #000000;
+}
+.beforeLoginHeader {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: #000000;
+  .headerHolo {
+    width: 35px;
+    height: 35px;
+  }
+  .login {
+    padding: 0.7rem 1.5rem !important;
+    border-radius: 4px;
+    background: #c83232;
+  }
+}
+.welcomeHeader {
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.09rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+$small: 450px;
+
+.app {
+  padding: 0.7rem 1.2rem !important;
+  border-radius: 4px;
+  background: #ffffff;
+  margin-right: -20px;
+  @media screen and (min-width: $small) {
+    //display none
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+
+.hideOnMobile {
+  display: none;
+}
+.onMobileTogg {
+  display: inherit;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .beforeLoginHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background: #000000;
+    .headerHolo {
+      margin-top: 15px!important;
+      margin-left: 15px!important;
+    }
+  }
+  .welcomeHeader {
+    color: #ffffff;
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 0;
+    margin-top: -15px;
+    margin-right: -200px;
+  }
+}
+
+

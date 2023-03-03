@@ -1,0 +1,243 @@
+.ugAppSection {
+    padding-top: 95px;
+    padding-left: 0px;
+    text-align: center;
+    h2 {
+        font-size: 8.2vw !important;
+        text-size-adjust: auto;
+        padding-right: 1%;
+        opacity: 0.9;
+    }
+    h3 {
+        font-weight: 600;
+        font-size: 2.2vw !important;
+        text-size-adjust: auto;
+        color: #ffffff;
+        padding-top: 8%;
+        opacity: 0.9;
+        padding-left: 1%;
+    }
+    span {
+        font-size: 25px!important;
+        text-size-adjust: auto;
+    }
+    a {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        text-size-adjust: auto;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 10%;
+    }
+    a:active {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        text-size-adjust: auto;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 10%;
+    }
+    a:focus {
+        letter-spacing: 0.03rem;
+        font-size: 1.5vw;
+        text-size-adjust: auto;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 10%;
+        box-shadow: none;
+    }
+    a:hover {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        text-size-adjust: auto;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 100px;
+        margin-top: 10%;
+    }
+    .googleRating {
+        h2 {
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            padding-top: 15%;
+            padding-left: 1%;
+        }
+        .ratingPointImg {
+            text-align: center;
+        }
+    }
+    .playStoreSection {
+        h2 {
+            
+        }
+        h3 {
+            
+        }
+        .ratingPointImg {
+            text-align: center;
+        }
+        .ratingAppButton {
+            text-align: left;
+            margin-left: 21%;
+        }
+    }
+    .appStoreSection {
+        h2 {
+            
+        }
+        h3 {
+            
+        }
+        .ratingPointImg {
+            text-align: center;
+        }
+        .ratingAppButton {
+            text-align: center;
+        }
+    }
+}
+.ugTextTestimonial {
+    p {
+        text-align: center;
+        margin: auto;
+        color: #ffffff;
+        font-size: 21px;
+        text-size-adjust: auto;
+        letter-spacing: 0.03rem;
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .ugAppSection {
+        padding-top: 95px;
+        text-align: center;
+        .ratingPointImg {
+            text-align: left;
+            margin-left: 3%;
+            img {
+                width: 110px!important;
+            }
+        }
+        h2 {
+            font-size: 80px!important;
+            text-size-adjust: auto;
+            margin-right: 0%;
+            opacity: 0.9;
+        }
+        a {
+            letter-spacing: 0.03rem;
+            font-size: 18px;
+            text-size-adjust: auto;
+            padding: 13px 25px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 40px;
+            margin-top: 10%;
+        }
+        a:hover {
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-size: 18px;
+            text-size-adjust: auto;
+            padding: 13px 25px;
+        }
+    }
+    .ugAppSection {
+        padding-top: 50px;
+        text-align: center;
+        padding-left: 3%;
+        h3 {
+            font-weight: 600;
+            font-size: 30px !important;
+            text-size-adjust: auto;
+            color: #ffffff;
+            padding-top: 10%!important;
+            opacity: 0.9;
+        }
+        .googleRating {
+            h2 {
+                text-align: left;
+            }
+            h3 {
+                text-align: left;
+            }
+            .ratingPointImg {
+                text-align: center;
+                margin-left: 3%;
+                padding-top: 0%;
+            }
+        }
+        .playStoreSection {
+            padding-bottom: 0%;
+            padding-top: 10%;
+            h2 {
+                text-align: left;
+            }
+            h3 {
+                text-align: left;
+                margin-top: -5%;
+            }
+            .ratingPointImg {
+                text-align: center;
+                margin-left: 3%;
+                padding-top: 0%;
+            }
+            .ratingAppButton {
+                text-align: center;
+                margin-left: 0%;
+            }
+        }
+        .appStoreSection {
+            h2 {
+                text-align: left;
+            }
+            h3 {
+                text-align: left;
+                margin-top: -5%;
+            }
+            .ratingPointImg {
+                text-align: center;
+                margin-left: 3%;
+                padding-top: 0%;
+            }
+            .ratingAppButton {
+                text-align: center;
+                margin-left: 0%;
+            }
+        }
+        .ratingAppButton {
+            text-align: center;
+            margin-left: 5%;
+        }
+    }
+}

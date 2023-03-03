@@ -1,0 +1,1299 @@
+.newSeriesModalForMobile {
+    display: none;
+}
+.cardCenterSeriesNew {
+    bottom: 5%;
+    position: absolute;
+    left: 7%;
+    .cardButton {
+        button {
+            margin-top: 0%;
+            letter-spacing: 0.03rem;
+            font-size: 20px;
+            padding: 13px 35px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        button:active {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        button:focus {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+    }
+}
+
+.seriesModalBody {
+    padding-left: 45px;
+    padding-right: 45px;
+   // background-image: linear-gradient(0deg, #08070899, #333333);
+   background-color: #333333;
+    margin-top: -20px;
+}
+.seriesEpisodesModalForMobile {
+    display: none;
+}
+.plusForSeries {
+    img {
+        width: 15px !important;
+        height: 16px !important;
+        padding-top: 1px !important;
+        margin-right: 1px !important;
+    }
+    z-index: 9;
+    font-size: 12px;
+    left: 5%;
+    position: absolute;
+    top: 4%;
+    color: #000000;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 15px;
+    text-transform: uppercase;
+    background: #ffffff;
+    border-radius: 4px;
+    transition: background 0.25s ease 0s, box-shadow 0.25s ease 0s, opacity 0.25s ease 0s;
+    vertical-align: middle;
+    border: 0px;
+    padding: 0.2rem 0.5rem;
+    float: left;
+    font-family: Lato, Helvetica, Arial, sans-serif !important;
+    align-items: center!important;
+    display: flex;
+}
+.cardImage {
+    .blinking {
+        -webkit-animation: 1s blink ease infinite;
+        -moz-animation: 1s blink ease infinite;
+        -ms-animation: 1s blink ease infinite;
+        -o-animation: 1s blink ease infinite;
+        animation: 1s blink ease infinite;
+      }
+    width: 100%;
+    // opacity: 0.4;
+    border-radius: 1rem;
+}
+.cardCenter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+.live {
+    text-align: left;
+}
+
+.premiumButton {
+    text-align: right;
+}
+
+.cardCenterText {
+    padding-top: 45%;
+    margin-left: 15px;
+    text-align: left;
+}
+.live {
+    .smallButtonRight{
+        font-size: 14px;
+        margin-top: 10px;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: .12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #c83232;
+        border-radius: 4px;
+        transition: background .25s ease,box-shadow .25s ease,opacity .25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato,Helvetica,Arial,sans-serif!important;
+        padding: 0.2rem 0.5rem;
+        float: left;
+        img {
+            margin-top: 5px;
+        }
+    }
+    .smallButtonLeft {
+        font-size: 14px;
+        margin-left: 10px;
+        margin-top: 10px;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: .12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #c83232;
+        border-radius: 4px;
+        transition: background .25s ease,box-shadow .25s ease,opacity .25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato,Helvetica,Arial,sans-serif!important;
+        padding: 0.2rem 0.5rem;
+        float: left;
+        img {
+            margin-top: 5px;
+        }
+    }
+}
+.premiumButton {
+    .smallButtonRight {
+        display: flex;
+        color: #000000;
+        background: #fff;
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 0;
+        margin-right: -15px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        line-height: normal;
+        text-transform: uppercase;
+        border-radius: 4px;
+        transition: background .25s ease,box-shadow .25s ease,opacity .25s ease;
+        vertical-align: middle;
+        border: 0;
+        padding: 0.2rem 0.5rem;
+        float: right;
+        img {
+            top: 1px!important;
+        }
+    }
+    .smallButtonLeft {
+        color: #000000;
+        background: #fff;
+        font-size: 14px;
+        margin-top: 10px;
+        font-weight: 600;
+        letter-spacing: .12em;
+        line-height: normal;
+        text-transform: uppercase;
+        border-radius: 4px;
+        transition: background .25s ease,box-shadow .25s ease,opacity .25s ease;
+        vertical-align: middle;
+        border: 0;
+        padding: 0.2rem 0.5rem;
+        float: right;
+    }
+}
+.cardCenterText {
+    .title {
+        h6 {
+            font-size: 32px;
+            line-height: 45px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #fff;
+            opacity: .8;
+        }
+    }
+    .date {
+        h6 {
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            color: #e6a851;
+        }
+    }
+    .time {
+        h6 {
+            font-weight: 800;
+            color: #fff;
+            opacity: .8;
+            line-height: 1;
+            letter-spacing: 0;
+            font-size: 20px;
+            margin-top: 2%;
+        }
+    }
+    .cardButton {
+        Button {
+            margin-top: 5%;
+            letter-spacing: 0.03rem;
+            font-size: 20px;
+            padding: 13px 35px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+        }
+        Button:hover {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        Button:active {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        Button:focus {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+    }
+}
+.seriesModalButtonI {
+    .time {
+        letter-spacing: 0.04rem;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    margin-top: 13%!important;
+}
+.videoTextTrackModal {
+    .seriesModalButtonI {
+        margin-top: -3%!important;
+    }
+}
+.videoTextSeriesModal {
+    .seriesModalButtonI {
+        margin-top: -3%!important;
+    }
+}
+
+/* mobile  */
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+
+    .cardCenterSeriesNew {
+        bottom: 3.5%;
+        position: absolute;
+        left: 7%;
+        .cardButton {
+            button {
+                margin-top: 0%;
+                letter-spacing: 0.03rem;
+                font-size: 20px;
+                padding: 10px 30px;
+                border-radius: 50px;
+                background: #ffffff;
+                border: 1px solid #ffffff;
+                color: #000000;
+                font-weight: 600;
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .smallCardPlus {
+        top: 15%!important;
+        font-size: 10px!important;
+    }
+    .grade {
+        top: 15%!important;
+        font-size: 10px!important;
+    }
+    .selectedEpisodeSeries {
+        margin: 30px 0px;
+        padding: 25px 0px 5px 0px!important;
+        border-radius: 4px;
+    }
+    .cardBottomIconShadowEffect {
+        background: none!important;
+        position: relative;
+        margin-top: -195px !important;
+        height: 225px;
+        display: none;
+    }
+    .showImage:hover {
+        max-width: 100%!important;
+        transform: none!important;
+        cursor: pointer;
+        z-index: 9999 !important;
+        left: 0%!important;
+        top: 0!important;
+        z-index: 9999 !important;
+        width: inherit!important;
+        position: absolute;
+        z-index: 9999 !important;
+    }
+    .cardBottomIcon {
+        display: none!important;
+    }
+    .showImage {
+        margin: 25px 5px 10px 5px!important;
+        .live {
+            top: 25%!important;
+            right: 2%;
+            display: flex;
+        }
+        .customLiveTag{
+            .live {
+                top: 16%!important;
+                right: 2%;
+                display: flex;
+            }
+        }
+    }
+    .plusForSeries {
+        top: 1%;
+    }
+    .seriesModalBody {
+        margin-top: -10px!important;
+    }
+    .seriesEpisodesScroll {
+        height: auto!important;
+        overflow: auto;
+    }
+    .selectedEpisodeSeries {
+        .seriesDuration {
+            h5 {
+                font-size: 15px;
+                opacity: 0.8;
+            }
+        }
+        margin: 0px 0px!important;
+        p {
+            padding-top: 6%!important;
+        }
+        h5 {
+            line-height: 1.5rem;
+            text-align: left!important;
+        }
+    }
+    .discriptionScroll {
+        height: auto!important;
+        overflow: auto;
+    }
+    .discriptionScrollTrack {
+        height: auto!important;
+        overflow: auto;
+    }
+    .seriesEpisodesModalForMobile {
+        display: block;
+    }
+    .seriesEpisodesModalForDesktop {
+        display: none;
+    }
+    .seriesModalBody {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .videoTextSeriesModal {
+        .modalDateTime {
+            h1 {
+                font-size: 22px;
+                letter-spacing: 0.03rem;
+                color: rgb(230, 168, 81);
+            }
+        }
+        position: absolute!important;
+        top: 11%!important;
+        left: 5%;
+        width: 100%;
+        h1 {
+            font-weight: 600;
+            font-size: 30px;
+            color: #ffffff;
+        }
+        h5 {
+            color: #ffffff;
+            font-size: 20px;
+            letter-spacing: 0.03rem;
+            margin-bottom: 25px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+        button {
+            letter-spacing: 0.03rem;
+            font-size: 20px!important;
+            padding: 8px 35px!important;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff !important;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 40px;
+            margin-top: 40%!important;
+            cursor: pointer;
+            text-transform: uppercase;
+            vertical-align: middle;
+            i {
+                margin-right: -5px;
+            }
+        }
+    }
+    .newSeriesModalForMobile {
+        text-align: center;
+        margin-bottom: 10%;
+        button {
+            letter-spacing: 0.03rem;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 0px;
+            font-size: 5vw;
+            padding: 7px 25px;
+        }
+        button:active {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        button:focus {
+            background: #ffffff;
+            border: 1px solid #ffffff!important;
+            color: #000000;
+        }
+        .time {
+            letter-spacing: 0.04rem;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        display: block;
+    }
+    .seriesModalButtonI {
+        margin-top: -55%!important;
+        display: none;
+        i {
+            border-radius: 100%;
+            background: #141414;
+            color: #000000;
+            padding: 10px 13px;
+            margin-right: 20px;
+        }
+    }
+    .seriesModalButtonI {
+        margin-top: 0px;
+    }
+    .videoTextEventsModal {
+        button {
+            margin-top: 50%!important;
+        }
+    }
+.cardCenterText {
+    text-align: center;
+    .title {
+        h6 {
+            font-size: 17px;
+            line-height: 25px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #fff;
+            opacity: 0.8;
+        }
+    }
+    .date {
+        h6 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.03rem;
+            line-height: 1;
+            color: #e6a851;
+        }
+    }
+    .time {
+        h6 {
+            font-weight: 800;
+            color: #fff;
+            opacity: 0.8;
+            line-height: 1;
+            letter-spacing: 0;
+            font-size: 16px;
+            margin-top: 0%;
+        }
+    }
+    .cardButton {
+        text-align: left;
+        padding-left: 0;
+        Button {
+            margin-top: 0%;
+            letter-spacing: 0.03rem;
+            font-size: 20px;
+            padding: 10px 30px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 0px;
+        }
+    }
+}
+.premiumButton {
+    .smallButtonLeft {
+        margin-right: -15px;
+    }
+    .smallButtonRight {
+        margin-right: -15px;
+    }
+}
+.cardCenterText {
+    margin-top: 0px;
+    margin-left: 15px;
+}
+
+}
+
+
+
+/* delete after testing  */
+
+.seriesMain {
+    
+    video {
+        box-shadow: 0px -65px #000000b8;
+    }
+}
+
+.videoText {
+    position: absolute!important;
+    top: 30%;
+    left: 5%;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        color: #ffffff;
+    }
+    h5 {
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    button {
+        background: #c83232;
+        border: 1px solid #c83232;
+        padding: 7px 30px;
+        margin-right: 15px;
+        font-weight: 600;
+        font-size: 18px;
+        i {
+            margin-right: 10px;
+        }
+    }
+}
+.videoTextEventsModal {
+    .modalDateTime {
+        h1 {
+            font-size: 22px;
+            letter-spacing: 0.03rem;
+            color: rgb(230, 168, 81);
+        }
+    }
+    position: absolute!important;
+    top: 40%;
+    left: 5%;
+    width: 100%;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        color: #ffffff;
+    }
+    h5 {
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    button {
+        margin-top: 0%;
+        letter-spacing: 0.03rem;
+        font-size: 20px;
+        padding: 13px 35px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 0px;
+        i {
+            margin-right: -5px;
+        }
+    }
+    button:hover {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+    button:active {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+    button:focus {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+}
+.videoTextTrackModal {
+    .modalDateTime {
+        h1 {
+            font-size: 22px;
+            letter-spacing: 0.03rem;
+            color: rgb(230, 168, 81);
+        }
+    }
+    position: absolute!important;
+    top: 41% !important;
+    left: 5%;
+    width: 100%;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        color: #ffffff;
+    }
+    h5 {
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ffffff!important;
+    }
+    button:active {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ffffff!important;
+    }
+    button:focus {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ffffff!important;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 12px 35px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 15%;
+        cursor: pointer;
+        text-transform: uppercase;
+        vertical-align: middle;
+        i {
+            margin-right: -5px;
+        }
+    }
+}
+.videoTextLessonsModal {
+    .modalDateTime {
+        h1 {
+            font-size: 22px;
+            letter-spacing: 0.03rem;
+            color: rgb(230, 168, 81);
+        }
+    }
+    position: absolute!important;
+    top: 54%;
+    left: 5%;
+    width: 100%;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        color: #ffffff;
+    }
+    h5 {
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    button:hover {
+        background-color: #ffffff;
+        color: #000000;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 22px;
+        padding: 12px 35px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 0%;
+        cursor: pointer;
+        text-transform: uppercase;
+        vertical-align: middle;
+        i {
+            margin-right: -5px;
+        }
+    }
+}
+.videoTextSeriesModal {
+    .modalDateTime {
+        h1 {
+            font-size: 22px;
+            letter-spacing: 0.03rem;
+            color: rgb(230, 168, 81);
+        }
+    }
+    position: absolute!important;
+    top: 20%;
+    left: 5%;
+    width: 100%;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        color: #ffffff;
+    }
+    h5 {
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.03rem;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    button {
+        letter-spacing: 0.03rem;
+        font-size: 20px;
+        padding: 13px 35px;
+        border-radius: 50px;
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+        font-weight: 600;
+        margin-bottom: 40px;
+        margin-top: 10%;
+        cursor: pointer;
+        text-transform: uppercase;
+        vertical-align: middle;
+        i {
+            margin-right: -5px;
+        }
+    }
+    button:hover {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+    button:active {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+    button:focus {
+        background: #ffffff;
+        border: 1px solid #ffffff!important;
+        color: #000000;
+    }
+}
+.seriesEpisodesModalForDesktop {
+    .discriptionScroll {
+        height: 140px;
+        overflow: auto;
+        padding-top: 3%;
+        padding-left: 0%;
+    }
+    .discriptionScrollTrack {
+        height: 140px;
+        overflow: auto;
+        padding-top: 3%;
+        padding-left: 0%;
+    }
+}
+.seriesModalBody {
+    .discriptionScroll {
+        height: 140px;
+        overflow: auto;
+        padding-top: 3%;
+        padding-left: 0%;
+    }
+    .discriptionScrollTrack {
+        height: 140px;
+        overflow: auto;
+        padding-top: 3%;
+        padding-left: 0%;
+    }
+}
+.discriptionScroll {
+    //height: 125px;
+    overflow: auto;
+    padding-top: 3%;
+    // padding-left: 10%;
+}
+.discriptionScrollTrack {
+    height: 140px;
+    overflow: auto;
+    padding-top: 3%;
+    padding-left: 0%;
+}
+.seriesEpisodesScroll {
+    height: 500px;
+    overflow: auto;
+}
+.seriesModal {
+    background-color: #181818;
+}
+.seriesModalButtonI {
+    margin-top: 5px;
+    i {
+        border-radius: 100%;
+        background: #141414;
+        color: #000000;
+        padding: 10px 13px;
+        margin-right: 20px;
+    }
+}
+.hoverBannerCard {
+    // padding-bottom: 30px;
+    // margin-top: -7%;
+    h3 {
+        color: #ffffff;
+        z-index: 9999;
+        opacity: 0.9;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.03rem;
+    }
+}
+.overlay {
+    position: absolute;
+    bottom: -15%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    // background: #010000a1;
+    // transition: background 32.5s ease;
+}
+
+.showImage:hover {
+    .cardBottomIconShadowEffect {
+        display: flex;
+    }
+    .live {
+        display: none;
+    }
+    .grade {
+        top: 4%;
+        right: 0%;
+    }
+    .smallCardPlus {
+        top: 4%;
+        left: 0%;
+    }
+    max-width: 100%;
+    transform: scale(1.33);
+    cursor: pointer;
+    z-index: 9999 !important;
+    left: 10%;
+    top: 7px;
+    position: absolute;
+    z-index: 9999 !important;
+    width: 275px;
+    .cardBottomIcon {
+        .cardDes {
+            padding: 0;
+            h6 {
+                font-size: 12px;
+                letter-spacing: 0.03rem;
+                opacity: 0.6;
+                color: #ffffff;
+                padding: 3px 5px 0px 5px;
+                margin-bottom: 5px;
+            }
+            p {
+                opacity: 0.8;
+                font-size: 10px;
+                color: #ffffff;
+                letter-spacing: 0.03rem;
+                margin-bottom: 0;
+            }
+        }
+        i {
+            color: #ffffff;
+            border: 1px solid #808080;
+            background: #232222;
+            padding: 8px 9px;
+            margin: 3px;
+            border-radius: 100%;
+            cursor: pointer;
+            font-size: 12px;
+            position: relative;
+        }
+        //width: 260px;
+        //height: 260px;
+        //margin-left: -11;
+        padding: 10px 0px 10px 0px;
+        display: flex;
+        margin-top: -20%;
+        border-radius: 0px 0px 5px 5px;
+    }
+    .smallCardPlus {
+        img {
+            width: 18px!important;
+            height: 0px!important;
+            border-radius: 5px 5px 0px 0px;
+            padding-right: 5px!important;
+            top: 0%!important;
+        }
+    }
+    img {
+        //width: 260px!important;
+        //height: 135px!important;
+       // border-radius: 5px 5px 0px 0px;
+
+       // top: 40%!important;
+      //  padding: 0% 0% 10% 0%!important;
+    }
+    position: absolute;
+    z-index: 9999!important;
+}
+
+
+.cardSliderForDesktop {
+    display: block;
+    z-index: 9;
+}
+.swiperHeight{
+    height: 250px !important;
+}
+.selectedEpisodeSeries:hover i{
+    display: block;
+}
+.selectedEpisodeSeries {
+    img {
+        margin-top: 0px!important;
+    }
+    i {
+        display: none;
+        position: absolute;
+        left: 36%;
+        top: 36%;
+        font-size: 22px;
+        font-weight: 500;
+        border: 1px solid #ffffff;
+        padding: 10px 14px;
+        border-radius: 100%;
+        background: #00000033!important;
+    }
+    // background: #333;
+    margin: 30px 0px;
+    padding: 25px 20px 5px 0px;
+    border-radius: 4px;
+}
+
+.bannerCardSlider {
+    padding-bottom: 45px;
+    h3 {
+        color: #ffffff;
+        opacity: 0.9;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.03rem;
+    }
+}
+
+.cardBottomIconShadowEffect {
+    background: #1e1e1e21 linear-gradient(to bottom, #1e1e1e21 10%, #1e1e1e21 55%, #1E1E1E 80%, #1E1E1E 100%) repeat scroll 0 0;
+    position: relative;
+    margin-top: -195px !important;
+    height: 195px;
+    display: none;
+    border-radius: 5px;
+}
+.cardBottomIcon {
+    //background: #141414;
+}
+
+.showImage {
+    //position: absolute;
+    z-index: 999;
+    transition: transform 0.2s;
+    transition-delay: 800ms;
+    transition-property: margin-right;
+    margin: 25px 5px 25px 5px;
+    padding: 0;
+    .smallCardPlus {
+        img {
+            padding-right: 5px!important;
+        }
+    }
+    img {
+        transition: width 2s;
+        transition: height 2s;
+        border-radius: 5px;
+        padding: 0% 0% 10% 0%!important;
+    }
+    .cardBottomIcon {
+        .seriesTooltip {
+            background-color: #ffffff!important;
+        }
+        display: none;
+    }
+    .live {
+        font-size: 12px;
+        color: #c83232;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #ffffff;
+        border-radius: 4px;
+        transition: background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato, Helvetica, Arial, sans-serif !important;
+        padding: 0.2rem 0.6rem;
+        position: absolute;
+        top: 23%;
+        right: 2%;
+        display: flex;
+    }
+    .customLiveTag{
+    .live {
+        font-size: 12px;
+        color: #c83232;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #ffffff;
+        border-radius: 4px;
+        transition: background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato, Helvetica, Arial, sans-serif !important;
+        padding: 0.2rem 0.6rem;
+        position: absolute;
+        top: 13%;
+        right: 2%;
+        display: flex;
+    }
+}
+    .grade {
+        font-size: 12px;
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #c83232;
+        border-radius: 4px;
+        transition: background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato, Helvetica, Arial, sans-serif !important;
+        padding: 0.2rem 0.6rem;
+        position: absolute;
+        top: 13%;
+        right: 2%;
+        display: flex;
+    }
+    .smallCardPlus {
+        font-size: 10px;
+        color: #000000;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        line-height: normal;
+        text-transform: uppercase;
+        background: #ffffff;
+        border-radius: 4px;
+        transition: background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        vertical-align: middle;
+        border: 0;
+        font-family: Lato, Helvetica, Arial, sans-serif !important;
+        padding: 0.2rem 0.6rem;
+        position: absolute;
+        top: 13%;
+        left: 2%;
+        display: flex;
+    }
+}
+
+// .selectedEpisodeSeries:hover i{
+//     display: block;
+// }
+
+.selectedEpisodeSeries {
+    background:"",
+    video {
+        opacity: 0.6;
+    }
+    .iconBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: .3s ease;
+        background-color: transparent;
+        position: relative;
+        top: -78%;
+    }
+    .tooltip {
+        background-color: #ffffff!important;
+    }
+    h5 {
+        font-size: 1.2rem;
+        letter-spacing: 0.03rem;
+        line-height: 1.2rem;
+        text-align: left;
+    }
+    p {
+        font-size: .9rem;
+        letter-spacing: 0.03rem;
+        line-height: 1.5rem;
+    }
+    i {
+        //display: none;
+        // position: absolute;
+        //left: 16%;
+        //top: 36%;
+        opacity: 0.8;
+        font-size: 24px;
+        font-weight: 500;
+        border: 2px solid #ffffff;
+        padding: 10px 14px;
+        border-radius: 100%;
+        background: #000000c2 !important;
+    }
+   // margin: 15px 0px;
+   // padding: 15px 5px 0px 1px;
+   // border-radius: 4px;
+   // height: 120px;
+}
+
+@media only screen and (max-width: 1080px) and (min-width: 453px) {
+    .showImage {
+        .smallCardPlus {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            line-height: normal;
+            padding: 0.2rem 0.5rem;
+            position: absolute;
+            top: 13%;
+            left: 2%;
+        }
+        img {
+            padding: 0% 0% 0% 0%!important;
+        }
+        .grade {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            line-height: normal;
+            padding: 0.2rem 0.5rem;
+            position: absolute;
+            top: 13%;
+        }
+        .live {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            vertical-align: middle;
+            padding: 0.2rem 0.6rem;
+            position: absolute;
+            top: 25%;
+            right: 2%;
+            display: flex;
+        }
+    }
+    .discriptionScroll {
+        height: 295px;
+        overflow: auto;
+    }
+    .discriptionScrollTrack {
+        height: 295px;
+        overflow: auto;
+    }
+    .showImage:hover {
+        img {
+            top: 70%!important;
+        }
+    }
+
+}
+@media only screen and (max-width: 920px) and (min-width: 453px) {
+    .showImage {
+        .smallCardPlus {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            line-height: normal;
+            padding: 0.2rem 0.5rem;
+            position: absolute;
+            top: 16%;
+            left: 2%;
+        }
+        img {
+            padding: 0% 0% 0% 0%!important;
+        }
+        .grade {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            line-height: normal;
+            padding: 0.2rem 0.5rem;
+            position: absolute;
+            top: 16%;
+        }
+        .live {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            vertical-align: middle;
+            padding: 0.2rem 0.6rem;
+            position: absolute;
+            top: 29%;
+            right: 2%;
+            display: flex;
+        }
+    }
+    .discriptionScroll {
+        height: 370px;
+        overflow: auto;
+    }
+    .discriptionScrollTrack {
+        height: 370px;
+        overflow: auto;
+    }
+    .showImage:hover {
+        img {
+            top: 70%!important;
+        }
+        .cardBottomIcon {
+            .cardDes {
+                h6 {
+                    font-size: 10px;
+                }
+                p {
+                    font-size: 9px;
+                }
+            }
+        }
+        .smallCardPlus {
+            img {
+                width: 16px!important;
+            }
+        }
+    }
+}

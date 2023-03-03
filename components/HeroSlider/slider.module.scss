@@ -1,0 +1,159 @@
+.slider {
+    margin-left: 4%;
+    margin-right: 10px;
+    video {
+        width: 100%;
+    }
+    .sliderText {
+        margin-top: 5%;
+        img {
+            width: 190px;
+        }
+        h1 {
+            line-height: 60px;
+            font-size: 3rem;
+            height: auto;
+            max-width: none;
+            font-weight: 900;
+            color: #fff;
+            margin: 10px 0px;
+        }
+        h5 {
+            font-size: 18px;
+            opacity: .8!important;
+            color: #fff;
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: .01em;
+            padding: 10px 0px 20px 0px;
+        }
+        h4 {
+            opacity: .8!important;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            letter-spacing: .01em;
+        }
+        .sliderForm {
+            input {
+                width: 66%;
+                padding: 15px;
+                border-radius: 4px;
+                background: #272c34;
+                color: hsla(0,0%,100%,.6392156862745098);
+                font-size: 17px;
+                border: 1px solid #3f3f40;
+                outline: none;
+            }
+            button {
+                width: 66%;
+                background: #c93432;
+                border: none;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 1.2px;
+                padding: 15px;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .slider {
+        margin-left: 0%;
+        .sliderText {
+            padding-top: 0px;
+            margin-left: 0px;
+            h1 {
+                line-height: 30px!important;
+                font-size: 1.5rem!important;
+            }
+            .sliderForm {
+                input {
+                    width: 90%!important;
+                    padding: 15px;
+                    border-radius: 4px;
+                    background: #272c34;
+                    color: hsla(0,0%,100%,.6392156862745098);
+                    font-size: 17px;
+                    border: 1px solid #3f3f40;
+                    outline: none;
+                }
+                button {
+                    width: 90%!important;
+                    background: #c93432;
+                    border: none;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1.2px;
+                    padding: 15px;
+                    border-radius: 4px;
+                }
+            }
+        }
+        .sliderVideo {
+            padding-top: 30px;
+        }
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .slider {
+        margin-left: 2%;
+        .sliderText {
+            margin-top: 0%;
+            img {
+                width: 150px!important;
+            }
+            h1 {
+                line-height: 27px !important;
+                font-size: 1.3rem !important;
+                height: auto;
+                max-width: none;
+                font-weight: 900;
+                color: #fff;
+                margin: 0;
+            }
+            h4 {
+                opacity: .8!important;
+                color: #ffffff;
+                font-weight: 500;
+                font-size: 0.999rem;
+                line-height: 1.6;
+                letter-spacing: .01em;
+            }
+            h5 {
+                padding: 5px 0px 5px 0px;
+            }
+            .sliderForm {
+                input {
+                    width: 100%;
+                    padding: 8px 15px;
+                    border-radius: 4px;
+                    background: #272c34;
+                    color: rgba(255, 255, 255, 0.6392156863);
+                    font-size: 15px;
+                    border: 1px solid #3f3f40;
+                    outline: none;
+                }
+                button {
+                    width: 100%;
+                    background: #c93432;
+                    border: none;
+                    color: #fff;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1.2px;
+                    padding: 8px 10px;
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+
+}

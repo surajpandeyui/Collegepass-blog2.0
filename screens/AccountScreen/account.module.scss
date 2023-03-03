@@ -1,0 +1,65 @@
+.accountWrap {
+    width: 77%;
+    max-width: 100%;
+    margin: auto;
+    padding: 50px 0px;
+    .account {
+        h1 {
+            font-size: 2.15em;
+            letter-spacing: 0.03rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+        h2 {
+            font-weight: 500!important;
+            font-size: 1.125em!important;
+            letter-spacing: 0.05rem;
+            opacity: 0.9;
+        }
+        hr {
+            color: #ffffff;
+        }
+        p {
+            color: #ffffff;
+            font-size: 1.2em!important;
+            letter-spacing: 0.05rem;
+        }
+        Button {
+            letter-spacing: 0.03rem;
+            font-size: 22px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            color: #000000;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 480px) and (min-width: 320px) { 
+    .accountWrap {
+        width: 100%;
+    }
+
+    .accountWrap {
+        .account {
+            h1 {
+                font-size: 2.15em;
+                letter-spacing: 0.03rem;
+                margin-top: 10px;
+                color: #fff;
+            }
+            h2 {
+                font-weight: 500!important;
+                font-size: 1.125em!important;
+                letter-spacing: 0.05rem;
+                opacity: 0.9;
+                margin-bottom: 15%;
+            }
+        }
+    }
+}
