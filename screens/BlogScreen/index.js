@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
@@ -50,14 +50,7 @@ const index = () => {
       <Container fluid className="bg-white">
         <Container>
           <Row>
-            <Col
-              style={{
-                paddingBottom: '5%',
-                paddingTop: '5%',
-                paddingLeft: '0',
-                paddingRight: '0',
-              }}
-            >
+            <Col className={styles.blogWrap}>
               <Row>
                 <Col
                   className={styles.blogBanner}
@@ -392,7 +385,7 @@ const index = () => {
                   <Row>
                     <Col lg={5} md={5} sm={12} xs={12}>
                       <Row>
-                        <Col className={styles.popularSection}>
+                        <Col className={styles.popularSectionSec}>
                           <h4 className={styles.popular}>Popular Blog</h4>
                           <Row>
                             <Col className={styles.popDev}>
@@ -803,6 +796,16 @@ const index = () => {
                             </Col>
                           </Row>
                         </Col>
+                      </Row>
+                      <Row>
+                        <Col className='text-center pt-3 pb-3'><Button style={{
+                          borderRadius: '40px',
+                          fontSize: '18px',
+                          letterSpacing: '0.05rem',
+                          background: '#000000',
+                          border: '1px solid #000000',
+                          padding: '7px 20px',
+                        }}>Load More</Button></Col>
                       </Row>
                     </Col>
                   </Row>
