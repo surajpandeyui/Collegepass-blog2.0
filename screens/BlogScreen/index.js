@@ -73,7 +73,7 @@ const index = () => {
                             >
                               <Col
                                 style={{
-                                  backgroundImage: `url('${blogs[0].IMAGE_BANNER}')`,
+                                  backgroundImage: `url('${blogs[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
                                   backgroundPosition: 'center',
                                   height: '425px',
@@ -144,7 +144,7 @@ const index = () => {
                                     </span>
                                     <span className={styles.smallImage}>
                                       <Image
-                                        src={item.IMAGE_BANNER}
+                                        src={item.DISPLAY_IMAGE_BANNER}
                                         alt="Small Blog"
                                         width={130}
                                         height={96}
@@ -200,7 +200,7 @@ const index = () => {
                                 <Row>
                                   <Col
                                     style={{
-                                      backgroundImage: `url('${item.IMAGE_BANNER}')`,
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
                                       backgroundPosition: 'center',
                                       height: '425px',
@@ -556,7 +556,7 @@ const index = () => {
                                 <Row>
                                   <Col
                                     style={{
-                                      backgroundImage: `url('${item.IMAGE_BANNER}')`,
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
                                       backgroundPosition: 'center',
                                       height: '425px',
