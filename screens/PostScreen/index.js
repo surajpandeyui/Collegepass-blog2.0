@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
@@ -27,12 +27,13 @@ const index = ({ id }) => {
         <Container>
           <Row>
             <Col
+              lg={8}
+              md={8}
+              sm={12}
+              xs={12}
               style={{
                 paddingBottom: '5%',
                 paddingTop: '5%',
-                paddingLeft: '10%',
-                paddingRight: '35%',
-                textAlign: 'justify',
               }}
             >
               <Row>
@@ -49,6 +50,14 @@ const index = ({ id }) => {
                   >
                     {post.TITLE}
                   </h1>
+                  {/* <h1 style={{
+                        marginTop: '0',
+                        marginBottom: '20px',
+                        wordWrap: 'break-word',
+                        fontSize: '41px',
+                        lineHeight: '50px',
+                        fontWeight: '600',
+                    }}>Choosing The Right University – Study Abroad Counseling</h1> */}
                 </Col>
               </Row>
               <Row>
@@ -66,7 +75,151 @@ const index = ({ id }) => {
                 </Col>
               </Row>
               <Row>
-                <Col dangerouslySetInnerHTML={{ _html: post.CONTENT }}></Col>
+                <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }}></Col>
+              </Row>
+
+              <Row>
+                <Col className="pt-5 pb-5">
+                  <Row>
+                    <Col>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlTextarea1"
+                      >
+                        <Form.Label>Comment</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          placeholder="Comment..."
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row className="pt-3">
+                    <Col>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput1"
+                      >
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" placeholder="name" />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput1"
+                      >
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" placeholder="email" />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Col className="pt-3">
+                    <Button>Post Comment</Button>
+                  </Col>
+                </Col>
+              </Row>
+            </Col>
+            <Col
+              lg={4}
+              md={4}
+              sm={12}
+              xs={12}
+              className={styles.postSide}
+              style={{
+                paddingBottom: '5%',
+                paddingTop: '5%',
+                paddingLeft: '5%',
+              }}
+            >
+              <Row>
+                <Col className="pb-3">
+                  <h3>Popular Posts</h3>
+                </Col>
+              </Row>
+              <Row className="pb-3">
+                <Col>
+                  <h5>How to get into the University of California</h5>
+                  <Image
+                    src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
+                    alt="Small Blog"
+                    width={130}
+                    height={96}
+                  />
+                  <span className="d-flex">
+                    <p
+                      style={{
+                        paddingRight: '8px',
+                      }}
+                    >
+                      <a href="#">Undergraduate</a>
+                    </p>
+                    <p
+                      style={{
+                        paddingLeft: '8px',
+                      }}
+                    >
+                      <a href="#">September 15, 2022</a>
+                    </p>
+                  </span>
+                </Col>
+              </Row>
+
+              <Row className="pb-3">
+                <Col>
+                  <h5>How to get into the University of California</h5>
+                  <Image
+                    src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
+                    alt="Small Blog"
+                    width={130}
+                    height={96}
+                  />
+                  <span className="d-flex">
+                    <p
+                      style={{
+                        paddingRight: '8px',
+                      }}
+                    >
+                      <a href="#">Undergraduate</a>
+                    </p>
+                    <p
+                      style={{
+                        paddingLeft: '8px',
+                      }}
+                    >
+                      <a href="#">September 15, 2022</a>
+                    </p>
+                  </span>
+                </Col>
+              </Row>
+
+              <Row className="pb-3">
+                <Col>
+                  <h5>How to get into the University of California</h5>
+                  <Image
+                    src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
+                    alt="Small Blog"
+                    width={130}
+                    height={96}
+                  />
+                  <span className="d-flex">
+                    <p
+                      style={{
+                        paddingRight: '8px',
+                      }}
+                    >
+                      <a href="#">Undergraduate</a>
+                    </p>
+                    <p
+                      style={{
+                        paddingLeft: '8px',
+                      }}
+                    >
+                      <a href="#">September 15, 2022</a>
+                    </p>
+                  </span>
+                </Col>
               </Row>
             </Col>
           </Row>
