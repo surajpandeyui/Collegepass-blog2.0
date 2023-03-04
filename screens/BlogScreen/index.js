@@ -9,10 +9,11 @@ import Link from 'next/link'
 
 const index = () => {
   const [blogs, setBlogs] = useState([])
+  const [page, setPage] = useState(1)
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(APIGetBlogs)
+      const response = await axios.get(`${APIGetBlogs}${page}`)
       console.log('Response ------->', response.data.data)
       setBlogs(response.data.data)
     } catch (err) {
@@ -20,8 +21,8 @@ const index = () => {
     }
   }
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    fetchPosts(page)
+  }, [page])
   if (!blogs.length) {
     return <div></div>
   }
@@ -522,6 +523,73 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
+                        {blogs.map((item, index) => {
+                          const html = item.CONTENT
+                          let text = ''
+                          let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
+
+                          for (let i = 0; i < paragraphs.length; i++) {
+                            let paragraphText = paragraphs[i].replace(
+                              /<\/?p>/g,
+                              ''
+                            ) // "This is the first paragraph."
+                            if (text.length + paragraphText.length <= 200) {
+                              text += paragraphText
+                            } else {
+                              break
+                            }
+                          }
+                          if (text.length < 200) {
+                            if (paragraphs.length > 1) {
+                              text += paragraphs[1]
+                                .replace(/<\/?p>/g, '')
+                                .slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
+                              text += '...'
+                            }
+                          } else {
+                            text += '...'
+                          }
+                          return (
+                            // <Fragment>
+                            <Link href={`/post/${item.POST_ID}`}>
+                              <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                                <Row>
+                                  <Col
+                                    style={{
+                                      backgroundImage: `url('${item.IMAGE_BANNER}')`,
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      height: '425px',
+                                      margin: '10px',
+                                      borderRadius: '5px',
+                                    }}
+                                  ></Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}
+                                    </h3>
+                                    <p className={styles.description}>{text}</p>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>
+                                    </p>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Link>
+                            // </Fragment>
+                          )
+                        })}
+                      </Row>
+                      {/* <Row>
                         <Col lg={3} md={3} sm={12} xs={12}>
                           <Row>
                             <Col
@@ -796,16 +864,23 @@ const index = () => {
                             </Col>
                           </Row>
                         </Col>
-                      </Row>
+                      </Row> */}
                       <Row>
-                        <Col className='text-center pt-3 pb-3'><Button style={{
-                          borderRadius: '40px',
-                          fontSize: '18px',
-                          letterSpacing: '0.05rem',
-                          background: '#000000',
-                          border: '1px solid #000000',
-                          padding: '7px 20px',
-                        }}>Load More</Button></Col>
+                        <Col className="text-center pt-3 pb-3">
+                          <Button
+                            style={{
+                              borderRadius: '40px',
+                              fontSize: '18px',
+                              letterSpacing: '0.05rem',
+                              background: '#000000',
+                              border: '1px solid #000000',
+                              padding: '7px 20px',
+                            }}
+                            onClick={() => setPage((prev) => prev + 1)}
+                          >
+                            Load More
+                          </Button>
+                        </Col>
                       </Row>
                     </Col>
                   </Row>
