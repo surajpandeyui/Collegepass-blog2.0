@@ -37,8 +37,10 @@ const index = () => {
     }
   }
   if (text.length < 200) {
-    text += paragraphs[1].replace(/<\/?p>/g, '').slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-    text += '...'
+    if (paragraphs.length > 1) {
+      text += paragraphs[1].replace(/<\/?p>/g, '').slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
+      text += '...'
+    }
   } else {
     text += '...'
   }
@@ -246,7 +248,11 @@ const index = () => {
                         {blogs.slice(0, 4).map((item, index) => {
                           const html = item.CONTENT
                           let text = ''
-                          let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]
+                          let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
+                          console.log('HTML ------------->', html)
+
+                          console.log('HTML ------------->', paragraphs)
+
                           for (let i = 0; i < paragraphs.length; i++) {
                             let paragraphText = paragraphs[i].replace(
                               /<\/?p>/g,
@@ -259,10 +265,12 @@ const index = () => {
                             }
                           }
                           if (text.length < 200) {
-                            text += paragraphs[1]
-                              .replace(/<\/?p>/g, '')
-                              .slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-                            text += '...'
+                            if (paragraphs.length > 1) {
+                              text += paragraphs[1]
+                                .replace(/<\/?p>/g, '')
+                                .slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
+                              text += '...'
+                            }
                           } else {
                             text += '...'
                           }
