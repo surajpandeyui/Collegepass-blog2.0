@@ -1,7 +1,12 @@
 import Head from 'next/head'
-import BlogScreen from '../screens/BlogScreen'
+// import PostScreen from '../screens/PostScreen';
+import PostScreen2265 from './../../screens/PostScreen/2265'
+import PostScreen from './../../screens/PostScreen'
+import { useRouter } from 'next/router'
 
 export default function AboutUs() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -36,7 +41,7 @@ export default function AboutUs() {
       </Head>
 
       <main className="bg-black">
-        <BlogScreen></BlogScreen>
+        <PostScreen id={router.query.id}></PostScreen>
       </main>
     </>
   )

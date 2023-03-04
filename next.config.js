@@ -32,14 +32,14 @@ const moduleExports = {
       'collegepass-event-banners.s3.ap-south-1.amazonaws.com',
       'collegepass-videos-banners.s3.ap-south-1.amazonaws.com',
       'collegepass-series-banner.s3.ap-south-1.amazonaws.com',
-      'collegepass-episode-banner.s3.ap-south-1.amazonaws.com'
+      'collegepass-episode-banner.s3.ap-south-1.amazonaws.com',
+      'collegepass-event-banners.s3.amazonaws.com',
+      'https://collegepass-event-banners.s3.amazonaws.com',
     ],
   },
   videos: {
-    domains: [
-      'vimeo.com'
-    ]
-  }
+    domains: ['vimeo.com'],
+  },
 }
 
 module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
