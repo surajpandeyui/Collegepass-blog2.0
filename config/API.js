@@ -97,3 +97,11 @@ export const APIReferFriend = `${API_URL_V2}referral`
 export const APIGetBlogs = `${API_URL_V2}blog/getBlogs/`
 
 export const APIGetBlog = `${API_URL_V2}blog/getBlog/`
+
+export const APIGetTotalBlogsCount = `${API_URL_V2}blog/getTotalBlogsCount`
+
+export const APIAddComment = `${API_URL_V2}blog/addComment`
+
+export const APIGetCommentsByPostID = `${API_URL_V2}blog/getCommentsByPostID/`
+
+export const APIGetBlogsByCategory = `${API_URL_V2}blog/getBlogsByCategory/`

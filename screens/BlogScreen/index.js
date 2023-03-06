@@ -4,12 +4,13 @@ import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
 import moment from 'moment'
-import { APIGetBlogs } from '../../config/API'
+import { APIGetBlogs, APIGetTotalBlogsCount } from '../../config/API'
 import Link from 'next/link'
 
 const index = () => {
   const [blogs, setBlogs] = useState([])
   const [page, setPage] = useState(1)
+  const [totalPosts, setTotalPosts] = useState()
 
   const fetchPosts = async () => {
     try {
@@ -20,9 +21,23 @@ const index = () => {
       console.log('Error -------------->', err)
     }
   }
+  const fetchTotalPosts = async () => {
+    try {
+      const response = await axios.get(APIGetTotalBlogsCount)
+      setTotalPosts(response.data.data.COUNT)
+      console.log('Total Length ---------->', response.data.data.COUNT)
+    } catch (err) {
+      console.log('Error -------------->', err)
+    }
+  }
+  useEffect(() => {
+    fetchTotalPosts()
+  }, [])
+
   useEffect(() => {
     fetchPosts(page)
   }, [page])
+
   if (!blogs.length) {
     return <div></div>
   }
@@ -875,6 +890,9 @@ const index = () => {
                               background: '#000000',
                               border: '1px solid #000000',
                               padding: '7px 20px',
+                              display: `${
+                                totalPosts == blogs.length && 'none'
+                              }`,
                             }}
                             onClick={() => setPage((prev) => prev + 1)}
                           >
