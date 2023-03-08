@@ -5,6 +5,7 @@ import Image from 'next/image'
 import axios from 'axios'
 import {
   APIAddComment,
+  APIBlogvisited,
   APIGetBlog,
   APIGetBlogs,
   APIGetBlogsByCategory,
@@ -25,6 +26,72 @@ const index = ({ id }) => {
 
   const [registered, setRegistered] = useState(false)
   const [user, setUser] = useState(null)
+
+  ///////////////////////// calculating spent time /////////////////////////////////
+  const [visitStartTime, setVisitStartTime] = useState(null)
+  const [isPageVisible, setIsPageVisible] = useState(true)
+
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === 'hidden') {
+      setIsPageVisible(false)
+    } else {
+      setIsPageVisible(true)
+    }
+  }
+
+  const handleUnload = async () => {
+    if (!isPageVisible && visitStartTime) {
+      const timeSpentSeconds = Math.round((Date.now() - visitStartTime) / 1000)
+
+      const data = {
+        blogId: post.POST_ID,
+        startTime: new Date(visitStartTime).toISOString(),
+        endTime: new Date().toISOString(),
+        timeSpentSeconds: timeSpentSeconds,
+      }
+
+      const result = await axios.post(APIBlogvisited, data)
+
+      if (result.status === 201) {
+        console.log('successfully inserted record')
+      }
+      setVisitStartTime(null)
+    }
+  }
+
+  useEffect(() => {
+    setVisitStartTime(Date.now())
+
+    window.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('beforeunload', handleUnload)
+
+    return () => {
+      if (visitStartTime) {
+        const timeSpentSeconds = Math.round(
+          (Date.now() - visitStartTime) / 1000
+        )
+
+        const data = {
+          blogId: post.POST_ID,
+          startTime: new Date(visitStartTime).toISOString(),
+          endTime: new Date().toISOString(),
+          timeSpentSeconds: timeSpentSeconds,
+        }
+
+        axios
+          .post(APIBlogvisited, data)
+          .then(
+            (data) =>
+              data.status === 201 && console.log('Successfully inserted record')
+          )
+      }
+
+      window.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('beforeunload', handleUnload)
+    }
+  }, [post])
+
+  //////////////////////////////////////////////////////////////////////////////////
 
   const handleNameChange = (event) => {
     setName(event.target.value)
@@ -325,16 +392,18 @@ const index = ({ id }) => {
                 paddingLeft: '5%',
               }}
             >
-              <Row style={{
-                        position: 'sticky',
-                        top: '80px',
-                        background: 'rgb(246 246 246)',
-                        padding: '20px',
-                        width: '100%',
-                        height: 'auto',
-                        marginBottom: '50px',
-                        borderRadius: '5px'
-                      }}>
+              <Row
+                style={{
+                  position: 'sticky',
+                  top: '80px',
+                  background: 'rgb(246 246 246)',
+                  padding: '20px',
+                  width: '100%',
+                  height: 'auto',
+                  marginBottom: '50px',
+                  borderRadius: '5px',
+                }}
+              >
                 <Col className="pb-3">
                   <h3>Popular Posts</h3>
                 </Col>

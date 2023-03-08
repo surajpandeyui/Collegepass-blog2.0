@@ -4,10 +4,21 @@ import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
 import moment from 'moment'
-import { APIGetBlogs, APIGetTotalBlogsCount } from '../../config/API'
+import {
+  APIGetBlogs,
+  APIGetBlogsByCategory,
+  APIGetTotalBlogsCount,
+} from '../../config/API'
 import Link from 'next/link'
 
-const index = () => {
+const index = ({
+  popular = [],
+  latest = [],
+  ivyLeague = [],
+  essays = [],
+  uk = [],
+  canada = [],
+}) => {
   const [blogs, setBlogs] = useState([])
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
@@ -38,10 +49,10 @@ const index = () => {
     fetchPosts(page)
   }, [page])
 
-  if (!blogs.length) {
+  if (!popular.length) {
     return <div></div>
   }
-  const html = blogs[0].CONTENT
+  const html = popular[0].CONTENT
   let text = ''
   let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]
   for (let i = 0; i < paragraphs.length; i++) {
@@ -61,6 +72,30 @@ const index = () => {
     text += '...'
   }
 
+  const getText = (content) => {
+    const html = content
+    let text = ''
+    let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
+
+    for (let i = 0; i < paragraphs.length; i++) {
+      let paragraphText = paragraphs[i].replace(/<\/?p>/g, '') // "This is the first paragraph."
+      if (text.length + paragraphText.length <= 200) {
+        text += paragraphText
+      } else {
+        break
+      }
+    }
+    if (text.length < 200) {
+      if (paragraphs.length > 1) {
+        text += paragraphs[1].replace(/<\/?p>/g, '').slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
+        text += '...'
+      }
+    } else {
+      text += '...'
+    }
+    return text
+  }
+
   return (
     <Fragment>
       <Container fluid className="bg-white">
@@ -77,7 +112,7 @@ const index = () => {
                 >
                   <Row>
                     <Col lg={7} md={7} sm={12} xs={12}>
-                      <Link href={`/post/${blogs[0].POST_ID}`}>
+                      <Link href={`/post/${latest[0].POST_ID}`}>
                         <Row>
                           <Col lg={6} md={6} sm={12} xs={12}>
                             <Row
@@ -88,7 +123,7 @@ const index = () => {
                             >
                               <Col
                                 style={{
-                                  backgroundImage: `url('${blogs[0].DISPLAY_IMAGE_BANNER}')`,
+                                  backgroundImage: `url('${popular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
                                   backgroundPosition: 'center',
                                   height: '425px',
@@ -107,7 +142,7 @@ const index = () => {
                                 }}
                               >
                                 <h1 className={styles.heading1}>
-                                  {blogs[0].TITLE}
+                                  {popular[0].TITLE}
                                 </h1>
                                 <p className={styles.description}>
                                   {/* The University of California is ranked among the
@@ -119,10 +154,10 @@ const index = () => {
                                 </p>
                                 <p className={styles.descriptionDate}>
                                   <span style={{ paddingRight: '20px' }}>
-                                    {blogs[0].CATEGORIES}
+                                    {popular[0].CATEGORIES}
                                   </span>
                                   <span>
-                                    {moment(blogs[0].CREATED_AT).format(
+                                    {moment(popular[0].CREATED_AT).format(
                                       'MMMM D, YYYY'
                                     )}
                                   </span>
@@ -137,7 +172,7 @@ const index = () => {
                       <Row>
                         <Col className={styles.popularSection}>
                           <h4 className={styles.popular}>Popular Blog</h4>
-                          {blogs.slice(1, 4).map((item, index) => {
+                          {popular.slice(1, 4).map((item, index) => {
                             return (
                               <Link href={`/post/${item.POST_ID}`}>
                                 <Row key={index}>
@@ -151,7 +186,7 @@ const index = () => {
                                           {item.CATEGORIES}
                                         </span>
                                         <span>
-                                          {moment(blogs[0].CREATED_AT).format(
+                                          {moment(item.CREATED_AT).format(
                                             'MMMM D, YYYY'
                                           )}
                                         </span>
@@ -183,32 +218,8 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
-                        {blogs.slice(0, 4).map((item, index) => {
-                          const html = item.CONTENT
-                          let text = ''
-                          let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
-
-                          for (let i = 0; i < paragraphs.length; i++) {
-                            let paragraphText = paragraphs[i].replace(
-                              /<\/?p>/g,
-                              ''
-                            ) // "This is the first paragraph."
-                            if (text.length + paragraphText.length <= 200) {
-                              text += paragraphText
-                            } else {
-                              break
-                            }
-                          }
-                          if (text.length < 200) {
-                            if (paragraphs.length > 1) {
-                              text += paragraphs[1]
-                                .replace(/<\/?p>/g, '')
-                                .slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-                              text += '...'
-                            }
-                          } else {
-                            text += '...'
-                          }
+                        {latest.slice(0, 4).map((item, index) => {
+                          const text = getText(item.CONTENT)
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
@@ -258,142 +269,43 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
+                        {ivyLeague.map((item, index) => {
+                          const text = getText(item.CONTENT)
+                          return (
+                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                              <Row>
+                                <Col
+                                  style={{
+                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '425px',
+                                    margin: '10px',
+                                    borderRadius: '5px',
+                                  }}
+                                ></Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <h3 className={styles.heading3}>
+                                    {item.TITLE}
+                                  </h3>
+                                  <p className={styles.description}>{text}</p>
+                                  <p className={styles.descriptionDate}>
+                                    <span style={{ paddingRight: '20px' }}>
+                                      {item.CATEGORIES}
+                                    </span>
+                                    <span>
+                                      {moment(item.CREATED_AT).format(
+                                        'MMMM D, YYYY'
+                                      )}
+                                    </span>
+                                  </p>
+                                </Col>
+                              </Row>
                             </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
+                          )
+                        })}
                       </Row>
                     </Col>
                   </Row>
@@ -406,142 +318,43 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
+                        {essays.map((item, index) => {
+                          const text = getText(item.CONTENT)
+                          return (
+                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                              <Row>
+                                <Col
+                                  style={{
+                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '425px',
+                                    margin: '10px',
+                                    borderRadius: '5px',
+                                  }}
+                                ></Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <h3 className={styles.heading3}>
+                                    {item.TITLE}
+                                  </h3>
+                                  <p className={styles.description}>{text}</p>
+                                  <p className={styles.descriptionDate}>
+                                    <span style={{ paddingRight: '20px' }}>
+                                      {item.CATEGORIES}
+                                    </span>
+                                    <span>
+                                      {moment(item.CREATED_AT).format(
+                                        'MMMM D, YYYY'
+                                      )}
+                                    </span>
+                                  </p>
+                                </Col>
+                              </Row>
                             </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
+                          )
+                        })}
                       </Row>
                     </Col>
                   </Row>
@@ -554,142 +367,43 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
+                        {uk.map((item, index) => {
+                          const text = getText(item.CONTENT)
+                          return (
+                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                              <Row>
+                                <Col
+                                  style={{
+                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '425px',
+                                    margin: '10px',
+                                    borderRadius: '5px',
+                                  }}
+                                ></Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <h3 className={styles.heading3}>
+                                    {item.TITLE}
+                                  </h3>
+                                  <p className={styles.description}>{text}</p>
+                                  <p className={styles.descriptionDate}>
+                                    <span style={{ paddingRight: '20px' }}>
+                                      {item.CATEGORIES}
+                                    </span>
+                                    <span>
+                                      {moment(item.CREATED_AT).format(
+                                        'MMMM D, YYYY'
+                                      )}
+                                    </span>
+                                  </p>
+                                </Col>
+                              </Row>
                             </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
+                          )
+                        })}
                       </Row>
                     </Col>
                   </Row>
@@ -702,142 +416,44 @@ const index = () => {
                         </Col>
                       </Row>
                       <Row>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
+                        {canada.map((item, index) => {
+                          const text = getText(item.CONTENT)
+
+                          return (
+                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                              <Row>
+                                <Col
+                                  style={{
+                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '425px',
+                                    margin: '10px',
+                                    borderRadius: '5px',
+                                  }}
+                                ></Col>
+                              </Row>
+                              <Row>
+                                <Col>
+                                  <h3 className={styles.heading3}>
+                                    {item.TITLE}{' '}
+                                  </h3>
+                                  <p className={styles.description}>{text}</p>
+                                  <p className={styles.descriptionDate}>
+                                    <span style={{ paddingRight: '20px' }}>
+                                      {item.CATEGORIES}
+                                    </span>
+                                    <span>
+                                      {moment(item.CREATED_AT).format(
+                                        'MMMM D, YYYY'
+                                      )}
+                                    </span>
+                                  </p>
+                                </Col>
+                              </Row>
                             </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={3} md={3} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                margin: '10px',
-                                borderRadius: '5px',
-                              }}
-                            ></Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <h3 className={styles.heading3}>
-                                How to get into the University of California
-                              </h3>
-                              <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering...
-                              </p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
-                                </span>
-                                <span>September 15, 2022</span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
+                          )
+                        })}
                       </Row>
                     </Col>
                   </Row>
@@ -983,31 +599,7 @@ const index = () => {
                       </Row>
                       <Row>
                         {blogs.map((item, index) => {
-                          const html = item.CONTENT
-                          let text = ''
-                          let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
-
-                          for (let i = 0; i < paragraphs.length; i++) {
-                            let paragraphText = paragraphs[i].replace(
-                              /<\/?p>/g,
-                              ''
-                            ) // "This is the first paragraph."
-                            if (text.length + paragraphText.length <= 200) {
-                              text += paragraphText
-                            } else {
-                              break
-                            }
-                          }
-                          if (text.length < 200) {
-                            if (paragraphs.length > 1) {
-                              text += paragraphs[1]
-                                .replace(/<\/?p>/g, '')
-                                .slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-                              text += '...'
-                            }
-                          } else {
-                            text += '...'
-                          }
+                          const text = getText(item.CONTENT)
                           return (
                             // <Fragment>
                             <Link href={`/post/${item.POST_ID}`}>
