@@ -272,38 +272,40 @@ const index = ({
                         {ivyLeague.map((item, index) => {
                           const text = getText(item.CONTENT)
                           return (
-                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                              <Row>
-                                <Col
-                                  style={{
-                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '425px',
-                                    margin: '10px',
-                                    borderRadius: '5px',
-                                  }}
-                                ></Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3 className={styles.heading3}>
-                                    {item.TITLE}
-                                  </h3>
-                                  <p className={styles.description}>{text}</p>
-                                  <p className={styles.descriptionDate}>
-                                    <span style={{ paddingRight: '20px' }}>
-                                      {item.CATEGORIES}
-                                    </span>
-                                    <span>
-                                      {moment(item.CREATED_AT).format(
-                                        'MMMM D, YYYY'
-                                      )}
-                                    </span>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </Col>
+                            <Link href={`/post/${item.POST_ID}`}>
+                              <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                                <Row>
+                                  <Col
+                                    style={{
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      height: '425px',
+                                      margin: '10px',
+                                      borderRadius: '5px',
+                                    }}
+                                  ></Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}
+                                    </h3>
+                                    <p className={styles.description}>{text}</p>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>
+                                    </p>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Link>
                           )
                         })}
                       </Row>
@@ -321,38 +323,40 @@ const index = ({
                         {essays.map((item, index) => {
                           const text = getText(item.CONTENT)
                           return (
-                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                              <Row>
-                                <Col
-                                  style={{
-                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '425px',
-                                    margin: '10px',
-                                    borderRadius: '5px',
-                                  }}
-                                ></Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3 className={styles.heading3}>
-                                    {item.TITLE}
-                                  </h3>
-                                  <p className={styles.description}>{text}</p>
-                                  <p className={styles.descriptionDate}>
-                                    <span style={{ paddingRight: '20px' }}>
-                                      {item.CATEGORIES}
-                                    </span>
-                                    <span>
-                                      {moment(item.CREATED_AT).format(
-                                        'MMMM D, YYYY'
-                                      )}
-                                    </span>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </Col>
+                            <Link href={`/post/${item.POST_ID}`}>
+                              <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                                <Row>
+                                  <Col
+                                    style={{
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      height: '425px',
+                                      margin: '10px',
+                                      borderRadius: '5px',
+                                    }}
+                                  ></Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}
+                                    </h3>
+                                    <p className={styles.description}>{text}</p>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>
+                                    </p>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Link>
                           )
                         })}
                       </Row>
@@ -370,38 +374,40 @@ const index = ({
                         {uk.map((item, index) => {
                           const text = getText(item.CONTENT)
                           return (
-                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                              <Row>
-                                <Col
-                                  style={{
-                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '425px',
-                                    margin: '10px',
-                                    borderRadius: '5px',
-                                  }}
-                                ></Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3 className={styles.heading3}>
-                                    {item.TITLE}
-                                  </h3>
-                                  <p className={styles.description}>{text}</p>
-                                  <p className={styles.descriptionDate}>
-                                    <span style={{ paddingRight: '20px' }}>
-                                      {item.CATEGORIES}
-                                    </span>
-                                    <span>
-                                      {moment(item.CREATED_AT).format(
-                                        'MMMM D, YYYY'
-                                      )}
-                                    </span>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </Col>
+                            <Link href={`/post/${item.POST_ID}`}>
+                              <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                                <Row>
+                                  <Col
+                                    style={{
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      height: '425px',
+                                      margin: '10px',
+                                      borderRadius: '5px',
+                                    }}
+                                  ></Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}
+                                    </h3>
+                                    <p className={styles.description}>{text}</p>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>
+                                    </p>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Link>
                           )
                         })}
                       </Row>
@@ -420,38 +426,40 @@ const index = ({
                           const text = getText(item.CONTENT)
 
                           return (
-                            <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                              <Row>
-                                <Col
-                                  style={{
-                                    backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '425px',
-                                    margin: '10px',
-                                    borderRadius: '5px',
-                                  }}
-                                ></Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3 className={styles.heading3}>
-                                    {item.TITLE}{' '}
-                                  </h3>
-                                  <p className={styles.description}>{text}</p>
-                                  <p className={styles.descriptionDate}>
-                                    <span style={{ paddingRight: '20px' }}>
-                                      {item.CATEGORIES}
-                                    </span>
-                                    <span>
-                                      {moment(item.CREATED_AT).format(
-                                        'MMMM D, YYYY'
-                                      )}
-                                    </span>
-                                  </p>
-                                </Col>
-                              </Row>
-                            </Col>
+                            <Link href={`/post/${item.POST_ID}`}>
+                              <Col lg={3} md={3} sm={12} xs={12} key={index}>
+                                <Row>
+                                  <Col
+                                    style={{
+                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                      backgroundSize: 'cover',
+                                      backgroundPosition: 'center',
+                                      height: '425px',
+                                      margin: '10px',
+                                      borderRadius: '5px',
+                                    }}
+                                  ></Col>
+                                </Row>
+                                <Row>
+                                  <Col>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}{' '}
+                                    </h3>
+                                    <p className={styles.description}>{text}</p>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>
+                                    </p>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Link>
                           )
                         })}
                       </Row>
