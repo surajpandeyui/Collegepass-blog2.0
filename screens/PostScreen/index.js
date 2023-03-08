@@ -325,7 +325,16 @@ const index = ({ id }) => {
                 paddingLeft: '5%',
               }}
             >
-              <Row>
+              <Row style={{
+                        position: 'sticky',
+                        top: '80px',
+                        background: 'rgb(246 246 246)',
+                        padding: '20px',
+                        width: '100%',
+                        height: 'auto',
+                        marginBottom: '50px',
+                        borderRadius: '5px'
+                      }}>
                 <Col className="pb-3">
                   <h3>Popular Posts</h3>
                 </Col>

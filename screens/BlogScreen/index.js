@@ -399,6 +399,450 @@ const index = () => {
                   </Row>
 
                   <Row>
+                    <Col style={{ paddingBottom: '5%' }}>
+                      <Row>
+                        <Col>
+                          <h2 className={styles.mainHeading}>Essays</h2>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col style={{ paddingBottom: '5%' }}>
+                      <Row>
+                        <Col>
+                          <h2 className={styles.mainHeading}>UK</h2>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col style={{ paddingBottom: '5%' }}>
+                      <Row>
+                        <Col>
+                          <h2 className={styles.mainHeading}>Canada</h2>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col lg={3} md={3} sm={12} xs={12}>
+                          <Row>
+                            <Col
+                              style={{
+                                backgroundImage:
+                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '425px',
+                                margin: '10px',
+                                borderRadius: '5px',
+                              }}
+                            ></Col>
+                          </Row>
+                          <Row>
+                            <Col>
+                              <h3 className={styles.heading3}>
+                                How to get into the University of California
+                              </h3>
+                              <p className={styles.description}>
+                                The University of California is ranked among the
+                                world’s best for its innovation, pioneering
+                                research, and discovery. It has ten campuses,
+                                with nine offering...
+                              </p>
+                              <p className={styles.descriptionDate}>
+                                <span style={{ paddingRight: '20px' }}>
+                                  Undergraduate
+                                </span>
+                                <span>September 15, 2022</span>
+                              </p>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+
+                  <Row>
                     <Col lg={5} md={5} sm={12} xs={12}>
                       <Row>
                         <Col className={styles.popularSectionSec}>
