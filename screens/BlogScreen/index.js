@@ -929,7 +929,7 @@ const index = ({
                           <Button
                             style={{
                               borderRadius: '40px',
-                              fontSize: '18px',
+                              fontSize: '16px',
                               letterSpacing: '0.05rem',
                               background: '#000000',
                               border: '1px solid #000000',

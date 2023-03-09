@@ -309,6 +309,35 @@ const index = ({ id }) => {
                 <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }}></Col>
               </Row>
 
+              <Row className='pt-5'>
+                <Col>
+                  <Row>
+                    <Col>
+                      <span style={{
+                        display: 'inline-flex'
+                      }}><p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        marginRight: '10px',
+                        fontSize: '12px',
+                      }}>Advisor Name</p><p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        marginLeft: '10px',
+                        fontSize: '12px',
+                      }}>1 month ago</p></span>
+                      <p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        color: '#545454',
+                        fontSize: '14px'
+                      }}>Hi, This is a dummy comment here..</p>
+                      <a href="" className={styles.commentReply}>Reply</a>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+
               <Row>
                 <Col className="pt-5 pb-5">
                   {!user && (
@@ -375,7 +404,14 @@ const index = ({ id }) => {
                   </Row>
 
                   <Col className="pt-3">
-                    <Button onClick={handleSubmit}>Post Comment</Button>
+                    <Button onClick={handleSubmit} style={{
+                      borderRadius: '40px',
+                      fontSize: '16px',
+                      letterSpacing: '0.05rem',
+                      background: '#000000',
+                      border: '1px solid #000000',
+                      padding: '7px 20px',
+                    }}>Post Comment</Button>
                   </Col>
                 </Col>
               </Row>
