@@ -18,7 +18,16 @@ const index = ({
   essays = [],
   uk = [],
   canada = [],
+  extracurricular = [],
 }) => {
+  console.log('Data', popular)
+  console.log('Data', latest)
+  console.log('Data', ivyLeague)
+  console.log('Data', essays)
+  console.log('Data', canada)
+  console.log('Data', uk)
+  console.log('Data', extracurricular)
+
   const [blogs, setBlogs] = useState([])
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
@@ -499,77 +508,41 @@ const index = ({
                       <Row>
                         <Col className={styles.popularSectionSec}>
                           <h4 className={styles.popular}>Popular Blog</h4>
-                          <Row>
-                            <Col className={styles.popDev}>
-                              <span className={styles.smallImage}>
-                                <Image
-                                  src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
-                                  alt="Small Blog"
-                                  width={130}
-                                  height={96}
-                                />
-                              </span>
-                              <span className={styles.popTextLeft}>
-                                <h3 className={styles.heading3}>
-                                  How to get into the University of California
-                                </h3>
-                                <p className={styles.descriptionDate}>
-                                  <span style={{ paddingRight: '20px' }}>
-                                    Undergraduate
+                          {extracurricular.slice(1, 4).map((item, index) => {
+                            return (
+                              <Row key={index}>
+                                <Col className={styles.popDev}>
+                                  <span className={styles.smallImage}>
+                                    <Image
+                                      src={item.DISPLAY_IMAGE_BANNER}
+                                      alt="Small Blog"
+                                      width={130}
+                                      height={96}
+                                    />
                                   </span>
-                                  <span>September 15, 2022</span>
-                                </p>
-                              </span>
-                            </Col>
-                          </Row>
-
-                          <Row>
-                            <Col className={styles.popDev}>
-                              <span className={styles.smallImage}>
-                                <Image
-                                  src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
-                                  alt="Small Blog"
-                                  width={130}
-                                  height={96}
-                                />
-                              </span>
-                              <span className={styles.popTextLeft}>
-                                <h3 className={styles.heading3}>
-                                  How to get into the University of California
-                                </h3>
-                                <p className={styles.descriptionDate}>
-                                  <span style={{ paddingRight: '20px' }}>
-                                    Undergraduate
+                                  <span className={styles.popTextLeft}>
+                                    <h3 className={styles.heading3}>
+                                      {item.TITLE}
+                                    </h3>
+                                    <p className={styles.descriptionDate}>
+                                      <span style={{ paddingRight: '20px' }}>
+                                        {item.CATEGORIES}
+                                      </span>
+                                      <span>
+                                        {moment(item.CREATED_AT).format(
+                                          'MMMM D, YYYY'
+                                        )}
+                                      </span>{' '}
+                                      <span>
+                                        <i className="fa fa-eye"></i>
+                                        {item.VISITOR_COUNT}
+                                      </span>
+                                    </p>
                                   </span>
-                                  <span>September 15, 2022</span>
-                                </p>
-                              </span>
-                            </Col>
-                          </Row>
-
-                          <Row>
-                            <Col className={styles.popDev}>
-                              <span className={styles.smallImage}>
-                                <Image
-                                  src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
-                                  alt="Small Blog"
-                                  width={130}
-                                  height={96}
-                                />
-                              </span>
-                              <span className={styles.popTextLeft}>
-                                <h3 className={styles.heading3}>
-                                  How to get into the University of California
-                                </h3>
-                                <p className={styles.descriptionDate}>
-                                  <span style={{ paddingRight: '20px' }}>
-                                    Undergraduate
-                                  </span>
-                                  <span>September 15, 2022</span>
-                                </p>
-                              </span>
-                            </Col>
-                          </Row>
+                                </Col>
+                              </Row>
+                            )
+                          })}
                         </Col>
                       </Row>
                     </Col>
@@ -584,8 +557,7 @@ const index = ({
                           >
                             <Col
                               style={{
-                                backgroundImage:
-                                  "url('https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg')",
+                                backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 height: '425px',
@@ -604,20 +576,24 @@ const index = ({
                               }}
                             >
                               <h1 className={styles.heading1}>
-                                How to get into the University of California
+                                {extracurricular[0].TITLE}
                               </h1>
                               <p className={styles.description}>
-                                The University of California is ranked among the
-                                world’s best for its innovation, pioneering
-                                research, and discovery. It has ten campuses,
-                                with nine offering both undergraduate and
-                                graduate education....
+                                {getText(extracurricular[0].CONTENT)}
                               </p>
                               <p className={styles.descriptionDate}>
                                 <span style={{ paddingRight: '20px' }}>
-                                  Undergraduate
+                                  {extracurricular[0].CATEGORIES}
                                 </span>
-                                <span>September 15, 2022</span>
+                                <span>
+                                  {moment(extracurricular[0].CREATED_AT).format(
+                                    'MMMM D, YYYY'
+                                  )}
+                                </span>{' '}
+                                <span>
+                                  <i className="fa fa-eye"></i>
+                                  {extracurricular[0].VISITOR_COUNT}
+                                </span>
                               </p>
                             </Col>
                           </Row>
@@ -690,13 +666,19 @@ const index = ({
                               background: '#000000',
                               border: '1px solid #000000',
                               padding: '7px 20px',
-                              display: `${
-                                totalPosts == blogs.length && 'none'
-                              }`,
+                              // display: `${
+                              //   totalPosts == blogs.length && 'none'
+                              // }`,
                             }}
-                            onClick={() => setPage((prev) => prev + 1)}
+                            onClick={() =>
+                              totalPosts == blogs.length
+                                ? setPage((prev) => prev - 1)
+                                : setPage((prev) => prev + 1)
+                            }
                           >
-                            Load More
+                            {totalPosts == blogs.length
+                              ? 'Load Less'
+                              : 'Load More'}
                           </Button>
                         </Col>
                       </Row>

@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import BlogScreen from '../screens/BlogScreen'
-import { APIGetBlogs, APIGetBlogsByCategory } from '../config/API'
+import {
+  APIGetBlogs,
+  APIGetBlogsByCategory,
+  APIGetBlogsByOtherCategory,
+} from '../config/API'
 import axios from 'axios'
 
 export default function AboutUs({
@@ -10,6 +14,7 @@ export default function AboutUs({
   essays = [],
   uk = [],
   canada = [],
+  extracurricular = [],
 }) {
   return (
     <>
@@ -52,6 +57,7 @@ export default function AboutUs({
           essays={essays}
           uk={uk}
           canada={canada}
+          extracurricular={extracurricular}
         ></BlogScreen>
       </main>
     </>
@@ -88,22 +94,56 @@ const getPostsByCategory = async (c) => {
   }
   return result
 }
-export async function getStaticProps() {
-  const [popular, latest, ivyLeague, essays, uk, canada] = await Promise.all([
-    getPostsByCategory('Popular'),
-    getPostsByCategory('Latest'),
-    getPostsByCategory('Ivy League'),
-    getPostsByCategory('Essay'),
-    getPostsByCategory('UK'),
-    getPostsByCategory('Canada'),
-  ])
+const getPostsByOtherCategory = async () => {
+  const result = []
 
-  console.log('Data', popular)
-  console.log('Data', latest)
-  console.log('Data', ivyLeague)
-  console.log('Data', essays)
-  console.log('Data', canada)
-  console.log('Data', uk)
+  const limit = 4
+  const blogs = await axios.get(`${APIGetBlogsByOtherCategory}0`)
+  if (blogs.data.data.length) {
+    result.push(...blogs.data.data)
+    console.log('Data ------------>', blogs.data.data)
+  }
+
+  if (result.length < 4) {
+    const additionalBlogs = await axios.get(`${APIGetBlogs}1`)
+    result.push(
+      ...additionalBlogs.data.data
+        .filter((item) => {
+          if (result.length) {
+            for (let i of result) {
+              if (i.POST_ID === item.POST_ID) {
+                return false
+              }
+            }
+            return true
+          } else {
+            return true
+          }
+        })
+        .slice(0, 4 - result.length)
+    )
+  }
+  return result
+}
+export async function getStaticProps() {
+  const [popular, latest, ivyLeague, essays, uk, canada, extracurricular] =
+    await Promise.all([
+      getPostsByCategory('Popular'),
+      getPostsByCategory('Latest'),
+      getPostsByCategory('Ivy League'),
+      getPostsByCategory('Essay'),
+      getPostsByCategory('UK'),
+      getPostsByCategory('Canada'),
+      getPostsByOtherCategory(),
+    ])
+
+  // console.log('Data', popular)
+  // console.log('Data', latest)
+  // console.log('Data', ivyLeague)
+  // console.log('Data', essays)
+  // console.log('Data', canada)
+  // console.log('Data', uk)
+  // console.log('Data', extracurricular)
 
   return {
     props: {
@@ -113,6 +153,7 @@ export async function getStaticProps() {
       essays,
       uk,
       canada,
+      extracurricular,
     },
     revalidate: 10, // Regenerate the page data every 10 seconds
   }

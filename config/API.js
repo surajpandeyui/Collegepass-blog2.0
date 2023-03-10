@@ -1,6 +1,6 @@
 const API_URL = 'https://api.collegepass.org/api/v1/'
-// const API_URL_V2 = 'https://api.collegepass.org/api/v2/'
-const API_URL_V2 = 'http://localhost:4000/api/v2/'
+const API_URL_V2 = 'https://api.collegepass.org/api/v2/'
+// const API_URL_V2 = 'http://localhost:4000/api/v2/'
 // const API_URL = 'http://localhost:4000/api/v1/'
 
 export const APIGetUserByPhone = `${API_URL_V2}user/getUserByPhone/`
@@ -107,3 +107,6 @@ export const APIGetCommentsByPostID = `${API_URL_V2}blog/getCommentsByPostID/`
 export const APIGetBlogsByCategory = `${API_URL_V2}blog/getBlogsByCategory/`
 
 export const APIBlogvisited = `${API_URL_V2}blog/blogvisited`
+
+export const APIGetBlogsByOtherCategory = `${API_URL_V2}blog/getBlogsByOtherCategory/`
+
