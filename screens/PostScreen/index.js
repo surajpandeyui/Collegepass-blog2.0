@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form, Modal } from 'react-bootstrap'
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
@@ -15,6 +15,10 @@ import moment from 'moment'
 import Link from 'next/link'
 
 const index = ({ id }) => {
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   const [post, setPost] = useState()
   const [extraPosts, setExtraPosts] = useState([])
   const [comments, setComments] = useState([])
@@ -370,9 +374,12 @@ const index = ({ id }) => {
                               >
                                 {item.CONTENT}
                               </p>
-                              <a href="" className={styles.commentReply}>
+                              <p
+                                className={styles.commentReply}
+                                onClick={handleShow}
+                              >
                                 Reply
-                              </a>
+                              </p>
                             </Col>
                           </Row>
                         </Col>
@@ -383,49 +390,64 @@ const index = ({ id }) => {
               {/* <Col>
                   <Row>
                     <Col>
-                      <span
-                        style={{
-                          display: 'inline-flex',
-                        }}
-                      >
-                        <p
-                          style={{
-                            fontWeight: '600',
-                            letterSpacing: '0.03rem',
-                            marginRight: '10px',
-                            fontSize: '12px',
-                          }}
-                        >
-                          Advisor Name
-                        </p>
-                        <p
-                          style={{
-                            fontWeight: '600',
-                            letterSpacing: '0.03rem',
-                            marginLeft: '10px',
-                            fontSize: '12px',
-                          }}
-                        >
-                          1 month ago
-                        </p>
-                      </span>
-                      <p
-                        style={{
-                          fontWeight: '600',
-                          letterSpacing: '0.03rem',
-                          color: '#545454',
-                          fontSize: '14px',
-                        }}
-                      >
-                        Hi, This is a dummy comment here..
-                      </p>
-                      <a href="" className={styles.commentReply}>
-                        Reply
-                      </a>
+                      <span style={{
+                        display: 'inline-flex'
+                      }}><p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        marginRight: '10px',
+                        fontSize: '12px',
+                      }}>Advisor Name</p><p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        marginLeft: '10px',
+                        fontSize: '12px',
+                      }}>1 month ago</p></span>
+                      <p style={{
+                        fontWeight: '600',
+                        letterSpacing: '0.03rem',
+                        color: '#545454',
+                        fontSize: '14px'
+                      }}>Hi, This is a dummy comment here..</p>
+                      <p className={styles.commentReply} onClick={handleShow}>Reply</p>
                     </Col>
                   </Row>
                 </Col> */}
 
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Advisor Login</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Row>
+                    <Col>
+                      <Form>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Login</Form.Label>
+                          <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                          />
+                        </Form.Group>
+
+                        <Form.Group
+                          className="mb-3"
+                          controlId="formBasicPassword"
+                        >
+                          <Form.Label>Password</Form.Label>
+                          <Form.Control
+                            type="password"
+                            placeholder="Password"
+                          />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                          Submit
+                        </Button>
+                      </Form>
+                    </Col>
+                  </Row>
+                </Modal.Body>
+              </Modal>
               <Row>
                 <Col className="pt-5 pb-5">
                   {!user && (
