@@ -9,6 +9,7 @@ import {
   APIGetBlog,
   APIGetBlogs,
   APIGetBlogsByCategory,
+  APIGetCommentsByPostID,
 } from '../../config/API'
 import moment from 'moment'
 import Link from 'next/link'
@@ -16,6 +17,7 @@ import Link from 'next/link'
 const index = ({ id }) => {
   const [post, setPost] = useState()
   const [extraPosts, setExtraPosts] = useState([])
+  const [comments, setComments] = useState([])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -113,6 +115,9 @@ const index = ({ id }) => {
       const response = await axios.get(`${APIGetBlog}${id}`)
       console.log('Data --------->', response.data.data)
       setPost(response.data.data)
+      const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
+      setComments(commentsResult.data.data)
+      console.log('data ---------->', commentsResult.data.data)
     } catch (err) {}
   }
   const getPostsByCategory = async () => {
@@ -180,14 +185,14 @@ const index = ({ id }) => {
     id && getPost(id)
   }, [id])
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event, parent_comment_id = null) => {
     event.preventDefault()
 
     // validate form fields
     let valid = true
 
     // check if user is already registered
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user_blog'))
     let userData = {}
     if (user) {
       userData = { name: user.name, email: user.email }
@@ -216,8 +221,8 @@ const index = ({ id }) => {
         userData = { name, email }
 
         // save user data in local storage
-        localStorage.setItem('user', JSON.stringify(userData))
-        const user = JSON.parse(localStorage.getItem('user'))
+        localStorage.setItem('user_blog', JSON.stringify(userData))
+        const user = JSON.parse(localStorage.getItem('user_blog'))
 
         setUser(user)
       }
@@ -232,14 +237,19 @@ const index = ({ id }) => {
         content: comment,
         source: 'WEB',
         post_id: id,
+        parent_comment_id,
       })
       if (response.status === 201) {
+        const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
+
+        setComments(commentsResult.data.data)
+        console.log('data ---------->', commentsResult.data.data)
         // localStorage.setItem('userDetails', JSON.stringify({ name, email }))
         setComment('')
         setEmail('')
         setName('')
         // setShowCommentBox(true)
-        const user = JSON.parse(localStorage.getItem('user'))
+        const user = JSON.parse(localStorage.getItem('user_blog'))
 
         setUser(user)
       }
@@ -309,34 +319,112 @@ const index = ({ id }) => {
                 <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }}></Col>
               </Row>
 
-              <Row className='pt-5'>
-                <Col>
+              {comments.length
+                ? comments.map((item, index) => {
+                    const createdAtMoment = moment
+                      .utc(item.CREATED_AT)
+                      .add(5, 'hours')
+                      .add(30, 'minutes')
+                      .local()
+
+                    // Calculate the time difference from the current time
+                    const timeAgo = createdAtMoment.fromNow()
+                    return (
+                      <Row className="pt-5" key={index}>
+                        <Col>
+                          <Row>
+                            <Col>
+                              <span
+                                style={{
+                                  display: 'inline-flex',
+                                }}
+                              >
+                                <p
+                                  style={{
+                                    fontWeight: '600',
+                                    letterSpacing: '0.03rem',
+                                    marginRight: '10px',
+                                    fontSize: '12px',
+                                  }}
+                                >
+                                  {item.AUTHOR_NAME}
+                                </p>
+                                <p
+                                  style={{
+                                    fontWeight: '600',
+                                    letterSpacing: '0.03rem',
+                                    marginLeft: '10px',
+                                    fontSize: '12px',
+                                  }}
+                                >
+                                  {timeAgo}
+                                </p>
+                              </span>
+                              <p
+                                style={{
+                                  fontWeight: '600',
+                                  letterSpacing: '0.03rem',
+                                  color: '#545454',
+                                  fontSize: '14px',
+                                }}
+                              >
+                                {item.CONTENT}
+                              </p>
+                              <a href="" className={styles.commentReply}>
+                                Reply
+                              </a>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    )
+                  })
+                : null}
+              {/* <Col>
                   <Row>
                     <Col>
-                      <span style={{
-                        display: 'inline-flex'
-                      }}><p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        marginRight: '10px',
-                        fontSize: '12px',
-                      }}>Advisor Name</p><p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        marginLeft: '10px',
-                        fontSize: '12px',
-                      }}>1 month ago</p></span>
-                      <p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        color: '#545454',
-                        fontSize: '14px'
-                      }}>Hi, This is a dummy comment here..</p>
-                      <a href="" className={styles.commentReply}>Reply</a>
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontWeight: '600',
+                            letterSpacing: '0.03rem',
+                            marginRight: '10px',
+                            fontSize: '12px',
+                          }}
+                        >
+                          Advisor Name
+                        </p>
+                        <p
+                          style={{
+                            fontWeight: '600',
+                            letterSpacing: '0.03rem',
+                            marginLeft: '10px',
+                            fontSize: '12px',
+                          }}
+                        >
+                          1 month ago
+                        </p>
+                      </span>
+                      <p
+                        style={{
+                          fontWeight: '600',
+                          letterSpacing: '0.03rem',
+                          color: '#545454',
+                          fontSize: '14px',
+                        }}
+                      >
+                        Hi, This is a dummy comment here..
+                      </p>
+                      <a href="" className={styles.commentReply}>
+                        Reply
+                      </a>
                     </Col>
                   </Row>
-                </Col>
-              </Row>
+                </Col> */}
 
               <Row>
                 <Col className="pt-5 pb-5">
@@ -404,14 +492,19 @@ const index = ({ id }) => {
                   </Row>
 
                   <Col className="pt-3">
-                    <Button onClick={handleSubmit} style={{
-                      borderRadius: '40px',
-                      fontSize: '16px',
-                      letterSpacing: '0.05rem',
-                      background: '#000000',
-                      border: '1px solid #000000',
-                      padding: '7px 20px',
-                    }}>Post Comment</Button>
+                    <Button
+                      onClick={handleSubmit}
+                      style={{
+                        borderRadius: '40px',
+                        fontSize: '16px',
+                        letterSpacing: '0.05rem',
+                        background: '#000000',
+                        border: '1px solid #000000',
+                        padding: '7px 20px',
+                      }}
+                    >
+                      Post Comment
+                    </Button>
                   </Col>
                 </Col>
               </Row>
