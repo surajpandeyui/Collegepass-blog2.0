@@ -270,7 +270,7 @@ const index = ({ id }) => {
     <Fragment>
       <Container fluid className="bg-white">
         <Container>
-          <Row>
+          <Row className={styles.textWrap}>
             <Col
               lg={8}
               md={8}
@@ -285,12 +285,14 @@ const index = ({ id }) => {
                 <Col>
                   <h1
                     style={{
-                      marginTop: '0',
+                      marginTop: '0px',
                       marginBottom: '20px',
-                      wordWrap: 'break-word',
-                      fontSize: '41px',
-                      lineHeight: '50px',
-                      fontWeight: '600',
+                      overflowWrap: 'break-word',
+                      fontSize: '32px',
+                      color: '#000000',
+                      fontFamily: '"Poppins",sans-serif',
+                      fontWeight: '700',
+                      lineHeight: '1.4',
                     }}
                   >
                     {post.TITLE}
@@ -306,7 +308,7 @@ const index = ({ id }) => {
                 </Col>
               </Row>
               <Row>
-                <Col
+                <Col className={styles.postImg}
                   style={{
                     marginBottom: '20px',
                   }}
@@ -449,7 +451,13 @@ const index = ({ id }) => {
                 </Modal.Body>
               </Modal>
               <Row>
-                <Col className="pt-5 pb-5">
+                <Col style={{
+                  border: 'solid 1px #ebebeb',
+                  borderRadius: '10px',
+                  padding: '30px',
+                  marginTop: '45px',
+                  background: 'rgba(246, 246, 246, 0.28)'
+                }}>
                   {!user && (
                     <Row>
                       <Col>
@@ -546,31 +554,32 @@ const index = ({ id }) => {
               <Row
                 style={{
                   position: 'sticky',
-                  top: '80px',
-                  background: 'rgb(246 246 246)',
-                  padding: '20px',
+                  top: '50px',
+                  background: 'rgb(246 246 246 / 28%)',
+                  padding: '20px 15px',
                   width: '100%',
                   height: 'auto',
                   marginBottom: '50px',
-                  borderRadius: '5px',
+                  borderRadius: '10px',
+                  border: 'solid 1px #ebebeb',
                 }}
               >
                 <Col className="pb-3">
-                  <h3>Popular Posts</h3>
+                  <h3 className={styles.postSidebarHeading}>Popular Posts</h3>
                 </Col>
                 {extraPosts.map((item, index) => {
                   return (
                     <Link href={`/post/${item.POST_ID}`}>
                       <Row className="pb-3" key={index}>
                         <Col>
-                          <h5>{item.TITLE}</h5>
+                          <h5 className={styles.postSidebarPost}>{item.TITLE}</h5>
                           <Image
                             src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
                             alt="Small Blog"
                             width={130}
                             height={96}
                           />
-                          <span className="d-flex">
+                          <span className="d-flex post-cat-date">
                             <p
                               style={{
                                 paddingRight: '8px',

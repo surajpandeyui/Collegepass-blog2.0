@@ -3056,3 +3056,14 @@ a.button.disable.dropdown-item {
     height: 670px!important;
 }
 }
+
+
+/* POst  */
+
+span.d-flex.post-cat-date a {
+  font-size: 12px;
+  color: #8f9bad;
+  font-weight: 600;
+  letter-spacing: 0.03rem;
+  font-family: "Poppins",sans-serif;
+}

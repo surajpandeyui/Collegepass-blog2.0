@@ -109,7 +109,7 @@ const index = ({
     <Fragment>
       <Container fluid className="bg-white">
         <Container>
-          <Row>
+          <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
               <Row>
                 <Col
@@ -136,7 +136,8 @@ const index = ({
                                   backgroundSize: 'cover',
                                   backgroundPosition: 'center',
                                   height: '425px',
-                                  borderRadius: '5px',
+                                  borderRadius: '15px',
+                                  cursor: 'pointer',
                                 }}
                               ></Col>
                             </Row>
@@ -248,7 +249,8 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -303,7 +305,8 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -358,7 +361,8 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -413,7 +417,8 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -469,7 +474,8 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -507,7 +513,7 @@ const index = ({
                     <Col lg={5} md={5} sm={12} xs={12}>
                       <Row>
                         <Col className={styles.popularSectionSec}>
-                          <h4 className={styles.popular}>Popular Blog</h4>
+                          <h4 className={styles.popular}>Application Components</h4>
                           {extracurricular.slice(1, 4).map((item, index) => {
                             return (
                               <Row key={index}>
@@ -561,7 +567,8 @@ const index = ({
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 height: '425px',
-                                borderRadius: '5px',
+                                borderRadius: '15px',
+                                cursor: 'pointer',
                               }}
                             ></Col>
                           </Row>
@@ -624,7 +631,9 @@ const index = ({
                                       backgroundPosition: 'center',
                                       height: '425px',
                                       margin: '10px',
-                                      borderRadius: '5px',
+                                      borderRadius: '15px',
+                                      cursor: 'pointer',
+                                      
                                     }}
                                   ></Col>
                                 </Row>
