@@ -19,6 +19,7 @@ const index = ({
   uk = [],
   canada = [],
   extracurricular = [],
+  blogPosts = [],
 }) => {
   console.log('Data', popular)
   console.log('Data', latest)
@@ -32,6 +33,9 @@ const index = ({
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
 
+  useEffect(() => {
+    setBlogs(blogPosts)
+  }, [blogPosts])
   const fetchPosts = async () => {
     try {
       const response = await axios.get(`${APIGetBlogs}${page}`)
@@ -250,7 +254,7 @@ const index = ({
                                       height: '425px',
                                       margin: '10px',
                                       borderRadius: '15px',
-                                cursor: 'pointer',
+                                      cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -306,7 +310,7 @@ const index = ({
                                       height: '425px',
                                       margin: '10px',
                                       borderRadius: '15px',
-                                cursor: 'pointer',
+                                      cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -362,7 +366,7 @@ const index = ({
                                       height: '425px',
                                       margin: '10px',
                                       borderRadius: '15px',
-                                cursor: 'pointer',
+                                      cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -418,7 +422,7 @@ const index = ({
                                       height: '425px',
                                       margin: '10px',
                                       borderRadius: '15px',
-                                cursor: 'pointer',
+                                      cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -475,7 +479,7 @@ const index = ({
                                       height: '425px',
                                       margin: '10px',
                                       borderRadius: '15px',
-                                cursor: 'pointer',
+                                      cursor: 'pointer',
                                     }}
                                   ></Col>
                                 </Row>
@@ -513,7 +517,9 @@ const index = ({
                     <Col lg={5} md={5} sm={12} xs={12}>
                       <Row>
                         <Col className={styles.popularSectionSec}>
-                          <h4 className={styles.popular}>Application Components</h4>
+                          <h4 className={styles.popular}>
+                            Application Components
+                          </h4>
                           {extracurricular.slice(1, 4).map((item, index) => {
                             return (
                               <Row key={index}>
@@ -633,7 +639,6 @@ const index = ({
                                       margin: '10px',
                                       borderRadius: '15px',
                                       cursor: 'pointer',
-                                      
                                     }}
                                   ></Col>
                                 </Row>

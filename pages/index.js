@@ -15,6 +15,7 @@ export default function AboutUs({
   uk = [],
   canada = [],
   extracurricular = [],
+  blogPosts = [],
 }) {
   return (
     <>
@@ -58,6 +59,7 @@ export default function AboutUs({
           uk={uk}
           canada={canada}
           extracurricular={extracurricular}
+          blogPosts={blogPosts}
         ></BlogScreen>
       </main>
     </>
@@ -125,16 +127,26 @@ const getPostsByOtherCategory = async () => {
   }
   return result
 }
+
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get(`${APIGetBlogs}1`)
+    console.log('Response ------->', response.data.data)
+    return response.data.data
+  } catch (err) {
+    console.log('Error -------------->', err)
+  }
+}
 export async function getStaticProps() {
-  const [popular, latest, ivyLeague, essays, uk, canada, extracurricular] =
+  const [popular, ivyLeague, essays, uk, canada, extracurricular, blogPosts] =
     await Promise.all([
       getPostsByCategory('Popular'),
-      getPostsByCategory('Latest'),
       getPostsByCategory('Ivy League'),
       getPostsByCategory('Essay'),
       getPostsByCategory('UK'),
       getPostsByCategory('Canada'),
       getPostsByOtherCategory(),
+      fetchPosts(),
     ])
 
   // console.log('Data', popular)
@@ -148,12 +160,13 @@ export async function getStaticProps() {
   return {
     props: {
       popular,
-      latest,
+      latest: blogPosts.slice(0, 4),
       ivyLeague,
       essays,
       uk,
       canada,
       extracurricular,
+      blogPosts,
     },
     revalidate: 10, // Regenerate the page data every 10 seconds
   }
