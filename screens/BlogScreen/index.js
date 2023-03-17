@@ -65,25 +65,6 @@ const index = ({
   if (!popular.length) {
     return <div></div>
   }
-  const html = popular[0].CONTENT
-  let text = ''
-  let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]
-  for (let i = 0; i < paragraphs.length; i++) {
-    let paragraphText = paragraphs[i].replace(/<\/?p>/g, '') // "This is the first paragraph."
-    if (text.length + paragraphText.length <= 200) {
-      text += paragraphText
-    } else {
-      break
-    }
-  }
-  if (text.length < 200) {
-    if (paragraphs.length > 1) {
-      text += paragraphs[1].replace(/<\/?p>/g, '').slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-      text += '...'
-    }
-  } else {
-    text += '...'
-  }
 
   const getText = (content) => {
     const html = content
@@ -91,7 +72,7 @@ const index = ({
     let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
 
     for (let i = 0; i < paragraphs.length; i++) {
-      let paragraphText = paragraphs[i].replace(/<\/?p>/g, '') // "This is the first paragraph."
+      let paragraphText = paragraphs[i].replace(/<\/?p>/g, '') + ' ' // Add a space character after the text of each paragraph
       if (text.length + paragraphText.length <= 200) {
         text += paragraphText
       } else {
@@ -158,13 +139,17 @@ const index = ({
                                 <h1 className={styles.heading1}>
                                   {popular[0].TITLE}
                                 </h1>
-                                <p className={styles.description}>
+                                <p
+                                  className={styles.description}
+                                  dangerouslySetInnerHTML={{
+                                    __html: getText(popular[0].CONTENT),
+                                  }}
+                                >
                                   {/* The University of California is ranked among the
                                 world’s best for its innovation, pioneering
                                 research, and discovery. It has ten campuses,
                                 with nine offering both undergraduate and
                                 graduate education.... */}
-                                  {text}
                                 </p>
                                 <p className={styles.descriptionDate}>
                                   <span style={{ paddingRight: '20px' }}>
@@ -263,7 +248,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
@@ -319,7 +307,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
@@ -375,7 +366,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
@@ -431,7 +425,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
@@ -488,7 +485,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}{' '}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
@@ -591,9 +591,12 @@ const index = ({
                               <h1 className={styles.heading1}>
                                 {extracurricular[0].TITLE}
                               </h1>
-                              <p className={styles.description}>
-                                {getText(extracurricular[0].CONTENT)}
-                              </p>
+                              <p
+                                className={styles.description}
+                                dangerouslySetInnerHTML={{
+                                  __html: getText(extracurricular[0].CONTENT),
+                                }}
+                              ></p>
                               <p className={styles.descriptionDate}>
                                 <span style={{ paddingRight: '20px' }}>
                                   {extracurricular[0].CATEGORIES}
@@ -647,7 +650,10 @@ const index = ({
                                     <h3 className={styles.heading3}>
                                       {item.TITLE}
                                     </h3>
-                                    <p className={styles.description}>{text}</p>
+                                    <p
+                                      className={styles.description}
+                                      dangerouslySetInnerHTML={{ __html: text }}
+                                    ></p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}

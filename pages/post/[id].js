@@ -1,6 +1,5 @@
 import Head from 'next/head'
 // import PostScreen from '../screens/PostScreen';
-import PostScreen2265 from './../../screens/PostScreen/2265'
 import PostScreen from './../../screens/PostScreen'
 import { useRouter } from 'next/router'
 
