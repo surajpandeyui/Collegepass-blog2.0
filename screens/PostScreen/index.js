@@ -125,7 +125,7 @@ const index = ({ id }) => {
     } catch (err) {}
   }
   const getPostsByCategory = async () => {
-    const categories = post.BLOG_CATEGORIES.split(',')
+    const categories = post.CATEGORIES.split(',')
     const result = []
 
     if (post.BLOG_CATEGORIES && categories.length) {
