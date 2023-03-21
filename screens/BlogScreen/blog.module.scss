@@ -1,11 +1,13 @@
 .textWrap {
     p {
-        color: #707a88;
-        font-size: 16px;
+        color: #292b2e;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 0rem;
         overflow-wrap: break-word;
         background-color: #fff;
-        font-family: "Roboto",sans-serif!important;
-        line-height: 1.7;
+        font-family: "Roboto", sans-serif !important;
+        line-height: 1.5;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         text-align: justify;
@@ -75,6 +77,10 @@
     font-weight: 600;
     padding-bottom: 5px;
 }
+.heading3:hover {
+    color: #ee2f4c;
+    cursor: pointer;
+}
 .description {
     display: block;
     color: #000000;
@@ -95,7 +101,7 @@
             cursor: pointer;
         }
     }
-    padding-left: 25px;
+    padding-left: 50px;
     padding-right: 25px;
     .popular {
         font-size: 24px;
@@ -170,10 +176,11 @@
     .smallImage {
         img {
             border-radius: 5px;
+            cursor: pointer;
         }
     }
     padding-left: 25px;
-    padding-right: 25px;
+    padding-right: 50px;
     .popular {
         font-size: 22px;
         padding-bottom: 15px;
@@ -199,7 +206,7 @@
     .popDev {
         display: inline-flex;
         border-bottom: 1px solid #e4d1d182;
-        margin-bottom: 20px;
+        margin-bottom: 13px;
     }
     .popTextLeft {
         margin-left: 15px;
@@ -232,7 +239,8 @@
     span {
         font-size: 14px;
         letter-spacing: 0.03rem;
-        color: #8f9bad;
+        color: #1a5cdf;
+        font-weight: 600;
         i {
             margin-right: 5px;
         }
