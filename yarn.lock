@@ -645,11 +645,6 @@
     "redux" "3.7.2"
     "redux-thunk" "2.2.0"
 
-"5@^0.0.1":
-  "integrity" "sha512-MSAD9VKb1ac1HonDQmlHiew99tq9Boj/y3NsK1sqixk+C7JKS3i4DAnVUvYMhO6RpGMAo2QHoI3cxL1mlKH8qw=="
-  "resolved" "https://registry.npmjs.org/5/-/5-0.0.1.tgz"
-  "version" "0.0.1"
-
 "acorn-jsx@^5.3.1":
   "integrity" "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="
   "resolved" "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"

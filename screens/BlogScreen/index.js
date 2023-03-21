@@ -162,7 +162,7 @@ const index = ({
                                 }}
                               >
                                 <h1 className={styles.heading1}>
-                                  {popular[0].TITLE}
+                                  {popular[0].TITLE.substring(0, 26) + '...'}
                                 </h1>
                                 <p
                                   className={styles.description}
@@ -207,7 +207,9 @@ const index = ({
                                   <Col className={styles.popDev}>
                                     <span className={styles.popTextRight}>
                                       <h3 className={styles.heading3}>
-                                        {item.TITLE}
+                                        {item.TITLE.length >= 30
+                                          ? item.TITLE.substring(0, 26) + '...'
+                                          : item.TITLE}
                                       </h3>
                                       <p className={styles.descriptionDate}>
                                         <span style={{ paddingRight: '20px' }}>
@@ -293,7 +295,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}
@@ -352,7 +356,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}
@@ -411,7 +417,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}
@@ -470,7 +478,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}
@@ -530,7 +540,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}{' '}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}
@@ -606,7 +618,9 @@ const index = ({
 
                                     <span className={styles.popTextLeft}>
                                       <h3 className={styles.heading3}>
-                                        {item.TITLE}
+                                        {item.TITLE.length >= 30
+                                          ? item.TITLE.substring(0, 26) + '...'
+                                          : item.TITLE}
                                       </h3>
                                       <p className={styles.descriptionDate}>
                                         <span style={{ paddingRight: '20px' }}>
@@ -663,7 +677,8 @@ const index = ({
                                 }}
                               >
                                 <h1 className={styles.heading1}>
-                                  {extracurricular[0].TITLE}
+                                  {extracurricular[0].TITLE.substring(0, 26) +
+                                    '...'}
                                 </h1>
                                 <p
                                   className={styles.description}
@@ -723,7 +738,9 @@ const index = ({
                                 <Row>
                                   <Col>
                                     <h3 className={styles.heading3}>
-                                      {item.TITLE}
+                                      {item.TITLE.length >= 30
+                                        ? item.TITLE.substring(0, 26) + '...'
+                                        : item.TITLE}
                                     </h3>
                                     <p
                                       className={styles.description}

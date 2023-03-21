@@ -10,7 +10,6 @@
     "find:unused": "next-unused"
   },
   "dependencies": {
-    "5": "^0.0.1",
     "@sentry/nextjs": "^6.18.1",
     "@trendyol-js/react-carousel": "^2.0.1",
     "@vimeo/player": "2.16.4",
