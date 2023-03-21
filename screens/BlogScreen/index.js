@@ -4,6 +4,7 @@ import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
 import moment from 'moment'
+import { parse } from 'parse5'
 import {
   APIGetBlogs,
   APIGetBlogsByCategory,
@@ -66,27 +67,51 @@ const index = ({
     return <div></div>
   }
 
-  const getText = (content) => {
-    const html = content
-    let text = ''
-    let paragraphs = html.match(/<p>.*?<\/p>/g) // ["<p>This is the first paragraph.</p>", "<p>This is the second paragraph.</p>", "<p>This is the third paragraph.</p>"]\
+  function getElementsByTagName(node, tag) {
+    let elements = []
+    if (node.nodeName === tag) {
+      elements.push(node)
+    }
+    if (node.childNodes) {
+      node.childNodes.forEach((childNode) => {
+        elements = elements.concat(getElementsByTagName(childNode, tag))
+      })
+    }
+    return elements
+  }
 
-    for (let i = 0; i < paragraphs.length; i++) {
-      let paragraphText = paragraphs[i].replace(/<\/?p>/g, '') + ' ' // Add a space character after the text of each paragraph
-      if (text.length + paragraphText.length <= 200) {
-        text += paragraphText
-      } else {
-        break
-      }
+  const getText = (content) => {
+    if (!content || typeof content !== 'string') {
+      return ''
     }
-    if (text.length < 200) {
-      if (paragraphs.length > 1) {
-        text += paragraphs[1].replace(/<\/?p>/g, '').slice(0, 200 - text.length) // Add the first 100 - text.length characters of the second paragraph
-        text += '...'
+
+    const document = parse(content)
+
+    const elementsWithText = ['p']
+    let text = ''
+    let count = 0
+
+    elementsWithText.forEach((tag) => {
+      const elements = getElementsByTagName(document, tag)
+      for (let i = 0; i < elements.length; i++) {
+        const elementText = elements[i].childNodes[0].value.trim()
+        if (elementText) {
+          text += elementText + ' '
+          count += elementText.length
+          if (count >= 200) {
+            break
+          }
+        }
       }
-    } else {
-      text += '...'
+      if (count >= 200) {
+        return
+      }
+    })
+
+    if (text.length >= 200) {
+      text = text.slice(0, 200) + '...'
     }
+
     return text
   }
 
