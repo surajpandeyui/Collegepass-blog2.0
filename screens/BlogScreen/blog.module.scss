@@ -1,12 +1,13 @@
 .textWrap {
     p {
-        color: #505762;
+        color: #292b2e;
+        font-weight: 500;
         font-size: 18px;
         letter-spacing: 0rem;
         overflow-wrap: break-word;
         background-color: #fff;
         font-family: "Roboto", sans-serif !important;
-        line-height: 1.7;
+        line-height: 1.5;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         text-align: justify;
@@ -100,7 +101,7 @@
             cursor: pointer;
         }
     }
-    padding-left: 25px;
+    padding-left: 50px;
     padding-right: 25px;
     .popular {
         font-size: 24px;
@@ -179,7 +180,7 @@
         }
     }
     padding-left: 25px;
-    padding-right: 25px;
+    padding-right: 50px;
     .popular {
         font-size: 22px;
         padding-bottom: 15px;
@@ -238,7 +239,8 @@
     span {
         font-size: 14px;
         letter-spacing: 0.03rem;
-        color: #7e7f81;
+        color: #1a5cdf;
+        font-weight: 600;
         i {
             margin-right: 5px;
         }
