@@ -522,100 +522,104 @@ const index = ({
                           </h4>
                           {extracurricular.slice(1, 4).map((item, index) => {
                             return (
-                              <Row key={index}>
-                                <Col className={styles.popDev}>
-                                  <span className={styles.smallImage}>
-                                    <Image
-                                      src={item.DISPLAY_IMAGE_BANNER}
-                                      alt="Small Blog"
-                                      width={130}
-                                      height={96}
-                                    />
-                                  </span>
-                                  <span className={styles.popTextLeft}>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE}
-                                    </h3>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                      <span>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>{' '}
-                                      <span>
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
-                                  </span>
-                                </Col>
-                              </Row>
+                              <Link href={`/post/${item.POST_ID}`}>
+                                <Row key={index}>
+                                  <Col className={styles.popDev}>
+                                    <span className={styles.smallImage}>
+                                      <Image
+                                        src={item.DISPLAY_IMAGE_BANNER}
+                                        alt="Small Blog"
+                                        width={130}
+                                        height={96}
+                                      />
+                                    </span>
+                                    <span className={styles.popTextLeft}>
+                                      <h3 className={styles.heading3}>
+                                        {item.TITLE}
+                                      </h3>
+                                      <p className={styles.descriptionDate}>
+                                        <span style={{ paddingRight: '20px' }}>
+                                          {item.CATEGORIES}
+                                        </span>
+                                        <span>
+                                          {moment(item.CREATED_AT).format(
+                                            'MMMM D, YYYY'
+                                          )}
+                                        </span>{' '}
+                                        <span>
+                                          <i className="fa fa-eye"></i>
+                                          {item.VISITOR_COUNT}
+                                        </span>
+                                      </p>
+                                    </span>
+                                  </Col>
+                                </Row>
+                              </Link>
                             )
                           })}
                         </Col>
                       </Row>
                     </Col>
-                    <Col lg={7} md={7} sm={12} xs={12}>
-                      <Row>
-                        <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row
-                            style={{
-                              paddingLeft: '20px',
-                              paddingRight: '20px',
-                            }}
-                          >
-                            <Col
+                    <Link href={`/post/${extracurricular[0].POST_ID}`}>
+                      <Col lg={7} md={7} sm={12} xs={12}>
+                        <Row>
+                          <Col lg={6} md={6} sm={12} xs={12}>
+                            <Row
                               style={{
-                                backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '425px',
-                                borderRadius: '15px',
-                                cursor: 'pointer',
-                              }}
-                            ></Col>
-                          </Row>
-                        </Col>
-                        <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row>
-                            <Col
-                              style={{
-                                paddingTop: '15%',
-                                paddingLeft: '0',
-                                paddingRight: '0',
+                                paddingLeft: '20px',
+                                paddingRight: '20px',
                               }}
                             >
-                              <h1 className={styles.heading1}>
-                                {extracurricular[0].TITLE}
-                              </h1>
-                              <p
-                                className={styles.description}
-                                dangerouslySetInnerHTML={{
-                                  __html: getText(extracurricular[0].CONTENT),
+                              <Col
+                                style={{
+                                  backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
+                                  backgroundSize: 'cover',
+                                  backgroundPosition: 'center',
+                                  height: '425px',
+                                  borderRadius: '15px',
+                                  cursor: 'pointer',
                                 }}
-                              ></p>
-                              <p className={styles.descriptionDate}>
-                                <span style={{ paddingRight: '20px' }}>
-                                  {extracurricular[0].CATEGORIES}
-                                </span>
-                                <span>
-                                  {moment(extracurricular[0].CREATED_AT).format(
-                                    'MMMM D, YYYY'
-                                  )}
-                                </span>{' '}
-                                <span>
-                                  <i className="fa fa-eye"></i>
-                                  {extracurricular[0].VISITOR_COUNT}
-                                </span>
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
-                    </Col>
+                              ></Col>
+                            </Row>
+                          </Col>
+                          <Col lg={6} md={6} sm={12} xs={12}>
+                            <Row>
+                              <Col
+                                style={{
+                                  paddingTop: '15%',
+                                  paddingLeft: '0',
+                                  paddingRight: '0',
+                                }}
+                              >
+                                <h1 className={styles.heading1}>
+                                  {extracurricular[0].TITLE}
+                                </h1>
+                                <p
+                                  className={styles.description}
+                                  dangerouslySetInnerHTML={{
+                                    __html: getText(extracurricular[0].CONTENT),
+                                  }}
+                                ></p>
+                                <p className={styles.descriptionDate}>
+                                  <span style={{ paddingRight: '20px' }}>
+                                    {extracurricular[0].CATEGORIES}
+                                  </span>
+                                  <span>
+                                    {moment(
+                                      extracurricular[0].CREATED_AT
+                                    ).format('MMMM D, YYYY')}
+                                  </span>{' '}
+                                  <span>
+                                    <i className="fa fa-eye"></i>
+                                    {extracurricular[0].VISITOR_COUNT}
+                                  </span>
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Link>
                   </Row>
 
                   <Row>

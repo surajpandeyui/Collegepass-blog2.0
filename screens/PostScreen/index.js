@@ -16,8 +16,19 @@ import Link from 'next/link'
 
 const index = ({ id }) => {
   const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleClose = () => {
+    setShow(false)
+    setParentId(null)
+    setShowReplyInput(false)
+  }
+  const handleShow = (id) => {
+    if (!user) {
+      setShow(true)
+    } else {
+      setParentId(id)
+      setShowReplyInput(true)
+    }
+  }
 
   const [post, setPost] = useState()
   const [extraPosts, setExtraPosts] = useState([])
@@ -36,6 +47,12 @@ const index = ({ id }) => {
   ///////////////////////// calculating spent time /////////////////////////////////
   const [visitStartTime, setVisitStartTime] = useState(null)
   const [isPageVisible, setIsPageVisible] = useState(true)
+
+  const [showReplyInput, setShowReplyInput] = useState(false)
+  const [commentReplyIndex, setCommentReplyIndex] = useState()
+  const [parentId, setParentId] = useState()
+
+  const [expandedReplyIndex, setExpandedReplyIndex] = useState(null)
 
   const handleVisibilityChange = () => {
     if (document.visibilityState === 'hidden') {
@@ -189,51 +206,127 @@ const index = ({ id }) => {
     id && getPost(id)
   }, [id])
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user_blog')
+    if (storedUser) {
+      setUser(JSON.parse(storedUser))
+    }
+  }, [])
+
   const handleSubmit = async (event, parent_comment_id = null) => {
+    try {
+      event.preventDefault()
+
+      // validate form fields
+      let valid = true
+
+      // check if user is already registered
+      const user = JSON.parse(localStorage.getItem('user_blog'))
+      let userData = {}
+      if (user) {
+        userData = { name: user.name, email: user.email }
+        if (comment.trim() === '') {
+          setCommentError('Comment is required')
+          valid = false
+        }
+      } else {
+        if (name.trim() === '') {
+          setNameError('Name is required')
+          valid = false
+        }
+        if (email.trim() === '') {
+          setEmailError('Email is required')
+          valid = false
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setEmailError('Invalid email format')
+          valid = false
+        }
+        if (comment.trim() === '') {
+          setCommentError('Comment is required')
+          valid = false
+        }
+
+        if (valid) {
+          userData = { name, email }
+
+          // save user data in local storage
+          localStorage.setItem('user_blog', JSON.stringify(userData))
+          const user = JSON.parse(localStorage.getItem('user_blog'))
+
+          setUser(user)
+        }
+      }
+
+      // submit form data if valid
+      if (valid) {
+        // submit form data to server
+        const response = await axios.post(APIAddComment, {
+          author_name: userData.name,
+          author_email: userData.email,
+          content: comment,
+          source: 'WEB',
+          post_id: id,
+          parent_comment_id,
+        })
+        if (response.status === 201) {
+          const commentsResult = await axios.get(
+            `${APIGetCommentsByPostID}${id}`
+          )
+
+          setComments(commentsResult.data.data)
+          console.log('data ---------->', commentsResult.data.data)
+          // localStorage.setItem('userDetails', JSON.stringify({ name, email }))
+          setComment('')
+          setEmail('')
+          setName('')
+          // setShowCommentBox(true)
+          const user = JSON.parse(localStorage.getItem('user_blog'))
+
+          setUser(user)
+        }
+        console.log('Submitting form data:', { name, email, comment })
+      }
+    } catch (err) {
+      console.error('Error ------->', err)
+    }
+  }
+
+  const handleReplySubmit = async (event) => {
     event.preventDefault()
 
     // validate form fields
     let valid = true
 
+    console.log('Made it here ----->')
     // check if user is already registered
     const user = JSON.parse(localStorage.getItem('user_blog'))
     let userData = {}
     if (user) {
       userData = { name: user.name, email: user.email }
-      if (comment.trim() === '') {
-        setCommentError('Comment is required')
-        valid = false
-      }
     } else {
-      if (name.trim() === '') {
-        setNameError('Name is required')
-        valid = false
-      }
-      if (email.trim() === '') {
-        setEmailError('Email is required')
-        valid = false
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setEmailError('Invalid email format')
-        valid = false
-      }
-      if (comment.trim() === '') {
-        setCommentError('Comment is required')
-        valid = false
-      }
+      valid = false
+    }
 
-      if (valid) {
-        userData = { name, email }
+    if (comment.trim() === '') {
+      setCommentError('Comment is required')
+      valid = false
+    }
 
-        // save user data in local storage
-        localStorage.setItem('user_blog', JSON.stringify(userData))
-        const user = JSON.parse(localStorage.getItem('user_blog'))
+    if (valid) {
+      console.log('Made it here V1----->')
 
-        setUser(user)
-      }
+      // userData = { name: user.name, email: user.email }
+      // save user data in local storage
+      localStorage.setItem('user_blog', JSON.stringify(userData))
+      const user = JSON.parse(localStorage.getItem('user_blog'))
+
+      setUser(user)
     }
 
     // submit form data if valid
     if (valid) {
+      console.log('Made it here V1----->')
+
       // submit form data to server
       const response = await axios.post(APIAddComment, {
         author_name: userData.name,
@@ -241,7 +334,7 @@ const index = ({ id }) => {
         content: comment,
         source: 'WEB',
         post_id: id,
-        parent_comment_id,
+        parent_comment_id: parentId,
       })
       if (response.status === 201) {
         const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
@@ -256,11 +349,46 @@ const index = ({ id }) => {
         const user = JSON.parse(localStorage.getItem('user_blog'))
 
         setUser(user)
+        handleClose()
       }
       console.log('Submitting form data:', { name, email, comment })
     }
   }
+  const handleFormSubmit = async (event) => {
+    try {
+      event.preventDefault()
 
+      // validate form fields
+      let valid = true
+
+      let userData = {}
+
+      if (name.trim() === '') {
+        setNameError('Name is required')
+        valid = false
+      }
+      if (email.trim() === '') {
+        setEmailError('Email is required')
+        valid = false
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setEmailError('Invalid email format')
+        valid = false
+      }
+
+      if (valid) {
+        userData = { name, email }
+
+        // save user data in local storage
+        localStorage.setItem('user_blog', JSON.stringify(userData))
+        const user = JSON.parse(localStorage.getItem('user_blog'))
+
+        setUser(user)
+        setShowReplyInput(true)
+      }
+    } catch (err) {
+      console.log('Error ---------->', err)
+    }
+  }
   if (!post) {
     return <div></div>
   }
@@ -308,7 +436,8 @@ const index = ({ id }) => {
                 </Col>
               </Row>
               <Row>
-                <Col className={styles.postImg}
+                <Col
+                  className={styles.postImg}
                   style={{
                     marginBottom: '20px',
                   }}
@@ -326,69 +455,185 @@ const index = ({ id }) => {
               </Row>
 
               {comments.length
-                ? comments.map((item, index) => {
+                ? comments.map((cmt, commentIndex) => {
                     const createdAtMoment = moment
-                      .utc(item.CREATED_AT)
+                      .utc(cmt.CREATED_AT)
                       .add(5, 'hours')
                       .add(30, 'minutes')
                       .local()
-
-                    // Calculate the time difference from the current time
                     const timeAgo = createdAtMoment.fromNow()
+
                     return (
-                      <Row className="pt-5" key={index}>
-                        <Col>
-                          <Row>
-                            <Col>
+                      <React.Fragment key={commentIndex}>
+                        <Row className="pt-5">
+                          <Col>
+                            <Row>
+                              <Col>
+                                <span style={{ display: 'inline-flex' }}>
+                                  <p
+                                    style={{
+                                      fontWeight: '600',
+                                      letterSpacing: '0.03rem',
+                                      marginRight: '10px',
+                                      fontSize: '12px',
+                                    }}
+                                  >
+                                    {cmt.AUTHOR_NAME}
+                                  </p>
+                                  <p
+                                    style={{
+                                      fontWeight: '600',
+                                      letterSpacing: '0.03rem',
+                                      marginLeft: '10px',
+                                      fontSize: '12px',
+                                    }}
+                                  >
+                                    {timeAgo}
+                                  </p>
+                                </span>
+                                <p
+                                  style={{
+                                    fontWeight: '600',
+                                    letterSpacing: '0.03rem',
+                                    color: '#545454',
+                                    fontSize: '14px',
+                                  }}
+                                >
+                                  {cmt.CONTENT}
+                                </p>
+                                <p
+                                  className={styles.commentReply}
+                                  onClick={() => {
+                                    setCommentReplyIndex(commentIndex)
+                                    handleShow(cmt.COMMENT_ID)
+                                  }}
+                                  // onClick={() => {
+                                  //   setShowReplyInput(!showReplyInput)
+                                  //   setCommentReplyIndex(commentIndex)
+                                  // }}
+                                >
+                                  Reply
+                                </p>
+                              </Col>
+                            </Row>
+                          </Col>
+                        </Row>
+                        {showReplyInput && commentReplyIndex === commentIndex && (
+                          <Form className="pt-3" onSubmit={handleReplySubmit}>
+                            <Form.Group>
+                              <Form.Control
+                                as="textarea"
+                                rows={3}
+                                placeholder="Write a reply..."
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                              />
+                            </Form.Group>
+                            <Button type="submit">Submit</Button>
+                          </Form>
+                        )}
+
+                        {cmt.replies.length ? (
+                          <Fragment>
+                            {expandedReplyIndex === commentIndex ? (
                               <span
-                                style={{
-                                  display: 'inline-flex',
+                                // style={{ pointerEvents: 'none' }}
+                                onClick={(e) => {
+                                  setExpandedReplyIndex(null)
                                 }}
+                                style={{ cursor: 'pointer' }}
                               >
-                                <p
-                                  style={{
-                                    fontWeight: '600',
-                                    letterSpacing: '0.03rem',
-                                    marginRight: '10px',
-                                    fontSize: '12px',
-                                  }}
-                                >
-                                  {item.AUTHOR_NAME}
-                                </p>
-                                <p
-                                  style={{
-                                    fontWeight: '600',
-                                    letterSpacing: '0.03rem',
-                                    marginLeft: '10px',
-                                    fontSize: '12px',
-                                  }}
-                                >
-                                  {timeAgo}
-                                </p>
+                                {`Hide ${cmt.replies.length} ${
+                                  cmt.replies.length === 1 ? 'reply' : 'replies'
+                                }`}
                               </span>
-                              <p
-                                style={{
-                                  fontWeight: '600',
-                                  letterSpacing: '0.03rem',
-                                  color: '#545454',
-                                  fontSize: '14px',
+                            ) : (
+                              <span
+                                onClick={() => {
+                                  console.log('Should not make it here')
+                                  setExpandedReplyIndex(commentIndex)
                                 }}
+                                style={{ cursor: 'pointer' }}
                               >
-                                {item.CONTENT}
-                              </p>
-                              <p
-                                className={styles.commentReply}
-                                onClick={handleShow}
-                              >
-                                Reply
-                              </p>
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row>
+                                {`View ${cmt.replies.length} ${
+                                  cmt.replies.length === 1 ? 'reply' : 'replies'
+                                }`}
+                              </span>
+                            )}
+                            {expandedReplyIndex === commentIndex
+                              ? cmt.replies.map((reply, replyIndex) => {
+                                  const replyCreatedAtMoment = moment
+                                    .utc(reply.CREATED_AT)
+                                    .add(5, 'hours')
+                                    .add(30, 'minutes')
+                                    .local()
+                                  const replyTimeAgo =
+                                    replyCreatedAtMoment.fromNow()
+
+                                  return (
+                                    <Row
+                                      className="pt-3"
+                                      key={`${commentIndex}-${replyIndex}`}
+                                    >
+                                      <Col>
+                                        <Row>
+                                          <Col>
+                                            <span
+                                              style={{
+                                                display: 'inline-flex',
+                                              }}
+                                            >
+                                              <p
+                                                style={{
+                                                  fontWeight: '600',
+                                                  letterSpacing: '0.03rem',
+                                                  marginRight: '10px',
+                                                  fontSize: '12px',
+                                                }}
+                                              >
+                                                {reply.AUTHOR_NAME}
+                                              </p>
+                                              <p
+                                                style={{
+                                                  fontWeight: '600',
+                                                  letterSpacing: '0.03rem',
+                                                  marginLeft: '10px',
+                                                  fontSize: '12px',
+                                                }}
+                                              >
+                                                {replyTimeAgo}
+                                              </p>
+                                            </span>
+                                            <p
+                                              style={{
+                                                fontWeight: '600',
+                                                letterSpacing: '0.03rem',
+                                                color: '#545454',
+                                                fontSize: '14px',
+                                              }}
+                                            >
+                                              {reply.CONTENT}
+                                            </p>
+                                            {/* <p
+                                          className={styles.commentReply}
+                                          onClick={handleShow}
+                                        >
+                                          Reply
+                                        </p> */}
+                                          </Col>
+                                        </Row>
+                                      </Col>
+                                    </Row>
+                                  )
+                                })
+                              : null}
+                          </Fragment>
+                        ) : null}
+                      </React.Fragment>
                     )
                   })
                 : null}
+
               {/* <Col>
                   <Row>
                     <Col>
@@ -410,54 +655,86 @@ const index = ({ id }) => {
                         letterSpacing: '0.03rem',
                         color: '#545454',
                         fontSize: '14px'
-                      }}>Hi, This is a dummy comment here..</p>
+                      }}>Hi, This is a dummy cmt here..</p>
                       <p className={styles.commentReply} onClick={handleShow}>Reply</p>
                     </Col>
                   </Row>
                 </Col> */}
 
-              <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Advisor Login</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                  <Row>
-                    <Col>
-                      <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                          <Form.Label>Login</Form.Label>
-                          <Form.Control
-                            type="email"
-                            placeholder="Enter email"
-                          />
-                        </Form.Group>
-
-                        <Form.Group
-                          className="mb-3"
-                          controlId="formBasicPassword"
-                        >
-                          <Form.Label>Password</Form.Label>
-                          <Form.Control
-                            type="password"
-                            placeholder="Password"
-                          />
-                        </Form.Group>
-                        <Button variant="primary" type="submit">
-                          Submit
-                        </Button>
-                      </Form>
-                    </Col>
-                  </Row>
-                </Modal.Body>
-              </Modal>
+              {!user && (
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Register</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Row>
+                      {/* <Col> */}
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput1"
+                      >
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Enter name"
+                          value={name}
+                          onChange={handleNameChange}
+                          isInvalid={!!nameError}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {nameError}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      {/* </Col> */}
+                      {/* <Col> */}
+                    </Row>
+                    <Row>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="exampleForm.ControlInput2"
+                      >
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter email"
+                          value={email}
+                          onChange={handleEmailChange}
+                          isInvalid={!!emailError}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                          {emailError}
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      {/* </Col> */}
+                    </Row>
+                    <Row>
+                      <Button
+                        onClick={handleFormSubmit}
+                        style={{
+                          borderRadius: '40px',
+                          fontSize: '16px',
+                          letterSpacing: '0.05rem',
+                          background: '#000000',
+                          border: '1px solid #000000',
+                          padding: '7px 20px',
+                        }}
+                      >
+                        Register
+                      </Button>
+                    </Row>
+                  </Modal.Body>
+                </Modal>
+              )}
               <Row>
-                <Col style={{
-                  border: 'solid 1px #ebebeb',
-                  borderRadius: '10px',
-                  padding: '30px',
-                  marginTop: '45px',
-                  background: 'rgba(246, 246, 246, 0.28)'
-                }}>
+                <Col
+                  style={{
+                    border: 'solid 1px #ebebeb',
+                    borderRadius: '10px',
+                    padding: '30px',
+                    marginTop: '45px',
+                    background: 'rgba(246, 246, 246, 0.28)',
+                  }}
+                >
                   {!user && (
                     <Row>
                       <Col>
@@ -572,7 +849,9 @@ const index = ({ id }) => {
                     <Link href={`/post/${item.POST_ID}`}>
                       <Row className="pb-3" key={index}>
                         <Col>
-                          <h5 className={styles.postSidebarPost}>{item.TITLE}</h5>
+                          <h5 className={styles.postSidebarPost}>
+                            {item.TITLE}
+                          </h5>
                           <Image
                             src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
                             alt="Small Blog"
