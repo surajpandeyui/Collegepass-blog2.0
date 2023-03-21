@@ -199,13 +199,36 @@ const index = ({
                                         </span>
                                       </p>
                                     </span>
-                                    <span className={styles.smallImage}>
-                                      <Image
-                                        src={item.DISPLAY_IMAGE_BANNER}
-                                        alt="Small Blog"
-                                        width={130}
-                                        height={96}
-                                      />
+                                    <span
+                                      className={styles.smallImage}
+                                      style={{
+                                        display: 'inline-block',
+                                        maxWidth: '136px!important',
+                                        maxHeight: '96px!important',
+                                        position: 'relative!important',
+                                        borderRadius: '15px',
+                                        overflow: 'hidden',
+                                        minWidth: '136px!important',
+                                        minHeight: '96px!important',
+                                      }}
+                                    >
+                                      <div
+                                        style={{
+                                          position: 'absolute',
+                                          top: 0,
+                                          left: 0,
+                                          bottom: 0,
+                                          right: 0,
+                                        }}
+                                      >
+                                        <Image
+                                          src={item.DISPLAY_IMAGE_BANNER}
+                                          alt="Small Blog"
+                                          layout="fill"
+                                          objectFit="cover"
+                                          objectPosition="center"
+                                        />
+                                      </div>
                                     </span>
                                   </Col>
                                 </Row>
@@ -525,14 +548,38 @@ const index = ({
                               <Link href={`/post/${item.POST_ID}`}>
                                 <Row key={index}>
                                   <Col className={styles.popDev}>
-                                    <span className={styles.smallImage}>
-                                      <Image
-                                        src={item.DISPLAY_IMAGE_BANNER}
-                                        alt="Small Blog"
-                                        width={130}
-                                        height={96}
-                                      />
+                                    <span
+                                      className={styles.smallImage}
+                                      style={{
+                                        display: 'inline-block',
+                                        maxWidth: '136px!important',
+                                        maxHeight: '96px!important',
+                                        position: 'relative',
+                                        borderRadius: '15px',
+                                        overflow: 'hidden',
+                                        minWidth: '136px!important',
+                                        minHeight: '96px!important',
+                                      }}
+                                    >
+                                      <div
+                                        style={{
+                                          position: 'absolute',
+                                          top: 0,
+                                          left: 0,
+                                          bottom: 0,
+                                          right: 0,
+                                        }}
+                                      >
+                                        <Image
+                                          src={item.DISPLAY_IMAGE_BANNER}
+                                          alt="Small Blog"
+                                          layout="fill"
+                                          objectFit="cover"
+                                          objectPosition="center"
+                                        />
+                                      </div>
                                     </span>
+
                                     <span className={styles.popTextLeft}>
                                       <h3 className={styles.heading3}>
                                         {item.TITLE}
