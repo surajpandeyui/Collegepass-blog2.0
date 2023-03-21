@@ -10,6 +10,7 @@
     "find:unused": "next-unused"
   },
   "dependencies": {
+    "5": "^0.0.1",
     "@sentry/nextjs": "^6.18.1",
     "@trendyol-js/react-carousel": "^2.0.1",
     "@vimeo/player": "2.16.4",
@@ -23,6 +24,8 @@
     "multiselect-react-dropdown": "^2.0.21",
     "net": "^1.0.2",
     "next": "^12.1.0",
+    "parse": "^4.0.1",
+    "parse5": "^7.1.2",
     "react": "^17.0.2",
     "react-autosuggest": "^10.1.0",
     "react-bootstrap": "^2.1.2",
