@@ -541,7 +541,8 @@ const index = ({ id }) => {
                                 onClick={(e) => {
                                   setExpandedReplyIndex(null)
                                 }}
-                                style={{ cursor: 'pointer' }}
+                                style={{ cursor: 'pointer', fontWeight: '600', color: '#0a56ec', fontSize: '13px',
+                                letterSpacing: '0.02rem', }}
                               >
                                 {`Hide ${cmt.replies.length} ${
                                   cmt.replies.length === 1 ? 'reply' : 'replies'
@@ -553,7 +554,8 @@ const index = ({ id }) => {
                                   console.log('Should not make it here')
                                   setExpandedReplyIndex(commentIndex)
                                 }}
-                                style={{ cursor: 'pointer' }}
+                                style={{ cursor: 'pointer', fontWeight: '600', color: '#0a56ec', fontSize: '13px',
+                                letterSpacing: '0.02rem', }}
                               >
                                 {`View ${cmt.replies.length} ${
                                   cmt.replies.length === 1 ? 'reply' : 'replies'
@@ -858,19 +860,11 @@ const index = ({ id }) => {
                             width={130}
                             height={96}
                           />
-                          <span className="d-flex post-cat-date">
-                            <p
-                              style={{
-                                paddingRight: '8px',
-                              }}
-                            >
+                          <span className="post-cat-date">
+                            <p>
                               <a href="#">{item.CATEGORIES}</a>
                             </p>
-                            <p
-                              style={{
-                                paddingLeft: '8px',
-                              }}
-                            >
+                            <p>
                               <a href="#">
                                 {moment(item.CREATED_AT).format('MMMM D, YYYY')}
                               </a>

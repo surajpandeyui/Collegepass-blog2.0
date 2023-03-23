@@ -3060,7 +3060,7 @@ a.button.disable.dropdown-item {
 
 /* POst  */
 
-span.d-flex.post-cat-date a {
+span.post-cat-date a {
   font-size: 12px;
   color: #1a5cdf;
   font-weight: 600;
@@ -3069,4 +3069,8 @@ span.d-flex.post-cat-date a {
 }
 span.blog_smallImage__64pTG {
   padding-bottom: 5px;
+}
+span.post-cat-date p {
+  line-height: 1.2;
+  margin-bottom: 0px;
 }
