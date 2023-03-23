@@ -478,7 +478,14 @@ const index = ({ id }) => {
                                       fontSize: '12px',
                                     }}
                                   >
-                                    {cmt.AUTHOR_NAME}
+                                    {cmt.AUTHOR_NAME}{' '}
+                                    {cmt.isAdvisor && (
+                                      <i
+                                        class="fa fa-check-circle"
+                                        aria-hidden="true"
+                                        style={{ color: 'blue' }}
+                                      ></i>
+                                    )}
                                   </p>
                                   <p
                                     style={{
@@ -591,7 +598,14 @@ const index = ({ id }) => {
                                                   fontSize: '12px',
                                                 }}
                                               >
-                                                {reply.AUTHOR_NAME}
+                                                {reply.AUTHOR_NAME}{' '}
+                                                {cmt.isAdvisor && (
+                                                  <i
+                                                    class="fa fa-check-circle"
+                                                    aria-hidden="true"
+                                                    style={{ color: 'blue' }}
+                                                  ></i>
+                                                )}
                                               </p>
                                               <p
                                                 style={{
@@ -787,9 +801,10 @@ const index = ({ id }) => {
                           as="textarea"
                           rows={3}
                           placeholder="Comment..."
-                          value={comment}
+                          value={!showReplyInput ? comment : ''}
                           onChange={handleCommentChange}
                           isInvalid={!!commentError}
+                          disabled={showReplyInput}
                         />
                         <Form.Control.Feedback type="invalid">
                           {commentError}
