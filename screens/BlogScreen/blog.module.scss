@@ -44,22 +44,22 @@
     padding: 5% 0% 2% 0%;
 }
 .commentReply {
-    font-weight: 600;
-    letter-spacing: 0.03rem;
-    color: #000000;
-    font-size: 13px;
-    padding: 5px 13px;
-    border-radius: 27px;
-    background: #f0f0f0;
-    width: 10%;
-    text-align: center;
-    cursor: pointer;
+    font-weight: 600!important;
+    letter-spacing: 0.03rem!important;
+    color: #000000!important;
+    font-size: 13px!important;
+    padding: 5px 13px!important;
+    border-radius: 27px!important;
+    background: #f0f0f0!important;
+    width: 10%!important;
+    text-align: center!important;
+    cursor: pointer!important;
 }
 .commentReply:hover {
-    color: #ffffff;
-    border-radius: 27px;
-    background: #808080;
-    padding: 5px 13px;
+    color: #ffffff!important;
+    border-radius: 27px!important;
+    background: #808080!important;
+    padding: 5px 13px!important;
 }
 .heading1 {
     font-size: 35px;
@@ -142,6 +142,9 @@
         flex-wrap: wrap;
         align-items: center;
         padding-bottom: 15px;
+        .popTextRight {
+            width: 73%;
+        }
     }
     .popTextLeft {
         margin-left: 15px;

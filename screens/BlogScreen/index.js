@@ -232,7 +232,6 @@ const index = ({
                                         display: 'inline-block',
                                         maxWidth: '136px!important',
                                         maxHeight: '96px!important',
-                                        position: 'relative!important',
                                         borderRadius: '15px',
                                         overflow: 'hidden',
                                         minWidth: '136px!important',
