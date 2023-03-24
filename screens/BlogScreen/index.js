@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import axios from 'axios'
 import moment from 'moment'
 import { parse } from 'parse5'
@@ -294,11 +296,27 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                  {['top'].map((placement) => (
+                                    <OverlayTrigger
+                                      key={placement}
+                                      placement={placement}
+                                      overlay={
+                                        <Tooltip id={`tooltip-${placement}`}>
+                                          <h3 className={styles.heading3}>
+                                            {item.TITLE.length >= 30
+                                              ? item.TITLE.substring(0, 26) + '...'
+                                              : item.TITLE}
+                                          </h3>
+                                        </Tooltip>
+                                      }
+                                    >
+                                      <h3 className={styles.heading3}>
+                                        {item.TITLE.length >= 30
+                                          ? item.TITLE.substring(0, 26) + '...'
+                                          : item.TITLE}
+                                      </h3>
+                                    </OverlayTrigger>
+                                  ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}

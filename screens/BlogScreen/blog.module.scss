@@ -20,17 +20,23 @@
             line-height: 1.7;
         }
     }
-    li {
-        color: #707a88;
-        font-size: 16px;
-        overflow-wrap: break-word;
-        background-color: #fff;
-        font-family: "Roboto",sans-serif!important;
-        line-height: 1.7;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        text-align: justify;
+    ul{
+        li {
+            color: #707a88;
+            font-size: 16px;
+            overflow-wrap: break-word;
+            background-color: #fff;
+            font-family: "Roboto",sans-serif!important;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-align: justify;
+            list-style-position: inside !important;
+            list-style-type: disclosure-closed;
+            margin-left: -2%;
+        }
     }
+    
     h4 {
         font-size: 24px;
         font-weight: 700;
@@ -253,6 +259,7 @@
         cursor: pointer;
     }
 }
+
 
 /* Mobile Media Query */
 @media only screen and (max-width: 600px) {
