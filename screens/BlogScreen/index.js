@@ -119,7 +119,7 @@ const index = ({
 
   return (
     <Fragment>
-      <Container fluid className="bg-white">
+      <Container fluid className="bg-black">
         <Container>
           <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
@@ -136,13 +136,13 @@ const index = ({
                       <Link href={`/post/${latest[0].POST_ID}`}>
                         <Row>
                           <Col lg={6} md={6} sm={12} xs={12}>
-                            <Row
+                            <Row className='image-hover-zoom'
                               style={{
                                 paddingLeft: '20px',
                                 paddingRight: '20px',
                               }}
                             >
-                              <Col
+                              <Col className='inner'
                                 style={{
                                   backgroundImage: `url('${popular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
@@ -182,12 +182,16 @@ const index = ({
                                   <span style={{ paddingRight: '20px' }}>
                                     {popular[0].CATEGORIES}
                                   </span>
+                                </p>
+                                <p className={styles.descriptionDate}>
                                   <span style={{ paddingRight: '20px' }}>
                                     {moment(popular[0].CREATED_AT).format(
                                       'MMMM D, YYYY'
                                     )}
                                   </span>
-                                  <span>
+                                  <span style={{
+                                    color: '#ffffff'
+                                  }}>
                                     <i className="fa fa-eye"></i>
                                     {popular[0].VISITOR_COUNT}
                                   </span>
@@ -217,12 +221,16 @@ const index = ({
                                         <span style={{ paddingRight: '20px' }}>
                                           {item.CATEGORIES}
                                         </span>
+                                      </p>
+                                      <p className={styles.descriptionDate}>
                                         <span style={{ paddingRight: '20px' }}>
                                           {moment(item.CREATED_AT).format(
                                             'MMMM D, YYYY'
                                           )}
                                         </span>
-                                        <span>
+                                        <span style={{
+                                            color: '#ffffff'
+                                          }}>
                                           <i className="fa fa-eye"></i>
                                           {item.VISITOR_COUNT}
                                         </span>
@@ -281,8 +289,8 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -325,12 +333,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -358,8 +370,8 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -386,12 +398,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -419,8 +435,8 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -447,12 +463,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -480,8 +500,8 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -508,12 +528,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -542,8 +566,8 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -570,12 +594,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -644,12 +672,16 @@ const index = ({
                                         <span style={{ paddingRight: '20px' }}>
                                           {item.CATEGORIES}
                                         </span>
+                                      </p>
+                                      <p className={styles.descriptionDate}>
                                         <span>
                                           {moment(item.CREATED_AT).format(
                                             'MMMM D, YYYY'
                                           )}
                                         </span>{' '}
-                                        <span>
+                                        <span style={{
+                                          color: '#ffffff'
+                                        }}>
                                           <i className="fa fa-eye"></i>
                                           {item.VISITOR_COUNT}
                                         </span>
@@ -665,15 +697,18 @@ const index = ({
                     </Col>
                     <Link href={`/post/${extracurricular[0].POST_ID}`}>
                       <Col lg={7} md={7} sm={12} xs={12}>
-                        <Row>
+                        <Row style={{
+                          paddingTop: '7%'
+                        }}>
                           <Col lg={6} md={6} sm={12} xs={12}>
-                            <Row
+                            <Row className='image-hover-zoom'
                               style={{
                                 paddingLeft: '20px',
                                 paddingRight: '20px',
+                                paddingTop: '20px'
                               }}
                             >
-                              <Col
+                              <Col className='inner'
                                 style={{
                                   backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
@@ -708,12 +743,16 @@ const index = ({
                                   <span style={{ paddingRight: '20px' }}>
                                     {extracurricular[0].CATEGORIES}
                                   </span>
+                                </p>
+                                <p className={styles.descriptionDate}>
                                   <span>
                                     {moment(
                                       extracurricular[0].CREATED_AT
                                     ).format('MMMM D, YYYY')}
                                   </span>{' '}
-                                  <span>
+                                  <span style={{
+                                    color: '#ffffff'
+                                  }}>
                                     <i className="fa fa-eye"></i>
                                     {extracurricular[0].VISITOR_COUNT}
                                   </span>
@@ -733,15 +772,15 @@ const index = ({
                           <h2 className={styles.mainHeading}>Read more</h2>
                         </Col>
                       </Row>
-                      <Row>
+                      <Row className={styles.readMoreSection}>
                         {blogs.map((item, index) => {
                           const text = getText(item.CONTENT)
                           return (
                             // <Fragment>
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row>
-                                  <Col
+                                <Row className='image-hover-zoom'>
+                                  <Col className='inner'
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -768,12 +807,16 @@ const index = ({
                                       <span style={{ paddingRight: '20px' }}>
                                         {item.CATEGORIES}
                                       </span>
+                                    </p>
+                                    <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
                                         {moment(item.CREATED_AT).format(
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span>
+                                      <span style={{
+                                        color: '#ffffff'
+                                      }}>
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -793,8 +836,9 @@ const index = ({
                               borderRadius: '40px',
                               fontSize: '16px',
                               letterSpacing: '0.05rem',
-                              background: '#000000',
-                              border: '1px solid #000000',
+                              background: '#ffffff',
+                              border: '1px solid #ffffff',
+                              color: '#000000',
                               padding: '7px 20px',
                               // display: `${
                               //   totalPosts == blogs.length && 'none'

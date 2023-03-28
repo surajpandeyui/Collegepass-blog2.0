@@ -3074,3 +3074,15 @@ span.post-cat-date p {
   line-height: 1.2;
   margin-bottom: 0px;
 }
+.inner {
+  display: block;
+  height: 100%;
+  transform: scale(1, 1);
+  transition: transform 0.4s;
+}
+.image-hover-zoom:hover .inner{
+    transform: scale(1.05, 1.05);
+}
+.has-medium-font-size {
+  color: #e3cc80;
+}

@@ -1,16 +1,14 @@
 .textWrap {
     p {
-        color: #292b2e;
+        color: #ffffffd6;
         font-weight: 500;
+        letter-spacing: 0.03rem!important;
         font-size: 18px;
-        letter-spacing: 0rem;
         overflow-wrap: break-word;
-        background-color: #fff;
         font-family: "Roboto", sans-serif !important;
         line-height: 1.5;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        text-align: justify;
         strong {
             font-weight: 600;
             color: #595959;
@@ -22,15 +20,13 @@
     }
     ul{
         li {
-            color: #707a88;
+            color: #adb3ba;
             font-size: 16px;
             overflow-wrap: break-word;
-            background-color: #fff;
             font-family: "Roboto",sans-serif!important;
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            text-align: justify;
             list-style-position: inside !important;
             list-style-type: disclosure-closed;
             margin-left: -2%;
@@ -44,6 +40,11 @@
         letter-spacing: 0.03rem;
         font-family: "Roboto",sans-serif!important;
         line-height: 1.7;
+    }
+}
+.readMoreSection {
+    div {
+        padding-bottom: 2%;
     }
 }
 .blogWrap {
@@ -72,9 +73,11 @@
     line-height: 1.1;
     font-weight: 600;
     padding-bottom: 5px;
+    color: #ffffff;
+    letter-spacing: 0.03rem;
 }
 .heading1:hover {
-    color: rgb(238, 47, 76);
+    color: #2f3ce2;
     cursor: pointer;
 }
 .heading3 {
@@ -82,9 +85,11 @@
     line-height: 26px;
     font-weight: 600;
     padding-bottom: 5px;
+    color: #e3cc80;
+    padding-top: 15px;
 }
 .heading3:hover {
-    color: #ee2f4c;
+    color: #2f3ce2;
     cursor: pointer;
 }
 .description {
@@ -113,21 +118,22 @@
         font-size: 24px;
         padding-bottom: 30px;
         letter-spacing: 0.03rem;
-        color: #203656;
+        color: #ffffff;
         font-family: "Poppins",sans-serif!important;
         font-weight: 700;
         line-height: 1.4;
     }
     .heading3 {
         font-size: 20px;
-        color: #203656;
+        color: #e3cc80;
+        letter-spacing: 0.03rem;
         font-family: "Poppins",sans-serif!important;
         font-weight: 700;
         line-height: 1.4;
         margin: 5px 0;
     }
     .heading3:hover {
-        color: rgb(238, 47, 76);
+        color: #2f3ce2;
         cursor: pointer;
     }
     .description {
@@ -143,7 +149,7 @@
     
     .popDev {
         display: inline-flex;
-        border-bottom: 1px solid #e4d1d182;
+        border-bottom: 1px solid #e4d1d12b;
         margin-bottom: 20px;
         flex-wrap: wrap;
         align-items: center;
@@ -158,7 +164,7 @@
 }
 .postSidebarHeading {
     font-size: 20px;
-    color: #562030;
+    color: #ffffff;
     font-family: "Poppins",sans-serif!important;
     font-weight: 700;
     line-height: 1.4;
@@ -168,7 +174,7 @@
     font-weight: 700;
     line-height: 1.4;
     font-size: 15px;
-    color: #203656;
+    color: #e3cc80;
 }
 .postSide {
     img {
@@ -195,12 +201,16 @@
         padding-bottom: 15px;
         font-weight: 600;
         letter-spacing: 0.03rem;
-        color: #000000;
+        color: #ffffff;
     }
     .heading3 {
         font-size: 22px;
         line-height: 26px;
         font-weight: 600;
+        color: #e3cc80;
+    }
+    .heading3:hover {
+        color: #2f3ce2;
     }
     .description {
         display: block;
@@ -214,15 +224,16 @@
     }
     .popDev {
         display: inline-flex;
-        border-bottom: 1px solid #e4d1d182;
-        margin-bottom: 13px;
+        border-bottom: 1px solid #e4d1d12b;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
     }
     .popTextLeft {
         margin-left: 15px;
     }
 }
 .mainHeading {
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     font-size: 36px!important;
     line-height: 1.2!important;
@@ -237,7 +248,7 @@
     letter-spacing: 0.03rem;
     font-size: 14px;
     display: block;
-    margin: 0 0 25px;
+    margin: 0 0 -2px;
     -moz-column-count: 1;
     column-count: 1;
     grid-column-gap: 48px;
@@ -248,14 +259,14 @@
     span {
         font-size: 14px;
         letter-spacing: 0.03rem;
-        color: #1a5cdf;
+        color: #ffffffd6;
         font-weight: 600;
         i {
             margin-right: 5px;
         }
     }
     span:hover {
-        color: rgb(238, 47, 76);
+        color: #2f3ce2;
         cursor: pointer;
     }
 }

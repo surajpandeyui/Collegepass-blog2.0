@@ -396,7 +396,7 @@ const index = ({ id }) => {
   console.log('EXtra Content ------->', extraPosts)
   return (
     <Fragment>
-      <Container fluid className="bg-white">
+      <Container fluid className="bg-black">
         <Container>
           <Row className={styles.textWrap}>
             <Col
@@ -417,7 +417,7 @@ const index = ({ id }) => {
                       marginBottom: '20px',
                       overflowWrap: 'break-word',
                       fontSize: '32px',
-                      color: '#000000',
+                      color: '#ffffff',
                       fontFamily: '"Poppins",sans-serif',
                       fontWeight: '700',
                       lineHeight: '1.4',
@@ -744,11 +744,11 @@ const index = ({ id }) => {
               <Row>
                 <Col
                   style={{
-                    border: 'solid 1px #ebebeb',
+                    background: '#272727',
+                    border: '1px solid rgb(235 235 235 / 18%)',
                     borderRadius: '10px',
                     padding: '30px',
                     marginTop: '45px',
-                    background: 'rgba(246, 246, 246, 0.28)',
                   }}
                 >
                   {!user && (
@@ -798,7 +798,9 @@ const index = ({ id }) => {
                         className="mb-3"
                         controlId="exampleForm.ControlTextarea1"
                       >
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label style={{
+                          color: '#ffffff'
+                        }}>Comment</Form.Label>
                         <Form.Control
                           as="textarea"
                           rows={3}
@@ -822,8 +824,9 @@ const index = ({ id }) => {
                         borderRadius: '40px',
                         fontSize: '16px',
                         letterSpacing: '0.05rem',
-                        background: '#000000',
-                        border: '1px solid #000000',
+                        background: '#ffffff',
+                        border: '1px solid #ffffff',
+                        color: '#000000',
                         padding: '7px 20px',
                       }}
                     >
@@ -849,13 +852,13 @@ const index = ({ id }) => {
                 style={{
                   position: 'sticky',
                   top: '50px',
-                  background: 'rgb(246 246 246 / 28%)',
+                  background: '#272727',
                   padding: '20px 15px',
                   width: '100%',
                   height: 'auto',
                   marginBottom: '50px',
                   borderRadius: '10px',
-                  border: 'solid 1px #ebebeb',
+                  border: '1px solid rgb(235 235 235 / 18%)',
                 }}
               >
                 <Col className="pb-3">
