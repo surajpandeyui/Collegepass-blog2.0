@@ -23,7 +23,7 @@ export default function AboutUs() {
 				<link rel="canonical" href="https://www.collegepass.org/about" />
 			</Head>
 
-			<main className="bg-black">
+			<main className="bg-white">
 				<BlogScreen></BlogScreen>
 			</main>
 		</>
