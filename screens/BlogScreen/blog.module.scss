@@ -288,6 +288,9 @@
 
 /* Mobile Media Query */
 @media only screen and (max-width: 600px) {
+    .commentReply {
+        width: 50%!important;
+    }
     .blogWrap {
         padding: 2% 3% 0% 3%;
     }
