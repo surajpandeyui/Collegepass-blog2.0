@@ -507,24 +507,15 @@ const index = ({ id }) => {
                         cursor: 'pointer',
                       }}
                       onClick={() => {
-                        if (
-                          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-                            navigator.userAgent
-                          )
-                        ) {
-                          // If accessing from a mobile device, use the appropriate URL scheme
-                          window.location.href =
-                            'android.intent://user/' +
-                            'CollegePass' +
-                            '#Intent;package=com.google.android.youtube;scheme=https;end;'
-                          window.location.href =
-                            'youtube://www.youtube.com/' + '@CollegePass'
+                        if(/Android/i.test(navigator.userAgent)) {
+                          // If accessing from an Android device, open the YouTube app using the intent:// URL scheme
+                          window.location.href = `intent://www.youtube.com/@CollegePass#Intent;scheme=https;package=com.google.android.youtube;end;`;
+                        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                          // If accessing from an iOS device, open the YouTube app using the vnd.youtube:// URL scheme
+                          window.location.href = `vnd.youtube://www.youtube.com/@CollegePass`;
                         } else {
                           // If accessing from a desktop device, open the URL in a new tab
-                          window.open(
-                            `https://www.youtube.com/@CollegePass`,
-                            '_blank'
-                          )
+                          window.open(`https://www.youtube.com/@CollegePass`, '_blank');
                         }
                       }}
                     ></i>
