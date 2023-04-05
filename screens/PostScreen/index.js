@@ -518,7 +518,7 @@ const index = ({ id }) => {
                             'CollegePass' +
                             '#Intent;package=com.google.android.youtube;scheme=https;end;'
                           window.location.href =
-                            'youtube://www.youtube.com/channel/' + 'CollegePass'
+                            'youtube://www.youtube.com/' + '@CollegePass'
                         } else {
                           // If accessing from a desktop device, open the URL in a new tab
                           window.open(
