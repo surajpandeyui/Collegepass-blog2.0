@@ -2,8 +2,7 @@
 .textWrap {
     .socialPost {
         p {
-            padding: 10px;
-            margin-top: 20px;
+            padding: 10px 20px 10px 0px;
             i {
                 font-size: 31px;
             }
@@ -284,7 +283,17 @@
         cursor: pointer;
     }
 }
-
+.postWrap {
+    button {
+        border-radius: 40px;
+        font-size: 16px;
+        letter-spacing: 0.05rem;
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        padding: 7px 20px;
+    }
+}
 
 /* Mobile Media Query */
 @media only screen and (max-width: 600px) {

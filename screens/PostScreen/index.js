@@ -403,7 +403,7 @@ const index = ({ id }) => {
   return (
     <Fragment>
       <Container fluid className="bg-black">
-        <Container>
+        <Container className={styles.postWrap}>
           <Row className={styles.textWrap}>
             <Col
               lg={8}
@@ -461,89 +461,103 @@ const index = ({ id }) => {
               </Row>
 
               <Row>
-                <Col className={styles.socialPost}>
-                  <p>
-                    <FacebookShareButton url={`${window.location.href}`}>
-                      <i
-                        className="fa fa-facebook-official"
-                        aria-hidden="true"
-                        style={{
-                          color: '#3b5998',
-                        }}
-                      ></i>
-                    </FacebookShareButton>
-                  </p>
-                  {/* <p>
-                    <i
-                      className="fa fa-instagram"
-                      aria-hidden="true"
-                      style={{
-                        color: '#d62976',
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => {
-                        const url = `instagram://library?AssetPath=https://collegepass.org`
-                        window.location.href = url
-                      }}
-                    ></i>
-                  </p> */}
-                  <p>
-                    <TwitterShareButton url={`${window.location.href}`}>
-                      <i
-                        className="fa fa-twitter-square"
-                        aria-hidden="true"
-                        style={{
-                          color: '#00acee ',
-                        }}
-                      ></i>
-                    </TwitterShareButton>
-                  </p>
-                  <p>
-                    <i
-                      className="fa fa-youtube-play"
-                      aria-hidden="true"
-                      style={{
-                        color: '#FF0000',
-                        cursor: 'pointer',
-                      }}
-                      onClick={() => {
-                        if(/Android/i.test(navigator.userAgent)) {
-                          // If accessing from an Android device, open the YouTube app using the intent:// URL scheme
-                          window.location.href = `intent://www.youtube.com/@CollegePass#Intent;scheme=https;package=com.google.android.youtube;end;`;
-                        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                          // If accessing from an iOS device, open the YouTube app using the vnd.youtube:// URL scheme
-                          window.location.href = `vnd.youtube://www.youtube.com/@CollegePass`;
-                        } else {
-                          // If accessing from a desktop device, open the URL in a new tab
-                          window.open(`https://www.youtube.com/@CollegePass`, '_blank');
-                        }
-                      }}
-                    ></i>
-                  </p>
-                  <p>
-                    <LinkedinShareButton url={`${window.location.href}`}>
-                      <i
-                        className="fa fa-linkedin-square"
-                        aria-hidden="true"
-                        style={{
-                          color: 'rgb(10, 102, 194)',
-                        }}
-                      ></i>
-                    </LinkedinShareButton>
-                  </p>
+                <Col>
+                  <Row>
+                    <Col>
+                      <h5 style={{
+                            fontWeight: '600',
+                            color: '#ffffff',
+                            paddingTop: '25px',
+                            letterSpacing: '0.03rem'
+                      }}>Found this article useful? Share it!</h5>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className={styles.socialPost}>
+                      <p>
+                        <FacebookShareButton url={`${window.location.href}`}>
+                          <i
+                            className="fa fa-facebook-official"
+                            aria-hidden="true"
+                            style={{
+                              color: '#3b5998',
+                            }}
+                          ></i>
+                        </FacebookShareButton>
+                      </p>
+                      {/* <p>
+                        <i
+                          className="fa fa-instagram"
+                          aria-hidden="true"
+                          style={{
+                            color: '#d62976',
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => {
+                            const url = `instagram://library?AssetPath=https://collegepass.org`
+                            window.location.href = url
+                          }}
+                        ></i>
+                      </p> */}
+                      <p>
+                        <TwitterShareButton url={`${window.location.href}`}>
+                          <i
+                            className="fa fa-twitter-square"
+                            aria-hidden="true"
+                            style={{
+                              color: '#00acee ',
+                            }}
+                          ></i>
+                        </TwitterShareButton>
+                      </p>
+                      <p>
+                        <i
+                          className="fa fa-youtube-play"
+                          aria-hidden="true"
+                          style={{
+                            color: '#FF0000',
+                            cursor: 'pointer',
+                          }}
+                          onClick={() => {
+                            if(/Android/i.test(navigator.userAgent)) {
+                              // If accessing from an Android device, open the YouTube app using the intent:// URL scheme
+                              window.location.href = `intent://www.youtube.com/@CollegePass#Intent;scheme=https;package=com.google.android.youtube;end;`;
+                            } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                              // If accessing from an iOS device, open the YouTube app using the vnd.youtube:// URL scheme
+                              window.location.href = `vnd.youtube://www.youtube.com/@CollegePass`;
+                            } else {
+                              // If accessing from a desktop device, open the URL in a new tab
+                              window.open(`https://www.youtube.com/@CollegePass`, '_blank');
+                            }
+                          }}
+                        ></i>
+                      </p>
+                      <p>
+                        <LinkedinShareButton url={`${window.location.href}`}>
+                          <i
+                            className="fa fa-linkedin-square"
+                            aria-hidden="true"
+                            style={{
+                              color: 'rgb(10, 102, 194)',
+                            }}
+                          ></i>
+                        </LinkedinShareButton>
+                      </p>
 
-                  <p>
-                    <WhatsappShareButton url={`${window.location.href}`}>
-                      <i
-                        className="fa fa-whatsapp"
-                        aria-hidden="true"
-                        style={{
-                          // color: 'rgb(10, 102, 194)',
-                          color: 'green',
-                        }}
-                      ></i>
-                    </WhatsappShareButton>
-                  </p>
+                      <p>
+                        <WhatsappShareButton url={`${window.location.href}`}>
+                          <i
+                            className="fa fa-whatsapp"
+                            aria-hidden="true"
+                            style={{
+                              // color: 'rgb(10, 102, 194)',
+                              color: 'green',
+                            }}
+                          ></i>
+                        </WhatsappShareButton>
+                      </p>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
 
@@ -998,10 +1012,12 @@ const index = ({ id }) => {
                               <span
                                 style={{
                                   color: '#ffffff',
-                                  fontSize: '16px',
+                                  fontSize: '12px',
                                 }}
                               >
-                                <i className="fa fa-eye"></i>
+                                <i className="fa fa-eye" style={{
+                                  paddingRight: '5px'
+                                }}></i>
                                 {item.VISITOR_COUNT}
                               </span>
                             </p>
