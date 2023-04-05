@@ -473,15 +473,20 @@ const index = ({ id }) => {
                       ></i>
                     </FacebookShareButton>
                   </p>
-                  {/* <p>
+                  <p>
                     <i
                       className="fa fa-instagram"
                       aria-hidden="true"
                       style={{
                         color: '#d62976',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => {
+                        const url = `instagram://library?AssetPath=https://collegepass.org`
+                        window.location.href = url
                       }}
                     ></i>
-                  </p> */}
+                  </p>
                   <p>
                     <TwitterShareButton url={`${window.location.href}`}>
                       <i
