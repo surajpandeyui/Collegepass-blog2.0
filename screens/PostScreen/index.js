@@ -4,6 +4,12 @@ import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import axios from 'axios'
 import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  WhatsappShareButton,
+} from 'react-share'
+import {
   APIAddComment,
   APIBlogvisited,
   APIGetBlog,
@@ -456,21 +462,70 @@ const index = ({ id }) => {
 
               <Row>
                 <Col className={styles.socialPost}>
-                  <p><i className="fa fa-facebook-official" aria-hidden="true" style={{
-                    color: '#3b5998'
-                  }}></i></p>
-                  <p><i className="fa fa-instagram" aria-hidden="true" style={{
-                    color: '#d62976'
-                  }}></i></p>
-                  <p><i className="fa fa-twitter-square" aria-hidden="true" style={{
-                    color: '#00acee '
-                  }}></i></p>
-                  <p><i className="fa fa-youtube-play" aria-hidden="true" style={{
-                    color: '#FF0000'
-                  }}></i></p>
-                  <p><i className="fa fa-linkedin-square" aria-hidden="true" style={{
-                    color: 'rgb(10, 102, 194)'
-                  }}></i></p>
+                  <p>
+                    <FacebookShareButton url={`${window.location.href}`}>
+                      <i
+                        className="fa fa-facebook-official"
+                        aria-hidden="true"
+                        style={{
+                          color: '#3b5998',
+                        }}
+                      ></i>
+                    </FacebookShareButton>
+                  </p>
+                  {/* <p>
+                    <i
+                      className="fa fa-instagram"
+                      aria-hidden="true"
+                      style={{
+                        color: '#d62976',
+                      }}
+                    ></i>
+                  </p> */}
+                  <p>
+                    <TwitterShareButton url={`${window.location.href}`}>
+                      <i
+                        className="fa fa-twitter-square"
+                        aria-hidden="true"
+                        style={{
+                          color: '#00acee ',
+                        }}
+                      ></i>
+                    </TwitterShareButton>
+                  </p>
+                  {/* <p>
+                    <i
+                      className="fa fa-youtube-play"
+                      aria-hidden="true"
+                      style={{
+                        color: '#FF0000',
+                      }}
+                    ></i>
+                  </p> */}
+                  <p>
+                    <LinkedinShareButton url={`${window.location.href}`}>
+                      <i
+                        className="fa fa-linkedin-square"
+                        aria-hidden="true"
+                        style={{
+                          color: 'rgb(10, 102, 194)',
+                        }}
+                      ></i>
+                    </LinkedinShareButton>
+                  </p>
+
+                  <p>
+                    <WhatsappShareButton url={`${window.location.href}`}>
+                      <i
+                        className="fa fa-whatsapp"
+                        aria-hidden="true"
+                        style={{
+                          // color: 'rgb(10, 102, 194)',
+                          color: 'green',
+                        }}
+                      ></i>
+                    </WhatsappShareButton>
+                  </p>
                 </Col>
               </Row>
 
@@ -568,8 +623,13 @@ const index = ({ id }) => {
                                 onClick={(e) => {
                                   setExpandedReplyIndex(null)
                                 }}
-                                style={{ cursor: 'pointer', fontWeight: '600', color: '#0a56ec', fontSize: '13px',
-                                letterSpacing: '0.02rem', }}
+                                style={{
+                                  cursor: 'pointer',
+                                  fontWeight: '600',
+                                  color: '#0a56ec',
+                                  fontSize: '13px',
+                                  letterSpacing: '0.02rem',
+                                }}
                               >
                                 {`Hide ${cmt.replies.length} ${
                                   cmt.replies.length === 1 ? 'reply' : 'replies'
@@ -581,8 +641,13 @@ const index = ({ id }) => {
                                   console.log('Should not make it here')
                                   setExpandedReplyIndex(commentIndex)
                                 }}
-                                style={{ cursor: 'pointer', fontWeight: '600', color: '#0a56ec', fontSize: '13px',
-                                letterSpacing: '0.02rem', }}
+                                style={{
+                                  cursor: 'pointer',
+                                  fontWeight: '600',
+                                  color: '#0a56ec',
+                                  fontSize: '13px',
+                                  letterSpacing: '0.02rem',
+                                }}
                               >
                                 {`View ${cmt.replies.length} ${
                                   cmt.replies.length === 1 ? 'reply' : 'replies'
@@ -818,9 +883,13 @@ const index = ({ id }) => {
                         className="mb-3"
                         controlId="exampleForm.ControlTextarea1"
                       >
-                        <Form.Label style={{
-                          color: '#ffffff'
-                        }}>Comment</Form.Label>
+                        <Form.Label
+                          style={{
+                            color: '#ffffff',
+                          }}
+                        >
+                          Comment
+                        </Form.Label>
                         <Form.Control
                           as="textarea"
                           rows={3}
@@ -907,6 +976,17 @@ const index = ({ id }) => {
                                 {moment(item.CREATED_AT).format('MMMM D, YYYY')}
                               </a>
                             </p>
+                            <p>
+                              <span
+                                style={{
+                                  color: '#ffffff',
+                                  fontSize: '16px',
+                                }}
+                              >
+                                <i className="fa fa-eye"></i>
+                                {item.VISITOR_COUNT}
+                              </span>
+                            </p>
                           </span>
                         </Col>
                       </Row>
@@ -923,8 +1003,6 @@ const index = ({ id }) => {
 }
 
 export default index
-
-
 
 /*import React, { Fragment } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
