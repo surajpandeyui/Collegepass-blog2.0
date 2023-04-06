@@ -3086,3 +3086,7 @@ span.post-cat-date p {
 .has-medium-font-size {
   color: #e3cc80;
 }
+
+.tooltip-top {
+  font: 12px!important;
+}
