@@ -297,6 +297,34 @@
 
 /* Mobile Media Query */
 @media only screen and (max-width: 600px) {
+  .mobileSection {
+    margin-bottom: 25px;
+    padding: 8px;
+    background-color: #ffffff14;
+  }
+  .description {
+    display: none;
+  }
+  .mainHeading {
+    font-size: 28px !important;
+    margin-top: 30px!important;
+  }
+  .heading3 {
+    font-size: 18px!important;
+  }
+  .heading1 {
+    font-size: 22px!important;
+    line-height: 1.1;
+    font-weight: 600;
+    padding-bottom: 5px;
+    color: #ffffff;
+    letter-spacing: 0.03rem;
+  }
+  .popDev {
+    .popTextRight {
+      width: 60%!important;
+    }
+  }
   .postWrap {
     button {
       padding: 7px 10px;

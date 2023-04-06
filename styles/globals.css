@@ -1195,6 +1195,14 @@ border-radius: 15px;
 /* mobile  */
 
 @media only screen and (max-width: 480px) and (min-width: 320px) { 
+  .inner {
+    height: 141px!important;
+    margin-top: 5px!important;
+  }
+  .inner.perticular-top.col {
+    height: 210px!important;
+  }
+
   button.modal_verifyOtp__j_Btn.btn.btn-primary {
     font-size: 20px;
     font-weight: 600;
@@ -3079,14 +3087,16 @@ span.post-cat-date p {
   height: 100%;
   transform: scale(1, 1);
   transition: transform 0.4s;
+
+  background-size: cover;
+  background-position: center;
+  height: 451px;
+  border-radius: 15px;
+  cursor: pointer;
 }
 .image-hover-zoom:hover .inner{
     transform: scale(1.05, 1.05);
 }
 .has-medium-font-size {
   color: #e3cc80;
-}
-
-.tooltip-top {
-  font: 12px!important;
 }

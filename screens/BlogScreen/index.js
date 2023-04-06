@@ -144,14 +144,9 @@ const index = ({
                               }}
                             >
                               <Col
-                                className="inner"
+                                className="inner perticular-top"
                                 style={{
                                   backgroundImage: `url('${popular[0].DISPLAY_IMAGE_BANNER}')`,
-                                  backgroundSize: 'cover',
-                                  backgroundPosition: 'center',
-                                  height: '451px',
-                                  borderRadius: '15px',
-                                  cursor: 'pointer',
                                 }}
                               ></Col>
                             </Row>
@@ -161,8 +156,7 @@ const index = ({
                               <Col
                                 style={{
                                   paddingTop: '15%',
-                                  paddingLeft: '0',
-                                  paddingRight: '0',
+                                  paddingBottom: '15%'
                                 }}
                               >
                                 <h1 className={styles.heading1}>
@@ -295,66 +289,73 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
-                                  <Col
-                                    className="inner"
-                                    style={{
-                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      height: '410px',
-                                      margin: '10px',
-                                      borderRadius: '15px',
-                                      cursor: 'pointer',
-                                    }}
-                                  ></Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
-                                            <h3 className={styles.heading3}>
-                                              {item.TITLE}
-                                            </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row className="image-hover-zoom">
+                                      <Col
+                                        className="inner"
                                         style={{
-                                          color: '#ffffff',
+                                          backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                          height: '410px',
+                                          margin: '10px',
+                                          borderRadius: '15px',
+                                          cursor: 'pointer',
                                         }}
                                       >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                      </Col>
+                                    </Row>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
+                                            </h3>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>
@@ -378,66 +379,72 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
-                                  <Col
-                                    className="inner"
-                                    style={{
-                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      height: '410px',
-                                      margin: '10px',
-                                      borderRadius: '15px',
-                                      cursor: 'pointer',
-                                    }}
-                                  ></Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
-                                            <h3 className={styles.heading3}>
-                                              {item.TITLE}
-                                            </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row className="image-hover-zoom">
+                                      <Col
+                                        className="inner"
                                         style={{
-                                          color: '#ffffff',
+                                          backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                          height: '410px',
+                                          margin: '10px',
+                                          borderRadius: '15px',
+                                          cursor: 'pointer',
                                         }}
-                                      >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                      ></Col>
+                                    </Row>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
+                                            </h3>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>
@@ -461,66 +468,72 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
-                                  <Col
-                                    className="inner"
-                                    style={{
-                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      height: '410px',
-                                      margin: '10px',
-                                      borderRadius: '15px',
-                                      cursor: 'pointer',
-                                    }}
-                                  ></Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
-                                            <h3 className={styles.heading3}>
-                                              {item.TITLE}
-                                            </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row className="image-hover-zoom">
+                                      <Col
+                                        className="inner"
                                         style={{
-                                          color: '#ffffff',
+                                          backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                          height: '410px',
+                                          margin: '10px',
+                                          borderRadius: '15px',
+                                          cursor: 'pointer',
                                         }}
-                                      >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                      ></Col>
+                                    </Row>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
+                                            </h3>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>
@@ -544,66 +557,72 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
-                                  <Col
-                                    className="inner"
-                                    style={{
-                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      height: '410px',
-                                      margin: '10px',
-                                      borderRadius: '15px',
-                                      cursor: 'pointer',
-                                    }}
-                                  ></Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
-                                            <h3 className={styles.heading3}>
-                                              {item.TITLE}
-                                            </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row className="image-hover-zoom">
+                                      <Col
+                                        className="inner"
                                         style={{
-                                          color: '#ffffff',
+                                          backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                          height: '410px',
+                                          margin: '10px',
+                                          borderRadius: '15px',
+                                          cursor: 'pointer',
                                         }}
-                                      >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                      ></Col>
+                                    </Row>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
+                                            </h3>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>
@@ -628,66 +647,72 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
-                                  <Col
-                                    className="inner"
-                                    style={{
-                                      backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
-                                      backgroundSize: 'cover',
-                                      backgroundPosition: 'center',
-                                      height: '410px',
-                                      margin: '10px',
-                                      borderRadius: '15px',
-                                      cursor: 'pointer',
-                                    }}
-                                  ></Col>
-                                </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
-                                            <h3 className={styles.heading3}>
-                                              {item.TITLE}
-                                            </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row className="image-hover-zoom">
+                                      <Col
+                                        className="inner"
                                         style={{
-                                          color: '#ffffff',
+                                          backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                          height: '410px',
+                                          margin: '10px',
+                                          borderRadius: '15px',
+                                          cursor: 'pointer',
                                         }}
-                                      >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                      ></Col>
+                                    </Row>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
+                                            </h3>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>
@@ -790,7 +815,7 @@ const index = ({
                               }}
                             >
                               <Col
-                                className="inner"
+                                className="inner perticular-top"
                                 style={{
                                   backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
@@ -807,8 +832,6 @@ const index = ({
                               <Col
                                 style={{
                                   paddingTop: '15%',
-                                  paddingLeft: '0',
-                                  paddingRight: '0',
                                 }}
                               >
                                 <h1 className={styles.heading1}>
@@ -863,7 +886,9 @@ const index = ({
                             // <Fragment>
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className="image-hover-zoom">
+                                <Row className={styles.mobileSection}>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                  <Row className="image-hover-zoom">
                                   <Col
                                     className="inner"
                                     style={{
@@ -877,52 +902,56 @@ const index = ({
                                     }}
                                   ></Col>
                                 </Row>
-                                <Row>
-                                  <Col>
-                                    {['top'].map((placement) => (
-                                      <OverlayTrigger
-                                        key={placement}
-                                        placement={placement}
-                                        overlay={
-                                          <Tooltip id={`tooltip-${placement}`}>
+                                  </Col>
+                                  <Col lg={12} md={12} sm={6} xs={6}>
+                                    <Row>
+                                      <Col>
+                                        {['top'].map((placement) => (
+                                          <OverlayTrigger
+                                            key={placement}
+                                            placement={placement}
+                                            overlay={
+                                              <Tooltip id={`tooltip-${placement}`}>
+                                                <h3 className={styles.heading3}>
+                                                  {item.TITLE}
+                                                </h3>
+                                              </Tooltip>
+                                            }
+                                          >
                                             <h3 className={styles.heading3}>
-                                              {item.TITLE}
+                                              {item.TITLE.length >= 30
+                                                ? item.TITLE.substring(0, 26) +
+                                                  '...'
+                                                : item.TITLE}
                                             </h3>
-                                          </Tooltip>
-                                        }
-                                      >
-                                        <h3 className={styles.heading3}>
-                                          {item.TITLE.length >= 30
-                                            ? item.TITLE.substring(0, 26) +
-                                              '...'
-                                            : item.TITLE}
-                                        </h3>
-                                      </OverlayTrigger>
-                                    ))}
-                                    <p
-                                      className={styles.description}
-                                      dangerouslySetInnerHTML={{ __html: text }}
-                                    ></p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {item.CATEGORIES}
-                                      </span>
-                                    </p>
-                                    <p className={styles.descriptionDate}>
-                                      <span style={{ paddingRight: '20px' }}>
-                                        {moment(item.CREATED_AT).format(
-                                          'MMMM D, YYYY'
-                                        )}
-                                      </span>
-                                      <span
-                                        style={{
-                                          color: '#ffffff',
-                                        }}
-                                      >
-                                        <i className="fa fa-eye"></i>
-                                        {item.VISITOR_COUNT}
-                                      </span>
-                                    </p>
+                                          </OverlayTrigger>
+                                        ))}
+                                        <p
+                                          className={styles.description}
+                                          dangerouslySetInnerHTML={{ __html: text }}
+                                        ></p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {item.CATEGORIES}
+                                          </span>
+                                        </p>
+                                        <p className={styles.descriptionDate}>
+                                          <span style={{ paddingRight: '20px' }}>
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                          </span>
+                                          <span
+                                            style={{
+                                              color: '#ffffff',
+                                            }}
+                                          >
+                                            <i className="fa fa-eye"></i>
+                                            {item.VISITOR_COUNT}
+                                          </span>
+                                        </p>
+                                      </Col>
+                                    </Row>
                                   </Col>
                                 </Row>
                               </Col>

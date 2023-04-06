@@ -510,7 +510,7 @@ const index = ({ id }) => {
                           ></i>
                         </TwitterShareButton>
                       </p>
-                      <p>
+                      {/*<p>
                         <i
                           className="fa fa-youtube-play"
                           aria-hidden="true"
@@ -531,7 +531,7 @@ const index = ({ id }) => {
                             }
                           }}
                         ></i>
-                      </p>
+                        </p>*/}
                       <p>
                         <LinkedinShareButton url={`${window.location.href}`}>
                           <i
