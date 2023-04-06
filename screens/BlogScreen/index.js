@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 import axios from 'axios'
 import moment from 'moment'
 import { parse } from 'parse5'
@@ -136,13 +136,15 @@ const index = ({
                       <Link href={`/post/${latest[0].POST_ID}`}>
                         <Row>
                           <Col lg={6} md={6} sm={12} xs={12}>
-                            <Row className='image-hover-zoom'
+                            <Row
+                              className="image-hover-zoom"
                               style={{
                                 paddingLeft: '20px',
                                 paddingRight: '20px',
                               }}
                             >
-                              <Col className='inner'
+                              <Col
+                                className="inner"
                                 style={{
                                   backgroundImage: `url('${popular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
@@ -189,9 +191,11 @@ const index = ({
                                       'MMMM D, YYYY'
                                     )}
                                   </span>
-                                  <span style={{
-                                    color: '#ffffff'
-                                  }}>
+                                  <span
+                                    style={{
+                                      color: '#ffffff',
+                                    }}
+                                  >
                                     <i className="fa fa-eye"></i>
                                     {popular[0].VISITOR_COUNT}
                                   </span>
@@ -228,9 +232,11 @@ const index = ({
                                             'MMMM D, YYYY'
                                           )}
                                         </span>
-                                        <span style={{
-                                            color: '#ffffff'
-                                          }}>
+                                        <span
+                                          style={{
+                                            color: '#ffffff',
+                                          }}
+                                        >
                                           <i className="fa fa-eye"></i>
                                           {item.VISITOR_COUNT}
                                         </span>
@@ -289,8 +295,9 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -304,27 +311,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                  {['top'].map((placement) => (
-                                    <OverlayTrigger
-                                      key={placement}
-                                      placement={placement}
-                                      overlay={
-                                        <Tooltip id={`tooltip-${placement}`}>
-                                          <h3 className={styles.heading3}>
-                                            {item.TITLE.length >= 30
-                                              ? item.TITLE.substring(0, 26) + '...'
-                                              : item.TITLE}
-                                          </h3>
-                                        </Tooltip>
-                                      }
-                                    >
-                                      <h3 className={styles.heading3}>
-                                        {item.TITLE.length >= 30
-                                          ? item.TITLE.substring(0, 26) + '...'
-                                          : item.TITLE}
-                                      </h3>
-                                    </OverlayTrigger>
-                                  ))}
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -340,9 +346,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -370,8 +378,9 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -385,11 +394,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -405,9 +429,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -435,8 +461,9 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -450,11 +477,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -470,9 +512,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -500,8 +544,9 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -515,11 +560,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -535,9 +595,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -566,8 +628,9 @@ const index = ({
                           return (
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -581,11 +644,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -601,9 +679,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
@@ -679,9 +759,11 @@ const index = ({
                                             'MMMM D, YYYY'
                                           )}
                                         </span>{' '}
-                                        <span style={{
-                                          color: '#ffffff'
-                                        }}>
+                                        <span
+                                          style={{
+                                            color: '#ffffff',
+                                          }}
+                                        >
                                           <i className="fa fa-eye"></i>
                                           {item.VISITOR_COUNT}
                                         </span>
@@ -699,14 +781,16 @@ const index = ({
                       <Col lg={7} md={7} sm={12} xs={12}>
                         <Row>
                           <Col lg={6} md={6} sm={12} xs={12}>
-                            <Row className='image-hover-zoom'
+                            <Row
+                              className="image-hover-zoom"
                               style={{
                                 paddingLeft: '20px',
                                 paddingRight: '20px',
-                                paddingTop: '20px'
+                                paddingTop: '20px',
                               }}
                             >
-                              <Col className='inner'
+                              <Col
+                                className="inner"
                                 style={{
                                   backgroundImage: `url('${extracurricular[0].DISPLAY_IMAGE_BANNER}')`,
                                   backgroundSize: 'cover',
@@ -748,9 +832,11 @@ const index = ({
                                       extracurricular[0].CREATED_AT
                                     ).format('MMMM D, YYYY')}
                                   </span>{' '}
-                                  <span style={{
-                                    color: '#ffffff'
-                                  }}>
+                                  <span
+                                    style={{
+                                      color: '#ffffff',
+                                    }}
+                                  >
                                     <i className="fa fa-eye"></i>
                                     {extracurricular[0].VISITOR_COUNT}
                                   </span>
@@ -777,8 +863,9 @@ const index = ({
                             // <Fragment>
                             <Link href={`/post/${item.POST_ID}`}>
                               <Col lg={3} md={3} sm={12} xs={12} key={index}>
-                                <Row className='image-hover-zoom'>
-                                  <Col className='inner'
+                                <Row className="image-hover-zoom">
+                                  <Col
+                                    className="inner"
                                     style={{
                                       backgroundImage: `url('${item.DISPLAY_IMAGE_BANNER}')`,
                                       backgroundSize: 'cover',
@@ -792,11 +879,26 @@ const index = ({
                                 </Row>
                                 <Row>
                                   <Col>
-                                    <h3 className={styles.heading3}>
-                                      {item.TITLE.length >= 30
-                                        ? item.TITLE.substring(0, 26) + '...'
-                                        : item.TITLE}
-                                    </h3>
+                                    {['top'].map((placement) => (
+                                      <OverlayTrigger
+                                        key={placement}
+                                        placement={placement}
+                                        overlay={
+                                          <Tooltip id={`tooltip-${placement}`}>
+                                            <h3 className={styles.heading3}>
+                                              {item.TITLE}
+                                            </h3>
+                                          </Tooltip>
+                                        }
+                                      >
+                                        <h3 className={styles.heading3}>
+                                          {item.TITLE.length >= 30
+                                            ? item.TITLE.substring(0, 26) +
+                                              '...'
+                                            : item.TITLE}
+                                        </h3>
+                                      </OverlayTrigger>
+                                    ))}
                                     <p
                                       className={styles.description}
                                       dangerouslySetInnerHTML={{ __html: text }}
@@ -812,9 +914,11 @@ const index = ({
                                           'MMMM D, YYYY'
                                         )}
                                       </span>
-                                      <span style={{
-                                        color: '#ffffff'
-                                      }}>
+                                      <span
+                                        style={{
+                                          color: '#ffffff',
+                                        }}
+                                      >
                                         <i className="fa fa-eye"></i>
                                         {item.VISITOR_COUNT}
                                       </span>
