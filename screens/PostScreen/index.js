@@ -467,7 +467,7 @@ const index = ({ id }) => {
                       <h5 style={{
                             fontWeight: '600',
                             color: '#ffffff',
-                            paddingTop: '60px',
+                            paddingTop: '30px',
                             letterSpacing: '0.03rem'
                       }}>Found this article useful? Share it!</h5>
                     </Col>
