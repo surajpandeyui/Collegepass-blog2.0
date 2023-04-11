@@ -1,5 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form } from 'react-bootstrap'
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import styles from '../BlogScreen/blog.module.scss'
 import Image from 'next/image'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -123,6 +126,50 @@ const index = ({
         <Container>
           <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
+              <Row>
+                <Col className={styles.headerSearch}>
+                  <p style={{
+                      textAlign: 'center'
+                    }}>
+                    <Form className="d-flex">
+                      <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                      />
+                    </Form>
+                  </p>
+                </Col>
+              </Row>
+              <Row>
+                <Col className={styles.headerCategory}>
+                  <Navbar>
+                      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Nav>
+                          <Nav.Link href="#">Popular</Nav.Link>
+                          <Nav.Link href="#">Undergraduate</Nav.Link>
+                          <Nav.Link href="#">Stanford</Nav.Link>
+                          <Nav.Link href="#">LOR</Nav.Link>
+                          <Nav.Link href="#">Latest</Nav.Link>
+                          <Nav.Link href="#">Extracurricular</Nav.Link>
+                          <NavDropdown title="All Other Category" id="basic-nav-dropdown">
+                            <NavDropdown.Item href="#">
+                            Visa
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#">Essay</NavDropdown.Item>
+                            <NavDropdown.Item href="#">US</NavDropdown.Item>
+                            <NavDropdown.Item href="#">UK</NavDropdown.Item>
+                            <NavDropdown.Item href="#">SAT</NavDropdown.Item>
+                            <NavDropdown.Item href="#">ACT</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Ivy League+</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Canada</NavDropdown.Item>
+                            <NavDropdown.Item href="#">LGBTQ+</NavDropdown.Item>
+                          </NavDropdown>
+                        </Nav>
+                  </Navbar>
+                </Col>
+              </Row>
               <Row>
                 <Col
                   className={styles.blogBanner}

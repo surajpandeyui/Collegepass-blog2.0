@@ -1,4 +1,13 @@
 .textWrap {
+  .headerSearch {
+    form {
+      width: 291px;
+      margin: 5px auto;
+    }
+  }
+  .headerCategory {
+    margin-bottom: 60px;
+  }
   .socialPost {
     p {
       padding: 10px 20px 10px 0px;
@@ -64,7 +73,7 @@
   }
 }
 .blogWrap {
-  padding: 5% 0% 2% 0%;
+  padding: 2% 0% 2% 0%;
 }
 .commentReply {
   font-weight: 600 !important;

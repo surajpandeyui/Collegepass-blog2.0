@@ -3100,3 +3100,15 @@ span.post-cat-date p {
 .has-medium-font-size {
   color: #e3cc80;
 }
+
+.blog_headerSearch__SlmN4.col input.form-control {
+  color: #ffffff69!important;
+  background-color: #ffffff1c!important;
+  border: 1px solid #ced4da42!important;
+  padding: 0.325rem 1.2rem!important;
+  border-radius: 30px!important;
+}
+.blog_headerCategory__ZXspA.col .navbar-expand {
+  justify-content: center;
+  padding: 0px!important;
+}
