@@ -343,7 +343,11 @@ const index = ({
                 </Col>
               </Row>
               {isLoading ? (
-                <h1>Loading ...</h1>
+                <h1 style={{
+                  letterSpacing: '0.03rem',
+                  color: '#ffffff',
+                  fontSize: '24px'
+                }}>Loading ...</h1>
               ) : (
                 <Row>
                   {selectedCategory || searchString ? (
@@ -360,7 +364,11 @@ const index = ({
                         </Row>
                         <Row>
                           {!blogs.length ? (
-                            <h1>No Blogs Found</h1>
+                            <h1 style={{
+                              letterSpacing: '0.03rem',
+                              color: '#ffffff',
+                              fontSize: '24px'
+                            }}>No Blogs Found...</h1>
                           ) : (
                             blogs.map((item, index) => {
                               const text = getText(item.CONTENT)
