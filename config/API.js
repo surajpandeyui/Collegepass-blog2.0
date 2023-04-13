@@ -110,3 +110,4 @@ export const APIBlogvisited = `${API_URL_V2}blog/blogvisited`
 
 export const APIGetBlogsByOtherCategory = `${API_URL_V2}blog/getBlogsByOtherCategory/`
 
+export const APIGetBlogsByName = `${API_URL_V2}blog/getBlogsByName/`
