@@ -60,8 +60,8 @@ const BeforeLoginHeader = () => {
                                                 <Nav.Link href="/ib-tutoring" id="" style={{
                                                     marginRight: '2rem'
                                                 }}>IB/IGCSE Tutoring</Nav.Link>
-                                                <Nav.Link href="" id="login" onClick={()=>{handleShowLogin()}}>
-                                                    <p className={styles.Login}>Login</p></Nav.Link>
+                                                {/*<Nav.Link href="" id="login" onClick={()=>{handleShowLogin()}}>
+                                                    <p className={styles.Login}>Login</p></Nav.Link>*/}
                                                 </Nav>
                                         </Offcanvas.Body>
                                     </Navbar.Offcanvas>
