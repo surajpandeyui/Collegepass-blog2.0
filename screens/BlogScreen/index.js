@@ -129,7 +129,7 @@ const index = ({
   const getPostsByCategory = async (c, limit) => {
     try {
       const result = []
-      setIsLoading(true)
+      categoryPage === 1 && setIsLoading(true)
 
       const blogs = await axios.get(
         `${APIGetBlogsByCategory}${limit}/${c}/0?page_no=${categoryPage}`
@@ -138,7 +138,7 @@ const index = ({
         result.push(...blogs.data.data)
       }
 
-      setIsLoading(false)
+      categoryPage === 1 && setIsLoading(false)
 
       setBlogs((prev) => (categoryPage > 1 ? [...prev, ...result] : result))
       console.log('DAta ->', blogs.data)
@@ -247,33 +247,66 @@ const index = ({
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav>
                       <Nav.Link
+                        className={
+                          selectedCategory === 'Popular'
+                            ? styles.selectedCategory
+                            : null
+                        }
                         href="#"
                         onClick={() => categoryHandler('Popular')}
                       >
                         Popular
                       </Nav.Link>
                       <Nav.Link
+                        className={
+                          selectedCategory === 'Undergraduate'
+                            ? styles.selectedCategory
+                            : null
+                        }
                         href="#"
                         onClick={() => categoryHandler('Undergraduate')}
                       >
                         Undergraduate
                       </Nav.Link>
                       <Nav.Link
+                        className={
+                          selectedCategory === 'Stanford'
+                            ? styles.selectedCategory
+                            : null
+                        }
                         href="#"
                         onClick={() => categoryHandler('Stanford')}
                       >
                         Stanford
                       </Nav.Link>
-                      <Nav.Link href="#" onClick={() => categoryHandler('LOR')}>
+                      <Nav.Link
+                        className={
+                          selectedCategory === 'LOR'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('LOR')}
+                      >
                         LOR
                       </Nav.Link>
                       <Nav.Link
+                        className={
+                          selectedCategory === 'Latest'
+                            ? styles.selectedCategory
+                            : null
+                        }
                         href="#"
                         onClick={() => categoryHandler('Latest')}
                       >
                         Latest
                       </Nav.Link>
                       <Nav.Link
+                        className={
+                          selectedCategory === 'Extracurricular'
+                            ? styles.selectedCategory
+                            : null
+                        }
                         href="#"
                         onClick={() => categoryHandler('Extracurricular')}
                       >
@@ -284,54 +317,99 @@ const index = ({
                         id="basic-nav-dropdown"
                       >
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'Visa'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('Visa')}
                         >
                           Visa
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'Essay'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('Essay')}
                         >
                           Essay
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'US'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('US')}
                         >
                           US
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'UK'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('UK')}
                         >
                           UK
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'SAT'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('SAT')}
                         >
                           SAT
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'ACT'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('ACT')}
                         >
                           ACT
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'Ivy League'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('Ivy League')}
                         >
                           Ivy League+
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'Canada'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('Canada')}
                         >
                           Canada
                         </NavDropdown.Item>
                         <NavDropdown.Item
+                          className={
+                            selectedCategory === 'LGBTQ+'
+                              ? styles.selectedCategory
+                              : null
+                          }
                           href="#"
                           onClick={() => categoryHandler('LGBTQ+')}
                         >
@@ -348,7 +426,7 @@ const index = ({
                 <Row>
                   {selectedCategory || searchString ? (
                     <Row>
-                      <Col style={{ paddingTop: '5%', paddingBottom: '5%' }}>
+                      <Col style={{ paddingBottom: '5%' }}>
                         <Row>
                           {!searchString ? (
                             <Col>
@@ -415,7 +493,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -715,7 +793,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -828,7 +906,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -941,7 +1019,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -1054,7 +1132,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -1168,7 +1246,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>
@@ -1444,7 +1522,7 @@ const index = ({
                                                   {item.TITLE.length >= 30
                                                     ? item.TITLE.substring(
                                                         0,
-                                                        26
+                                                        24
                                                       ) + '...'
                                                     : item.TITLE}
                                                 </h3>

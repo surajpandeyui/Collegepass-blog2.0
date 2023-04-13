@@ -111,6 +111,7 @@
   padding-bottom: 5px;
   color: #e3cc80;
   padding-top: 5px;
+  word-break: break-all;
 }
 .heading3:hover {
   cursor: pointer;
@@ -320,13 +321,13 @@
   }
   .mainHeading {
     font-size: 28px !important;
-    margin-top: 30px!important;
+    margin-top: 30px !important;
   }
   .heading3 {
-    font-size: 18px!important;
+    font-size: 18px !important;
   }
   .heading1 {
-    font-size: 22px!important;
+    font-size: 22px !important;
     line-height: 1.1;
     font-weight: 600;
     padding-bottom: 5px;
@@ -335,7 +336,7 @@
   }
   .popDev {
     .popTextRight {
-      width: 60%!important;
+      width: 60% !important;
     }
   }
   .postWrap {
@@ -353,4 +354,9 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+.selectedCategory {
+  background: #262626;
+  border-radius: 1px;
 }
