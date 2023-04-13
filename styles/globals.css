@@ -3112,3 +3112,7 @@ span.post-cat-date p {
   justify-content: center;
   padding: 0px!important;
 }
+.blog_headerCategory__ZXspA.col nav.navbar.navbar-expand.navbar-light .navbar-nav a:hover {
+    background: #262626;
+    border-radius: 1px;
+}
