@@ -221,7 +221,7 @@ const index = ({
   const categoryHandler = (category) => {
     setSelectedCategory(category)
     setCategoryPage(1)
-    setSearchString()
+    setSearchString('')
   }
 
   console.log('Search String ===?', searchString)
@@ -272,11 +272,13 @@ const index = ({
                         options={options}
                         placeholder="Search"
                         className={`${styles.typeahead} ${
+                          searchString &&
                           !options.filter((value) =>
                             value
                               .toLowerCase()
                               .includes(searchString.toLowerCase())
-                          ).length && styles.typeaheadNone
+                          ).length &&
+                          styles.typeaheadNone
                         }`}
                         aria-label="Search"
                         // selected={searchString ? [searchString] : []}
