@@ -221,54 +221,27 @@ const index = ({
   const categoryHandler = (category) => {
     setSelectedCategory(category)
     setCategoryPage(1)
-    setSearchString('')
+    setSearchString()
   }
 
-  const [filteredItems, setFilteredItems] = useState([])
-  const inputRef = useRef(null)
-
-  useEffect(() => {
-    // add event listeners to close the dropdown when user clicks away from input or starts typing something
-    const handleClickOutside = (event) => {
-      if (inputRef.current && !inputRef.current.contains(event.target)) {
-        setSearchString('')
-      }
-    }
-
-    const handleKeyDown = (event) => {
-      if (event.keyCode !== 9 && event.keyCode !== 13 && event.keyCode !== 27) {
-        setSearchString('')
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
-
-  const items = ['Option 1', 'Option 2', 'Option 3']
-
-  const handleOnChange = (event) => {
-    const value = event.target.value
-    setSearchString(value)
-    setFilteredItems(
-      value
-        ? items.filter((item) =>
-            item.toLowerCase().includes(value.toLowerCase())
-          )
-        : []
-    )
-  }
-
-  const handleOnSelect = (value) => {
-    setSearchString(value)
-    setFilteredItems([])
-  }
-
+  console.log('Search String ===?', searchString)
+  const options = [
+    'Popular',
+    'Undergraduate',
+    'Stanford',
+    'LOR',
+    'Latest',
+    'Extracurricular',
+    'Visa',
+    'Essay',
+    'US',
+    'UK',
+    'SAT',
+    'ACT',
+    'Ivy League',
+    'Canada',
+    'LGBTQ+',
+  ]
   return (
     <Fragment>
       <Container fluid className="bg-black">
@@ -280,26 +253,48 @@ const index = ({
                   <p
                     style={{
                       textAlign: 'center',
+                      overflowX: 'visible!important',
                     }}
                   >
                     <Form className="d-flex">
                       <Form.Control
                         type="search"
                         placeholder="Search"
-                        className="me-2"
+                        className={`me-2 ${styles.desktopInput}`}
                         aria-label="Search"
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
                       />
-                      {/* <Typeahead
-                        options={['Option 1', 'Option 2', 'Option 3']}
+                    </Form>
+
+                    <Form>
+                      <Typeahead
+                        options={options}
                         placeholder="Search"
-                        className="me-2"
+                        className={`${styles.typeahead} ${
+                          !options.filter((value) =>
+                            value
+                              .toLowerCase()
+                              .includes(searchString.toLowerCase())
+                          ).length && styles.typeaheadNone
+                        }`}
                         aria-label="Search"
-                        selected={searchString}
-                        onChange={setSearchString}
+                        // selected={searchString ? [searchString] : []}
+                        // defaultInputValue={searchString}
+                        onChange={(value) => setSearchString(value[0])}
+                        emptyLabel=""
+                        // defaultSelected={options.slice(0, 1)}
+                        id="selections-example"
+                        labelKey="name"
+                        onInputChange={(text, e) => {
+                          console.log(text, e)
+                          const value = text
+                          setSearchString(`${e.target.defaultValue}`)
+                        }}
+                        // filterBy={['label']}
+
                         // dropup
-                      /> */}
+                      />
                     </Form>
                   </p>
                 </Col>
