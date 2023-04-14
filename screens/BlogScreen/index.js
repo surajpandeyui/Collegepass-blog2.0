@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -10,6 +10,12 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import axios from 'axios'
 import moment from 'moment'
 import { parse } from 'parse5'
+
+import { Typeahead } from 'react-bootstrap-typeahead'
+import Autocomplete from 'react-autocomplete'
+
+import 'react-bootstrap-typeahead/css/Typeahead.css'
+
 import {
   APIGetBlogs,
   APIGetBlogsByCategory,
@@ -44,6 +50,8 @@ const index = ({
 
   const [categoryPage, setCategoryPage] = useState(1)
 
+  const [searchString, setSearchString] = useState('')
+
   useEffect(() => {
     setBlogs(blogPosts)
   }, [blogPosts])
@@ -70,8 +78,8 @@ const index = ({
   }, [])
 
   useEffect(() => {
-    fetchPosts(page)
-  }, [page])
+    !searchString && !selectedCategory && fetchPosts(page)
+  }, [page, searchString, selectedCategory])
 
   if (!popular.length) {
     return <div></div>
@@ -108,18 +116,18 @@ const index = ({
         if (elementText) {
           text += elementText + ' '
           count += elementText.length
-          if (count >= 200) {
+          if (count >= 193) {
             break
           }
         }
       }
-      if (count >= 200) {
+      if (count >= 193) {
         return
       }
     })
 
-    if (text.length >= 200) {
-      text = text.slice(0, 200) + '...'
+    if (text.length >= 193) {
+      text = text.slice(0, 193) + '...'
     }
 
     return text
@@ -153,14 +161,12 @@ const index = ({
     selectedCategory && getPostsByCategory(selectedCategory, 8)
   }, [selectedCategory])
 
-  const [searchString, setSearchString] = useState('')
-
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     let cancel
+    setIsLoading(true)
     const timerId = setTimeout(() => {
       if (searchString) {
-        setIsLoading(true)
         axios
           .get(APIGetBlogsByName + searchString, {
             cancelToken: new axios.CancelToken(function executor(c) {
@@ -171,6 +177,7 @@ const index = ({
           .then((response) => {
             setBlogs(response.data.data)
             setIsLoading(false)
+            setSelectedCategory(null)
           })
           .catch((error) => {
             if (axios.isCancel(error)) {
@@ -181,6 +188,8 @@ const index = ({
               setIsLoading(false)
             }
           })
+      } else {
+        setIsLoading(false)
       }
       // else {
       //   axios
@@ -215,6 +224,51 @@ const index = ({
     setSearchString('')
   }
 
+  const [filteredItems, setFilteredItems] = useState([])
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    // add event listeners to close the dropdown when user clicks away from input or starts typing something
+    const handleClickOutside = (event) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setSearchString('')
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.keyCode !== 9 && event.keyCode !== 13 && event.keyCode !== 27) {
+        setSearchString('')
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  const items = ['Option 1', 'Option 2', 'Option 3']
+
+  const handleOnChange = (event) => {
+    const value = event.target.value
+    setSearchString(value)
+    setFilteredItems(
+      value
+        ? items.filter((item) =>
+            item.toLowerCase().includes(value.toLowerCase())
+          )
+        : []
+    )
+  }
+
+  const handleOnSelect = (value) => {
+    setSearchString(value)
+    setFilteredItems([])
+  }
+
   return (
     <Fragment>
       <Container fluid className="bg-black">
@@ -237,6 +291,15 @@ const index = ({
                         value={searchString}
                         onChange={(e) => setSearchString(e.target.value)}
                       />
+                      {/* <Typeahead
+                        options={['Option 1', 'Option 2', 'Option 3']}
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        selected={searchString}
+                        onChange={setSearchString}
+                        // dropup
+                      /> */}
                     </Form>
                   </p>
                 </Col>
@@ -421,11 +484,15 @@ const index = ({
                 </Col>
               </Row>
               {isLoading ? (
-                <h1 style={{
-                  letterSpacing: '0.03rem',
-                  color: '#ffffff',
-                  fontSize: '24px'
-                }}>Loading ...</h1>
+                <h1
+                  style={{
+                    letterSpacing: '0.03rem',
+                    color: '#ffffff',
+                    fontSize: '24px',
+                  }}
+                >
+                  Loading ...
+                </h1>
               ) : (
                 <Row>
                   {selectedCategory || searchString ? (
@@ -442,11 +509,15 @@ const index = ({
                         </Row>
                         <Row>
                           {!blogs.length ? (
-                            <h1 style={{
-                              letterSpacing: '0.03rem',
-                              color: '#ffffff',
-                              fontSize: '24px'
-                            }}>No Blogs Found...</h1>
+                            <h1
+                              style={{
+                                letterSpacing: '0.03rem',
+                                color: '#ffffff',
+                                fontSize: '24px',
+                              }}
+                            >
+                              No Blogs Found...
+                            </h1>
                           ) : (
                             blogs.map((item, index) => {
                               const text = getText(item.CONTENT)
@@ -552,7 +623,7 @@ const index = ({
                           )}
                         </Row>
                       </Col>
-                      {hasMoreBlogs ? (
+                      {!searchString && hasMoreBlogs ? (
                         <Row>
                           <Col className="text-center pt-3 pb-3">
                             <Button
