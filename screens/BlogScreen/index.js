@@ -587,7 +587,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -745,7 +748,10 @@ const index = ({
                                             <span
                                               style={{ paddingRight: '20px' }}
                                             >
-                                              {item.CATEGORIES}
+                                              {item.CATEGORIES.replaceAll(
+                                                ',',
+                                                ', '
+                                              )}
                                             </span>
                                           </p>
                                           <p className={styles.descriptionDate}>
@@ -887,7 +893,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1000,7 +1009,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1113,7 +1125,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1226,7 +1241,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1340,7 +1358,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1433,7 +1454,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1616,7 +1640,10 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES}
+                                                {item.CATEGORIES.replaceAll(
+                                                  ',',
+                                                  ', '
+                                                )}
                                               </span>
                                             </p>
                                             <p
