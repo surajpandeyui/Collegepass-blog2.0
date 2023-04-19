@@ -140,7 +140,10 @@ const index = ({
       categoryPage === 1 && setIsLoading(true)
 
       const blogs = await axios.get(
-        `${APIGetBlogsByCategory}${limit}/${c}/0?page_no=${categoryPage}`
+        `${APIGetBlogsByCategory}${limit}/${c.replace(
+          '/',
+          '%2F'
+        )}/0?page_no=${categoryPage}`
       )
       if (blogs.data.data.length) {
         result.push(...blogs.data.data)
@@ -387,12 +390,12 @@ const index = ({
                       </Nav.Link>
                       <Nav.Link
                         className={
-                          selectedCategory === 'SAT'
+                          selectedCategory === 'SAT/ACT'
                             ? styles.selectedCategory
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('SAT')}
+                        onClick={() => categoryHandler('SAT/ACT')}
                       >
                         SAT/ACT
                       </Nav.Link>
@@ -414,7 +417,9 @@ const index = ({
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('Application Components')}
+                        onClick={() =>
+                          categoryHandler('Application Components')
+                        }
                       >
                         Application Components
                       </Nav.Link>
@@ -429,13 +434,12 @@ const index = ({
                       >
                         Masters
                       </Nav.Link>
-                      
+
                       <NavDropdown
                         title="Other Categories"
                         id="basic-nav-dropdown"
                       >
-                        
-                        <NavDropdown.Item
+                        {/* <NavDropdown.Item
                           className={
                             selectedCategory === 'Essay'
                               ? styles.selectedCategory
@@ -445,8 +449,8 @@ const index = ({
                           onClick={() => categoryHandler('Essay')}
                         >
                           Essay
-                        </NavDropdown.Item>
-                       
+                        </NavDropdown.Item> */}
+
                         <NavDropdown.Item
                           className={
                             selectedCategory === 'Ivy League'
@@ -458,7 +462,7 @@ const index = ({
                         >
                           Ivy League+
                         </NavDropdown.Item>
-                        <NavDropdown.Item
+                        {/* <NavDropdown.Item
                           className={
                             selectedCategory === 'LGBTQ+'
                               ? styles.selectedCategory
@@ -468,7 +472,7 @@ const index = ({
                           onClick={() => categoryHandler('LGBTQ+')}
                         >
                           LGBTQ+
-                        </NavDropdown.Item>
+                        </NavDropdown.Item> */}
                       </NavDropdown>
                     </Nav>
                   </Navbar>
@@ -498,7 +502,7 @@ const index = ({
                             </Col>
                           ) : null}
                         </Row>
-                        <Row>
+                        <Row className={styles.readMoreSection}>
                           {!blogs.length ? (
                             <h1
                               style={{
