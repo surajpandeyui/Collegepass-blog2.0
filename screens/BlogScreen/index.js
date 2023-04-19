@@ -236,12 +236,25 @@ const index = ({
     'Essay',
     'US',
     'UK',
-    'SAT',
-    'ACT',
+    'SAT/ACT',
     'Ivy League',
     'Canada',
     'LGBTQ+',
   ]
+
+  const handleClickTop = () => {
+    // Set the state here
+    const scrollToTop = () => {
+      // const currentPosition = window.pageYOffset
+      // if (currentPosition > 0) {
+      //   window.requestAnimationFrame(scrollToTop)
+      // window.scrollTo(0, currentPosition - currentPosition / 2)
+      window.scrollTo(0, 0)
+      // }
+    }
+    scrollToTop()
+  }
+
   return (
     <Fragment>
       <Container fluid className="bg-black">
@@ -587,10 +600,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -893,10 +929,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1009,10 +1068,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1125,10 +1207,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1241,10 +1346,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1358,10 +1486,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1454,10 +1605,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
@@ -1640,10 +1814,33 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {item.CATEGORIES.replaceAll(
+                                                {!item.CATEGORIES.replaceAll(
                                                   ',',
                                                   ', '
-                                                )}
+                                                ).includes(', ')
+                                                  ? item.CATEGORIES
+                                                  : item.CATEGORIES.replaceAll(
+                                                      ',',
+                                                      ', '
+                                                    )
+                                                      .split(', ')
+                                                      .map((item, idx) => (
+                                                        <span
+                                                          onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedCategory(
+                                                              item
+                                                            )
+                                                            handleClickTop()
+                                                          }}
+                                                        >
+                                                          {`${
+                                                            idx === 0
+                                                              ? ''
+                                                              : ', '
+                                                          }${item}`}
+                                                        </span>
+                                                      ))}
                                               </span>
                                             </p>
                                             <p
