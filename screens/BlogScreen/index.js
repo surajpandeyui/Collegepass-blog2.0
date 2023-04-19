@@ -725,7 +725,31 @@ const index = ({
                                     </p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
-                                        {popular[0].CATEGORIES}
+                                        <span style={{ paddingRight: '20px' }}>
+                                          {!popular[0].CATEGORIES.replaceAll(
+                                            ',',
+                                            ', '
+                                          ).includes(', ')
+                                            ? popular[0].CATEGORIES
+                                            : popular[0].CATEGORIES.replaceAll(
+                                                ',',
+                                                ', '
+                                              )
+                                                .split(', ')
+                                                .map((item, idx) => (
+                                                  <span
+                                                    onClick={(e) => {
+                                                      e.stopPropagation()
+                                                      setSelectedCategory(item)
+                                                      handleClickTop()
+                                                    }}
+                                                  >
+                                                    {`${
+                                                      idx === 0 ? '' : ', '
+                                                    }${item}`}
+                                                  </span>
+                                                ))}
+                                        </span>
                                       </span>
                                     </p>
                                     <p className={styles.descriptionDate}>
@@ -769,10 +793,31 @@ const index = ({
                                             <span
                                               style={{ paddingRight: '20px' }}
                                             >
-                                              {item.CATEGORIES.replaceAll(
+                                              {!item.CATEGORIES.replaceAll(
                                                 ',',
                                                 ', '
-                                              )}
+                                              ).includes(', ')
+                                                ? item.CATEGORIES
+                                                : item.CATEGORIES.replaceAll(
+                                                    ',',
+                                                    ', '
+                                                  )
+                                                    .split(', ')
+                                                    .map((item, idx) => (
+                                                      <span
+                                                        onClick={(e) => {
+                                                          e.stopPropagation()
+                                                          setSelectedCategory(
+                                                            item
+                                                          )
+                                                          handleClickTop()
+                                                        }}
+                                                      >
+                                                        {`${
+                                                          idx === 0 ? '' : ', '
+                                                        }${item}`}
+                                                      </span>
+                                                    ))}
                                             </span>
                                           </p>
                                           <p className={styles.descriptionDate}>
