@@ -308,6 +308,17 @@ const index = ({
                     <Nav>
                       <Nav.Link
                         className={
+                          selectedCategory === 'Latest'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('Latest')}
+                      >
+                        Latest
+                      </Nav.Link>
+                      <Nav.Link
+                        className={
                           selectedCategory === 'Popular'
                             ? styles.selectedCategory
                             : null
@@ -316,6 +327,39 @@ const index = ({
                         onClick={() => categoryHandler('Popular')}
                       >
                         Popular
+                      </Nav.Link>
+                      <Nav.Link
+                        className={
+                          selectedCategory === 'US'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('US')}
+                      >
+                        US
+                      </Nav.Link>
+                      <Nav.Link
+                        className={
+                          selectedCategory === 'UK'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('UK')}
+                      >
+                        UK
+                      </Nav.Link>
+                      <Nav.Link
+                        className={
+                          selectedCategory === 'Canada'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('Canada')}
+                      >
+                        Canada
                       </Nav.Link>
                       <Nav.Link
                         className={
@@ -330,63 +374,54 @@ const index = ({
                       </Nav.Link>
                       <Nav.Link
                         className={
-                          selectedCategory === 'Stanford'
+                          selectedCategory === 'SAT'
                             ? styles.selectedCategory
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('Stanford')}
+                        onClick={() => categoryHandler('SAT')}
                       >
-                        Stanford
+                        SAT/ACT
                       </Nav.Link>
                       <Nav.Link
                         className={
-                          selectedCategory === 'LOR'
+                          selectedCategory === 'Visa'
                             ? styles.selectedCategory
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('LOR')}
+                        onClick={() => categoryHandler('Visa')}
                       >
-                        LOR
+                        Visa
                       </Nav.Link>
                       <Nav.Link
                         className={
-                          selectedCategory === 'Latest'
+                          selectedCategory === 'Application Components'
                             ? styles.selectedCategory
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('Latest')}
+                        onClick={() => categoryHandler('Application Components')}
                       >
-                        Latest
+                        Application Components
                       </Nav.Link>
                       <Nav.Link
                         className={
-                          selectedCategory === 'Extracurricular'
+                          selectedCategory === 'Masters'
                             ? styles.selectedCategory
                             : null
                         }
                         href="#"
-                        onClick={() => categoryHandler('Extracurricular')}
+                        onClick={() => categoryHandler('Masters')}
                       >
-                        Extracurricular
+                        Masters
                       </Nav.Link>
+                      
                       <NavDropdown
-                        title="All Other Category"
+                        title="Other Categories"
                         id="basic-nav-dropdown"
                       >
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'Visa'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('Visa')}
-                        >
-                          Visa
-                        </NavDropdown.Item>
+                        
                         <NavDropdown.Item
                           className={
                             selectedCategory === 'Essay'
@@ -398,50 +433,7 @@ const index = ({
                         >
                           Essay
                         </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'US'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('US')}
-                        >
-                          US
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'UK'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('UK')}
-                        >
-                          UK
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'SAT'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('SAT')}
-                        >
-                          SAT
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'ACT'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('ACT')}
-                        >
-                          ACT
-                        </NavDropdown.Item>
+                       
                         <NavDropdown.Item
                           className={
                             selectedCategory === 'Ivy League'
@@ -452,17 +444,6 @@ const index = ({
                           onClick={() => categoryHandler('Ivy League')}
                         >
                           Ivy League+
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className={
-                            selectedCategory === 'Canada'
-                              ? styles.selectedCategory
-                              : null
-                          }
-                          href="#"
-                          onClick={() => categoryHandler('Canada')}
-                        >
-                          Canada
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           className={
