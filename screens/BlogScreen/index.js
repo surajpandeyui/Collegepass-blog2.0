@@ -434,12 +434,23 @@ const index = ({
                       >
                         Masters
                       </Nav.Link>
+                      <Nav.Link
+                        className={
+                          selectedCategory === 'Ivy League'
+                            ? styles.selectedCategory
+                            : null
+                        }
+                        href="#"
+                        onClick={() => categoryHandler('Ivy League')}
+                      >
+                        Ivy League+
+                      </Nav.Link>
 
-                      <NavDropdown
+                      {/* <NavDropdown
                         title="Other Categories"
                         id="basic-nav-dropdown"
                       >
-                        {/* <NavDropdown.Item
+                        <NavDropdown.Item
                           className={
                             selectedCategory === 'Essay'
                               ? styles.selectedCategory
@@ -449,7 +460,7 @@ const index = ({
                           onClick={() => categoryHandler('Essay')}
                         >
                           Essay
-                        </NavDropdown.Item> */}
+                        </NavDropdown.Item>
 
                         <NavDropdown.Item
                           className={
@@ -461,7 +472,7 @@ const index = ({
                           onClick={() => categoryHandler('Ivy League')}
                         >
                           Ivy League+
-                        </NavDropdown.Item>
+                        </NavDropdown.Item> */}
                         {/* <NavDropdown.Item
                           className={
                             selectedCategory === 'LGBTQ+'
@@ -472,8 +483,8 @@ const index = ({
                           onClick={() => categoryHandler('LGBTQ+')}
                         >
                           LGBTQ+
-                        </NavDropdown.Item> */}
-                      </NavDropdown>
+                        </NavDropdown.Item> 
+                      </NavDropdown>*/}
                     </Nav>
                   </Navbar>
                 </Col>
