@@ -989,7 +989,10 @@ const index = ({ id }) => {
                   return (
                     <Link href={`/post/${item.POST_ID}`}>
                       <Row className="pb-3" key={index}>
-                        <Col>
+                        <Col style={{
+                          borderBottom: '1px solid rgb(255 255 255 / 25%)',
+                          paddingBottom: '15px'
+                        }}>
                           <h5 className={styles.postSidebarPost}>
                             {item.TITLE}
                           </h5>
@@ -1007,12 +1010,12 @@ const index = ({ id }) => {
                               <a href="#">
                                 {moment(item.CREATED_AT).format('MMMM D, YYYY')}
                               </a>
-                            </p>
-                            <p>
+
                               <span
                                 style={{
                                   color: '#ffffff',
                                   fontSize: '12px',
+                                  marginLeft: '10px'
                                 }}
                               >
                                 <i className="fa fa-eye" style={{
