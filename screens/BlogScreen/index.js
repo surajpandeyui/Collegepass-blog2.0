@@ -257,6 +257,28 @@ const index = ({
     }
     scrollToTop()
   }
+  const updateCategories = (categories) => {
+    return !categories.replaceAll(',', ', ').includes(', ')
+      ? categories
+      : categories
+          .replaceAll(',', ', ')
+          .split(', ')
+          .map((item, idx) => (
+            <span
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedCategory(item)
+                handleClickTop()
+              }}
+            >
+              {idx === 0 ? (
+                <span>{item}</span>
+              ) : (
+                <span>,&nbsp;&nbsp;{item}</span>
+              )}
+            </span>
+          ))
+  }
 
   return (
     <Fragment>
@@ -493,7 +515,7 @@ const index = ({
                         >
                           Ivy League+
                         </NavDropdown.Item> */}
-                        {/* <NavDropdown.Item
+                      {/* <NavDropdown.Item
                           className={
                             selectedCategory === 'LGBTQ+'
                               ? styles.selectedCategory
@@ -616,33 +638,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -756,7 +754,11 @@ const index = ({
                                     </p>
                                     <p className={styles.descriptionDate}>
                                       <span style={{ paddingRight: '20px' }}>
-                                        {popular[0].CATEGORIES}
+                                        <span style={{ paddingRight: '20px' }}>
+                                          {updateCategories(
+                                            popular[0].CATEGORIES
+                                          )}
+                                        </span>
                                       </span>
                                     </p>
                                     <p className={styles.descriptionDate}>
@@ -800,9 +802,8 @@ const index = ({
                                             <span
                                               style={{ paddingRight: '20px' }}
                                             >
-                                              {item.CATEGORIES.replaceAll(
-                                                ',',
-                                                ', '
+                                              {updateCategories(
+                                                item.CATEGORIES
                                               )}
                                             </span>
                                           </p>
@@ -945,33 +946,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1084,33 +1061,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1223,33 +1176,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1362,33 +1291,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1502,33 +1407,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1621,33 +1502,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
@@ -1830,33 +1687,9 @@ const index = ({
                                               <span
                                                 style={{ paddingRight: '20px' }}
                                               >
-                                                {!item.CATEGORIES.replaceAll(
-                                                  ',',
-                                                  ', '
-                                                ).includes(', ')
-                                                  ? item.CATEGORIES
-                                                  : item.CATEGORIES.replaceAll(
-                                                      ',',
-                                                      ', '
-                                                    )
-                                                      .split(', ')
-                                                      .map((item, idx) => (
-                                                        <span
-                                                          onClick={(e) => {
-                                                            e.stopPropagation()
-                                                            setSelectedCategory(
-                                                              item
-                                                            )
-                                                            handleClickTop()
-                                                          }}
-                                                        >
-                                                          {`${
-                                                            idx === 0
-                                                              ? ''
-                                                              : ', '
-                                                          }${item}`}
-                                                        </span>
-                                                      ))}
+                                                {updateCategories(
+                                                  item.CATEGORIES
+                                                )}
                                               </span>
                                             </p>
                                             <p
