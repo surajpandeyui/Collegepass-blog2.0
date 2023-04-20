@@ -264,6 +264,26 @@ const index = ({
         <Container>
           <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
+
+            <Row className="mt-0 mb-2 d-flex justify-content-start">
+              <Col lg={12} md={8} className="text-center order-2 order-md-1 mobile-category-vine">
+                {/*<p className="text-secondary mb-3">
+                  I want to:
+  </p>*/}
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-line-chart" aria-hidden="true" style={{color: 'aquamarine'}}></i> Latest</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-thumbs-up" aria-hidden="true" style={{color: 'chocolate'}}></i> Popular</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-flag-checkered" aria-hidden="true" style={{color: '#002868'}}></i> US</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-flag" aria-hidden="true" style={{color: '#3a73a9'}}></i> UK</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-star" aria-hidden="true" style={{color: '#e82042'}}></i> Canada</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-graduation-cap" aria-hidden="true" style={{color: 'aliceblue'}}></i> Undergraduate</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-smile-o" aria-hidden="true" style={{color: 'yellowgreen'}}></i> SAT/ACT</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-cc-visa" aria-hidden="true" style={{color: 'wheat'}}></i> Visa</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-building" aria-hidden="true" style={{color: 'yellow'}}></i> Application Components</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-asterisk" aria-hidden="true" style={{color: 'violet'}}></i> Masters</a>
+                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-leanpub" aria-hidden="true" style={{color: 'springgreen'}}></i> Ivy League</a>
+              </Col>
+            </Row>
+
               <Row>
                 <Col className={styles.headerSearch}>
                   <p
@@ -443,7 +463,7 @@ const index = ({
                         href="#"
                         onClick={() => categoryHandler('Ivy League')}
                       >
-                        Ivy League+
+                        Ivy League
                       </Nav.Link>
 
                       {/* <NavDropdown

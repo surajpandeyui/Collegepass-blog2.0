@@ -598,7 +598,7 @@ const index = ({ id }) => {
                                     style={{
                                       fontWeight: '600',
                                       letterSpacing: '0.03rem',
-                                      marginLeft: '10px',
+                                      marginLeft: '15px',
                                       fontSize: '12px',
                                     }}
                                   >

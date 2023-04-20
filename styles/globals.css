@@ -1195,6 +1195,9 @@ border-radius: 15px;
 /* mobile  */
 
 @media only screen and (max-width: 480px) and (min-width: 320px) { 
+  .mobile-category-vine {
+    display: block!important;
+  }
   .inner {
     height: 141px!important;
     margin-top: 5px!important;
@@ -3115,4 +3118,70 @@ span.post-cat-date p {
 .blog_headerCategory__ZXspA.col nav.navbar.navbar-expand.navbar-light .navbar-nav a:hover {
     background: #262626;
     border-radius: 1px;
+}
+
+
+/* Collegevine UI css */
+
+.mobile-category-vine a {
+  color: #ffffffa3;
+  background: #1c1c1c;
+  border-color: #ced4da42;
+  border-radius: 0.25rem;
+  letter-spacing: 0.03rem;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.mobile-category-vine a i {
+  margin-right: 5px;
+}
+.mobile-category-vine {
+  margin-top: 20px!important;
+}
+.mobile-category-vine {
+  display: none;
+}
+
+/* crimpson design test */
+
+.ccRBGp {
+  position: absolute;
+  width: 100%;
+  height: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  -webkit-box-pack: center;
+  place-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  z-index: 8;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.jsMhwF {
+  max-width: 14rem;
+  height: 14rem;
+  padding: 2.2rem 1rem;
+  min-height: 14rem;
+  cursor: pointer;
+  z-index: 20;
+  background: rgb(255, 255, 255);
+    position: relative;
+    display: flex;
+    -webkit-box-pack: start;
+    place-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    flex: 1 1 auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 1px 0px;
+}
+.hyqMZK {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
