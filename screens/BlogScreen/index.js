@@ -274,7 +274,7 @@ const index = ({
               {idx === 0 ? (
                 <span>{item}</span>
               ) : (
-                <span>,&nbsp;&nbsp;{item}</span>
+                <span>, {item}</span>
               )}
             </span>
           ))
