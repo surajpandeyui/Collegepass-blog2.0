@@ -271,11 +271,7 @@ const index = ({
                 handleClickTop()
               }}
             >
-              {idx === 0 ? (
-                <span>{item}</span>
-              ) : (
-                <span>,&nbsp;&nbsp;{item}</span>
-              )}
+              {idx === 0 ? <span>{item}</span> : <span>, {item}</span>}
             </span>
           ))
   }
@@ -286,25 +282,138 @@ const index = ({
         <Container>
           <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
-
-            <Row className="mt-0 mb-1 d-flex justify-content-start">
-              <Col lg={12} md={8} className="text-center order-2 order-md-1 mobile-category-vine">
-                {/*<p className="text-secondary mb-3">
+              <Row className="mt-0 mb-2 d-flex justify-content-start">
+                <Col
+                  lg={12}
+                  md={8}
+                  className="text-center order-2 order-md-1 mobile-category-vine"
+                >
+                  {/*<p className="text-secondary mb-3">
                   I want to:
   </p>*/}
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-line-chart" aria-hidden="true" style={{color: 'aquamarine'}}></i> Latest</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-thumbs-up" aria-hidden="true" style={{color: 'chocolate'}}></i> Popular</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-flag-checkered" aria-hidden="true" style={{color: '#002868'}}></i> US</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-flag" aria-hidden="true" style={{color: '#3a73a9'}}></i> UK</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-star" aria-hidden="true" style={{color: '#e82042'}}></i> Canada</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-graduation-cap" aria-hidden="true" style={{color: 'aliceblue'}}></i> Undergraduate</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-smile-o" aria-hidden="true" style={{color: 'yellowgreen'}}></i> SAT/ACT</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-cc-visa" aria-hidden="true" style={{color: 'wheat'}}></i> Visa</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-building" aria-hidden="true" style={{color: 'yellow'}}></i> Application Components</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-asterisk" aria-hidden="true" style={{color: 'violet'}}></i> Masters</a>
-                <a className="mr-3 mb-3 btn btn-default btn-white btn-sm" href=""><i className="fa fa-leanpub" aria-hidden="true" style={{color: 'springgreen'}}></i> Ivy League</a>
-              </Col>
-            </Row>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-line-chart"
+                      aria-hidden="true"
+                      style={{ color: 'aquamarine' }}
+                    ></i>{' '}
+                    Latest
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-thumbs-up"
+                      aria-hidden="true"
+                      style={{ color: 'chocolate' }}
+                    ></i>{' '}
+                    Popular
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-flag-checkered"
+                      aria-hidden="true"
+                      style={{ color: '#002868' }}
+                    ></i>{' '}
+                    US
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-flag"
+                      aria-hidden="true"
+                      style={{ color: '#3a73a9' }}
+                    ></i>{' '}
+                    UK
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-star"
+                      aria-hidden="true"
+                      style={{ color: '#e82042' }}
+                    ></i>{' '}
+                    Canada
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-graduation-cap"
+                      aria-hidden="true"
+                      style={{ color: 'aliceblue' }}
+                    ></i>{' '}
+                    Undergraduate
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-smile-o"
+                      aria-hidden="true"
+                      style={{ color: 'yellowgreen' }}
+                    ></i>{' '}
+                    SAT/ACT
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-cc-visa"
+                      aria-hidden="true"
+                      style={{ color: 'wheat' }}
+                    ></i>{' '}
+                    Visa
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-building"
+                      aria-hidden="true"
+                      style={{ color: 'yellow' }}
+                    ></i>{' '}
+                    Application Components
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-asterisk"
+                      aria-hidden="true"
+                      style={{ color: 'violet' }}
+                    ></i>{' '}
+                    Masters
+                  </a>
+                  <a
+                    className="mr-3 mb-3 btn btn-default btn-white btn-sm"
+                    href=""
+                  >
+                    <i
+                      className="fa fa-leanpub"
+                      aria-hidden="true"
+                      style={{ color: 'springgreen' }}
+                    ></i>{' '}
+                    Ivy League
+                  </a>
+                </Col>
+              </Row>
 
               <Row className='mb-2'>
                 <Col className={styles.headerSearch}>
@@ -829,12 +938,12 @@ const index = ({
                                           className={styles.smallImage}
                                           style={{
                                             display: 'inline-block',
-                                            maxWidth: '136px!important',
-                                            maxHeight: '96px!important',
+                                            maxWidth: '136px',
+                                            maxHeight: '96px',
                                             borderRadius: '15px',
                                             overflow: 'hidden',
-                                            minWidth: '136px!important',
-                                            minHeight: '96px!important',
+                                            minWidth: '136px',
+                                            minHeight: '96px',
                                           }}
                                         >
                                           <div
@@ -1461,13 +1570,13 @@ const index = ({
                                             className={styles.smallImage}
                                             style={{
                                               display: 'inline-block',
-                                              maxWidth: '136px!important',
-                                              maxHeight: '96px!important',
+                                              maxWidth: '136px',
+                                              maxHeight: '96px',
                                               position: 'relative',
                                               borderRadius: '15px',
                                               overflow: 'hidden',
-                                              minWidth: '136px!important',
-                                              minHeight: '96px!important',
+                                              minWidth: '136px',
+                                              minHeight: '96px',
                                             }}
                                           >
                                             <div
