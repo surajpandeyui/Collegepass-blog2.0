@@ -287,7 +287,7 @@ const index = ({
           <Row className={styles.textWrap}>
             <Col className={styles.blogWrap}>
 
-            <Row className="mt-0 mb-2 d-flex justify-content-start">
+            <Row className="mt-0 mb-1 d-flex justify-content-start">
               <Col lg={12} md={8} className="text-center order-2 order-md-1 mobile-category-vine">
                 {/*<p className="text-secondary mb-3">
                   I want to:
@@ -306,7 +306,7 @@ const index = ({
               </Col>
             </Row>
 
-              <Row>
+              <Row className='mb-2'>
                 <Col className={styles.headerSearch}>
                   <p
                     style={{
