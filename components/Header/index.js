@@ -15,7 +15,8 @@ const index = () => {
   if (auth.token === null || auth.token === undefined) {
     return <BeforeLoginHeader />
   }
-  return <AfterLoginHeader />
+  // return <AfterLoginHeader />
+  return <BeforeLoginHeader />
 }
 
 export default index
