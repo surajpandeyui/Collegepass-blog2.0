@@ -299,7 +299,7 @@ button.btn-close:hover {
   right: 6%;
   content: "";
   position: absolute;
-  top: 5%;
+  top: 25%;
   height: 50%;
   width: 18px;
   border-radius: 0 5px 5px 0;
