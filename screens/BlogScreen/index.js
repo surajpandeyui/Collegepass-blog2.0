@@ -290,7 +290,7 @@ const index = ({
                 >
                   {/*<p className="text-secondary mb-3">
                   I want to:
-  </p>*/}
+                  </p>*/}
                   <a
                     className="mr-3 mb-3 btn btn-default btn-white btn-sm"
                     href=""
