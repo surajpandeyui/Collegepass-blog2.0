@@ -3185,3 +3185,37 @@ span.post-cat-date p {
   height: 100%;
   opacity: 0;
 }
+
+/* New Blog 2.1 */
+
+.blog_blog2Wrap__JNTnB.col .carousel-indicators [data-bs-target] {
+  width: 10px!important;
+  height: 10px!important;
+  border-radius: 100%;
+}
+.blog_blog2Wrap__JNTnB.col .carousel-control-next {
+  right: -70px;
+}
+.carousel-control-next-icon {
+  background-color: #291e32;
+  color: #ffffff!important;
+  border: 1px solid #785c8f!important;
+  border-width: 3px 2px 0px 2px!important;
+  width: 2rem!important;
+  height: 2rem!important;
+  border-radius: 100%!important;
+  background-size: 75% 75%!important;
+}
+.carousel-control-prev-icon {
+  border: 1px solid #785c8f!important;
+  border-width: 2px 1px 0px 1px!important;
+  width: 2rem!important;
+  height: 2rem!important;
+  border-radius: 100%!important;
+  background-size: 75% 75%!important;
+  background-color: #291e32;
+  color: #ffffff!important;
+}
+.carousel-control-prev {
+  width: 4%!important;
+}

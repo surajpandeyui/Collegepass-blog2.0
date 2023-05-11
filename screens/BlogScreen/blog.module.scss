@@ -1,0 +1,159 @@
+.blog2Wrap {
+ padding-top: 60px;
+    .blogSliderWrap {
+        color: #ffffff;
+        padding: 30px 10px 60px 10px;
+        .sliderWidth {
+            width: 78%;
+            margin: auto;
+            border: 1px solid #313131;
+            padding: 25px 15px;
+            border-radius: 25px;
+            background-color: #000000;
+            background-image: linear-gradient(to top right, #000000, #2a1f34);
+            .SliderHeading {
+                h3 {
+                    font-size: 22px;
+                    letter-spacing: 0.05rem;
+                    border-bottom: 1px solid #333;
+                    padding: 0px 0px 11px 10px;
+                }
+            }
+            .SliderDescription {
+                p {
+                    font-size: 18px;
+                    letter-spacing: 0.05rem;
+                    color: #ffffffc2;
+                    padding: 10px 10px 0px 10px;
+                }
+            }
+            .SliderCategory {
+                p {
+                    font-size: 14px;
+                    letter-spacing: 0.05rem;
+                    border: 1px solid #393939;
+                    padding: 3px 10px;
+                    margin: 0px 5px 10px 5px;
+                    border-radius: 10px;
+                    background: #171717;
+                    color: #ffffffc2;
+                }
+            }
+            .SliderDate {
+                p {
+                    font-size: 14px;
+                    letter-spacing: 0.05rem;
+                    padding: 5px 10px 0px 10px;
+                    color: #ffffffc2;
+                    margin-bottom: 0;
+                }
+            }
+            .blogSliderTextSection {
+                padding-left: 22px;
+            }
+        }
+        .SliderCategory {
+            display: flex;
+        }
+    }
+    .blogMainSectionWrap {
+        color: #ffffff;
+        padding: 60px 10px;
+        .blogSearch {
+            padding: 30px 0px;
+            input {
+                max-width: 100%;
+                width: 59%;
+                float: right;
+                margin-right: 5%!important;
+                background: #111111;
+                border: 1px solid #ffffff75;
+                padding: 11px 20px;
+                border-radius: 15px;
+                color: #ffffffa6;
+            }
+            h2 {
+                font-size: 40px!important;
+                letter-spacing: 0.05rem;
+                text-transform: capitalize!important;
+                padding-left: 5%;
+            }
+        }
+    }
+    .SliderHeadingTop {
+        width: 78%;
+        margin: auto;
+        color: #ffffff;
+        h3 {
+            font-size: 22px;
+            letter-spacing: 0.05rem;
+            font-weight: 600;
+            i {
+                color: #f1e597;
+                font-size: 22px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+.blogTile {
+    border: 1px solid #313131;
+    padding: 27px 30px;
+    margin: 10px;
+    border-radius: 25px;
+    background-color: #000000;
+    background-image: linear-gradient(to top right, #000000, #2a1f34);
+    .blogCatCard {
+        display: flex;
+        p {
+        font-size: 14px;
+        letter-spacing: 0.05rem;
+        border: 1px solid #393939;
+        padding: 3px 10px;
+        margin: 0px 5px 10px 5px;
+        border-radius: 10px;
+        background: #171717;
+        color: #ffffffc2;
+        }
+    }
+    .tileCardDate {
+        p {
+            font-size: 14px !important;
+            letter-spacing: 0.06rem!important;
+        }
+    }
+    h3 {
+        margin-bottom: 10px;
+        font-size: 22px;
+        letter-spacing: 0.05rem;
+        border-bottom: 1px solid #333;
+        padding: 20px 0px 15px 0px;
+    }
+    p {
+        font-size: 18px;
+        letter-spacing: 0.05rem;
+        color: #ffffffc2;
+        padding: 10px 0px 0px 0px;
+    }
+}
+.blogCardWrap {
+    max-width: 100%;
+    margin: auto;
+    width: 97%;
+}
+.browseCategory {
+    .catSectionShort {
+        padding: 20px;
+        p {
+            font-size: 14px;
+            letter-spacing: 0.05rem;
+            display: flex;
+            a {
+                color: #ffffffa3;
+                padding-left: 13px;
+            }
+        }
+    }
+}
+
