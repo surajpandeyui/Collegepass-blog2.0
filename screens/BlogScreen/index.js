@@ -28,7 +28,7 @@ const index = () => {
                               <Row className={styles.sliderWidth}>
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
-                                    <Col>
+                                    <Col className={styles.blogSliderImg}>
                                       <img src="new-blog-images/hero_artical-image.png" />
                                     </Col>
                                   </Row>
@@ -69,7 +69,7 @@ const index = () => {
                             <Row className={styles.sliderWidth}>
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
-                                    <Col>
+                                    <Col className={styles.blogSliderImg}>
                                       <img src="new-blog-images/hero_artical-image.png" />
                                     </Col>
                                   </Row>
@@ -110,7 +110,7 @@ const index = () => {
                             <Row className={styles.sliderWidth}>
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
-                                    <Col>
+                                    <Col className={styles.blogSliderImg}>
                                       <img src="new-blog-images/hero_artical-image.png" />
                                     </Col>
                                   </Row>
@@ -158,10 +158,10 @@ const index = () => {
                     </Col>
                     <Col lg={10} md={10} sm={12} xs={12}>
                       <Row>
-                        <Col>
+                        <Col lg={6} md={6} sm={12} xs={12}>
                           <h2>Blogs</h2>
                         </Col>
-                        <Col>
+                        <Col lg={6} md={6} sm={12} xs={12}>
                           <Form>
                             <Form.Control
                               type="search"
@@ -176,30 +176,26 @@ const index = () => {
                   </Row>
 
                   <Row>
-                    <Col lg={2} md={2} sm={3} xs={6} className={styles.browseCategory}>
+                    <Col lg={2} md={2} sm={12} xs={12} className={styles.browseCategory}>
                       <Row>
                         <Col className={styles.catSectionShort}>
-                          <p>Browse Categories</p>
-                          <p><a style={{
-                            color: '#ffffff',
-                            background: '#1b1b1b',
-                            padding: '7px 13px',
-                            borderRadius: '10px',
-                          }}>Latest</a></p>
-                          <p><a>Popular</a></p>
-                          <p><a>US</a></p>
+                          <p className={styles.hideOnMob}>Browse Categories</p>
+                          <p><a className={styles.SelectedCategory}>Popular</a></p>
+                          <p><a>Latest</a></p>
+                          {/*<p><a>US</a></p>
                           <p><a>UK</a></p>
-                          <p><a>Canada</a></p>
+                          <p><a>Canada</a></p>*/}
                           <p><a>Undergraduate</a></p>
-                          <p><a>SAT/ACT</a></p>
-                          <p><a>Masters</a></p>
                           <p><a>Ivy League</a></p>
                           <p><a>Visa</a></p>
+                          <p><a>LGBTQ+</a></p>
                           <p><a>Application Components</a></p>
+                          {/*<p><a>SAT/ACT</a></p>
+                          <p><a>Masters</a></p>*/}
                         </Col>
                       </Row>
                     </Col>
-                    <Col lg={10} md={10} sm={3} xs={6} className={styles.blogSections}>
+                    <Col lg={10} md={10} sm={12} xs={12} className={styles.blogSections}>
                       <Row className={styles.blogCardWrap}>
                         <Col lg={6} md={6} sm={12} xs={12}>
                           <Row>

@@ -154,6 +154,103 @@
                 padding-left: 13px;
             }
         }
+        .SelectedCategory {
+            color: #ffffff;
+            background: #1b1b1b;
+            padding: 7px 13px;
+            border-radius: 10px;
+        }
     }
 }
 
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+    .blog2Wrap {
+        padding-top: 30px;
+        .blogSliderWrap {
+            color: #ffffff;
+            padding: 30px 10px 60px 10px;
+            .sliderWidth {
+                width: 100%!important;
+                .SliderHeading {
+                    h3 {
+                        padding: 15px 0px 15px 0px;
+                    }
+                }
+                .SliderDescription {
+                    p {
+                        padding: 15px 0px 0px 0px;
+                    }
+                }
+                .SliderCategory {
+                    p {
+                        margin: 0px 15px 0px 0px;
+                    }
+                }
+                .SliderDate {
+                    p {
+                        padding: 15px 15px 0px 0px;
+                    }
+                }
+                .blogSliderTextSection {
+                    padding-left: 0px;
+                }
+                .blogSliderImg {
+                    padding: 0;
+                }
+            }
+        }
+    }
+    .blogTile {
+        img {
+            max-width: 100%;
+        }
+    }
+    .blogMainSectionWrap {
+        color: #ffffff;
+        padding: 30px 10px!important;
+        .blogSearch {
+            text-align: center;
+            padding: 0px 0px 30px 0px!important;
+            h2 {
+                padding-left: 0%!important;
+            }
+        }
+        input {
+            max-width: 100%;
+            width: 95%!important;
+            float: none!important;
+        }
+    }
+    .browseCategory {
+        .catSectionShort {
+            display: flex;
+            overflow: auto;
+            .hideOnMob {
+                display: none;
+            }
+            .SelectedCategory {
+                color: #ffffffe6;
+                background: #c83232;
+                padding: 7px 13px;
+                font-weight: 400;
+                border-radius: 8px;
+                border: 1px solid #808080;
+                letter-spacing: 0.07rem;
+            }
+            p {
+                display: revert;
+                a {
+                    color: #ffffffe6;
+                    padding: 7px 13px;
+                    font-weight: 400;
+                    border-radius: 8px;
+                    border: 1px solid #808080;
+                    letter-spacing: 0.07rem;
+                    margin-right: 10px;
+                    display: inline-block;
+                    width: max-content;
+                }
+            }
+        }
+    }
+}
