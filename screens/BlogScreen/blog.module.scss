@@ -162,7 +162,39 @@
         }
     }
 }
-
+.postWrap {
+    p {
+        line-height: 30px;
+        letter-spacing: 0.05rem;
+        font-size: 18px;
+    }
+    li {
+        line-height: 30px;
+        letter-spacing: 0.05rem;
+        font-size: 18px;
+    }
+    color: #d0cfcf;
+    .postSidebarHeading {
+        opacity: 0.99;
+        font-weight: 600;
+        color: #ffffff;
+        font-size: 20px;
+        letter-spacing: 0.05rem;
+    }
+    .postSidebarPost {
+        font-size: 16px;
+        letter-spacing: 0.05rem;
+        padding-bottom: 10px;
+    }
+}
+.socialPost {
+    display: flex;
+    i {
+        letter-spacing: 19px;
+        font-size: 30px;
+        padding-top: 25px;
+    }
+}
 @media only screen and (max-width: 480px) and (min-width: 320px) {
     .blog2Wrap {
         padding-top: 30px;

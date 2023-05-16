@@ -983,7 +983,7 @@ const index = ({ id }) => {
                 }}
               >
                 <Col className="pb-3">
-                  <h3 className={styles.postSidebarHeading}>Popular Posts</h3>
+                  <h3 className={styles.postSidebarHeading}>Related Posts</h3>
                 </Col>
                 {extraPosts.map((item, index) => {
                   return (
