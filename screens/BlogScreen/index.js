@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel';
+import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../BlogScreen/blog.module.scss'
 
@@ -29,7 +30,12 @@ const index = () => {
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
                                     <Col className={styles.blogSliderImg}>
-                                      <img src="new-blog-images/hero_artical-image.png" />
+                                      <Image
+                                        src="/harvard_returns_front.png"
+                                        alt="Small Blog"
+                                        width={605}
+                                        height={700}
+                                      />
                                     </Col>
                                   </Row>
                                 </Col>
@@ -38,7 +44,7 @@ const index = () => {
                                     <Col className={styles.blogSliderTextSection}>
                                       <Row>
                                         <Col className={styles.SliderHeading}>
-                                          <h3>Choosing The Right University studey abroad counselling</h3>
+                                        <h3>Harvard Returns in the Fall</h3>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -53,7 +59,13 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderDate}>
-                                          <p>12 mins read March 16, 2023</p>
+                                        <p>March 16, 2023</p>
+                                        <p>
+                                          <span style={{color: 'rgb(255, 255, 255)',
+                                        fontSize: '12px',
+                                          marginLeft: '10px'}}>
+                                            <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                        </p>
                                         </Col>
                                       </Row>
                                     </Col>
@@ -70,7 +82,12 @@ const index = () => {
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
                                     <Col className={styles.blogSliderImg}>
-                                      <img src="new-blog-images/hero_artical-image.png" />
+                                      <Image
+                                        src="/harvard_returns_front.png"
+                                        alt="Small Blog"
+                                        width={605}
+                                        height={700}
+                                      />
                                     </Col>
                                   </Row>
                                 </Col>
@@ -79,7 +96,7 @@ const index = () => {
                                     <Col className={styles.blogSliderTextSection}>
                                       <Row>
                                         <Col className={styles.SliderHeading}>
-                                          <h3>Choosing The Right University studey abroad counselling</h3>
+                                        <h3>Harvard Returns in the Fall</h3>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -94,7 +111,13 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderDate}>
-                                          <p>12 mins read March 16, 2023</p>
+                                        <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                         </Col>
                                       </Row>
                                     </Col>
@@ -111,7 +134,12 @@ const index = () => {
                                 <Col lg={4} md={4} sm={12} xs={12}>
                                   <Row>
                                     <Col className={styles.blogSliderImg}>
-                                      <img src="new-blog-images/hero_artical-image.png" />
+                                      <Image
+                                        src="/harvard_returns_front.png"
+                                        alt="Small Blog"
+                                        width={605}
+                                        height={700}
+                                      />
                                     </Col>
                                   </Row>
                                 </Col>
@@ -120,7 +148,7 @@ const index = () => {
                                     <Col className={styles.blogSliderTextSection}>
                                       <Row>
                                         <Col className={styles.SliderHeading}>
-                                          <h3>Choosing The Right University studey abroad counselling</h3>
+                                          <h3>Harvard Returns in the Fall</h3>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -135,7 +163,13 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderDate}>
-                                          <p>12 mins read March 16, 2023</p>
+                                        <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                         </Col>
                                       </Row>
                                     </Col>
@@ -202,12 +236,17 @@ const index = () => {
                             <Col className={styles.blogTile}>
                               <Row>
                                 <Col>
-                                  <img src="new-blog-images/image_rot.png" />
+                                  <Image
+                                        src="/harvard_returns_post.png"
+                                        alt="Small Blog"
+                                        width={750}
+                                        height={436}
+                                      />
                                 </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  <h3>Choosing the Right University study abroad counselling</h3>
+                                  <h3>Harvard Returns in the Fall</h3>
                                 </Col>
                               </Row>
                               <Row>
@@ -222,7 +261,13 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.tileCardDate}>
-                                  <p>12 mins read March 16, 2023</p>
+                                <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                 </Col>
                               </Row>
                             </Col>
@@ -233,12 +278,17 @@ const index = () => {
                             <Col className={styles.blogTile}>
                               <Row>
                                 <Col>
-                                  <img src="new-blog-images/image_rot.png" />
+                                  <Image
+                                        src="/UC's_post.png"
+                                        alt="Small Blog"
+                                        width={750}
+                                        height={436}
+                                      />
                                 </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  <h3>Choosing the Right University study abroad counselling</h3>
+                                  <h3>How to Get Into the University of California</h3>
                                 </Col>
                               </Row>
                               <Row>
@@ -253,7 +303,13 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.tileCardDate}>
-                                  <p>12 mins read March 16, 2023</p>
+                                  <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                 </Col>
                               </Row>
                             </Col>
@@ -267,12 +323,17 @@ const index = () => {
                             <Col className={styles.blogTile}>
                               <Row>
                                 <Col>
-                                  <img src="new-blog-images/image_rot.png" />
+                                  <Image
+                                        src="/stanford.png"
+                                        alt="Small Blog"
+                                        width={750}
+                                        height={436}
+                                      />
                                 </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  <h3>Choosing the Right University study abroad counselling</h3>
+                                  <h3>How to Get Into Stanford</h3>
                                 </Col>
                               </Row>
                               <Row>
@@ -287,7 +348,13 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.tileCardDate}>
-                                  <p>12 mins read March 16, 2023</p>
+                                <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                 </Col>
                               </Row>
                             </Col>
@@ -298,12 +365,17 @@ const index = () => {
                             <Col className={styles.blogTile}>
                               <Row>
                                 <Col>
-                                  <img src="new-blog-images/image_rot.png" />
+                                  <Image
+                                        src="/waterloo_post.png"
+                                        alt="Small Blog"
+                                        width={750}
+                                        height={436}
+                                      />
                                 </Col>
                               </Row>
                               <Row>
                                 <Col>
-                                  <h3>Choosing the Right University study abroad counselling</h3>
+                                  <h3>How to Get Into Waterloo</h3>
                                 </Col>
                               </Row>
                               <Row>
@@ -318,7 +390,13 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.tileCardDate}>
-                                  <p>12 mins read March 16, 2023</p>
+                                <p>March 16, 2023</p>
+                                  <p>
+                                    <span style={{color: 'rgb(255, 255, 255)',
+                                   fontSize: '12px',
+                                    marginLeft: '10px'}}>
+                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  </p>
                                 </Col>
                               </Row>
                             </Col>

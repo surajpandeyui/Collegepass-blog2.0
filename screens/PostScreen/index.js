@@ -561,212 +561,7 @@ const index = ({ id }) => {
                 </Col>
               </Row>
 
-              {comments.length
-                ? comments.map((cmt, commentIndex) => {
-                    const createdAtMoment = moment
-                      .utc(cmt.CREATED_AT)
-                      .add(5, 'hours')
-                      .add(30, 'minutes')
-                      .local()
-                    const timeAgo = createdAtMoment.fromNow()
-
-                    return (
-                      <React.Fragment key={commentIndex}>
-                        <Row className="pt-5">
-                          <Col>
-                            <Row>
-                              <Col>
-                                <span style={{ display: 'inline-flex' }}>
-                                  <p
-                                    style={{
-                                      fontWeight: '600',
-                                      letterSpacing: '0.03rem',
-                                      marginRight: '10px',
-                                      fontSize: '12px',
-                                    }}
-                                  >
-                                    {cmt.AUTHOR_NAME}{' '}
-                                    {cmt.isAdvisor && (
-                                      <i
-                                        class="fa fa-check-circle"
-                                        aria-hidden="true"
-                                        style={{ color: 'blue' }}
-                                      ></i>
-                                    )}
-                                  </p>
-                                  <p
-                                    style={{
-                                      fontWeight: '600',
-                                      letterSpacing: '0.03rem',
-                                      marginLeft: '15px',
-                                      fontSize: '12px',
-                                    }}
-                                  >
-                                    {timeAgo}
-                                  </p>
-                                </span>
-                                <p
-                                  style={{
-                                    fontWeight: '600',
-                                    letterSpacing: '0.03rem',
-                                    color: '#545454',
-                                    fontSize: '14px',
-                                  }}
-                                >
-                                  {cmt.CONTENT}
-                                </p>
-                                <p
-                                  className={styles.commentReply}
-                                  onClick={() => {
-                                    setCommentReplyIndex(commentIndex)
-                                    handleShow(cmt.COMMENT_ID)
-                                  }}
-                                  // onClick={() => {
-                                  //   setShowReplyInput(!showReplyInput)
-                                  //   setCommentReplyIndex(commentIndex)
-                                  // }}
-                                >
-                                  Reply
-                                </p>
-                              </Col>
-                            </Row>
-                          </Col>
-                        </Row>
-                        {showReplyInput && commentReplyIndex === commentIndex && (
-                          <Form className="pt-3" onSubmit={handleReplySubmit}>
-                            <Form.Group>
-                              <Form.Control
-                                as="textarea"
-                                rows={3}
-                                placeholder="Write a reply..."
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                              />
-                            </Form.Group>
-                            <Button type="submit">Submit</Button>
-                          </Form>
-                        )}
-
-                        {cmt.replies.length ? (
-                          <Fragment>
-                            {expandedReplyIndex === commentIndex ? (
-                              <span
-                                // style={{ pointerEvents: 'none' }}
-                                onClick={(e) => {
-                                  setExpandedReplyIndex(null)
-                                }}
-                                style={{
-                                  cursor: 'pointer',
-                                  fontWeight: '600',
-                                  color: '#0a56ec',
-                                  fontSize: '13px',
-                                  letterSpacing: '0.02rem',
-                                }}
-                              >
-                                {`Hide ${cmt.replies.length} ${
-                                  cmt.replies.length === 1 ? 'reply' : 'replies'
-                                }`}
-                              </span>
-                            ) : (
-                              <span
-                                onClick={() => {
-                                  console.log('Should not make it here')
-                                  setExpandedReplyIndex(commentIndex)
-                                }}
-                                style={{
-                                  cursor: 'pointer',
-                                  fontWeight: '600',
-                                  color: '#0a56ec',
-                                  fontSize: '13px',
-                                  letterSpacing: '0.02rem',
-                                }}
-                              >
-                                {`View ${cmt.replies.length} ${
-                                  cmt.replies.length === 1 ? 'reply' : 'replies'
-                                }`}
-                              </span>
-                            )}
-                            {expandedReplyIndex === commentIndex
-                              ? cmt.replies.map((reply, replyIndex) => {
-                                  const replyCreatedAtMoment = moment
-                                    .utc(reply.CREATED_AT)
-                                    .add(5, 'hours')
-                                    .add(30, 'minutes')
-                                    .local()
-                                  const replyTimeAgo =
-                                    replyCreatedAtMoment.fromNow()
-
-                                  return (
-                                    <Row
-                                      className="pt-3"
-                                      key={`${commentIndex}-${replyIndex}`}
-                                    >
-                                      <Col>
-                                        <Row>
-                                          <Col>
-                                            <span
-                                              style={{
-                                                display: 'inline-flex',
-                                              }}
-                                            >
-                                              <p
-                                                style={{
-                                                  fontWeight: '600',
-                                                  letterSpacing: '0.03rem',
-                                                  marginRight: '10px',
-                                                  fontSize: '12px',
-                                                }}
-                                              >
-                                                {reply.AUTHOR_NAME}{' '}
-                                                {cmt.isAdvisor && (
-                                                  <i
-                                                    class="fa fa-check-circle"
-                                                    aria-hidden="true"
-                                                    style={{ color: 'blue' }}
-                                                  ></i>
-                                                )}
-                                              </p>
-                                              <p
-                                                style={{
-                                                  fontWeight: '600',
-                                                  letterSpacing: '0.03rem',
-                                                  marginLeft: '10px',
-                                                  fontSize: '12px',
-                                                }}
-                                              >
-                                                {replyTimeAgo}
-                                              </p>
-                                            </span>
-                                            <p
-                                              style={{
-                                                fontWeight: '600',
-                                                letterSpacing: '0.03rem',
-                                                color: '#545454',
-                                                fontSize: '14px',
-                                              }}
-                                            >
-                                              {reply.CONTENT}
-                                            </p>
-                                            {/* <p
-                                          className={styles.commentReply}
-                                          onClick={handleShow}
-                                        >
-                                          Reply
-                                        </p> */}
-                                          </Col>
-                                        </Row>
-                                      </Col>
-                                    </Row>
-                                  )
-                                })
-                              : null}
-                          </Fragment>
-                        ) : null}
-                      </React.Fragment>
-                    )
-                  })
-                : null}
-
+             
               {/* <Col>
                   <Row>
                     <Col>
@@ -861,11 +656,12 @@ const index = ({ id }) => {
               <Row>
                 <Col
                   style={{
-                    background: '#272727',
-                    border: '1px solid rgb(235 235 235 / 18%)',
-                    borderRadius: '10px',
-                    padding: '30px',
                     marginTop: '45px',
+                    border: '1px solid rgb(49, 49, 49)',
+                    padding: '27px 30px',
+                    borderRadius: '25px',
+                    backgroundColor: 'rgb(0, 0, 0)',
+                    backgroundImage: 'linear-gradient(to right top, rgb(0, 0, 0), rgb(17, 16, 17))'
                   }}
                 >
                   {!user && (
@@ -973,13 +769,15 @@ const index = ({ id }) => {
                 style={{
                   position: 'sticky',
                   top: '50px',
-                  background: '#272727',
-                  padding: '20px 15px',
                   width: '100%',
                   height: 'auto',
                   marginBottom: '50px',
-                  borderRadius: '10px',
-                  border: '1px solid rgb(235 235 235 / 18%)',
+                  border: '1px solid #313131',
+                  padding: '27px 30px',
+                  margin: '10px',
+                  borderRadius: '25px',
+                  backgroundColor: '#000000',
+                  backgroundImage: 'linear-gradient(to top right, #000000, #111011)'
                 }}
               >
                 <Col className="pb-3">
@@ -991,7 +789,8 @@ const index = ({ id }) => {
                       <Row className="pb-3" key={index}>
                         <Col style={{
                           borderBottom: '1px solid rgb(255 255 255 / 25%)',
-                          paddingBottom: '15px'
+                          paddingBottom: '15px',
+                          paddingLeft: '0px'
                         }}>
                           <h5 className={styles.postSidebarPost}>
                             {item.TITLE}
@@ -999,14 +798,17 @@ const index = ({ id }) => {
                           <Image
                             src="https://collegepass.s3.ap-south-1.amazonaws.com/how-to-get-into-University-of-California-485x360.jpg"
                             alt="Small Blog"
-                            width={130}
-                            height={96}
+                            className='related-img'
+                            width={161}
+                            height={119}
                           />
                           <span className="post-cat-date">
                             <p>
-                              <a href="#">{item.CATEGORIES}</a>
+                              <a href="#">Undergraduate</a>
+                              <a href="#">LGBTQ</a>
+                              <a href="#">Populor</a>
                             </p>
-                            <p>
+                            <p className='only-date'>
                               <a href="#">
                                 {moment(item.CREATED_AT).format('MMMM D, YYYY')}
                               </a>
