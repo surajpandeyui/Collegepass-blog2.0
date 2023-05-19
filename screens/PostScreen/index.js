@@ -457,11 +457,26 @@ const index = ({ id }) => {
                 </Col>
               </Row>
               <Row>
+                  <Col className={styles.likeShare}>
+                    <p style={{
+                      marginRight: '42%'
+                    }}>Friday, March 17, 2023</p>
+                    <p><i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
+                    <p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>
+                  </Col>
+                </Row>
+              <Row>
                 <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }}></Col>
               </Row>
 
               <Row>
                 <Col>
+                {/*<Row>
+                  <Col className={styles.likeShare}>
+                    <p><i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
+                    <p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>
+                  </Col>
+                </Row>*/}
                   <Row>
                     <Col>
                       <h5 style={{

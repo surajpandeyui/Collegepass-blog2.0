@@ -207,16 +207,15 @@ const index = () => {
                           <p className={styles.hideOnMob}>Browse Categories</p>
                           <p><a className={styles.SelectedCategory}>Popular</a></p>
                           <p><a>Latest</a></p>
-                          {/*<p><a>US</a></p>
+                          <p><a>US</a></p>
                           <p><a>UK</a></p>
-                          <p><a>Canada</a></p>*/}
+                          <p><a>Canada</a></p>
                           <p><a>Undergraduate</a></p>
-                          <p><a>Ivy League</a></p>
+                          <p><a>SAT/ACT</a></p>
                           <p><a>Visa</a></p>
-                          <p><a>LGBTQ+</a></p>
+                          <p><a>Masters</a></p>
+                          <p><a>Ivy League</a></p>
                           <p><a>Application Components</a></p>
-                          {/*<p><a>SAT/ACT</a></p>
-                          <p><a>Masters</a></p>*/}
                         </Col>
                       </Row>
                     </Col>
