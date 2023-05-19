@@ -9,13 +9,13 @@ import axios from 'axios'
 
 export default function AboutUs({
   popular = [],
-  latest = [],
-  ivyLeague = [],
-  essays = [],
-  uk = [],
-  canada = [],
-  extracurricular = [],
-  blogPosts = [],
+  // latest = [],
+  // ivyLeague = [],
+  // essays = [],
+  // uk = [],
+  // canada = [],
+  // extracurricular = [],
+  // blogPosts = [],
 }) {
   return (
     <>
@@ -53,13 +53,13 @@ export default function AboutUs({
       <main className="bg-black">
         <BlogScreen
           popular={popular}
-          latest={latest}
-          ivyLeague={ivyLeague}
-          essays={essays}
-          uk={uk}
-          canada={canada}
-          extracurricular={extracurricular}
-          blogPosts={blogPosts}
+          // latest={latest}
+          // ivyLeague={ivyLeague}
+          // essays={essays}
+          // uk={uk}
+          // canada={canada}
+          // extracurricular={extracurricular}
+          // blogPosts={blogPosts}
         ></BlogScreen>
       </main>
     </>
@@ -138,16 +138,20 @@ const fetchPosts = async () => {
   }
 }
 export async function getStaticProps() {
-  const [popular, ivyLeague, essays, uk, canada, extracurricular, blogPosts] =
-    await Promise.all([
-      getPostsByCategory('Popular'),
-      getPostsByCategory('Ivy League'),
-      getPostsByCategory('Essay'),
-      getPostsByCategory('UK'),
-      getPostsByCategory('Canada'),
-      getPostsByOtherCategory(),
-      fetchPosts(),
-    ])
+  // const [popular, ivyLeague, essays, uk, canada, extracurricular, blogPosts] =
+  //   await Promise.all([
+  //     getPostsByCategory('Popular'),
+  //     getPostsByCategory('Ivy League'),
+  //     getPostsByCategory('Essay'),
+  //     getPostsByCategory('UK'),
+  //     getPostsByCategory('Canada'),
+  //     getPostsByOtherCategory(),
+  //     fetchPosts(),
+  //   ])
+  const [popular] =
+  await Promise.all([
+    getPostsByCategory('Popular'),
+  ])
 
   // console.log('Data', popular)
   // console.log('Data', latest)
@@ -160,13 +164,13 @@ export async function getStaticProps() {
   return {
     props: {
       popular,
-      latest: blogPosts.slice(0, 4),
-      ivyLeague,
-      essays,
-      uk,
-      canada,
-      extracurricular,
-      blogPosts,
+      // latest: blogPosts.slice(0, 4),
+      // ivyLeague,
+      // essays,
+      // uk,
+      // canada,
+      // extracurricular,
+      // blogPosts,
     },
     revalidate: 10, // Regenerate the page data every 10 seconds
   }

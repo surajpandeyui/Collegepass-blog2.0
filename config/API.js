@@ -1,7 +1,7 @@
-const API_URL = 'https://api.collegepass.org/api/v1/'
-const API_URL_V2 = 'https://api.collegepass.org/api/v2/'
-// const API_URL_V2 = 'http://localhost:4000/api/v2/'
-// const API_URL = 'http://localhost:4000/api/v1/'
+// const API_URL = 'https://api.collegepass.org/api/v1/'
+// const API_URL_V2 = 'https://api.collegepass.org/api/v2/'
+const API_URL_V2 = 'http://localhost:4000/api/v2/'
+const API_URL = 'http://localhost:4000/api/v1/'
 
 export const APIGetUserByPhone = `${API_URL_V2}user/getUserByPhone/`
 export const APILoginSendOtp = `${API_URL_V2}User/sendLoginOTP/`
