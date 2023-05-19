@@ -4,7 +4,21 @@ import Carousel from 'react-bootstrap/Carousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../BlogScreen/blog.module.scss'
-import moment from 'moment/moment'
+import axios from 'axios'
+import moment from 'moment'
+import { parse } from 'parse5'
+
+import { Typeahead } from 'react-bootstrap-typeahead'
+import Autocomplete from 'react-autocomplete'
+
+import 'react-bootstrap-typeahead/css/Typeahead.css'
+
+import {
+  APIGetBlogs,
+  APIGetBlogsByCategory,
+  APIGetBlogsByName,
+  APIGetTotalBlogsCount,
+} from '../../config/API'
 
 const index = ({ popular }) => {
   console.log('Popular', popular)
@@ -127,6 +141,25 @@ const index = ({ popular }) => {
     }
   }
 
+  const updateCategories = (categories) => {
+    return !categories.replaceAll(',', ', ').includes(', ')
+      ? categories
+      : categories
+          .replaceAll(',', ', ')
+          .split(', ')
+          .map((item, idx) => (
+            <span
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedCategory(item)
+                handleClickTop()
+              }}
+            >
+              {idx === 0 ? <span>{item}</span> : <span>, {item}</span>}
+            </span>
+          ))
+  }
+
   useEffect(() => {
     selectedCategory && getPostsByCategory(selectedCategory, 8)
   }, [selectedCategory])
@@ -201,7 +234,7 @@ const index = ({ popular }) => {
                     <Col>
                       <Carousel>
                         {popular && popular.length
-                          ? popular.map((item, idx) => {
+                          ? popular.slice(0, 3).map((item, idx) => {
                               return (
                                 <Link href={`/post/${item.POST_ID}`}>
                                   <Carousel.Item key={idx}>
@@ -292,7 +325,7 @@ const index = ({ popular }) => {
                               )
                             })
                           : null}
-                        <Carousel.Item>
+                        {/* <Carousel.Item>
                           <Row>
                             <Col className={styles.blogSliderWrap}>
                               <Row className={styles.sliderWidth}>
@@ -486,7 +519,7 @@ const index = ({ popular }) => {
                               </Row>
                             </Col>
                           </Row>
-                        </Carousel.Item>
+                        </Carousel.Item> */}
                       </Carousel>
                     </Col>
                   </Row>
@@ -571,6 +604,63 @@ const index = ({ popular }) => {
                       className={styles.blogSections}
                     >
                       <Row className={styles.blogCardWrap}>
+                        {popular && popular.length
+                          ? popular.map((item, idx) => {
+                              return (
+                                <Col lg={6} md={6} sm={12} xs={12}>
+                                  <Row>
+                                    <Col className={styles.blogTile}>
+                                      <Row>
+                                        <Col>
+                                          <Image
+                                            src="/harvard_returns_post.png"
+                                            alt="Small Blog"
+                                            width={750}
+                                            height={436}
+                                          />
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col>
+                                          <h3>{item.TITLE}</h3>
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col>
+                                          <p>
+                                            College life is an experience whose
+                                            memories last a lifetime, especially
+                                            because college is perhaps the only
+                                            time between youth and adult life.
+                                          </p>
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col className={styles.blogCatCard}>
+                                          {/* <p>Latest</p>
+                                          <p>Masters</p>
+                                          <p>Visa</p> */}
+
+                                          {updateCategories(item.CATEGORIES)}
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col className={styles.tileCardDate}>
+                                          {/* <p>March 16, 2023</p> */}
+                                          {moment(item.CREATED_AT).format(
+                                            'MMMM D, YYYY'
+                                          )}
+                                          <p className={styles.minRead}>
+                                            12 min read
+                                          </p>
+                                        </Col>
+                                      </Row>
+                                    </Col>
+                                  </Row>
+                                </Col>
+                              )
+                            })
+                          : null}
                         <Col lg={6} md={6} sm={12} xs={12}>
                           <Row>
                             <Col className={styles.blogTile}>
