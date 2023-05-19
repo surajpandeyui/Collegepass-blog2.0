@@ -459,10 +459,10 @@ const index = ({ id }) => {
               <Row>
                   <Col className={styles.likeShare}>
                     <p style={{
-                      marginRight: '42%'
+                      marginRight: '53%'
                     }}>Friday, March 17, 2023</p>
-                    <p><i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
-                    <p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>
+                    <p>{/*<i className="fa fa-heart" aria-hidden="true"></i>*/}<i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
+                    {/*<p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>*/}
                   </Col>
                 </Row>
               <Row>
@@ -484,7 +484,7 @@ const index = ({ id }) => {
                             color: '#ffffff',
                             paddingTop: '30px',
                             letterSpacing: '0.03rem'
-                      }}>Found this article useful? Share it!</h5>
+                      }}>Share if you found this blog useful!</h5>
                     </Col>
                   </Row>
                   <Row>
@@ -495,7 +495,7 @@ const index = ({ id }) => {
                             className="fa fa-facebook-official"
                             aria-hidden="true"
                             style={{
-                              color: '#3b5998',
+                              color: 'rgb(66 107 192)',
                             }}
                           ></i>
                         </FacebookShareButton>
@@ -553,7 +553,7 @@ const index = ({ id }) => {
                             className="fa fa-linkedin-square"
                             aria-hidden="true"
                             style={{
-                              color: 'rgb(10, 102, 194)',
+                              color: 'rgb(9 106 204)',
                             }}
                           ></i>
                         </LinkedinShareButton>
@@ -566,7 +566,7 @@ const index = ({ id }) => {
                             aria-hidden="true"
                             style={{
                               // color: 'rgb(10, 102, 194)',
-                              color: 'green',
+                              color: '#03c003',
                             }}
                           ></i>
                         </WhatsappShareButton>
@@ -820,7 +820,7 @@ const index = ({ id }) => {
                           <span className="post-cat-date">
                             <p>
                               <a href="#">Undergraduate</a>
-                              <a href="#">LGBTQ</a>
+                              <a href="#">Masters</a>
                               <a href="#">Popular</a>
                             </p>
                             <p className='only-date'>

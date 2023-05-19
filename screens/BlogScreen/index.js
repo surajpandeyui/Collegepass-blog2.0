@@ -16,7 +16,7 @@ const index = () => {
                 <Col>
                   <Row className={styles.SliderHeadingTop}>
                     <Col>
-                      <h3><i className="fa fa-newspaper-o" aria-hidden="true"></i> Trending articles</h3>
+                      <h3>Popular Articles</h3>
                     </Col>
                   </Row>
 
@@ -54,7 +54,7 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderCategory}>
-                                          <p>Latest Popular</p><p>LGBTQ+</p><p>Visa</p>
+                                          <p>Latest</p><p>Masters</p><p>Visa</p>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -103,7 +103,7 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderCategory}>
-                                          <p>Latest Popular</p><p>LGBTQ+</p><p>Visa</p>
+                                          <p>Latest Popular</p><p>Masters</p><p>Visa</p>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -152,7 +152,7 @@ const index = () => {
                                       </Row>
                                       <Row>
                                         <Col className={styles.SliderCategory}>
-                                          <p>Latest Popular</p><p>LGBTQ+</p><p>Visa</p>
+                                          <p>Latest Popular</p><p>Masters</p><p>Visa</p>
                                         </Col>
                                       </Row>
                                       <Row>
@@ -246,7 +246,7 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.blogCatCard}>
-                                  <p>Latest</p><p>LGBTQ+</p><p>Visa</p>
+                                  <p>Latest</p><p>Masters</p><p>Visa</p>
                                 </Col>
                               </Row>
                               <Row>
@@ -285,7 +285,7 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.blogCatCard}>
-                                  <p>Latest</p><p>LGBTQ+</p><p>Visa</p>
+                                  <p>Latest</p><p>Masters</p><p>Visa</p>
                                 </Col>
                               </Row>
                               <Row>
@@ -327,7 +327,7 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.blogCatCard}>
-                                    <p>Latest</p><p>LGBTQ+</p><p>Visa</p>
+                                    <p>Latest</p><p>Masters</p><p>Visa</p>
                                 </Col>
                               </Row>
                               <Row>
@@ -366,7 +366,7 @@ const index = () => {
                               </Row>
                               <Row>
                                 <Col className={styles.blogCatCard}>
-                                  <p>Latest</p><p>LGBTQ+</p><p>Visa</p>
+                                  <p>Latest</p><p>Masters</p><p>Visa</p>
                                 </Col>
                               </Row>
                               <Row>
