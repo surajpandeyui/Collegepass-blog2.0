@@ -1195,6 +1195,9 @@ border-radius: 15px;
 /* mobile  */
 
 @media only screen and (max-width: 480px) and (min-width: 320px) { 
+  .has-medium-font-size {
+    text-align: center;
+  }
   .blog_blog2Wrap__JNTnB.col .carousel-control-next {
     right: -70px;
     display: none;

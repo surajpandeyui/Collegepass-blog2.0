@@ -653,7 +653,7 @@ const index = ({ id }) => {
                   </Modal.Body>
                 </Modal>
               )}
-              <Row>
+              {/*<Row>
                 <Col
                   style={{
                     marginTop: '45px',
@@ -705,7 +705,7 @@ const index = ({ id }) => {
                     </Row>
                   )}
 
-                  <Row>
+                  {/*<Row>
                     <Col>
                       <Form.Group
                         className="mb-3"
@@ -732,9 +732,9 @@ const index = ({ id }) => {
                         </Form.Control.Feedback>
                       </Form.Group>
                     </Col>
-                  </Row>
+                  </Row>*/}
 
-                  <Col className="pt-3">
+                  {/*<Col className="pt-3">
                     <Button
                       onClick={handleSubmit}
                       style={{
@@ -751,7 +751,7 @@ const index = ({ id }) => {
                     </Button>
                   </Col>
                 </Col>
-              </Row>
+              </Row>*/}
             </Col>
             <Col
               lg={4}
@@ -806,7 +806,7 @@ const index = ({ id }) => {
                             <p>
                               <a href="#">Undergraduate</a>
                               <a href="#">LGBTQ</a>
-                              <a href="#">Populor</a>
+                              <a href="#">Popular</a>
                             </p>
                             <p className='only-date'>
                               <a href="#">
@@ -815,15 +815,18 @@ const index = ({ id }) => {
 
                               <span
                                 style={{
-                                  color: '#ffffff',
-                                  fontSize: '12px',
+                                  fontSize: '14px',
+                                  letterSpacing: '0.06rem',
+                                  border: 'none',
+                                  padding: '3px 5px',
+                                  margin: '0px 10px 10px 0px',
+                                  borderRadius: '10px',
+                                  background: 'none',
+                                  color: '#ffffffc2',
                                   marginLeft: '10px'
                                 }}
                               >
-                                <i className="fa fa-eye" style={{
-                                  paddingRight: '5px'
-                                }}></i>
-                                {item.VISITOR_COUNT}
+                                12 min read
                               </span>
                             </p>
                           </span>

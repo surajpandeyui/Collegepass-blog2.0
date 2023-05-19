@@ -61,10 +61,7 @@ const index = () => {
                                         <Col className={styles.SliderDate}>
                                         <p>March 16, 2023</p>
                                         <p>
-                                          <span style={{color: 'rgb(255, 255, 255)',
-                                        fontSize: '12px',
-                                          marginLeft: '10px'}}>
-                                            <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                        12 min read
                                         </p>
                                         </Col>
                                       </Row>
@@ -113,10 +110,7 @@ const index = () => {
                                         <Col className={styles.SliderDate}>
                                         <p>March 16, 2023</p>
                                   <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  12 min read
                                   </p>
                                         </Col>
                                       </Row>
@@ -165,10 +159,7 @@ const index = () => {
                                         <Col className={styles.SliderDate}>
                                         <p>March 16, 2023</p>
                                   <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                    12 min read
                                   </p>
                                         </Col>
                                       </Row>
@@ -262,11 +253,8 @@ const index = () => {
                               <Row>
                                 <Col className={styles.tileCardDate}>
                                 <p>March 16, 2023</p>
-                                  <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  <p className={styles.minRead}>
+                                  12 min read
                                   </p>
                                 </Col>
                               </Row>
@@ -304,11 +292,8 @@ const index = () => {
                               <Row>
                                 <Col className={styles.tileCardDate}>
                                   <p>March 16, 2023</p>
-                                  <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  <p className={styles.minRead}>
+                                  12 min read
                                   </p>
                                 </Col>
                               </Row>
@@ -349,11 +334,8 @@ const index = () => {
                               <Row>
                                 <Col className={styles.tileCardDate}>
                                 <p>March 16, 2023</p>
-                                  <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  <p className={styles.minRead}>
+                                  12 min read
                                   </p>
                                 </Col>
                               </Row>
@@ -391,11 +373,8 @@ const index = () => {
                               <Row>
                                 <Col className={styles.tileCardDate}>
                                 <p>March 16, 2023</p>
-                                  <p>
-                                    <span style={{color: 'rgb(255, 255, 255)',
-                                   fontSize: '12px',
-                                    marginLeft: '10px'}}>
-                                      <i class="fa fa-eye" style={{paddingRight: '5px'}}></i>23</span>
+                                  <p className={styles.minRead}>
+                                    12 min read
                                   </p>
                                 </Col>
                               </Row>

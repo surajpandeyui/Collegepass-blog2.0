@@ -110,7 +110,7 @@ const Footer = () => {
                           </a>
                         </li>
 
-                        {/*<li><a href="https://blog.collegepass.org/">Blog</a></li>*/}
+                        <li><a href="https://blog.collegepass.org/">Blog</a></li>
                       </ul>
                     </Col>
                   </Row>
