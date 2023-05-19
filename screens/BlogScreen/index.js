@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../BlogScreen/blog.module.scss'
+import moment from 'moment/moment'
 
 const index = ({ popular }) => {
   console.log('Popular', popular)
@@ -18,9 +19,9 @@ const index = ({ popular }) => {
 
   const [searchString, setSearchString] = useState('')
 
-  useEffect(() => {
-    setBlogs(blogPosts)
-  }, [blogPosts])
+  // useEffect(() => {
+  //   setBlogs(blogPosts)
+  // }, [blogPosts])
   // const fetchPosts = async () => {
   //   try {
   //     const response = await axios.get(`${APIGetBlogs}${page}`)
@@ -39,9 +40,9 @@ const index = ({ popular }) => {
   //     console.log('Error -------------->', err)
   //   }
   // }
-  useEffect(() => {
-    fetchTotalPosts()
-  }, [])
+  // useEffect(() => {
+  //   fetchTotalPosts()
+  // }, [])
 
   // useEffect(() => {
   //   !searchString && !selectedCategory && fetchPosts(page)
@@ -199,76 +200,98 @@ const index = ({ popular }) => {
                   <Row>
                     <Col>
                       <Carousel>
-                        {popular && popular.length ? (
-                          <Carousel.Item>
-                            <Row>
-                              <Col className={styles.blogSliderWrap}>
-                                <Row className={styles.sliderWidth}>
-                                  <Col lg={4} md={4} sm={12} xs={12}>
+                        {popular && popular.length
+                          ? popular.map((item, idx) => {
+                              return (
+                                <Link href={`/post/${item.POST_ID}`}>
+                                  <Carousel.Item key={idx}>
                                     <Row>
-                                      <Col className={styles.blogSliderImg}>
-                                        <Image
-                                          src="/harvard_returns_front.png"
-                                          alt="Small Blog"
-                                          width={605}
-                                          height={700}
-                                        />
+                                      <Col className={styles.blogSliderWrap}>
+                                        <Row className={styles.sliderWidth}>
+                                          <Col lg={4} md={4} sm={12} xs={12}>
+                                            <Row>
+                                              <Col
+                                                className={styles.blogSliderImg}
+                                              >
+                                                <Image
+                                                  src={
+                                                    item.DISPLAY_IMAGE_BANNER
+                                                  }
+                                                  alt="Small Blog"
+                                                  width={605}
+                                                  height={700}
+                                                />
+                                              </Col>
+                                            </Row>
+                                          </Col>
+                                          <Col lg={8} md={8} sm={12} xs={12}>
+                                            <Row>
+                                              <Col
+                                                className={
+                                                  styles.blogSliderTextSection
+                                                }
+                                              >
+                                                <Row>
+                                                  <Col
+                                                    className={
+                                                      styles.SliderHeading
+                                                    }
+                                                  >
+                                                    <h3>
+                                                      {/* Harvard Returns in the Fall */}
+                                                      {item.TITLE}
+                                                    </h3>
+                                                  </Col>
+                                                </Row>
+                                                <Row>
+                                                  <Col
+                                                    className={
+                                                      styles.SliderDescription
+                                                    }
+                                                  >
+                                                    <p>
+                                                      {getText(item.CONTENT)}
+                                                    </p>
+                                                  </Col>
+                                                </Row>
+                                                <Row>
+                                                  <Col
+                                                    className={
+                                                      styles.SliderCategory
+                                                    }
+                                                  >
+                                                    {/* <p>Latest</p>
+                                                <p>Masters</p>
+                                                <p>Visa</p> */}
+                                                    {updateCategories(
+                                                      item.CATEGORIES
+                                                    )}
+                                                  </Col>
+                                                </Row>
+                                                <Row>
+                                                  <Col
+                                                    className={
+                                                      styles.SliderDate
+                                                    }
+                                                  >
+                                                    {/* <p>March 16, 2023</p> */}
+                                                    {moment(
+                                                      item.CREATED_AT
+                                                    ).format('MMMM D, YYYY')}
+                                                    <p>12 min read</p>
+                                                  </Col>
+                                                </Row>
+                                              </Col>
+                                            </Row>
+                                          </Col>
+                                        </Row>
                                       </Col>
                                     </Row>
-                                  </Col>
-                                  <Col lg={8} md={8} sm={12} xs={12}>
-                                    <Row>
-                                      <Col
-                                        className={styles.blogSliderTextSection}
-                                      >
-                                        <Row>
-                                          <Col className={styles.SliderHeading}>
-                                            <h3>Harvard Returns in the Fall</h3>
-                                          </Col>
-                                        </Row>
-                                        <Row>
-                                          <Col
-                                            className={styles.SliderDescription}
-                                          >
-                                            <p>
-                                              College life is an experience
-                                              whose memories last a lifetime,
-                                              especially because college is
-                                              perhaps the only time between
-                                              youth and adult life. You can live
-                                              a pseudo suspended life, with as
-                                              much time for play, as for
-                                              extracurricular activities. As one
-                                              steps into the professional
-                                              sphere, an adult rues the lack of
-                                              work-life balance, making college
-                                              life even more memorable.
-                                            </p>
-                                          </Col>
-                                        </Row>
-                                        <Row>
-                                          <Col
-                                            className={styles.SliderCategory}
-                                          >
-                                            <p>Latest</p>
-                                            <p>Masters</p>
-                                            <p>Visa</p>
-                                          </Col>
-                                        </Row>
-                                        <Row>
-                                          <Col className={styles.SliderDate}>
-                                            <p>March 16, 2023</p>
-                                            <p>12 min read</p>
-                                          </Col>
-                                        </Row>
-                                      </Col>
-                                    </Row>
-                                  </Col>
-                                </Row>
-                              </Col>
-                            </Row>
-                          </Carousel.Item>
-                        ) : null}
+                                  </Carousel.Item>
+                                </Link>
+                              )
+                            })
+                          : null}
                         <Carousel.Item>
                           <Row>
                             <Col className={styles.blogSliderWrap}>
