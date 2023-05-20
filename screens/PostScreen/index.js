@@ -458,7 +458,7 @@ const index = ({ id }) => {
               </Row>
               <Row>
                   <Col className={styles.likeShare}>
-                    <p className='date-post-top'>Friday, March 17, 2023</p>
+                    <p className='date-post-top'>March 17, 2023</p>
                     <p>{/*<i className="fa fa-heart" aria-hidden="true"></i>*/}<i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
                     {/*<p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>*/}
                   </Col>

@@ -1199,21 +1199,23 @@ border-radius: 15px;
         padding-left: 5%;
 }
 .date-post-top {
-  margin-right: 53%;
+  margin-right: 55%;
 }
 @media only screen and (max-width: 480px) and (min-width: 320px) {
-  .blog_postWrap__fUliM.container h3 {
-    text-align: center;
-    padding-top: 20px;
-} 
-.blog_socialPost__aIH2M {
-  justify-content: center;
+  .blog_postWrap__fUliM.container button {
+    font-size: 18px!important;
 }
+  .blog_postWrap__fUliM.container h3 {
+    text-align: left;
+    padding-top: 20px!important;
+    line-height: 35px;
+} 
 .share-icon-post {
-  text-align: center;
+  text-align: left;
+  padding: 5px 0px;
 }
 .date-post-top {
-  margin-right: 20%!important;
+  margin-right: 40%!important;
 }
 .blog_postSide__ZjEFW {
   padding-bottom: 5%;
@@ -1221,10 +1223,10 @@ border-radius: 15px;
   padding-left: 0%!important;
 }
 .blog_postWrap__fUliM li {
-  text-align: center;
+  text-align: left;
 }
 .post-css-mob.col {
-  text-align: center;
+  text-align: left;
 }
   .has-medium-font-size {
     text-align: center;
@@ -3294,4 +3296,7 @@ span.post-cat-date p {
     color: #ffffff;
     padding: 7px 20px;
     margin-top: 15px;
+}
+.post-css-mob.col h3 {
+  padding: 10px 0px 10px 0px;
 }
