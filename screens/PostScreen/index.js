@@ -813,7 +813,6 @@ const index = ({ id }) => {
                           <span className="post-cat-date">
                             <p>
                               <a href="#">Undergraduate</a>
-                              <a href="#">Masters</a>
                               <a href="#">Popular</a>
                             </p>
                             <p className='only-date'>
