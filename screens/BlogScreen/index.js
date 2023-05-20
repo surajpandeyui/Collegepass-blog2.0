@@ -381,6 +381,19 @@ const index = () => {
                           </Row>
                         </Col>
                       </Row>
+
+                      <Row>
+                        <Col>
+                          <div className="blog-center">
+                              <div className="blog-pagination">
+                                  <a href="#">&laquo;</a>
+                                  <a href="#" class="active">1</a>
+                                  <a href="#">2</a>
+                                  <a href="#">&raquo;</a>
+                              </div>
+                          </div>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Col>

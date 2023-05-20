@@ -3300,3 +3300,34 @@ span.post-cat-date p {
 .post-css-mob.col h3 {
   padding: 10px 0px 10px 0px;
 }
+
+.blog-center {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.blog-pagination {
+  display: inline-block;
+}
+
+.blog-pagination a {
+  color: #ffffff;
+  float: left;
+  padding: 5px 15px;
+  text-decoration: none;
+  transition: background-color .5s;
+  border: 1px solid #DDD;
+  margin: 0 5px;
+  font-size: 18px;
+}
+
+.blog-pagination a.active {
+  background-color: #e3cc80;
+  color: #000000;
+  border: 1px solid #e3cc80;
+}
+
+.blog-pagination a:hover:not(.active) {
+  background-color: #DDD;
+  color: #000000;
+}
