@@ -148,10 +148,7 @@ export async function getStaticProps() {
   //     getPostsByOtherCategory(),
   //     fetchPosts(),
   //   ])
-  const [popular] =
-  await Promise.all([
-    getPostsByCategory('Popular'),
-  ])
+  const [popular] = await Promise.all([getPostsByCategory('Popular')])
 
   // console.log('Data', popular)
   // console.log('Data', latest)
@@ -164,6 +161,7 @@ export async function getStaticProps() {
   return {
     props: {
       popular,
+      // propBlogs: popular,
       // latest: blogPosts.slice(0, 4),
       // ivyLeague,
       // essays,

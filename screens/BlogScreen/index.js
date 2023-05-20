@@ -27,6 +27,10 @@ const index = ({ popular }) => {
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
 
+  // useState(() => {
+  //   popular && popular.length && setBlogs(popular)
+  // }, [popular])
+
   const [selectedCategory, setSelectedCategory] = useState('')
 
   const [categoryPage, setCategoryPage] = useState(1)
@@ -62,7 +66,7 @@ const index = ({ popular }) => {
   //   !searchString && !selectedCategory && fetchPosts(page)
   // }, [page, searchString, selectedCategory])
 
-  if (!popular.length) {
+  if (!blogs.length) {
     return <div></div>
   }
 
@@ -114,7 +118,7 @@ const index = ({ popular }) => {
     return text
   }
 
-  const [hasMoreBlogs, setHasMoreBlogs] = useState(false)
+  // const [hasMoreBlogs, setHasMoreBlogs] = useState(false)
   const getPostsByCategory = async (c, limit) => {
     try {
       const result = []
@@ -152,10 +156,14 @@ const index = ({ popular }) => {
               onClick={(e) => {
                 e.stopPropagation()
                 setSelectedCategory(item)
-                handleClickTop()
+                // handleClickTop()
               }}
             >
-              {idx === 0 ? <span>{item}</span> : <span>, {item}</span>}
+              {idx === 0 ? (
+                <p style={{ cursor: 'pointer' }}>{item}</p>
+              ) : (
+                <p style={{ cursor: 'pointer' }}>{item}</p>
+              )}
             </span>
           ))
   }
@@ -165,6 +173,7 @@ const index = ({ popular }) => {
   }, [selectedCategory])
 
   const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     let cancel
     setIsLoading(true)
@@ -216,6 +225,7 @@ const index = ({ popular }) => {
       }
     }
   }, [searchString])
+
   return (
     <Fragment>
       <Container fluid>
@@ -282,9 +292,13 @@ const index = ({ popular }) => {
                                                       styles.SliderDescription
                                                     }
                                                   >
-                                                    <p>
-                                                      {getText(item.CONTENT)}
-                                                    </p>
+                                                    <p
+                                                      dangerouslySetInnerHTML={{
+                                                        __html: getText(
+                                                          item.CONTENT
+                                                        ),
+                                                      }}
+                                                    ></p>
                                                   </Col>
                                                 </Row>
                                                 <Row>
@@ -607,13 +621,13 @@ const index = ({ popular }) => {
                         {popular && popular.length
                           ? popular.map((item, idx) => {
                               return (
-                                <Col lg={6} md={6} sm={12} xs={12}>
+                                <Col lg={6} md={6} sm={12} xs={12} key={idx}>
                                   <Row>
                                     <Col className={styles.blogTile}>
                                       <Row>
                                         <Col>
                                           <Image
-                                            src="/harvard_returns_post.png"
+                                            src={item.DISPLAY_IMAGE_BANNER}
                                             alt="Small Blog"
                                             width={750}
                                             height={436}
@@ -627,11 +641,15 @@ const index = ({ popular }) => {
                                       </Row>
                                       <Row>
                                         <Col>
-                                          <p>
-                                            College life is an experience whose
+                                          <p
+                                            dangerouslySetInnerHTML={{
+                                              __html: getText(item.CONTENT),
+                                            }}
+                                          >
+                                            {/* College life is an experience whose
                                             memories last a lifetime, especially
                                             because college is perhaps the only
-                                            time between youth and adult life.
+                                            time between youth and adult life. */}
                                           </p>
                                         </Col>
                                       </Row>
