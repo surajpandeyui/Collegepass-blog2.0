@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default function AboutUs({
   popular = [],
-  // latest = [],
+  latest = [],
   // ivyLeague = [],
   // essays = [],
   // uk = [],
@@ -53,7 +53,7 @@ export default function AboutUs({
       <main className="bg-black">
         <BlogScreen
           popular={popular}
-          // latest={latest}
+          latest={latest}
           // ivyLeague={ivyLeague}
           // essays={essays}
           // uk={uk}
@@ -148,7 +148,10 @@ export async function getStaticProps() {
   //     getPostsByOtherCategory(),
   //     fetchPosts(),
   //   ])
-  const [popular] = await Promise.all([getPostsByCategory('Popular')])
+  const [popular, latest] = await Promise.all([
+    getPostsByCategory('Popular'),
+    fetchPosts(),
+  ])
 
   // console.log('Data', popular)
   // console.log('Data', latest)
@@ -161,6 +164,7 @@ export async function getStaticProps() {
   return {
     props: {
       popular,
+      latest,
       // propBlogs: popular,
       // latest: blogPosts.slice(0, 4),
       // ivyLeague,

@@ -20,16 +20,16 @@ import {
   APIGetTotalBlogsCount,
 } from '../../config/API'
 
-const index = ({ popular }) => {
-  console.log('Popular', popular)
+const index = ({ popular, latest }) => {
+  console.log('Popular', latest)
 
   const [blogs, setBlogs] = useState([])
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
 
-  // useState(() => {
-  //   popular && popular.length && setBlogs(popular)
-  // }, [popular])
+  useState(() => {
+    latest && latest.length && setBlogs(latest)
+  }, [latest])
 
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -66,7 +66,7 @@ const index = ({ popular }) => {
   //   !searchString && !selectedCategory && fetchPosts(page)
   // }, [page, searchString, selectedCategory])
 
-  if (!blogs.length) {
+  if (!latest.length) {
     return <div></div>
   }
 
@@ -101,18 +101,18 @@ const index = ({ popular }) => {
         if (elementText) {
           text += elementText + ' '
           count += elementText.length
-          if (count >= 193) {
+          if (count >= 175) {
             break
           }
         }
       }
-      if (count >= 193) {
+      if (count >= 175) {
         return
       }
     })
 
-    if (text.length >= 193) {
-      text = text.slice(0, 193) + '...'
+    if (text.length >= 175) {
+      text = text.slice(0, 175) + '...'
     }
 
     return text
@@ -121,24 +121,29 @@ const index = ({ popular }) => {
   // const [hasMoreBlogs, setHasMoreBlogs] = useState(false)
   const getPostsByCategory = async (c, limit) => {
     try {
-      const result = []
-      categoryPage === 1 && setIsLoading(true)
+      let result = []
+      // page === 1 &&
+      setIsLoading(true)
 
-      const blogs = await axios.get(
+      searchString && setSearchString('')
+      const blgs = await axios.get(
         `${APIGetBlogsByCategory}${limit}/${c.replace(
           '/',
           '%2F'
-        )}/0?page_no=${categoryPage}`
+        )}/0?page_no=${page}`
       )
-      if (blogs.data.data.length) {
-        result.push(...blogs.data.data)
+      if (blgs.data.data.length) {
+        result = [...blogs]
+        result.push(...blgs.data.data)
       }
 
-      categoryPage === 1 && setIsLoading(false)
+      // page === 1 &&
 
-      setBlogs((prev) => (categoryPage > 1 ? [...prev, ...result] : result))
+      setBlogs((prev) => [...prev, ...result])
+      setTotalPages(result && result.length ? Math.floor(result.length / 4) : 1)
+      setIsLoading(false)
       console.log('DAta ->', blogs.data)
-      setHasMoreBlogs(!!blogs.data.hasMore)
+      // setHasMoreBlogs(!!blogs.data.hasMore)
     } catch (err) {
       console.log('Error -->', err)
       setIsLoading(false)
@@ -169,16 +174,18 @@ const index = ({ popular }) => {
   }
 
   useEffect(() => {
-    selectedCategory && getPostsByCategory(selectedCategory, 8)
+    selectedCategory && getPostsByCategory(selectedCategory, 4)
   }, [selectedCategory])
 
   const [isLoading, setIsLoading] = useState(false)
+  const [totalPages, setTotalPages] = useState()
 
   useEffect(() => {
     let cancel
     setIsLoading(true)
     // const timerId = setTimeout(() => {
     if (searchString) {
+      // searchString.length >= 3 &&
       axios
         .get(APIGetBlogsByName + searchString, {
           cancelToken: new axios.CancelToken(function executor(c) {
@@ -188,6 +195,11 @@ const index = ({ popular }) => {
         })
         .then((response) => {
           setBlogs(response.data.data)
+          setTotalPages(
+            response.data.data && response.data.data.length
+              ? Math.floor(response.data.data.length / 4)
+              : 1
+          )
           setIsLoading(false)
           setSelectedCategory(null)
         })
@@ -201,8 +213,10 @@ const index = ({ popular }) => {
           }
         })
     } else {
+      setBlogs(latest)
       setIsLoading(false)
     }
+    setPage(1)
     // else {
     //   axios
     //     .get(APIGetBlogsByName + searchString)
@@ -226,6 +240,96 @@ const index = ({ popular }) => {
     }
   }, [searchString])
 
+  // function Pagination() {
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  const generatePagination = () => {
+    // const totalPages = 20
+    const maxDisplayedPages = 10 // Maximum number of pages to display
+
+    let paginationHTML = []
+
+    // Calculate start and end page numbers based on current page
+    let startPage
+    let endPage
+
+    if (totalPages <= maxDisplayedPages) {
+      // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
+      startPage = 1
+      endPage = totalPages
+    } else if (page <= 6) {
+      // Display pages 1 to 10 if the current page is less than or equal to 6
+      startPage = 1
+      endPage = maxDisplayedPages
+    } else if (page >= totalPages - 5) {
+      // Display the last 10 pages if the current page is within the last 5 pages
+      startPage = totalPages - maxDisplayedPages + 1
+      endPage = totalPages
+    } else {
+      // Display the current page with a range of 5 pages before and after
+      startPage = page - 4
+      endPage = page + 5
+    }
+
+    // Add previous page link
+    if (page > 1) {
+      paginationHTML.push(
+        <a key="prevPage" href="#" onClick={() => setPage(page - 1)}>
+          &laquo;
+        </a>
+      )
+    } else {
+      paginationHTML.push(
+        <span key="prevPage" className="disabled">
+          &laquo;
+        </span>
+      )
+    }
+
+    // Add page links between startPage and endPage
+    for (let i = startPage; i <= endPage; i++) {
+      paginationHTML.push(
+        <a
+          key={i}
+          href="#"
+          className={page === i ? 'active' : ''}
+          onClick={() => setPage(i)}
+        >
+          {i}
+        </a>
+      )
+    }
+
+    // Add ellipsis (...) if there are more pages after the displayed range
+    if (endPage < totalPages) {
+      paginationHTML.push(
+        <span key="ellipsis" className="ellipsis">
+          ...
+        </span>
+      )
+    }
+
+    // Add next page link
+    if (page < totalPages) {
+      paginationHTML.push(
+        <a key="nextPage" href="#" onClick={() => setPage(page + 1)}>
+          &raquo;
+        </a>
+      )
+    } else {
+      paginationHTML.push(
+        <span key="nextPage" className="disabled">
+          &raquo;
+        </span>
+      )
+    }
+
+    return paginationHTML
+  }
+
+  // return paginationHTML;
+  // };
+
   return (
     <Fragment>
       <Container fluid>
@@ -246,8 +350,11 @@ const index = ({ popular }) => {
                         {popular && popular.length
                           ? popular.slice(0, 3).map((item, idx) => {
                               return (
-                                <Link href={`/post/${item.POST_ID}`}>
-                                  <Carousel.Item key={idx}>
+                                <Carousel.Item>
+                                  <Link
+                                    href={`/post/${item.POST_ID}`}
+                                    key={idx}
+                                  >
                                     <Row>
                                       <Col className={styles.blogSliderWrap}>
                                         <Row className={styles.sliderWidth}>
@@ -334,8 +441,8 @@ const index = ({ popular }) => {
                                         </Row>
                                       </Col>
                                     </Row>
-                                  </Carousel.Item>
-                                </Link>
+                                  </Link>
+                                </Carousel.Item>
                               )
                             })
                           : null}
@@ -541,13 +648,15 @@ const index = ({ popular }) => {
               </Row>
 
               <Row>
-                <Col className={styles.blogMainSectionWrap}>
+                <Col className={styles.blogMainSectionWrap} id="#1">
                   <Row className={styles.blogSearch}>
                     <Col lg={2} md={2} sm={12} xs={12}></Col>
                     <Col lg={10} md={10} sm={12} xs={12}>
                       <Row>
                         <Col lg={6} md={6} sm={12} xs={12}>
-                          <h2>Blogs</h2>
+                          <h2>
+                            {selectedCategory ? selectedCategory : 'Blogs'}
+                          </h2>
                         </Col>
                         <Col lg={6} md={6} sm={12} xs={12}>
                           <Form>
@@ -556,6 +665,8 @@ const index = ({ popular }) => {
                               placeholder="Search"
                               className="me-2"
                               aria-label="Search"
+                              value={searchString}
+                              onChange={(e) => setSearchString(e.target.value)}
                             />
                           </Form>
                         </Col>
@@ -574,38 +685,181 @@ const index = ({ popular }) => {
                       <Row>
                         <Col className={styles.catSectionShort}>
                           <p className={styles.hideOnMob}>Browse Categories</p>
-                          <p>
-                            <a className={styles.SelectedCategory}>Popular</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Popular')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Popular'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Popular
+                            </a>
                           </p>
-                          <p>
-                            <a>Latest</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Latest')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Latest'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Latest
+                            </a>
                           </p>
-                          <p>
-                            <a>US</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('US')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'US'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              US
+                            </a>
                           </p>
-                          <p>
-                            <a>UK</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('UK')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'UK'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              UK
+                            </a>
                           </p>
-                          <p>
-                            <a>Canada</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Canada')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Canada'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Canada
+                            </a>
                           </p>
-                          <p>
-                            <a>Undergraduate</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Undergraduate')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Undergraduate'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Undergraduate
+                            </a>
                           </p>
-                          <p>
-                            <a>SAT/ACT</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('SAT/ACT')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'SAT/ACT'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              SAT/ACT
+                            </a>
                           </p>
-                          <p>
-                            <a>Visa</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Visa')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Visa'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Visa
+                            </a>
                           </p>
-                          <p>
-                            <a>Masters</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Masters')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Masters'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Masters
+                            </a>
                           </p>
-                          <p>
-                            <a>Ivy League</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Ivy League')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Ivy League'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Ivy League
+                            </a>
                           </p>
-                          <p>
-                            <a>Application Components</a>
+                          <p
+                            onClick={() => {
+                              setSelectedCategory('Application Components')
+                            }}
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <a
+                              className={
+                                selectedCategory === 'Application Components'
+                                  ? styles.SelectedCategory
+                                  : ''
+                              }
+                            >
+                              Application Components
+                            </a>
                           </p>
                         </Col>
                       </Row>
@@ -618,68 +872,76 @@ const index = ({ popular }) => {
                       className={styles.blogSections}
                     >
                       <Row className={styles.blogCardWrap}>
-                        {popular && popular.length
-                          ? popular.map((item, idx) => {
-                              return (
-                                <Col lg={6} md={6} sm={12} xs={12} key={idx}>
-                                  <Row>
-                                    <Col className={styles.blogTile}>
-                                      <Row>
-                                        <Col>
-                                          <Image
-                                            src={item.DISPLAY_IMAGE_BANNER}
-                                            alt="Small Blog"
-                                            width={750}
-                                            height={436}
-                                          />
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col>
-                                          <h3>{item.TITLE}</h3>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col>
-                                          <p
-                                            dangerouslySetInnerHTML={{
-                                              __html: getText(item.CONTENT),
-                                            }}
-                                          >
-                                            {/* College life is an experience whose
+                        {!isLoading && !blogs.length
+                          ? 'No Blogs Found!'
+                          : blogs
+                              .slice((page - 1) * 4, (page - 1) * 4 + 4)
+                              .map((item, idx) => {
+                                return (
+                                  <Col lg={6} md={6} sm={12} xs={12} key={idx}>
+                                    <Row>
+                                      <Col className={styles.blogTile}>
+                                        <Row>
+                                          <Col>
+                                            <Image
+                                              src={item.DISPLAY_IMAGE_BANNER}
+                                              alt="Small Blog"
+                                              width={750}
+                                              height={436}
+                                            />
+                                          </Col>
+                                        </Row>
+                                        <Row>
+                                          <Col>
+                                            <h3>
+                                              {item.TITLE &&
+                                              item.TITLE.length < 36
+                                                ? item.TITLE
+                                                : item.TITLE.substring(0, 36) +
+                                                  '...'}
+                                            </h3>
+                                          </Col>
+                                        </Row>
+                                        <Row>
+                                          <Col>
+                                            <p
+                                              dangerouslySetInnerHTML={{
+                                                __html: getText(item.CONTENT),
+                                              }}
+                                            >
+                                              {/* College life is an experience whose
                                             memories last a lifetime, especially
                                             because college is perhaps the only
                                             time between youth and adult life. */}
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.blogCatCard}>
-                                          {/* <p>Latest</p>
+                                            </p>
+                                          </Col>
+                                        </Row>
+                                        <Row>
+                                          <Col className={styles.blogCatCard}>
+                                            {/* <p>Latest</p>
                                           <p>Masters</p>
                                           <p>Visa</p> */}
 
-                                          {updateCategories(item.CATEGORIES)}
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.tileCardDate}>
-                                          {/* <p>March 16, 2023</p> */}
-                                          {moment(item.CREATED_AT).format(
-                                            'MMMM D, YYYY'
-                                          )}
-                                          <p className={styles.minRead}>
-                                            12 min read
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                    </Col>
-                                  </Row>
-                                </Col>
-                              )
-                            })
-                          : null}
-                        <Col lg={6} md={6} sm={12} xs={12}>
+                                            {updateCategories(item.CATEGORIES)}
+                                          </Col>
+                                        </Row>
+                                        <Row>
+                                          <Col className={styles.tileCardDate}>
+                                            {/* <p>March 16, 2023</p> */}
+                                            {moment(item.CREATED_AT).format(
+                                              'MMMM D, YYYY'
+                                            )}
+                                            <p className={styles.minRead}>
+                                              12 min read
+                                            </p>
+                                          </Col>
+                                        </Row>
+                                      </Col>
+                                    </Row>
+                                  </Col>
+                                )
+                              })}
+                        {/* <Col lg={6} md={6} sm={12} xs={12}>
                           <Row>
                             <Col className={styles.blogTile}>
                               <Row>
@@ -768,10 +1030,10 @@ const index = ({ popular }) => {
                               </Row>
                             </Col>
                           </Row>
-                        </Col>
+                        </Col> */}
                       </Row>
 
-                      <Row className={styles.blogCardWrap}>
+                      {/* <Row className={styles.blogCardWrap}>
                         <Col lg={6} md={6} sm={12} xs={12}>
                           <Row>
                             <Col className={styles.blogTile}>
@@ -860,17 +1122,27 @@ const index = ({ popular }) => {
                             </Col>
                           </Row>
                         </Col>
-                      </Row>
+                      </Row> */}
 
                       <Row>
                         <Col>
                           <div className="blog-center">
-                              <div className="blog-pagination">
-                                  <a href="#">&laquo;</a>
-                                  <a href="#" class="active">1</a>
-                                  <a href="#">2</a>
-                                  <a href="#">&raquo;</a>
-                              </div>
+                            <div className="blog-pagination">
+                              {/* <a href="#">&laquo;</a>
+                              <a href="#" class="active">
+                                1
+                              </a>
+                              <a href="#">2</a>
+                              <a href="#">&raquo;</a> */}
+                              {/* <a id="prevPage" href="#">
+                                &laquo;
+                              </a>
+                              <span id="paginationContainer"></span>
+                              <a id="nextPage" href="#">
+                                &raquo;
+                              </a> */}
+                              {totalPages > 1 && generatePagination()}
+                            </div>
                           </div>
                         </Col>
                       </Row>
