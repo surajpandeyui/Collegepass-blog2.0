@@ -458,15 +458,13 @@ const index = ({ id }) => {
               </Row>
               <Row>
                   <Col className={styles.likeShare}>
-                    <p style={{
-                      marginRight: '53%'
-                    }}>Friday, March 17, 2023</p>
+                    <p className='date-post-top'>March 17, 2023</p>
                     <p>{/*<i className="fa fa-heart" aria-hidden="true"></i>*/}<i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
                     {/*<p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>*/}
                   </Col>
                 </Row>
               <Row>
-                <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }}></Col>
+                <Col dangerouslySetInnerHTML={{ __html: post.CONTENT }} className='post-css-mob'></Col>
               </Row>
 
               <Row>
@@ -478,7 +476,7 @@ const index = ({ id }) => {
                   </Col>
                 </Row>*/}
                   <Row>
-                    <Col>
+                    <Col className='share-icon-post'>
                       <h5 style={{
                             fontWeight: '600',
                             color: '#ffffff',
@@ -774,11 +772,6 @@ const index = ({ id }) => {
               sm={12}
               xs={12}
               className={styles.postSide}
-              style={{
-                paddingBottom: '5%',
-                paddingTop: '5%',
-                paddingLeft: '5%',
-              }}
             >
               <Row
                 style={{
@@ -820,7 +813,6 @@ const index = ({ id }) => {
                           <span className="post-cat-date">
                             <p>
                               <a href="#">Undergraduate</a>
-                              <a href="#">Masters</a>
                               <a href="#">Popular</a>
                             </p>
                             <p className='only-date'>
