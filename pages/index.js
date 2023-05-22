@@ -99,37 +99,37 @@ const getPostsByCategory = async (c) => {
   }
   return result
 }
-const getPostsByOtherCategory = async () => {
-  const result = []
+// const getPostsByOtherCategory = async () => {
+//   const result = []
 
-  const limit = 4
-  const blogs = await axios.get(`${APIGetBlogsByOtherCategory}0`)
-  if (blogs.data.data.length) {
-    result.push(...blogs.data.data)
-    console.log('Data ------------>', blogs.data.data)
-  }
+//   const limit = 4
+//   const blogs = await axios.get(`${APIGetBlogsByOtherCategory}0`)
+//   if (blogs.data.data.length) {
+//     result.push(...blogs.data.data)
+//     console.log('Data ------------>', blogs.data.data)
+//   }
 
-  if (result.length < 4) {
-    const additionalBlogs = await axios.get(`${APIGetBlogs}1`)
-    result.push(
-      ...additionalBlogs.data.data
-        .filter((item) => {
-          if (result.length) {
-            for (let i of result) {
-              if (i.POST_ID === item.POST_ID) {
-                return false
-              }
-            }
-            return true
-          } else {
-            return true
-          }
-        })
-        .slice(0, 4 - result.length)
-    )
-  }
-  return result
-}
+//   if (result.length < 4) {
+//     const additionalBlogs = await axios.get(`${APIGetBlogs}1`)
+//     result.push(
+//       ...additionalBlogs.data.data
+//         .filter((item) => {
+//           if (result.length) {
+//             for (let i of result) {
+//               if (i.POST_ID === item.POST_ID) {
+//                 return false
+//               }
+//             }
+//             return true
+//           } else {
+//             return true
+//           }
+//         })
+//         .slice(0, 4 - result.length)
+//     )
+//   }
+//   return result
+// }
 
 const fetchPosts = async () => {
   try {
