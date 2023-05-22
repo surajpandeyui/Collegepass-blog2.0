@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap'
 import Carousel from 'react-bootstrap/Carousel'
 import Image from 'next/image'
@@ -17,54 +17,53 @@ import {
   APIGetBlogs,
   APIGetBlogsByCategory,
   APIGetBlogsByName,
+  APIGetCategoryCount,
   APIGetTotalBlogsCount,
 } from '../../config/API'
 
-const index = ({ popular, latest }) => {
+const index = ({ popular, latest, totalCount }) => {
   console.log('Popular', latest)
+  console.log('Popular', totalCount)
 
   const [blogs, setBlogs] = useState([])
   const [page, setPage] = useState(1)
   const [totalPosts, setTotalPosts] = useState()
 
-  useState(() => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [totalPages, setTotalPages] = useState()
+  const [isHome, setIsHome] = useState(true)
+
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [categoryPage, setCategoryPage] = useState(1)
+
+  useEffect(() => {
+    ;(totalCount || selectedCategory === 'Latest') &&
+      setTotalPages(Math.ceil(totalCount / 4))
+  }, [totalCount, selectedCategory])
+
+  console.log('totalPages', totalPages)
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get(
+        `${APIGetBlogs}${page > 1 ? page : categoryPage}`
+      )
+      console.log('Response ------->', response.data.data)
+      // return response.data.data
+      setBlogs(response.data.data)
+    } catch (err) {
+      console.log('Error -------------->', err)
+    }
+  }
+
+  useEffect(() => {
     latest && latest.length && setBlogs(latest)
   }, [latest])
 
-  const [selectedCategory, setSelectedCategory] = useState('')
-
-  const [categoryPage, setCategoryPage] = useState(1)
+  useEffect(() => {
+    ;(page > 1 || categoryPage > 1) && isHome && fetchPosts()
+  }, [page, categoryPage])
 
   const [searchString, setSearchString] = useState('')
-
-  // useEffect(() => {
-  //   setBlogs(blogPosts)
-  // }, [blogPosts])
-  // const fetchPosts = async () => {
-  //   try {
-  //     const response = await axios.get(`${APIGetBlogs}${page}`)
-  //     console.log('Response ------->', response.data.data)
-  //     setBlogs(response.data.data)
-  //   } catch (err) {
-  //     console.log('Error -------------->', err)
-  //   }
-  // }
-  // const fetchTotalPosts = async () => {
-  //   try {
-  //     const response = await axios.get(APIGetTotalBlogsCount)
-  //     setTotalPosts(response.data.data.COUNT)
-  //     console.log('Total Length ---------->', response.data.data.COUNT)
-  //   } catch (err) {
-  //     console.log('Error -------------->', err)
-  //   }
-  // }
-  // useEffect(() => {
-  //   fetchTotalPosts()
-  // }, [])
-
-  // useEffect(() => {
-  //   !searchString && !selectedCategory && fetchPosts(page)
-  // }, [page, searchString, selectedCategory])
 
   if (!latest.length) {
     return <div></div>
@@ -81,6 +80,13 @@ const index = ({ popular, latest }) => {
       })
     }
     return elements
+  }
+
+  const myElementRef = useRef(null)
+
+  const handleClick = () => {
+    // Focus on the element when clicked
+    myElementRef.current.scrollIntoView({ behavior: 'smooth' })
   }
 
   const getText = (content) => {
@@ -118,38 +124,87 @@ const index = ({ popular, latest }) => {
     return text
   }
 
-  // const [hasMoreBlogs, setHasMoreBlogs] = useState(false)
-  const getPostsByCategory = async (c, limit) => {
+  const getCategoriesByPage = async () => {
     try {
       let result = []
+      if (selectedCategory === 'Latest') return
       // page === 1 &&
       setIsLoading(true)
 
       searchString && setSearchString('')
       const blgs = await axios.get(
-        `${APIGetBlogsByCategory}${limit}/${c.replace(
+        `${APIGetBlogsByCategory}4/${selectedCategory.replace(
           '/',
           '%2F'
-        )}/0?page_no=${page}`
+        )}/0?page_no=${categoryPage}`
       )
       if (blgs.data.data.length) {
-        result = [...blogs]
+        // result = [...blogs]
         result.push(...blgs.data.data)
       }
 
       // page === 1 &&
 
       setBlogs((prev) => [...prev, ...result])
-      setTotalPages(result && result.length ? Math.floor(result.length / 4) : 1)
       setIsLoading(false)
-      console.log('DAta ->', blogs.data)
-      // setHasMoreBlogs(!!blogs.data.hasMore)
+      console.log('DAta ->', blgs.data)
+    } catch (err) {
+      console.log('Err', err)
+      setIsLoading(false)
+    }
+  }
+  useEffect(() => {
+    categoryPage > 1 && getCategoriesByPage()
+  }, [categoryPage])
+  // const [hasMoreBlogs, setHasMoreBlogs] = useState(false)
+  const getPostsByCategory = async (c, limit) => {
+    try {
+      let result = []
+      // page === 1 &&
+      if (c === 'Latest') {
+        setIsHome(true)
+        setBlogs(latest)
+        setCategoryPage(1)
+        setPage(1)
+      } else {
+        setIsHome(false)
+
+        setCategoryPage(1)
+        setPage(1)
+        setIsLoading(true)
+
+        searchString && setSearchString('')
+        const blgs = await axios.get(
+          `${APIGetBlogsByCategory}${limit}/${c.replace(
+            '/',
+            '%2F'
+          )}/0?page_no=1`
+        )
+        if (blgs.data.data.length) {
+          result.push(...blgs.data.data)
+        }
+        const pages = await axios.get(
+          `${APIGetCategoryCount}/${c.replace('/', '%2F')}/0`
+        )
+
+        console.log('pages', pages.data)
+        setTotalPages(Math.ceil(pages.data.count / 4))
+
+        // page === 1 &&
+
+        setBlogs(result)
+        // setTotalPages(result && result.length ? Math.floor(result.length / 4) : 1)
+        setIsLoading(false)
+        console.log('DAta ->', blogs.data)
+        // setHasMoreBlogs(!!blogs.data.hasMore)
+      }
     } catch (err) {
       console.log('Error -->', err)
       setIsLoading(false)
     }
   }
 
+  console.log('CAtegoryPages--->', categoryPage)
   const updateCategories = (categories) => {
     return !categories.replaceAll(',', ', ').includes(', ')
       ? categories
@@ -165,9 +220,13 @@ const index = ({ popular, latest }) => {
               }}
             >
               {idx === 0 ? (
-                <p style={{ cursor: 'pointer' }}>{item}</p>
+                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                  {item}
+                </p>
               ) : (
-                <p style={{ cursor: 'pointer' }}>{item}</p>
+                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                  {item}
+                </p>
               )}
             </span>
           ))
@@ -177,61 +236,51 @@ const index = ({ popular, latest }) => {
     selectedCategory && getPostsByCategory(selectedCategory, 4)
   }, [selectedCategory])
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [totalPages, setTotalPages] = useState()
-
   useEffect(() => {
     let cancel
     setIsLoading(true)
     // const timerId = setTimeout(() => {
     if (searchString) {
-      // searchString.length >= 3 &&
-      axios
-        .get(APIGetBlogsByName + searchString, {
-          cancelToken: new axios.CancelToken(function executor(c) {
-            // An executor function receives a cancel function as a parameter
-            cancel = c
-          }),
-        })
-        .then((response) => {
-          setBlogs(response.data.data)
-          setTotalPages(
-            response.data.data && response.data.data.length
-              ? Math.floor(response.data.data.length / 4)
-              : 1
-          )
-          setIsLoading(false)
-          setSelectedCategory(null)
-        })
-        .catch((error) => {
-          if (axios.isCancel(error)) {
-            // Request was canceled
-            console.log('Request canceled: ', error.message)
-          } else {
-            console.log(error)
+      searchString.length >= 3 &&
+        axios
+          .get(APIGetBlogsByName + searchString, {
+            cancelToken: new axios.CancelToken(function executor(c) {
+              // An executor function receives a cancel function as a parameter
+              cancel = c
+            }),
+          })
+          .then((response) => {
+            setIsHome(false)
+            setBlogs(response.data.data)
+            setPage(1)
+
+            setTotalPages(
+              response.data.data && response.data.data.length
+                ? Math.ceil(response.data.data.length / 4)
+                : 1
+            )
+            setCategoryPage(1)
             setIsLoading(false)
-          }
-        })
+            setSelectedCategory(null)
+          })
+          .catch((error) => {
+            if (axios.isCancel(error)) {
+              // Request was canceled
+              console.log('Request canceled: ', error.message)
+            } else {
+              console.log(error)
+              setIsLoading(false)
+            }
+          })
     } else {
+      setIsHome(true)
       setBlogs(latest)
+      setTotalPages(Math.ceil(totalCount / 4))
+      setPage(1)
+
       setIsLoading(false)
     }
-    setPage(1)
-    // else {
-    //   axios
-    //     .get(APIGetBlogsByName + searchString)
-    //     .then((resp) => setData(resp.data.data))
-    //     .catch((error) => {
-    //       if (axios.isCancel(error)) {
-    //         // Request was canceled
-    //         console.log('Request canceled: ', error.message)
-    //       } else {
-    //         console.log(error)
-    //         setIsLoading(false)
-    //       }
-    //     })
-    // }
-    // }, 1000)
+
     return () => {
       // clearTimeout(timerId)
       if (cancel) {
@@ -274,7 +323,14 @@ const index = ({ popular, latest }) => {
     // Add previous page link
     if (page > 1) {
       paginationHTML.push(
-        <a key="prevPage" href="#" onClick={() => setPage(page - 1)}>
+        <a
+          key="prevPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setPage(page - 1)
+          }}
+        >
           &laquo;
         </a>
       )
@@ -291,9 +347,12 @@ const index = ({ popular, latest }) => {
       paginationHTML.push(
         <a
           key={i}
-          href="#"
+          // href="#"
           className={page === i ? 'active' : ''}
-          onClick={() => setPage(i)}
+          onClick={() => {
+            handleClick()
+            setPage(i)
+          }}
         >
           {i}
         </a>
@@ -312,7 +371,14 @@ const index = ({ popular, latest }) => {
     // Add next page link
     if (page < totalPages) {
       paginationHTML.push(
-        <a key="nextPage" href="#" onClick={() => setPage(page + 1)}>
+        <a
+          key="nextPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setPage(page + 1)
+          }}
+        >
           &raquo;
         </a>
       )
@@ -327,6 +393,105 @@ const index = ({ popular, latest }) => {
     return paginationHTML
   }
 
+  console.log('blogposts', blogs.length)
+
+  const generatePaginationForCategory = () => {
+    // const totalPages = 20
+    const maxDisplayedPages = 10 // Maximum number of pages to display
+
+    let paginationHTML = []
+
+    // Calculate start and end page numbers based on current page
+    let startPage
+    let endPage
+
+    if (totalPages <= maxDisplayedPages) {
+      // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
+      startPage = 1
+      endPage = totalPages
+    } else if (categoryPage <= 6) {
+      // Display pages 1 to 10 if the current page is less than or equal to 6
+      startPage = 1
+      endPage = maxDisplayedPages
+    } else if (categoryPage >= totalPages - 5) {
+      // Display the last 10 pages if the current page is within the last 5 pages
+      startPage = totalPages - maxDisplayedPages + 1
+      endPage = totalPages
+    } else {
+      // Display the current page with a range of 5 pages before and after
+      startPage = categoryPage - 4
+      endPage = categoryPage + 5
+    }
+
+    // Add previous page link
+    if (categoryPage > 1) {
+      paginationHTML.push(
+        <a
+          key="prevPage"
+          // href="#"
+          onClick={() => setCategoryPage(categoryPage - 1)}
+        >
+          &laquo;
+        </a>
+      )
+    } else {
+      paginationHTML.push(
+        <span key="prevPage" className="disabled">
+          &laquo;
+        </span>
+      )
+    }
+
+    // Add page links between startPage and endPage
+    for (let i = startPage; i <= endPage; i++) {
+      paginationHTML.push(
+        <a
+          key={i}
+          // href="#"
+          className={categoryPage === i ? 'active' : ''}
+          onClick={() => {
+            handleClick()
+            setCategoryPage(i)
+          }}
+        >
+          {i}
+        </a>
+      )
+    }
+
+    // Add ellipsis (...) if there are more pages after the displayed range
+    if (endPage < totalPages) {
+      paginationHTML.push(
+        <span key="ellipsis" className="ellipsis">
+          ...
+        </span>
+      )
+    }
+
+    // Add next page link
+    if (categoryPage < totalPages) {
+      paginationHTML.push(
+        <a
+          key="nextPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setCategoryPage(categoryPage + 1)
+          }}
+        >
+          &raquo;
+        </a>
+      )
+    } else {
+      paginationHTML.push(
+        <span key="nextPage" className="disabled">
+          &raquo;
+        </span>
+      )
+    }
+
+    return paginationHTML
+  }
   // return paginationHTML;
   // };
 
@@ -432,7 +597,11 @@ const index = ({ popular, latest }) => {
                                                     {moment(
                                                       item.CREATED_AT
                                                     ).format('MMMM D, YYYY')}
-                                                    <p>12 min read</p>
+                                                    <p>
+                                                      {item.READ_TIME
+                                                        ? item.READ_TIME
+                                                        : 12 + ' min read'}
+                                                    </p>
                                                   </Col>
                                                 </Row>
                                               </Col>
@@ -510,136 +679,6 @@ const index = ({ popular, latest }) => {
                               </Row>
                             </Col>
                           </Row>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                          <Row>
-                            <Col className={styles.blogSliderWrap}>
-                              <Row className={styles.sliderWidth}>
-                                <Col lg={4} md={4} sm={12} xs={12}>
-                                  <Row>
-                                    <Col className={styles.blogSliderImg}>
-                                      <Image
-                                        src="/harvard_returns_front.png"
-                                        alt="Small Blog"
-                                        width={605}
-                                        height={700}
-                                      />
-                                    </Col>
-                                  </Row>
-                                </Col>
-                                <Col lg={8} md={8} sm={12} xs={12}>
-                                  <Row>
-                                    <Col
-                                      className={styles.blogSliderTextSection}
-                                    >
-                                      <Row>
-                                        <Col className={styles.SliderHeading}>
-                                          <h3>Harvard Returns in the Fall</h3>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col
-                                          className={styles.SliderDescription}
-                                        >
-                                          <p>
-                                            College life is an experience whose
-                                            memories last a lifetime, especially
-                                            because college is perhaps the only
-                                            time between youth and adult life.
-                                            You can live a pseudo suspended
-                                            life, with as much time for play, as
-                                            for extracurricular activities. As
-                                            one steps into the professional
-                                            sphere, an adult rues the lack of
-                                            work-life balance, making college
-                                            life even more memorable.
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderCategory}>
-                                          <p>Latest Popular</p>
-                                          <p>Masters</p>
-                                          <p>Visa</p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderDate}>
-                                          <p>March 16, 2023</p>
-                                          <p>12 min read</p>
-                                        </Col>
-                                      </Row>
-                                    </Col>
-                                  </Row>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                          <Row>
-                            <Col className={styles.blogSliderWrap}>
-                              <Row className={styles.sliderWidth}>
-                                <Col lg={4} md={4} sm={12} xs={12}>
-                                  <Row>
-                                    <Col className={styles.blogSliderImg}>
-                                      <Image
-                                        src="/harvard_returns_front.png"
-                                        alt="Small Blog"
-                                        width={605}
-                                        height={700}
-                                      />
-                                    </Col>
-                                  </Row>
-                                </Col>
-                                <Col lg={8} md={8} sm={12} xs={12}>
-                                  <Row>
-                                    <Col
-                                      className={styles.blogSliderTextSection}
-                                    >
-                                      <Row>
-                                        <Col className={styles.SliderHeading}>
-                                          <h3>Harvard Returns in the Fall</h3>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col
-                                          className={styles.SliderDescription}
-                                        >
-                                          <p>
-                                            College life is an experience whose
-                                            memories last a lifetime, especially
-                                            because college is perhaps the only
-                                            time between youth and adult life.
-                                            You can live a pseudo suspended
-                                            life, with as much time for play, as
-                                            for extracurricular activities. As
-                                            one steps into the professional
-                                            sphere, an adult rues the lack of
-                                            work-life balance, making college
-                                            life even more memorable.
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderCategory}>
-                                          <p>Latest Popular</p>
-                                          <p>Masters</p>
-                                          <p>Visa</p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderDate}>
-                                          <p>March 16, 2023</p>
-                                          <p>12 min read</p>
-                                        </Col>
-                                      </Row>
-                                    </Col>
-                                  </Row>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
                         </Carousel.Item> */}
                       </Carousel>
                     </Col>
@@ -654,7 +693,7 @@ const index = ({ popular, latest }) => {
                     <Col lg={10} md={10} sm={12} xs={12}>
                       <Row>
                         <Col lg={6} md={6} sm={12} xs={12}>
-                          <h2>
+                          <h2 ref={myElementRef}>
                             {selectedCategory ? selectedCategory : 'Blogs'}
                           </h2>
                         </Col>
@@ -687,6 +726,7 @@ const index = ({ popular, latest }) => {
                           <p className={styles.hideOnMob}>Browse Categories</p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Popular')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -703,6 +743,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Latest')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -719,6 +760,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('US')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -735,6 +777,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('UK')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -751,6 +794,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Canada')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -767,6 +811,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Undergraduate')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -783,6 +828,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('SAT/ACT')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -799,6 +845,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Visa')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -815,6 +862,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Masters')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -831,6 +879,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Ivy League')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -847,6 +896,7 @@ const index = ({ popular, latest }) => {
                           </p>
                           <p
                             onClick={() => {
+                              handleClick()
                               setSelectedCategory('Application Components')
                             }}
                             style={{ cursor: 'pointer' }}
@@ -874,12 +924,23 @@ const index = ({ popular, latest }) => {
                       <Row className={styles.blogCardWrap}>
                         {!isLoading && !blogs.length
                           ? 'No Blogs Found!'
-                          : blogs
-                              .slice((page - 1) * 4, (page - 1) * 4 + 4)
-                              .map((item, idx) => {
-                                return (
-                                  <Col lg={6} md={6} sm={12} xs={12} key={idx}>
-                                    <Row>
+                          : (isHome
+                              ? blogs
+                              : blogs.slice(
+                                  (selectedCategory
+                                    ? categoryPage - 1
+                                    : page - 1) * 4,
+                                  (selectedCategory
+                                    ? categoryPage - 1
+                                    : page - 1) *
+                                    4 +
+                                    4
+                                )
+                            ).map((item, idx) => {
+                              return (
+                                <Col lg={6} md={6} sm={12} xs={12} key={idx}>
+                                  <Link href={`/post/${item.POST_ID}`}>
+                                    <Row style={{ cursor: 'pointer' }}>
                                       <Col className={styles.blogTile}>
                                         <Row>
                                           <Col>
@@ -932,15 +993,18 @@ const index = ({ popular, latest }) => {
                                               'MMMM D, YYYY'
                                             )}
                                             <p className={styles.minRead}>
-                                              12 min read
+                                              {item.READ_TIME
+                                                ? item.READ_TIME
+                                                : 12 + ' min read'}
                                             </p>
                                           </Col>
                                         </Row>
                                       </Col>
                                     </Row>
-                                  </Col>
-                                )
-                              })}
+                                  </Link>
+                                </Col>
+                              )
+                            })}
                         {/* <Col lg={6} md={6} sm={12} xs={12}>
                           <Row>
                             <Col className={styles.blogTile}>
@@ -1141,7 +1205,11 @@ const index = ({ popular, latest }) => {
                               <a id="nextPage" href="#">
                                 &raquo;
                               </a> */}
-                              {totalPages > 1 && generatePagination()}
+                              {totalPages > 1
+                                ? selectedCategory
+                                  ? generatePaginationForCategory()
+                                  : generatePagination()
+                                : null}
                             </div>
                           </div>
                         </Col>

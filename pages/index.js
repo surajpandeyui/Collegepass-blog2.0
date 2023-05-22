@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import BlogScreen from '../screens/BlogScreen'
 import {
+  APIGetBlogCount,
   APIGetBlogs,
   APIGetBlogsByCategory,
   APIGetBlogsByOtherCategory,
@@ -10,6 +11,7 @@ import axios from 'axios'
 export default function AboutUs({
   popular = [],
   latest = [],
+  totalCount = null,
   // ivyLeague = [],
   // essays = [],
   // uk = [],
@@ -54,6 +56,7 @@ export default function AboutUs({
         <BlogScreen
           popular={popular}
           latest={latest}
+          totalCount={totalCount}
           // ivyLeague={ivyLeague}
           // essays={essays}
           // uk={uk}
@@ -137,6 +140,16 @@ const fetchPosts = async () => {
     console.log('Error -------------->', err)
   }
 }
+
+const fetchPostCount = async () => {
+  try {
+    const response = await axios.get(`${APIGetBlogCount}`)
+    console.log('Response ------->', response.data.count)
+    return response.data.count
+  } catch (err) {
+    console.log('Error -------------->', err)
+  }
+}
 export async function getStaticProps() {
   // const [popular, ivyLeague, essays, uk, canada, extracurricular, blogPosts] =
   //   await Promise.all([
@@ -148,9 +161,10 @@ export async function getStaticProps() {
   //     getPostsByOtherCategory(),
   //     fetchPosts(),
   //   ])
-  const [popular, latest] = await Promise.all([
+  const [popular, latest, latestCount] = await Promise.all([
     getPostsByCategory('Popular'),
     fetchPosts(),
+    fetchPostCount(),
   ])
 
   // console.log('Data', popular)
@@ -165,6 +179,7 @@ export async function getStaticProps() {
     props: {
       popular,
       latest,
+      totalCount: latestCount,
       // propBlogs: popular,
       // latest: blogPosts.slice(0, 4),
       // ivyLeague,
