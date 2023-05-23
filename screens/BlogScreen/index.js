@@ -20,6 +20,7 @@ import {
   APIGetCategoryCount,
   APIGetTotalBlogsCount,
 } from '../../config/API'
+import { useRouter } from 'next/router'
 
 const index = ({ popular, latest, totalCount }) => {
   console.log('Popular', latest)
@@ -91,6 +92,24 @@ const index = ({ popular, latest, totalCount }) => {
     // Focus on the element when clicked
     myElementRef.current.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check if the query parameter is present
+    const triggerCategory = router.query.triggerCategory
+    const uuid = router.query.uuid
+
+    if (triggerCategory && uuid) {
+      // Call the function you want to trigger
+      // ...
+
+      // Remove the query parameter from the URL
+      setSelectedCategory(triggerCategory)
+      router.replace('/')
+      setTimeout(handleClick, 500)
+    }
+  }, [router.query.triggerCategory, router.query.uuid])
 
   const getText = (content) => {
     if (!content || typeof content !== 'string') {
@@ -211,7 +230,14 @@ const index = ({ popular, latest, totalCount }) => {
   console.log('CAtegoryPages--->', categoryPage)
   const updateCategories = (categories) => {
     return !categories.replace(/,/g, ', ').includes(', ') ? (
-      <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+      <p
+        onClick={() => {
+          e.stopPropagation()
+          setSelectedCategory(item)
+          handleClick()
+        }}
+        style={{ cursor: 'pointer' }}
+      >
         {categories}
       </p>
     ) : (
@@ -884,9 +910,11 @@ const index = ({ popular, latest, totalCount }) => {
                                                     }
                                                   >
                                                     {/* <p>March 16, 2023</p> */}
-                                                    <p>{moment(
-                                                      item.ADDED_TIME
-                                                    ).format('MMMM D, YYYY')}</p>
+                                                    <p>
+                                                      {moment(
+                                                        item.ADDED_TIME
+                                                      ).format('MMMM D, YYYY')}
+                                                    </p>
                                                     <p>
                                                       {(item.READ_TIME
                                                         ? item.READ_TIME
@@ -1237,7 +1265,7 @@ const index = ({ popular, latest, totalCount }) => {
                                             <Image
                                               src={item.IMAGE_BANNER_V2}
                                               alt="Small Blog"
-                                              width={750}  //302
+                                              width={750} //302
                                               height={436}
                                             />
                                           </Col>
@@ -1279,9 +1307,11 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col className={styles.tileCardDate}>
                                             {/* <p>March 16, 2023</p> */}
-                                            <p>{moment(item.ADDED_TIME).format(
-                                              'MMMM D, YYYY'
-                                            )}</p>
+                                            <p>
+                                              {moment(item.ADDED_TIME).format(
+                                                'MMMM D, YYYY'
+                                              )}
+                                            </p>
                                             <p className={styles.minRead}>
                                               {(item.READ_TIME
                                                 ? item.READ_TIME
