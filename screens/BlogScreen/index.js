@@ -210,30 +210,34 @@ const index = ({ popular, latest, totalCount }) => {
 
   console.log('CAtegoryPages--->', categoryPage)
   const updateCategories = (categories) => {
-    return !categories.replaceAll(',', ', ').includes(', ')
-      ? categories
-      : categories
-          .replaceAll(',', ', ')
-          .split(', ')
-          .map((item, idx) => (
-            <span
-              onClick={(e) => {
-                e.stopPropagation()
-                setSelectedCategory(item)
-                // handleClickTop()
-              }}
-            >
-              {idx === 0 ? (
-                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
-                  {item}
-                </p>
-              ) : (
-                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
-                  {item}
-                </p>
-              )}
-            </span>
-          ))
+    return !categories.replace(/,/g, ', ').includes(', ') ? (
+      <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+        {categories}
+      </p>
+    ) : (
+      categories
+        .replace(/,/g, ', ')
+        .split(', ')
+        .map((item, idx) => (
+          <span
+            onClick={(e) => {
+              e.stopPropagation()
+              setSelectedCategory(item)
+              // handleClickTop()
+            }}
+          >
+            {idx === 0 ? (
+              <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                {item}
+              </p>
+            ) : (
+              <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                {item}
+              </p>
+            )}
+          </span>
+        ))
+    )
   }
 
   useEffect(() => {

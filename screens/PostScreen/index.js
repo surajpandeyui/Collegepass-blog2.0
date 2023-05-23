@@ -223,11 +223,11 @@ const index = ({ id }) => {
   }
 
   const updateCategories = (categories) => {
-    return !categories.replaceAll(',', ', ').includes(', ') ? (
+    return !categories.replace(/,/g, ', ').includes(', ') ? (
       <a>{categories}</a>
     ) : (
       categories
-        .replaceAll(',', ', ')
+        .replace(/,/g, ', ')
         .split(', ')
         .map((item, idx) => (
           <Fragment
