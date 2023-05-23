@@ -1199,7 +1199,10 @@ border-radius: 15px;
         padding-left: 5%;
 }
 .date-post-top {
-  margin-right: 55%;
+  margin-right: 65%;
+}
+.blog_likeShare__k4_0z.col i.fa.fa-heart {
+  color: #c83232;
 }
 @media only screen and (max-width: 480px) and (min-width: 320px) {
   .blog_postWrap__fUliM.container button {
@@ -3319,6 +3322,7 @@ span.post-cat-date p {
   border: 1px solid #DDD;
   margin: 0 5px;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .blog-pagination a.active {

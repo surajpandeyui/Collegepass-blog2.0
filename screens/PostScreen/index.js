@@ -641,7 +641,7 @@ const index = ({ id }) => {
                             alt="Small Blog"
                             className="related-img"
                             width={161}
-                            height={119}
+                            height={93}
                           />
                           <span className="post-cat-date">
                             <p style={{ display: 'flex', flexWrap: 'wrap' }}>

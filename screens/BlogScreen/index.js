@@ -884,9 +884,9 @@ const index = ({ popular, latest, totalCount }) => {
                                                     }
                                                   >
                                                     {/* <p>March 16, 2023</p> */}
-                                                    {moment(
+                                                    <p>{moment(
                                                       item.ADDED_TIME
-                                                    ).format('MMMM D, YYYY')}
+                                                    ).format('MMMM D, YYYY')}</p>
                                                     <p>
                                                       {(item.READ_TIME
                                                         ? item.READ_TIME
@@ -1237,7 +1237,7 @@ const index = ({ popular, latest, totalCount }) => {
                                             <Image
                                               src={item.IMAGE_BANNER_V2}
                                               alt="Small Blog"
-                                              width={750}
+                                              width={750}  //302
                                               height={436}
                                             />
                                           </Col>
@@ -1279,9 +1279,9 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col className={styles.tileCardDate}>
                                             {/* <p>March 16, 2023</p> */}
-                                            {moment(item.ADDED_TIME).format(
+                                            <p>{moment(item.ADDED_TIME).format(
                                               'MMMM D, YYYY'
-                                            )}
+                                            )}</p>
                                             <p className={styles.minRead}>
                                               {(item.READ_TIME
                                                 ? item.READ_TIME
