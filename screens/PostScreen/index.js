@@ -22,6 +22,7 @@ import {
 } from '../../config/API'
 import moment from 'moment'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const index = ({ id }) => {
   const [show, setShow] = useState(false)
@@ -224,9 +225,30 @@ const index = ({ id }) => {
     return <div></div>
   }
 
+  const router = useRouter()
+
+  const handleClick = (category) => {
+    // Call the function in the home page
+    // ...
+
+    // Navigate to the home page with the state
+    router.push({
+      pathname: '/',
+      query: { triggerCategory: category },
+    })
+  }
+
   const updateCategories = (categories) => {
     return !categories.replace(/,/g, ', ').includes(', ') ? (
-      <a>{categories}</a>
+      <a
+        onClick={(e) => {
+          e.stopPropagation()
+          handleClick(categories)
+        }}
+        style={{ cursor: 'pointer' }}
+      >
+        {categories}
+      </a>
     ) : (
       categories
         .replace(/,/g, ', ')
@@ -240,7 +262,27 @@ const index = ({ id }) => {
           //   // handleClickTop()
           // }}
           >
-            {idx === 0 ? <a>{item}</a> : <a>{item}</a>}
+            {idx === 0 ? (
+              <a
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleClick(item)
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                {item}
+              </a>
+            ) : (
+              <a
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleClick(item)
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                {item}
+              </a>
+            )}
           </Fragment>
         ))
     )
