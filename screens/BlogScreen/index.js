@@ -882,9 +882,9 @@ const index = ({ popular, latest, totalCount }) => {
                                                     }
                                                   >
                                                     {/* <p>March 16, 2023</p> */}
-                                                    {moment(
+                                                    <p>{moment(
                                                       item.CREATED_AT
-                                                    ).format('MMMM D, YYYY')}
+                                                    ).format('MMMM D, YYYY')}</p>
                                                     <p>
                                                       {item.READ_TIME
                                                         ? item.READ_TIME
@@ -1235,7 +1235,7 @@ const index = ({ popular, latest, totalCount }) => {
                                             <Image
                                               src={item.DISPLAY_IMAGE_BANNER}
                                               alt="Small Blog"
-                                              width={750}
+                                              width={750}  //302
                                               height={436}
                                             />
                                           </Col>
