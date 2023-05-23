@@ -223,23 +223,25 @@ const index = ({ id }) => {
   }
 
   const updateCategories = (categories) => {
-    return !categories.replaceAll(',', ', ').includes(', ')
-      ? categories
-      : categories
-          .replaceAll(',', ', ')
-          .split(', ')
-          .map((item, idx) => (
-            <Fragment
+    return !categories.replaceAll(',', ', ').includes(', ') ? (
+      <a>{categories}</a>
+    ) : (
+      categories
+        .replaceAll(',', ', ')
+        .split(', ')
+        .map((item, idx) => (
+          <Fragment
 
-            // onClick={(e) => {
-            //   e.stopPropagation()
-            //   setSelectedCategory(item)
-            //   // handleClickTop()
-            // }}
-            >
-              {idx === 0 ? <a>{item}</a> : <a>{item}</a>}
-            </Fragment>
-          ))
+          // onClick={(e) => {
+          //   e.stopPropagation()
+          //   setSelectedCategory(item)
+          //   // handleClickTop()
+          // }}
+          >
+            {idx === 0 ? <a>{item}</a> : <a>{item}</a>}
+          </Fragment>
+        ))
+    )
   }
 
   const onLike = async () => {
