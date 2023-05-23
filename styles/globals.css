@@ -3335,3 +3335,7 @@ span.post-cat-date p {
   background-color: #DDD;
   color: #000000;
 }
+
+.post-css-mob.col h4 {
+  font-weight: 600;
+}
