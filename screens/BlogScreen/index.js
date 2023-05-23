@@ -888,9 +888,9 @@ const index = ({ popular, latest, totalCount }) => {
                                                       item.ADDED_TIME
                                                     ).format('MMMM D, YYYY')}</p>
                                                     <p>
-                                                      {item.READ_TIME
+                                                      {(item.READ_TIME
                                                         ? item.READ_TIME
-                                                        : 12 + ' min read'}
+                                                        : 12) + ' min read'}
                                                     </p>
                                                   </Col>
                                                 </Row>
@@ -1283,9 +1283,9 @@ const index = ({ popular, latest, totalCount }) => {
                                               'MMMM D, YYYY'
                                             )}</p>
                                             <p className={styles.minRead}>
-                                              {item.READ_TIME
+                                              {(item.READ_TIME
                                                 ? item.READ_TIME
-                                                : 12 + ' min read'}
+                                                : 12) + ' min read'}
                                             </p>
                                           </Col>
                                         </Row>
