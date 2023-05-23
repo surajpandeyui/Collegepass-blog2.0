@@ -821,9 +821,7 @@ const index = ({ popular, latest, totalCount }) => {
                                                 className={styles.blogSliderImg}
                                               >
                                                 <Image
-                                                  src={
-                                                    item.DISPLAY_IMAGE_BANNER
-                                                  }
+                                                  src={item.IMAGE_BANNER_V1}
                                                   alt="Small Blog"
                                                   width={605}
                                                   height={700}
@@ -1237,7 +1235,7 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col>
                                             <Image
-                                              src={item.DISPLAY_IMAGE_BANNER}
+                                              src={item.IMAGE_BANNER_V2}
                                               alt="Small Blog"
                                               width={750}
                                               height={436}

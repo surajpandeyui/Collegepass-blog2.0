@@ -322,7 +322,7 @@ const index = ({ id }) => {
                   }}
                 >
                   <Image
-                    src={post.IMAGE_BANNER}
+                    src={post.POST_IMAGE_BANNER}
                     alt="Small Blog"
                     width={750}
                     height={556}
@@ -331,7 +331,9 @@ const index = ({ id }) => {
               </Row>
               <Row>
                 <Col className={styles.likeShare}>
-                  <p className="date-post-top">March 17, 2023</p>
+                  <p className="date-post-top">
+                    {moment(post.ADDED_TIME).format('MMMM DD, YYYY')}
+                  </p>
                   {/* <p>
                     {/*<i className="fa fa-heart" aria-hidden="true"></i>*/}
                   {/* <i className="fa fa-heart-o" aria-hidden="true"></i> 146k */}
@@ -633,7 +635,7 @@ const index = ({ id }) => {
                             {item.TITLE}
                           </h5>
                           <Image
-                            src={item.DISPLAY_IMAGE_BANNER}
+                            src={item.IMAGE_BANNER_V2}
                             alt="Small Blog"
                             className="related-img"
                             width={161}
