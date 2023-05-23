@@ -210,30 +210,34 @@ const index = ({ popular, latest, totalCount }) => {
 
   console.log('CAtegoryPages--->', categoryPage)
   const updateCategories = (categories) => {
-    return !categories.replaceAll(',', ', ').includes(', ')
-      ? categories
-      : categories
-          .replaceAll(',', ', ')
-          .split(', ')
-          .map((item, idx) => (
-            <span
-              onClick={(e) => {
-                e.stopPropagation()
-                setSelectedCategory(item)
-                // handleClickTop()
-              }}
-            >
-              {idx === 0 ? (
-                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
-                  {item}
-                </p>
-              ) : (
-                <p onClick={handleClick} style={{ cursor: 'pointer' }}>
-                  {item}
-                </p>
-              )}
-            </span>
-          ))
+    return !categories.replace(/,/g, ', ').includes(', ') ? (
+      <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+        {categories}
+      </p>
+    ) : (
+      categories
+        .replace(/,/g, ', ')
+        .split(', ')
+        .map((item, idx) => (
+          <span
+            onClick={(e) => {
+              e.stopPropagation()
+              setSelectedCategory(item)
+              // handleClickTop()
+            }}
+          >
+            {idx === 0 ? (
+              <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                {item}
+              </p>
+            ) : (
+              <p onClick={handleClick} style={{ cursor: 'pointer' }}>
+                {item}
+              </p>
+            )}
+          </span>
+        ))
+    )
   }
 
   useEffect(() => {
@@ -817,9 +821,7 @@ const index = ({ popular, latest, totalCount }) => {
                                                 className={styles.blogSliderImg}
                                               >
                                                 <Image
-                                                  src={
-                                                    item.DISPLAY_IMAGE_BANNER
-                                                  }
+                                                  src={item.IMAGE_BANNER_V1}
                                                   alt="Small Blog"
                                                   width={605}
                                                   height={700}
@@ -883,7 +885,7 @@ const index = ({ popular, latest, totalCount }) => {
                                                   >
                                                     {/* <p>March 16, 2023</p> */}
                                                     <p>{moment(
-                                                      item.CREATED_AT
+                                                      item.ADDED_TIME
                                                     ).format('MMMM D, YYYY')}</p>
                                                     <p>
                                                       {item.READ_TIME
@@ -1233,7 +1235,7 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col>
                                             <Image
-                                              src={item.DISPLAY_IMAGE_BANNER}
+                                              src={item.IMAGE_BANNER_V2}
                                               alt="Small Blog"
                                               width={750}  //302
                                               height={436}
@@ -1277,9 +1279,9 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col className={styles.tileCardDate}>
                                             {/* <p>March 16, 2023</p> */}
-                                            {moment(item.CREATED_AT).format(
+                                            <p>{moment(item.ADDED_TIME).format(
                                               'MMMM D, YYYY'
-                                            )}
+                                            )}</p>
                                             <p className={styles.minRead}>
                                               {item.READ_TIME
                                                 ? item.READ_TIME
