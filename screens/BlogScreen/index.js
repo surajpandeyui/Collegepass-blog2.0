@@ -146,6 +146,40 @@ const index = ({ popular, latest, totalCount }) => {
     return text
   }
 
+  const getTextForPopular = (content) => {
+    if (!content || typeof content !== 'string') {
+      return ''
+    }
+
+    const document = parse(content)
+
+    const elementsWithText = ['p']
+    let text = ''
+    let count = 0
+
+    elementsWithText.forEach((tag) => {
+      const elements = getElementsByTagName(document, tag)
+      for (let i = 0; i < elements.length; i++) {
+        const elementText = elements[i].childNodes[0].value.trim()
+        if (elementText) {
+          text += elementText + ' '
+          count += elementText.length
+          if (count >= 350) {
+            break
+          }
+        }
+      }
+      if (count >= 350) {
+        return
+      }
+    })
+
+    if (text.length >= 350) {
+      text = text.slice(0, 350) + '...'
+    }
+
+    return text
+  }
   const getCategoriesByPage = async () => {
     try {
       let result = []
@@ -829,7 +863,7 @@ const index = ({ popular, latest, totalCount }) => {
 
                   <Row>
                     <Col>
-                      <Carousel>
+                      <Carousel interval={2000}>
                         {popular && popular.length
                           ? popular.slice(0, 3).map((item, idx) => {
                               return (
@@ -882,9 +916,10 @@ const index = ({ popular, latest, totalCount }) => {
                                                   >
                                                     <p
                                                       dangerouslySetInnerHTML={{
-                                                        __html: getText(
-                                                          item.CONTENT
-                                                        ),
+                                                        __html:
+                                                          getTextForPopular(
+                                                            item.CONTENT
+                                                          ),
                                                       }}
                                                     ></p>
                                                   </Col>
