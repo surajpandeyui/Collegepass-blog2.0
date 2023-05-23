@@ -647,7 +647,7 @@ const index = ({ id }) => {
                             </p>
                             <p className="only-date">
                               <a href="#">
-                                {moment(item.CREATED_AT).format('MMMM D, YYYY')}
+                                {moment(item.ADDED_TIME).format('MMMM D, YYYY')}
                               </a>
 
                               <span

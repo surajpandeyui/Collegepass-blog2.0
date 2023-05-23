@@ -885,7 +885,7 @@ const index = ({ popular, latest, totalCount }) => {
                                                   >
                                                     {/* <p>March 16, 2023</p> */}
                                                     {moment(
-                                                      item.CREATED_AT
+                                                      item.ADDED_TIME
                                                     ).format('MMMM D, YYYY')}
                                                     <p>
                                                       {item.READ_TIME
@@ -1279,7 +1279,7 @@ const index = ({ popular, latest, totalCount }) => {
                                         <Row>
                                           <Col className={styles.tileCardDate}>
                                             {/* <p>March 16, 2023</p> */}
-                                            {moment(item.CREATED_AT).format(
+                                            {moment(item.ADDED_TIME).format(
                                               'MMMM D, YYYY'
                                             )}
                                             <p className={styles.minRead}>
