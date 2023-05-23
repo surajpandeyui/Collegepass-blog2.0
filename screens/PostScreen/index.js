@@ -148,7 +148,9 @@ const index = ({ id }) => {
         const limit = 3 - result.length
         // while (result.length < 3) {
         const blogs = await axios.get(
-          `${APIGetBlogsByCategory}${limit}/${c}/${post.POST_ID}`
+          `${APIGetBlogsByCategory}${limit}/${c.replace('/', '%2F')}/${
+            post.POST_ID
+          }`
         )
         if (blogs.data.data.length) {
           result.push(
