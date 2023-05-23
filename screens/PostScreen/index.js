@@ -230,6 +230,7 @@ const index = ({ id }) => {
           .split(', ')
           .map((item, idx) => (
             <Fragment
+
             // onClick={(e) => {
             //   e.stopPropagation()
             //   setSelectedCategory(item)
@@ -637,7 +638,9 @@ const index = ({ id }) => {
                             height={119}
                           />
                           <span className="post-cat-date">
-                            <p>{updateCategories(item.CATEGORIES)}</p>
+                            <p style={{ display: 'flex', flexWrap: 'wrap' }}>
+                              {updateCategories(item.CATEGORIES)}
+                            </p>
                             <p className="only-date">
                               <a href="#">
                                 {moment(item.CREATED_AT).format('MMMM D, YYYY')}
