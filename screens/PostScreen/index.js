@@ -663,7 +663,8 @@ const index = ({ id }) => {
                                   marginLeft: '10px',
                                 }}
                               >
-                                12 min read
+                                {(item.READ_TIME ? item.READ_TIME : 12) +
+                                  ' min read'}
                               </span>
                             </p>
                           </span>
