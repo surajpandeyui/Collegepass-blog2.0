@@ -234,7 +234,7 @@ const index = ({ id }) => {
     // Navigate to the home page with the state
     router.push({
       pathname: '/',
-      query: { triggerCategory: category },
+      query: { triggerCategory: category, uuid: uuidv4() },
     })
   }
 

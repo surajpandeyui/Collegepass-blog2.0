@@ -98,8 +98,9 @@ const index = ({ popular, latest, totalCount }) => {
   useEffect(() => {
     // Check if the query parameter is present
     const triggerCategory = router.query.triggerCategory
+    const uuid = router.query.uuid
 
-    if (triggerCategory) {
+    if (triggerCategory && uuid) {
       // Call the function you want to trigger
       // ...
 
@@ -108,7 +109,7 @@ const index = ({ popular, latest, totalCount }) => {
       router.replace('/')
       setTimeout(handleClick, 500)
     }
-  }, [router])
+  }, [router.query.triggerCategory, router.query.uuid])
 
   const getText = (content) => {
     if (!content || typeof content !== 'string') {
