@@ -38,6 +38,7 @@ const index = ({ popular, latest, totalCount }) => {
 
   useEffect(() => {
     ;(totalCount || selectedCategory === 'Latest') &&
+      isHome &&
       setTotalPages(Math.ceil(totalCount / 4))
   }, [totalCount, selectedCategory])
 
@@ -45,7 +46,8 @@ const index = ({ popular, latest, totalCount }) => {
   const fetchPosts = async () => {
     try {
       const response = await axios.get(
-        `${APIGetBlogs}${page > 1 ? page : categoryPage}`
+        // `${APIGetBlogs}${page > 1 ? page : categoryPage}`
+        `${APIGetBlogs}${!selectedCategory ? page : categoryPage}`
       )
       console.log('Response ------->', response.data.data)
       // return response.data.data
@@ -60,8 +62,9 @@ const index = ({ popular, latest, totalCount }) => {
   }, [latest])
 
   useEffect(() => {
-    ;(page > 1 || categoryPage > 1) && isHome && fetchPosts()
-  }, [page, categoryPage])
+    // ;(page > 1 || categoryPage > 1) &&
+    isHome && fetchPosts()
+  }, [page, categoryPage, isHome])
 
   const [searchString, setSearchString] = useState('')
 
@@ -166,6 +169,7 @@ const index = ({ popular, latest, totalCount }) => {
         setBlogs(latest)
         setCategoryPage(1)
         setPage(1)
+        searchString && setSearchString('')
       } else {
         setIsHome(false)
 
@@ -259,6 +263,10 @@ const index = ({ popular, latest, totalCount }) => {
                 ? Math.ceil(response.data.data.length / 4)
                 : 1
             )
+            console.log(
+              'TotalPages from UseEffect',
+              Math.ceil(response.data.data.length / 4)
+            )
             setCategoryPage(1)
             setIsLoading(false)
             setSelectedCategory(null)
@@ -275,7 +283,9 @@ const index = ({ popular, latest, totalCount }) => {
     } else {
       setIsHome(true)
       setBlogs(latest)
+      console.log('totalPages from search else', Math.ceil(totalCount / 4))
       setTotalPages(Math.ceil(totalCount / 4))
+      // setTotalPages(20)
       setPage(1)
 
       setIsLoading(false)
@@ -292,8 +302,107 @@ const index = ({ popular, latest, totalCount }) => {
   // function Pagination() {
   // const [currentPage, setCurrentPage] = useState(1);
 
+  // const generatePagination = () => {
+  //   // const totalPages = 20
+  //   const maxDisplayedPages = 10 // Maximum number of pages to display
+
+  //   let paginationHTML = []
+
+  //   // Calculate start and end page numbers based on current page
+  //   let startPage
+  //   let endPage
+
+  //   if (totalPages <= maxDisplayedPages) {
+  //     // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
+  //     startPage = 1
+  //     endPage = totalPages
+  //   } else if (page <= 6) {
+  //     // Display pages 1 to 10 if the current page is less than or equal to 6
+  //     startPage = 1
+  //     endPage = maxDisplayedPages
+  //   } else if (page >= totalPages - 5) {
+  //     // Display the last 10 pages if the current page is within the last 5 pages
+  //     startPage = totalPages - maxDisplayedPages + 1
+  //     endPage = totalPages
+  //   } else {
+  //     // Display the current page with a range of 5 pages before and after
+  //     startPage = page - 4
+  //     endPage = page + 5
+  //   }
+
+  //   // Add previous page link
+  //   if (page > 1) {
+  //     paginationHTML.push(
+  //       <a
+  //         key="prevPage"
+  //         // href="#"
+  //         onClick={() => {
+  //           handleClick()
+  //           setPage(page - 1)
+  //         }}
+  //       >
+  //         &laquo;
+  //       </a>
+  //     )
+  //   } else {
+  //     paginationHTML.push(
+  //       <span key="prevPage" className="disabled">
+  //         &laquo;
+  //       </span>
+  //     )
+  //   }
+
+  //   // Add page links between startPage and endPage
+  //   for (let i = startPage; i <= endPage; i++) {
+  //     paginationHTML.push(
+  //       <a
+  //         key={i}
+  //         // href="#"
+  //         className={page === i ? 'active' : ''}
+  //         onClick={() => {
+  //           handleClick()
+  //           setPage(i)
+  //         }}
+  //       >
+  //         {i}
+  //       </a>
+  //     )
+  //   }
+
+  //   // Add ellipsis (...) if there are more pages after the displayed range
+  //   if (endPage < totalPages) {
+  //     paginationHTML.push(
+  //       <span key="ellipsis" className="ellipsis">
+  //         ...
+  //       </span>
+  //     )
+  //   }
+
+  //   // Add next page link
+  //   if (page < totalPages) {
+  //     paginationHTML.push(
+  //       <a
+  //         key="nextPage"
+  //         // href="#"
+  //         onClick={() => {
+  //           handleClick()
+  //           setPage(page + 1)
+  //         }}
+  //       >
+  //         &raquo;
+  //       </a>
+  //     )
+  //   } else {
+  //     paginationHTML.push(
+  //       <span key="nextPage" className="disabled">
+  //         &raquo;
+  //       </span>
+  //     )
+  //   }
+
+  //   return paginationHTML
+  // }
   const generatePagination = () => {
-    // const totalPages = 20
     const maxDisplayedPages = 10 // Maximum number of pages to display
 
     let paginationHTML = []
@@ -310,12 +419,12 @@ const index = ({ popular, latest, totalCount }) => {
       // Display pages 1 to 10 if the current page is less than or equal to 6
       startPage = 1
       endPage = maxDisplayedPages
-    } else if (page >= totalPages - 5) {
-      // Display the last 10 pages if the current page is within the last 5 pages
+    } else if (page >= totalPages - 6) {
+      // Display the last 10 pages if the current page is within the last 6 pages
       startPage = totalPages - maxDisplayedPages + 1
       endPage = totalPages
     } else {
-      // Display the current page with a range of 5 pages before and after
+      // Display the current page with a range that increases by one on each side
       startPage = page - 4
       endPage = page + 5
     }
@@ -336,10 +445,34 @@ const index = ({ popular, latest, totalCount }) => {
       )
     } else {
       paginationHTML.push(
-        <span key="prevPage" className="disabled">
+        <a key="prevPage" className="disabled">
           &laquo;
-        </span>
+        </a>
       )
+    }
+
+    // Add first page link
+    if (startPage > 1) {
+      paginationHTML.push(
+        <a
+          key="firstPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setPage(1)
+          }}
+        >
+          1
+        </a>
+      )
+
+      if (startPage > 2) {
+        paginationHTML.push(
+          <a key="ellipsisBefore" className="ellipsis">
+            ...
+          </a>
+        )
+      }
     }
 
     // Add page links between startPage and endPage
@@ -359,12 +492,27 @@ const index = ({ popular, latest, totalCount }) => {
       )
     }
 
-    // Add ellipsis (...) if there are more pages after the displayed range
+    // Add last page link
     if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        paginationHTML.push(
+          <a key="ellipsisAfter" className="ellipsis">
+            ...
+          </a>
+        )
+      }
+
       paginationHTML.push(
-        <span key="ellipsis" className="ellipsis">
-          ...
-        </span>
+        <a
+          key="lastPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setPage(totalPages)
+          }}
+        >
+          {totalPages}
+        </a>
       )
     }
 
@@ -384,9 +532,9 @@ const index = ({ popular, latest, totalCount }) => {
       )
     } else {
       paginationHTML.push(
-        <span key="nextPage" className="disabled">
+        <a key="nextPage" className="disabled">
           &raquo;
-        </span>
+        </a>
       )
     }
 
@@ -394,9 +542,109 @@ const index = ({ popular, latest, totalCount }) => {
   }
 
   console.log('blogposts', blogs.length)
+  console.log('Totalpages', totalPages)
+
+  // const generatePaginationForCategory = () => {
+  //   // const totalPages = 20
+  //   const maxDisplayedPages = 10 // Maximum number of pages to display
+
+  //   let paginationHTML = []
+
+  //   // Calculate start and end page numbers based on current page
+  //   let startPage
+  //   let endPage
+
+  //   if (totalPages <= maxDisplayedPages) {
+  //     // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
+  //     startPage = 1
+  //     endPage = totalPages
+  //   } else if (categoryPage <= 6) {
+  //     // Display pages 1 to 10 if the current page is less than or equal to 6
+  //     startPage = 1
+  //     endPage = maxDisplayedPages
+  //   } else if (categoryPage >= totalPages - 5) {
+  //     // Display the last 10 pages if the current page is within the last 5 pages
+  //     startPage = totalPages - maxDisplayedPages + 1
+  //     endPage = totalPages
+  //   } else {
+  //     // Display the current page with a range of 5 pages before and after
+  //     startPage = categoryPage - 4
+  //     endPage = categoryPage + 5
+  //   }
+
+  //   // Add previous page link
+  //   if (categoryPage > 1) {
+  //     paginationHTML.push(
+  //       <a
+  //         key="prevPage"
+  //         // href="#"
+  //         onClick={() => setCategoryPage(categoryPage - 1)}
+  //       >
+  //         &laquo;
+  //       </a>
+  //     )
+  //   } else {
+  //     paginationHTML.push(
+  //       <span key="prevPage" className="disabled">
+  //         &laquo;
+  //       </span>
+  //     )
+  //   }
+
+  //   // Add page links between startPage and endPage
+  //   for (let i = startPage; i <= endPage; i++) {
+  //     paginationHTML.push(
+  //       <a
+  //         key={i}
+  //         // href="#"
+  //         className={categoryPage === i ? 'active' : ''}
+  //         onClick={() => {
+  //           handleClick()
+  //           setCategoryPage(i)
+  //         }}
+  //       >
+  //         {i}
+  //       </a>
+  //     )
+  //   }
+
+  //   // Add ellipsis (...) if there are more pages after the displayed range
+  //   if (endPage < totalPages) {
+  //     paginationHTML.push(
+  //       <span key="ellipsis" className="ellipsis">
+  //         ...
+  //       </span>
+  //     )
+  //   }
+
+  //   // Add next page link
+  //   if (categoryPage < totalPages) {
+  //     paginationHTML.push(
+  //       <a
+  //         key="nextPage"
+  //         // href="#"
+  //         onClick={() => {
+  //           handleClick()
+  //           setCategoryPage(categoryPage + 1)
+  //         }}
+  //       >
+  //         &raquo;
+  //       </a>
+  //     )
+  //   } else {
+  //     paginationHTML.push(
+  //       <span key="nextPage" className="disabled">
+  //         &raquo;
+  //       </span>
+  //     )
+  //   }
+
+  //   return paginationHTML
+  // }
+  // return paginationHTML;
+  // };
 
   const generatePaginationForCategory = () => {
-    // const totalPages = 20
     const maxDisplayedPages = 10 // Maximum number of pages to display
 
     let paginationHTML = []
@@ -410,39 +658,66 @@ const index = ({ popular, latest, totalCount }) => {
       startPage = 1
       endPage = totalPages
     } else if (categoryPage <= 6) {
-      // Display pages 1 to 10 if the current page is less than or equal to 6
+      // Display pages 1 to 10 if the current categoryPage is less than or equal to 6
       startPage = 1
       endPage = maxDisplayedPages
-    } else if (categoryPage >= totalPages - 5) {
-      // Display the last 10 pages if the current page is within the last 5 pages
+    } else if (categoryPage >= totalPages - 6) {
+      // Display the last 10 pages if the current categoryPage is within the last 6 pages
       startPage = totalPages - maxDisplayedPages + 1
       endPage = totalPages
     } else {
-      // Display the current page with a range of 5 pages before and after
+      // Display the current categoryPage with a range that increases by one on each side
       startPage = categoryPage - 4
       endPage = categoryPage + 5
     }
 
-    // Add previous page link
+    // Add previous categoryPage link
     if (categoryPage > 1) {
       paginationHTML.push(
         <a
           key="prevPage"
           // href="#"
-          onClick={() => setCategoryPage(categoryPage - 1)}
+          onClick={() => {
+            handleClick()
+            setPage(categoryPage - 1)
+          }}
         >
           &laquo;
         </a>
       )
     } else {
       paginationHTML.push(
-        <span key="prevPage" className="disabled">
+        <a key="prevPage" className="disabled">
           &laquo;
-        </span>
+        </a>
       )
     }
 
-    // Add page links between startPage and endPage
+    // Add first categoryPage link
+    if (startPage > 1) {
+      paginationHTML.push(
+        <a
+          key="firstPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setCategoryPage(1)
+          }}
+        >
+          1
+        </a>
+      )
+
+      if (startPage > 2) {
+        paginationHTML.push(
+          <a key="ellipsisBefore" className="ellipsis">
+            ...
+          </a>
+        )
+      }
+    }
+
+    // Add categoryPage links between startPage and endPage
     for (let i = startPage; i <= endPage; i++) {
       paginationHTML.push(
         <a
@@ -459,16 +734,31 @@ const index = ({ popular, latest, totalCount }) => {
       )
     }
 
-    // Add ellipsis (...) if there are more pages after the displayed range
+    // Add last categoryPage link
     if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        paginationHTML.push(
+          <a key="ellipsisAfter" className="ellipsis">
+            ...
+          </a>
+        )
+      }
+
       paginationHTML.push(
-        <span key="ellipsis" className="ellipsis">
-          ...
-        </span>
+        <a
+          key="lastPage"
+          // href="#"
+          onClick={() => {
+            handleClick()
+            setCategoryPage(totalPages)
+          }}
+        >
+          {totalPages}
+        </a>
       )
     }
 
-    // Add next page link
+    // Add next categoryPage link
     if (categoryPage < totalPages) {
       paginationHTML.push(
         <a
@@ -484,16 +774,14 @@ const index = ({ popular, latest, totalCount }) => {
       )
     } else {
       paginationHTML.push(
-        <span key="nextPage" className="disabled">
+        <a key="nextPage" className="disabled">
           &raquo;
-        </span>
+        </a>
       )
     }
 
     return paginationHTML
   }
-  // return paginationHTML;
-  // };
 
   return (
     <Fragment>
