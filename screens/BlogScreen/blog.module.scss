@@ -219,6 +219,9 @@
 @media only screen and (max-width: 480px) and (min-width: 320px) {
     
     .blog2Wrap {
+        .SliderHeadingTop {
+            width: 100%;
+        }
         padding-top: 30px;
         .blogSliderWrap {
             color: #ffffff;
@@ -257,7 +260,7 @@
     .blogTile {
         .tileCardDate {
             .minRead {
-                margin-left: 30%!important;
+                margin-left: 25%!important;
             }
         }
         img {
