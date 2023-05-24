@@ -23,6 +23,7 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 
 const index = ({ id }) => {
   const [show, setShow] = useState(false)
@@ -128,6 +129,8 @@ const index = ({ id }) => {
 
   const [isLiked, setIsliked] = useState(false)
   const [totalLikes, setTotalLikes] = useState(0)
+  const [seoTitle, setSeoTitle] = useState('')
+
   const getPost = async (id) => {
     try {
       const response = await axios.get(`${APIGetBlog}${id}?userId=${userId}`)
@@ -135,9 +138,10 @@ const index = ({ id }) => {
       setPost(response.data.data)
       setIsliked(!!response.data.data.isLiked)
       setTotalLikes(response.data.data.LIKE_COUNT)
-      const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
-      setComments(commentsResult.data.data)
-      console.log('data ---------->', commentsResult.data.data)
+      setSeoTitle(response.data.data.TITLE)
+      // const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
+      // setComments(commentsResult.data.data)
+      // console.log('data ---------->', commentsResult.data.data)
     } catch (err) {}
   }
   const getPostsByCategory = async () => {
@@ -319,6 +323,17 @@ const index = ({ id }) => {
   console.log('EXtra Content ------->', extraPosts)
   return (
     <Fragment>
+      <NextSeo
+        title={`Blog | ${seoTitle}`}
+        // description=""
+        openGraph={{
+          title: `Blog | ${seoTitle}`,
+          url: window.location.href,
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
+      />
       <Container fluid className="bg-black">
         <Container className={styles.postWrap}>
           <Row className={styles.textWrap}>
