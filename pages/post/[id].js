@@ -52,6 +52,7 @@ const getPost = async (id) => {
   try {
     const response = await axios.get(`${APIGetBlog}${id}`)
     console.log('Data --------->', response.data.data)
+    return response.data.data
   } catch (err) {
     console.log('Error', err)
   }
