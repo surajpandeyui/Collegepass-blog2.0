@@ -262,14 +262,7 @@ const index = ({ blog }) => {
         .replace(/,/g, ', ')
         .split(', ')
         .map((item, idx) => (
-          <Fragment
-
-          // onClick={(e) => {
-          //   e.stopPropagation()
-          //   setSelectedCategory(item)
-          //   // handleClickTop()
-          // }}
-          >
+          <Fragment>
             {idx === 0 ? (
               <a
                 onClick={(e) => {
@@ -352,32 +345,6 @@ const index = ({ blog }) => {
               }}
             >
               <Row>
-                <Col>
-                  {/*<h1
-                    style={{
-                      marginTop: '0px',
-                      marginBottom: '20px',
-                      overflowWrap: 'break-word',
-                      fontSize: '32px',
-                      color: '#ffffff',
-                      fontFamily: '"Poppins",sans-serif',
-                      fontWeight: '700',
-                      lineHeight: '1.4',
-                    }}
-                  >
-                    {post.TITLE}
-                  </h1>*/}
-                  {/* <h1 style={{
-                        marginTop: '0',
-                        marginBottom: '20px',
-                        wordWrap: 'break-word',
-                        fontSize: '41px',
-                        lineHeight: '50px',
-                        fontWeight: '600',
-                    }}>Choosing The Right University – Study Abroad Counseling</h1> */}
-                </Col>
-              </Row>
-              <Row>
                 <Col
                   className={styles.postImg}
                   style={{
@@ -397,11 +364,7 @@ const index = ({ blog }) => {
                   <p className="date-post-top">
                     {moment(post.ADDED_TIME).format('MMMM DD, YYYY')}
                   </p>
-                  {/* <p>
-                    {/*<i className="fa fa-heart" aria-hidden="true"></i>*/}
-                  {/* <i className="fa fa-heart-o" aria-hidden="true"></i> 146k */}
-                  {/* </p> */}
-                  {/*<p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>*/}
+
                   {isLiked ? (
                     <p
                       onClick={() => ondislike()}
@@ -427,12 +390,6 @@ const index = ({ blog }) => {
 
               <Row>
                 <Col>
-                  {/*<Row>
-                  <Col className={styles.likeShare}>
-                    <p><i className="fa fa-heart-o" aria-hidden="true"></i> 146k</p>
-                    <p><i className="fa fa-paper-plane-o" aria-hidden="true"></i> share</p>
-                  </Col>
-                </Row>*/}
                   <Row>
                     <Col className="share-icon-post">
                       <h5
@@ -535,133 +492,6 @@ const index = ({ blog }) => {
                   </Row>
                 </Col>
               </Row>
-
-              {/* <Col>
-                  <Row>
-                    <Col>
-                      <span style={{
-                        display: 'inline-flex'
-                      }}><p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        marginRight: '10px',
-                        fontSize: '12px',
-                      }}>Advisor Name</p><p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        marginLeft: '10px',
-                        fontSize: '12px',
-                      }}>1 month ago</p></span>
-                      <p style={{
-                        fontWeight: '600',
-                        letterSpacing: '0.03rem',
-                        color: '#545454',
-                        fontSize: '14px'
-                      }}>Hi, This is a dummy cmt here..</p>
-                      <p className={styles.commentReply} onClick={handleShow}>Reply</p>
-                    </Col>
-                  </Row>
-                </Col> */}
-
-              {/*<Row>
-                <Col
-                  style={{
-                    marginTop: '45px',
-                    border: '1px solid rgb(49, 49, 49)',
-                    padding: '27px 30px',
-                    borderRadius: '25px',
-                    backgroundColor: 'rgb(0, 0, 0)',
-                    backgroundImage: 'linear-gradient(to right top, rgb(0, 0, 0), rgb(17, 16, 17))'
-                  }}
-                >
-                  {!user && (
-                    <Row>
-                      <Col>
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput1"
-                        >
-                          <Form.Label>Name</Form.Label>
-                          <Form.Control
-                            type="text"
-                            placeholder="Enter name"
-                            value={name}
-                            onChange={handleNameChange}
-                            isInvalid={!!nameError}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {nameError}
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group
-                          className="mb-3"
-                          controlId="exampleForm.ControlInput2"
-                        >
-                          <Form.Label>Email address</Form.Label>
-                          <Form.Control
-                            type="email"
-                            placeholder="Enter email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            isInvalid={!!emailError}
-                          />
-                          <Form.Control.Feedback type="invalid">
-                            {emailError}
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
-                    </Row>
-                  )}
-
-                  {/*<Row>
-                    <Col>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="exampleForm.ControlTextarea1"
-                      >
-                        <Form.Label
-                          style={{
-                            color: '#ffffff',
-                          }}
-                        >
-                          Comment
-                        </Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          rows={3}
-                          placeholder="Comment..."
-                          value={!showReplyInput ? comment : ''}
-                          onChange={handleCommentChange}
-                          isInvalid={!!commentError}
-                          disabled={showReplyInput}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                          {commentError}
-                        </Form.Control.Feedback>
-                      </Form.Group>
-                    </Col>
-                  </Row>*/}
-
-              {/*<Col className="pt-3">
-                    <Button
-                      onClick={handleSubmit}
-                      style={{
-                        borderRadius: '40px',
-                        fontSize: '16px',
-                        letterSpacing: '0.05rem',
-                        background: '#ffffff',
-                        border: '1px solid #ffffff',
-                        color: '#000000',
-                        padding: '7px 20px',
-                      }}
-                    >
-                      Post Comment
-                    </Button>
-                  </Col>
-                </Col>
-              </Row>*/}
             </Col>
             <Col lg={4} md={4} sm={12} xs={12} className={styles.postSide}>
               <Row
@@ -746,180 +576,3 @@ const index = ({ blog }) => {
 }
 
 export default index
-
-/*import React, { Fragment } from 'react'
-import { Container, Row, Col, Button, Form } from 'react-bootstrap'
-import Image from 'next/image'
-import styles from '../BlogScreen/blog.module.scss'
-import Link from 'next/link'
-
-const index = () => {
-  return (
-    <Fragment>
-      <Container fluid className='bg-white p-0'>
-        <Row>
-          <Col className='pt-3 pb-5'>
-            <Row>
-                <Col lg={4} md={4} sm={12} xs={12}></Col>
-                <Col lg={3} md={3} sm={12} xs={12}>
-                    <Form className="d-flex">
-                    <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                    />
-                    </Form>
-                </Col>
-                <Col lg={4} md={4} sm={12} xs={12}></Col>
-            </Row>
-            <Row>
-                <Col className='pt-3'>
-                    <img src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/oxbridge_1_april_banner.png" alt="How to Get Into Oxbridge" style={{
-                        width: '100%'
-                    }} />
-                </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row style={{
-            width: '900px',
-            margin: 'auto',
-            textAlign: 'justify'
-          }}>
-          <Col>
-            <Row>
-              <Col>
-                  <p>Every year brands and marketers build celebrations of all kinds into their content calendars.
-For many companies, celebrations and cultural recognitions are a perfect platform for product launches and seasonal collections.</p>
-<p>In the west, the winter holidays remain heavily commercialized, with projections for retail shopping to reach, on average, $1,455 US per consumer during the holidays, a healthy number cited by the 2022 Deloitte holiday retail survey. Although the holiday season is synonymous with spending in the west, it is not the only hot seller throughout the calendar year. Back-to-school and back-to-college spending in 2022 was expected to reach 37 billion and 74 billion in the US. That is approximately $864 US and $1,199 US per family, as reported by the National Retail Federation.</p>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Image
-                    src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/stanford.png"
-                    alt="Small Blog"
-                    width="750"
-                    height="556"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                  <p>Every year brands and marketers build celebrations of all kinds into their content calendars.
-For many companies, celebrations and cultural recognitions are a perfect platform for product launches and seasonal collections.</p>
-<p>In the west, the winter holidays remain heavily commercialized, with projections for retail shopping to reach, on average, $1,455 US per consumer during the holidays, a healthy number cited by the 2022 Deloitte holiday retail survey. Although the holiday season is synonymous with spending in the west, it is not the only hot seller throughout the calendar year. Back-to-school and back-to-college spending in 2022 was expected to reach 37 billion and 74 billion in the US. That is approximately $864 US and $1,199 US per family, as reported by the National Retail Federation.</p>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Image
-                    src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/stanford.png"
-                    alt="Small Blog"
-                    width="750"
-                    height="556"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Image
-                    src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/stanford.png"
-                    alt="Small Blog"
-                    width="750"
-                    height="556"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                  <p>Every year brands and marketers build celebrations of all kinds into their content calendars.
-For many companies, celebrations and cultural recognitions are a perfect platform for product launches and seasonal collections.</p>
-<p>In the west, the winter holidays remain heavily commercialized, with projections for retail shopping to reach, on average, $1,455 US per consumer during the holidays, a healthy number cited by the 2022 Deloitte holiday retail survey. Although the holiday season is synonymous with spending in the west, it is not the only hot seller throughout the calendar year. Back-to-school and back-to-college spending in 2022 was expected to reach 37 billion and 74 billion in the US. That is approximately $864 US and $1,199 US per family, as reported by the National Retail Federation.</p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Container>
-          <Row>
-            <Col>
-              <h2 style={{
-                color: '#000000',
-                paddingTop: '60px'
-              }}>Related Post</h2>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Row>
-                <Col>
-                  <Row>
-                      <Col>
-                          <Image
-                              src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/choosing_the_right_uni_post.png"
-                              alt="Small Blog"
-                              width="750"
-                              height="556"
-                          />
-                      </Col>
-                  </Row>
-                  <Row>
-                      <Col>
-                          <h2 style={{
-                              color: '#000000'
-                          }}>Choosing The Right University - Study Abroad Counseling</h2>
-                          <p>March 16, 2023</p>
-                      </Col>
-                  </Row>
-              </Col>
-              <Col>
-                  <Row>
-                      <Col>
-                          <Image
-                              src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/choosing_the_right_uni_post.png"
-                              alt="Small Blog"
-                              width="750"
-                              height="556"
-                          />
-                      </Col>
-                  </Row>
-                  <Row>
-                      <Col>
-                          <h2 style={{
-                              color: '#000000'
-                          }}>Choosing The Right University - Study Abroad Counseling</h2>
-                          <p>March 16, 2023</p>
-                      </Col>
-                  </Row>
-              </Col>
-              <Col>
-                  <Row>
-                      <Col>
-                          <Image
-                              src="https://collegepass-event-banners.s3.ap-south-1.amazonaws.com/choosing_the_right_uni_post.png"
-                              alt="Small Blog"
-                              width="750"
-                              height="556"
-                          />
-                      </Col>
-                  </Row>
-                  <Row>
-                      <Col>
-                          <h2 style={{
-                              color: '#000000'
-                          }}>Choosing The Right University - Study Abroad Counseling</h2>
-                          <p>March 16, 2023</p>
-                      </Col>
-                  </Row>
-              </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Container>
-      </Container>
-    </Fragment>
-  )
-}
-
-export default index*/
