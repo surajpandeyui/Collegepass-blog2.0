@@ -25,7 +25,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 
-const index = ({ id }) => {
+const index = ({ blog }) => {
   const [show, setShow] = useState(false)
   const handleClose = () => {
     setShow(false)
@@ -210,8 +210,12 @@ const index = ({ id }) => {
     post && getPostsByCategory()
   }, [post])
   useEffect(() => {
-    id && getPost(id)
-  }, [id, userId])
+    userId && blog && getPost(blog.POST_ID)
+  }, [blog, userId])
+
+  // useEffect(() => {
+  //   blog && setPost(blog)
+  // }, [blog])
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId')

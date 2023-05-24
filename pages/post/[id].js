@@ -2,9 +2,11 @@ import Head from 'next/head'
 // import PostScreen from '../screens/PostScreen';
 import PostScreen from './../../screens/PostScreen'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import { APIGetBlog } from '../../config/API'
 
-export default function AboutUs() {
-  const router = useRouter()
+export default function AboutUs({ blog }) {
+  // const router = useRouter()
 
   return (
     <>
@@ -15,7 +17,7 @@ export default function AboutUs() {
           name="description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide! "
         />
-        <meta itemprop="name" content="About Us | CollegePass" />
+        <meta itemprop="name" content={`Blog | ${blog.TITLE || ''}`} />
         <meta
           itemprop="description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!"
@@ -23,14 +25,14 @@ export default function AboutUs() {
         <meta itemprop="image" content="" />
         <meta property="og:url" content="https://www.collegepass.org/terms" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="About Us | CollegePass" />
+        <meta property="og:title" content={`Blog | ${blog.TITLE || ''}`} />
         <meta
           property="og:description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!"
         />
         <meta property="og:image" content="" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Us | CollegePass" />
+        <meta name="twitter:title" content={`Blog | ${blog.TITLE || ''}`} />
         <meta
           name="twitter:description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!"
@@ -40,8 +42,36 @@ export default function AboutUs() {
       </Head>
 
       <main className="bg-black">
-        <PostScreen id={router.query.id}></PostScreen>
+        <PostScreen blog={blog}></PostScreen>
       </main>
     </>
   )
+}
+
+const getPost = async (id) => {
+  try {
+    const response = await axios.get(`${APIGetBlog}${id}`)
+    console.log('Data --------->', response.data.data)
+  } catch (err) {
+    console.log('Error', err)
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const postId = params.id
+  const blog = await getPost(postId)
+
+  return {
+    props: {
+      blog,
+    },
+    revalidate: 1,
+  }
 }
