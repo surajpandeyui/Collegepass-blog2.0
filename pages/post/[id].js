@@ -30,14 +30,14 @@ export default function AboutUs({ blog }) {
           property="og:description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!"
         />
-        <meta property="og:image" content="" />
+        <meta property="og:image" content={blog.IMAGE_BANNER_V2} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`Blog | ${blog.TITLE || ''}`} />
         <meta
           name="twitter:description"
           content="CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!"
         />
-        <meta name="twitter:image" content="" />
+        <meta name="twitter:image" content={blog.IMAGE_BANNER_V2} />
         <link rel="canonical" href="https://www.collegepass.org/about" />
       </Head>
 

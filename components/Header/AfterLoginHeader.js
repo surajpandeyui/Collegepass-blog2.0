@@ -330,7 +330,7 @@ const AfterLoginHeader = () => {
             <p>
               Every CollegePass student has received a minimum of 3 admission
               offers in 2023.
-              <a href="/success-stories">
+              <a href="https://collegepass.org/success-stories" target="_blank">
                 Success stories{' '}
                 <i className="fa fa-external-link" aria-hidden="true"></i>
               </a>
