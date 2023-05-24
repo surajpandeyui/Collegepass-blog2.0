@@ -1065,6 +1065,7 @@ const index = ({ popular, latest, totalCount }) => {
                       </Row>
                     </Col>
                   </Row>
+                  
 
                   <Row>
                     <Col
