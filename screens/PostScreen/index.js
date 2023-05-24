@@ -129,6 +129,8 @@ const index = ({ id }) => {
 
   const [isLiked, setIsliked] = useState(false)
   const [totalLikes, setTotalLikes] = useState(0)
+  const [seoTitle, setSeoTitle] = useState('')
+
   const getPost = async (id) => {
     try {
       const response = await axios.get(`${APIGetBlog}${id}?userId=${userId}`)
@@ -136,9 +138,10 @@ const index = ({ id }) => {
       setPost(response.data.data)
       setIsliked(!!response.data.data.isLiked)
       setTotalLikes(response.data.data.LIKE_COUNT)
-      const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
-      setComments(commentsResult.data.data)
-      console.log('data ---------->', commentsResult.data.data)
+      setSeoTitle(response.data.data.TITLE)
+      // const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
+      // setComments(commentsResult.data.data)
+      // console.log('data ---------->', commentsResult.data.data)
     } catch (err) {}
   }
   const getPostsByCategory = async () => {
@@ -321,10 +324,10 @@ const index = ({ id }) => {
   return (
     <Fragment>
       <NextSeo
-        title={post.TITLE ? `Blog | ${post.TITLE}` : 'Blog'}
+        title={`Blog | ${seoTitle}`}
         // description=""
         openGraph={{
-          title: `${post.TITLE ? `Blog | ${post.TITLE}` : 'Blog'}`,
+          title: `Blog | ${seoTitle}`,
           url: window.location.href,
         }}
       />
