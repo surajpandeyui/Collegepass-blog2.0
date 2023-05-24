@@ -129,7 +129,7 @@ const index = ({ id }) => {
 
   const [isLiked, setIsliked] = useState(false)
   const [totalLikes, setTotalLikes] = useState(0)
-  const [seoTitle, setSeoTitle] = useState('')
+  // const [seoTitle, setSeoTitle] = useState('')
 
   const getPost = async (id) => {
     try {
@@ -138,7 +138,7 @@ const index = ({ id }) => {
       setPost(response.data.data)
       setIsliked(!!response.data.data.isLiked)
       setTotalLikes(response.data.data.LIKE_COUNT)
-      setSeoTitle(response.data.data.TITLE)
+      // setSeoTitle(response.data.data.TITLE)
       // const commentsResult = await axios.get(`${APIGetCommentsByPostID}${id}`)
       // setComments(commentsResult.data.data)
       // console.log('data ---------->', commentsResult.data.data)
@@ -324,10 +324,10 @@ const index = ({ id }) => {
   return (
     <Fragment>
       <NextSeo
-        title={`Blog | ${seoTitle}`}
+        title={`Blog | ${post.TITLE || ''}`}
         // description=""
         openGraph={{
-          title: `Blog | ${seoTitle}`,
+          title: `Blog | ${post.TITLE || ''}`,
           url: window.location.href,
         }}
         twitter={{
