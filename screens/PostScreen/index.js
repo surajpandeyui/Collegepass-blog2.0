@@ -330,6 +330,9 @@ const index = ({ id }) => {
           title: `Blog | ${seoTitle}`,
           url: window.location.href,
         }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
       />
       <Container fluid className="bg-black">
         <Container className={styles.postWrap}>
