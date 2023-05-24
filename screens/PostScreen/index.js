@@ -23,6 +23,7 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 
 const index = ({ id }) => {
   const [show, setShow] = useState(false)
@@ -319,6 +320,14 @@ const index = ({ id }) => {
   console.log('EXtra Content ------->', extraPosts)
   return (
     <Fragment>
+      <NextSeo
+        title={post.TITLE ? `Blog | ${post.TITLE}` : 'Blog'}
+        // description=""
+        openGraph={{
+          title: `${post.TITLE ? `Blog | ${post.TITLE}` : 'Blog'}`,
+          url: window.location.href,
+        }}
+      />
       <Container fluid className="bg-black">
         <Container className={styles.postWrap}>
           <Row className={styles.textWrap}>
