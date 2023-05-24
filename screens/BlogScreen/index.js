@@ -1077,7 +1077,9 @@ const index = ({ popular, latest, totalCount }) => {
                     >
                       <Row>
                         <Col className={styles.catSectionShort}>
-                          <p className={styles.hideOnMob}>Browse Categories</p>
+                          <p className={styles.hideOnMob}><a style={{
+                                color: '#ffffff'
+                          }}>Browse Categories</a></p>
                           <p
                             onClick={() => {
                               handleClick()
