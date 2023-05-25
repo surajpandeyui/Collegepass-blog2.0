@@ -23,47 +23,14 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { NextSeo } from 'next-seo'
 
 const index = ({ blog }) => {
-  const [show, setShow] = useState(false)
-  const handleClose = () => {
-    setShow(false)
-    setParentId(null)
-    setShowReplyInput(false)
-  }
-  const handleShow = (id) => {
-    if (!user) {
-      setShow(true)
-    } else {
-      setParentId(id)
-      setShowReplyInput(true)
-    }
-  }
-
   const [post, setPost] = useState()
   const [extraPosts, setExtraPosts] = useState([])
-  const [comments, setComments] = useState([])
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [comment, setComment] = useState('')
-  const [nameError, setNameError] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const [commentError, setCommentError] = useState('')
-
-  const [registered, setRegistered] = useState(false)
-  const [user, setUser] = useState(null)
 
   ///////////////////////// calculating spent time /////////////////////////////////
   const [visitStartTime, setVisitStartTime] = useState(null)
   const [isPageVisible, setIsPageVisible] = useState(true)
-
-  const [showReplyInput, setShowReplyInput] = useState(false)
-  const [commentReplyIndex, setCommentReplyIndex] = useState()
-  const [parentId, setParentId] = useState()
-
-  const [expandedReplyIndex, setExpandedReplyIndex] = useState(null)
 
   const handleVisibilityChange = () => {
     if (document.visibilityState === 'hidden') {
@@ -295,7 +262,7 @@ const index = ({ blog }) => {
       setTotalLikes((prev) => prev + 1)
       const result = await axios.post(APIAddLike, {
         user_id: userId,
-        blog_id: id,
+        blog_id: post.POST_ID,
       })
     } catch (err) {
       console.log('Error', err)
@@ -309,7 +276,7 @@ const index = ({ blog }) => {
       const result = await axios.delete(APIDeleteLike, {
         data: {
           user_id: userId,
-          blog_id: id,
+          blog_id: post.POST_ID,
         },
       })
     } catch (err) {
@@ -320,17 +287,6 @@ const index = ({ blog }) => {
   console.log('EXtra Content ------->', extraPosts)
   return (
     <Fragment>
-      <NextSeo
-        title={`Blog | ${post.TITLE || ''}`}
-        // description=""
-        openGraph={{
-          title: `Blog | ${post.TITLE || ''}`,
-          url: window.location.href,
-        }}
-        twitter={{
-          cardType: 'summary_large_image',
-        }}
-      />
       <Container fluid className="bg-black">
         <Container className={styles.postWrap}>
           <Row className={styles.textWrap}>
@@ -371,7 +327,7 @@ const index = ({ blog }) => {
                       style={{ cursor: 'pointer' }}
                     >
                       <i className="fa fa-heart" aria-hidden="true"></i>{' '}
-                      {totalLikes}{' '}
+                      {totalLikes}
                     </p>
                   ) : (
                     <p onClick={() => onLike()} style={{ cursor: 'pointer' }}>
