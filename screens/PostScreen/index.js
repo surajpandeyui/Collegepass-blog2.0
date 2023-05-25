@@ -32,6 +32,41 @@ const index = ({ blog }) => {
   const [visitStartTime, setVisitStartTime] = useState(null)
   const [isPageVisible, setIsPageVisible] = useState(true)
 
+  const [dynamicLink, setDynamicLink] = useState('')
+
+  const createDynamicLink = async (post) => {
+    const apiKey = 'AIzaSyBvXx4zkclbjWdJ7t4nVvhq9e-NMYeLIls' // Replace with your Firebase project's API key
+
+    const url = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${apiKey}`
+    const response = await axios.post(url, {
+      dynamicLinkInfo: {
+        domainUriPrefix: 'https://link.collegepass.org',
+        link: `https://www.collegepass.org/links?TYPE=BLOG&SOURCE_ID=${post.POST_ID}`, // Add your parameters here
+        // other parameters as needed
+        androidInfo: {
+          androidPackageName: 'com.collegepass',
+        },
+        iosInfo: {
+          iosBundleId: 'org.collegePass',
+        },
+        socialMetaTagInfo: {
+          socialTitle: `${
+            post.TITLE ? post.TITLE + ' | A CollgePass Blog' : 'Blog'
+          }`,
+          socialDescription:
+            'CollegePass is a global college preparation platform helping high schoolers apply to their dream colleges worldwide!',
+          socialImageLink: post.IMAGE_BANNER_V1,
+        },
+      },
+    })
+
+    setDynamicLink(response.data.shortLink)
+  }
+
+  useEffect(() => {
+    post && createDynamicLink(post)
+  }, [post])
+
   const handleVisibilityChange = () => {
     if (document.visibilityState === 'hidden') {
       setIsPageVisible(false)
@@ -101,7 +136,7 @@ const index = ({ blog }) => {
   const getPost = async (id) => {
     try {
       const response = await axios.get(`${APIGetBlog}${id}?userId=${userId}`)
-      console.log('Data --------->', response.data.data)
+      // console.log('Data --------->', response.data.data)
       setPost(response.data.data)
       setIsliked(!!response.data.data.isLiked)
       setTotalLikes(response.data.data.LIKE_COUNT)
@@ -112,7 +147,10 @@ const index = ({ blog }) => {
     } catch (err) {}
   }
   const getPostsByCategory = async () => {
-    const categories = post.CATEGORIES.split(',')
+    const categories = post.CATEGORIES.includes(',')
+      ? post.CATEGORIES.split(',')
+      : [post.CATEGORIES]
+
     const result = []
 
     if (post.BLOG_CATEGORIES && categories.length) {
@@ -284,7 +322,6 @@ const index = ({ blog }) => {
     }
   }
 
-  console.log('EXtra Content ------->', extraPosts)
   return (
     <Fragment>
       <Container fluid className="bg-black">
@@ -363,7 +400,8 @@ const index = ({ blog }) => {
                   <Row>
                     <Col className={styles.socialPost}>
                       <p>
-                        <FacebookShareButton url={`${window.location.href}`}>
+                        {/* <FacebookShareButton url={`${window.location.href}`}> */}
+                        <FacebookShareButton url={`${dynamicLink}`}>
                           <i
                             className="fa fa-facebook-official"
                             aria-hidden="true"
@@ -421,7 +459,8 @@ const index = ({ blog }) => {
                         ></i>
                         </p>*/}
                       <p>
-                        <LinkedinShareButton url={`${window.location.href}`}>
+                        {/* <LinkedinShareButton url={`${window.location.href}`}> */}
+                        <LinkedinShareButton url={`${dynamicLink}`}>
                           <i
                             className="fa fa-linkedin-square"
                             aria-hidden="true"
@@ -433,7 +472,8 @@ const index = ({ blog }) => {
                       </p>
 
                       <p>
-                        <WhatsappShareButton url={`${window.location.href}`}>
+                        {/* <WhatsappShareButton url={`${window.location.href}`}> */}
+                        <WhatsappShareButton url={`${dynamicLink}`}>
                           <i
                             className="fa fa-whatsapp"
                             aria-hidden="true"
