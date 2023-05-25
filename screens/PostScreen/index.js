@@ -60,7 +60,13 @@ const index = ({ blog }) => {
       },
     })
 
-    setDynamicLink(response.data.shortLink)
+    setDynamicLink(
+      response.data
+        ? response.data.shortLink
+          ? response.data.shortLink
+          : ''
+        : ''
+    )
   }
 
   useEffect(() => {
@@ -401,7 +407,9 @@ const index = ({ blog }) => {
                     <Col className={styles.socialPost}>
                       <p>
                         {/* <FacebookShareButton url={`${window.location.href}`}> */}
-                        <FacebookShareButton url={`${dynamicLink}`}>
+                        <FacebookShareButton
+                          url={`${dynamicLink || window.location.href}`}
+                        >
                           <i
                             className="fa fa-facebook-official"
                             aria-hidden="true"
