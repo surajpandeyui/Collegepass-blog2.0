@@ -41,7 +41,7 @@ const index = ({ popular, latest, totalCount }) => {
     ;(totalCount || selectedCategory === 'Latest') &&
       isHome &&
       setTotalPages(Math.ceil(totalCount / 4))
-  }, [totalCount, selectedCategory])
+  }, [totalCount, selectedCategory, isHome])
 
   console.log('totalPages', totalPages)
   const fetchPosts = async () => {
@@ -265,9 +265,9 @@ const index = ({ popular, latest, totalCount }) => {
   const updateCategories = (categories) => {
     return !categories.replace(/,/g, ', ').includes(', ') ? (
       <p
-        onClick={() => {
+        onClick={(e) => {
           e.stopPropagation()
-          setSelectedCategory(item)
+          setSelectedCategory(categories)
           handleClick()
         }}
         style={{ cursor: 'pointer' }}
@@ -345,10 +345,10 @@ const index = ({ popular, latest, totalCount }) => {
             }
           })
     } else {
-      setIsHome(true)
-      setBlogs(latest)
+      !selectedCategory && setIsHome(true)
+      !selectedCategory && setBlogs(latest)
       console.log('totalPages from search else', Math.ceil(totalCount / 4))
-      setTotalPages(Math.ceil(totalCount / 4))
+      !selectedCategory && setTotalPages(Math.ceil(totalCount / 4))
       // setTotalPages(20)
       setPage(1)
 
@@ -363,109 +363,6 @@ const index = ({ popular, latest, totalCount }) => {
     }
   }, [searchString])
 
-  // function Pagination() {
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // const generatePagination = () => {
-  //   // const totalPages = 20
-  //   const maxDisplayedPages = 10 // Maximum number of pages to display
-
-  //   let paginationHTML = []
-
-  //   // Calculate start and end page numbers based on current page
-  //   let startPage
-  //   let endPage
-
-  //   if (totalPages <= maxDisplayedPages) {
-  //     // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
-  //     startPage = 1
-  //     endPage = totalPages
-  //   } else if (page <= 6) {
-  //     // Display pages 1 to 10 if the current page is less than or equal to 6
-  //     startPage = 1
-  //     endPage = maxDisplayedPages
-  //   } else if (page >= totalPages - 5) {
-  //     // Display the last 10 pages if the current page is within the last 5 pages
-  //     startPage = totalPages - maxDisplayedPages + 1
-  //     endPage = totalPages
-  //   } else {
-  //     // Display the current page with a range of 5 pages before and after
-  //     startPage = page - 4
-  //     endPage = page + 5
-  //   }
-
-  //   // Add previous page link
-  //   if (page > 1) {
-  //     paginationHTML.push(
-  //       <a
-  //         key="prevPage"
-  //         // href="#"
-  //         onClick={() => {
-  //           handleClick()
-  //           setPage(page - 1)
-  //         }}
-  //       >
-  //         &laquo;
-  //       </a>
-  //     )
-  //   } else {
-  //     paginationHTML.push(
-  //       <span key="prevPage" className="disabled">
-  //         &laquo;
-  //       </span>
-  //     )
-  //   }
-
-  //   // Add page links between startPage and endPage
-  //   for (let i = startPage; i <= endPage; i++) {
-  //     paginationHTML.push(
-  //       <a
-  //         key={i}
-  //         // href="#"
-  //         className={page === i ? 'active' : ''}
-  //         onClick={() => {
-  //           handleClick()
-  //           setPage(i)
-  //         }}
-  //       >
-  //         {i}
-  //       </a>
-  //     )
-  //   }
-
-  //   // Add ellipsis (...) if there are more pages after the displayed range
-  //   if (endPage < totalPages) {
-  //     paginationHTML.push(
-  //       <span key="ellipsis" className="ellipsis">
-  //         ...
-  //       </span>
-  //     )
-  //   }
-
-  //   // Add next page link
-  //   if (page < totalPages) {
-  //     paginationHTML.push(
-  //       <a
-  //         key="nextPage"
-  //         // href="#"
-  //         onClick={() => {
-  //           handleClick()
-  //           setPage(page + 1)
-  //         }}
-  //       >
-  //         &raquo;
-  //       </a>
-  //     )
-  //   } else {
-  //     paginationHTML.push(
-  //       <span key="nextPage" className="disabled">
-  //         &raquo;
-  //       </span>
-  //     )
-  //   }
-
-  //   return paginationHTML
-  // }
   const generatePagination = () => {
     const maxDisplayedPages = 10 // Maximum number of pages to display
 
@@ -607,106 +504,6 @@ const index = ({ popular, latest, totalCount }) => {
 
   console.log('blogposts', blogs.length)
   console.log('Totalpages', totalPages)
-
-  // const generatePaginationForCategory = () => {
-  //   // const totalPages = 20
-  //   const maxDisplayedPages = 10 // Maximum number of pages to display
-
-  //   let paginationHTML = []
-
-  //   // Calculate start and end page numbers based on current page
-  //   let startPage
-  //   let endPage
-
-  //   if (totalPages <= maxDisplayedPages) {
-  //     // Display all pages if the total number of pages is less than or equal to the maximum displayed pages
-  //     startPage = 1
-  //     endPage = totalPages
-  //   } else if (categoryPage <= 6) {
-  //     // Display pages 1 to 10 if the current page is less than or equal to 6
-  //     startPage = 1
-  //     endPage = maxDisplayedPages
-  //   } else if (categoryPage >= totalPages - 5) {
-  //     // Display the last 10 pages if the current page is within the last 5 pages
-  //     startPage = totalPages - maxDisplayedPages + 1
-  //     endPage = totalPages
-  //   } else {
-  //     // Display the current page with a range of 5 pages before and after
-  //     startPage = categoryPage - 4
-  //     endPage = categoryPage + 5
-  //   }
-
-  //   // Add previous page link
-  //   if (categoryPage > 1) {
-  //     paginationHTML.push(
-  //       <a
-  //         key="prevPage"
-  //         // href="#"
-  //         onClick={() => setCategoryPage(categoryPage - 1)}
-  //       >
-  //         &laquo;
-  //       </a>
-  //     )
-  //   } else {
-  //     paginationHTML.push(
-  //       <span key="prevPage" className="disabled">
-  //         &laquo;
-  //       </span>
-  //     )
-  //   }
-
-  //   // Add page links between startPage and endPage
-  //   for (let i = startPage; i <= endPage; i++) {
-  //     paginationHTML.push(
-  //       <a
-  //         key={i}
-  //         // href="#"
-  //         className={categoryPage === i ? 'active' : ''}
-  //         onClick={() => {
-  //           handleClick()
-  //           setCategoryPage(i)
-  //         }}
-  //       >
-  //         {i}
-  //       </a>
-  //     )
-  //   }
-
-  //   // Add ellipsis (...) if there are more pages after the displayed range
-  //   if (endPage < totalPages) {
-  //     paginationHTML.push(
-  //       <span key="ellipsis" className="ellipsis">
-  //         ...
-  //       </span>
-  //     )
-  //   }
-
-  //   // Add next page link
-  //   if (categoryPage < totalPages) {
-  //     paginationHTML.push(
-  //       <a
-  //         key="nextPage"
-  //         // href="#"
-  //         onClick={() => {
-  //           handleClick()
-  //           setCategoryPage(categoryPage + 1)
-  //         }}
-  //       >
-  //         &raquo;
-  //       </a>
-  //     )
-  //   } else {
-  //     paginationHTML.push(
-  //       <span key="nextPage" className="disabled">
-  //         &raquo;
-  //       </span>
-  //     )
-  //   }
-
-  //   return paginationHTML
-  // }
-  // return paginationHTML;
-  // };
 
   const generatePaginationForCategory = () => {
     const maxDisplayedPages = 10 // Maximum number of pages to display
@@ -968,71 +765,6 @@ const index = ({ popular, latest, totalCount }) => {
                               )
                             })
                           : null}
-                        {/* <Carousel.Item>
-                          <Row>
-                            <Col className={styles.blogSliderWrap}>
-                              <Row className={styles.sliderWidth}>
-                                <Col lg={4} md={4} sm={12} xs={12}>
-                                  <Row>
-                                    <Col className={styles.blogSliderImg}>
-                                      <Image
-                                        src="/harvard_returns_front.png"
-                                        alt="Small Blog"
-                                        width={605}
-                                        height={700}
-                                      />
-                                    </Col>
-                                  </Row>
-                                </Col>
-                                <Col lg={8} md={8} sm={12} xs={12}>
-                                  <Row>
-                                    <Col
-                                      className={styles.blogSliderTextSection}
-                                    >
-                                      <Row>
-                                        <Col className={styles.SliderHeading}>
-                                          <h3>Harvard Returns in the Fall</h3>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col
-                                          className={styles.SliderDescription}
-                                        >
-                                          <p>
-                                            College life is an experience whose
-                                            memories last a lifetime, especially
-                                            because college is perhaps the only
-                                            time between youth and adult life.
-                                            You can live a pseudo suspended
-                                            life, with as much time for play, as
-                                            for extracurricular activities. As
-                                            one steps into the professional
-                                            sphere, an adult rues the lack of
-                                            work-life balance, making college
-                                            life even more memorable.
-                                          </p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderCategory}>
-                                          <p>Latest</p>
-                                          <p>Masters</p>
-                                          <p>Visa</p>
-                                        </Col>
-                                      </Row>
-                                      <Row>
-                                        <Col className={styles.SliderDate}>
-                                          <p>March 16, 2023</p>
-                                          <p>12 min read</p>
-                                        </Col>
-                                      </Row>
-                                    </Col>
-                                  </Row>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Carousel.Item> */}
                       </Carousel>
                     </Col>
                   </Row>
@@ -1065,7 +797,6 @@ const index = ({ popular, latest, totalCount }) => {
                       </Row>
                     </Col>
                   </Row>
-                  
 
                   <Row>
                     <Col
@@ -1077,9 +808,15 @@ const index = ({ popular, latest, totalCount }) => {
                     >
                       <Row>
                         <Col className={styles.catSectionShort}>
-                          <p className={styles.hideOnMob}><a style={{
-                                color: '#ffffff'
-                          }}>Browse Categories</a></p>
+                          <p className={styles.hideOnMob}>
+                            <a
+                              style={{
+                                color: '#ffffff',
+                              }}
+                            >
+                              Browse Categories
+                            </a>
+                          </p>
                           <p
                             onClick={() => {
                               handleClick()
@@ -1363,188 +1100,7 @@ const index = ({ popular, latest, totalCount }) => {
                                 </Col>
                               )
                             })}
-                        {/* <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row>
-                            <Col className={styles.blogTile}>
-                              <Row>
-                                <Col>
-                                  <Image
-                                    src="/harvard_returns_post.png"
-                                    alt="Small Blog"
-                                    width={750}
-                                    height={436}
-                                  />
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3>Harvard Returns in the Fall</h3>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <p>
-                                    College life is an experience whose memories
-                                    last a lifetime, especially because college
-                                    is perhaps the only time between youth and
-                                    adult life.
-                                  </p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.blogCatCard}>
-                                  <p>Latest</p>
-                                  <p>Masters</p>
-                                  <p>Visa</p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.tileCardDate}>
-                                  <p>March 16, 2023</p>
-                                  <p className={styles.minRead}>12 min read</p>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row>
-                            <Col className={styles.blogTile}>
-                              <Row>
-                                <Col>
-                                  <Image
-                                    src="/UC's_post.png"
-                                    alt="Small Blog"
-                                    width={750}
-                                    height={436}
-                                  />
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3>
-                                    How to Get Into the University of California
-                                  </h3>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <p>
-                                    College life is an experience whose memories
-                                    last a lifetime, especially because college
-                                    is perhaps the only time between youth and
-                                    adult life.
-                                  </p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.blogCatCard}>
-                                  <p>Latest</p>
-                                  <p>Masters</p>
-                                  <p>Visa</p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.tileCardDate}>
-                                  <p>March 16, 2023</p>
-                                  <p className={styles.minRead}>12 min read</p>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col> */}
                       </Row>
-
-                      {/* <Row className={styles.blogCardWrap}>
-                        <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row>
-                            <Col className={styles.blogTile}>
-                              <Row>
-                                <Col>
-                                  <Image
-                                    src="/stanford.png"
-                                    alt="Small Blog"
-                                    width={750}
-                                    height={436}
-                                  />
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3>How to Get Into Stanford</h3>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <p className={styles.tileDes}>
-                                    College life is an experience whose memories
-                                    last a lifetime, especially because college
-                                    is perhaps the only time between youth and
-                                    adult life.
-                                  </p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.blogCatCard}>
-                                  <p>Latest</p>
-                                  <p>Masters</p>
-                                  <p>Visa</p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.tileCardDate}>
-                                  <p>March 16, 2023</p>
-                                  <p className={styles.minRead}>12 min read</p>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col>
-                        <Col lg={6} md={6} sm={12} xs={12}>
-                          <Row>
-                            <Col className={styles.blogTile}>
-                              <Row>
-                                <Col>
-                                  <Image
-                                    src="/waterloo_post.png"
-                                    alt="Small Blog"
-                                    width={750}
-                                    height={436}
-                                  />
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <h3>How to Get Into Waterloo</h3>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col>
-                                  <p>
-                                    College life is an experience whose memories
-                                    last a lifetime, especially because college
-                                    is perhaps the only time between youth and
-                                    adult life.
-                                  </p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.blogCatCard}>
-                                  <p>Latest</p>
-                                  <p>Masters</p>
-                                  <p>Visa</p>
-                                </Col>
-                              </Row>
-                              <Row>
-                                <Col className={styles.tileCardDate}>
-                                  <p>March 16, 2023</p>
-                                  <p className={styles.minRead}>12 min read</p>
-                                </Col>
-                              </Row>
-                            </Col>
-                          </Row>
-                        </Col>
-                      </Row> */}
 
                       <Row>
                         <Col>
