@@ -540,7 +540,7 @@ const index = ({ popular, latest, totalCount }) => {
           // href="#"
           onClick={() => {
             handleClick()
-            setPage(categoryPage - 1)
+            setCategoryPage(categoryPage - 1)
           }}
         >
           &laquo;
