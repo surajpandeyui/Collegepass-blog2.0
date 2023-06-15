@@ -40,7 +40,7 @@ const index = ({ blog }) => {
     const url = `https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${apiKey}`
     const response = await axios.post(url, {
       dynamicLinkInfo: {
-        domainUriPrefix: 'https://link.collegepass.org',
+        domainUriPrefix: 'https://www.collegepass.org',
         link: `https://www.collegepass.org/links?TYPE=BLOG&SOURCE_ID=${post.POST_ID}`, // Add your parameters here
         // other parameters as needed
         androidInfo: {
